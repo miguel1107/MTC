@@ -19,3 +19,17 @@ function mostrarcurso(){
  		console.log("complete");
  	});
 }
+$(document).ready(function() {
+	$("#nomcentro").autocomplete({
+	source:'controller/ctrCentromedico.php',
+	select : function(event,ui) {
+		event.preventDefault();
+		$('#idcentro').val(ui.item.idcentro);
+		$('#nomcentro').val(ui.item.nombre);
+	},
+});
+	
+});
+	
+
+	
