@@ -1,14 +1,17 @@
 <?php
-	$accion=$_POST['action'];
 	
-	switch ($accion) {
-		case 'carga':
-			# code...
-			break;
+
+	/**
+	* 
+	*/
+	class categoria{
 		
-		default:
-			# code...
-			break;
+		function __construct(){
+			
+		}
+
+		
 	}
+
 
 ?>

@@ -3,7 +3,7 @@ function mostrarcurso(){
 	console.log(idtipo);
  	var options={
  		type: 'post',
- 		url: 'model/categoria.php',
+ 		url: 'controller/ctrCategoria.php',
  		data: {
  			id:idtipo,
  			action: 'cargacombo'
@@ -11,7 +11,13 @@ function mostrarcurso(){
  	};
  	$.ajax(options)
  	.done(function(data) {
- 		alert(data);
+ 		var json=data;
+	    var parsed = JSON.parse(json);
+	    var arr = [];
+	    for(var x in parsed){
+			arr.push(parsed[x]);
+	    }
+ 		llenacombo();
  	})
  	.fail(function() {
  		console.log("error");
@@ -19,5 +25,8 @@ function mostrarcurso(){
  	.always(function() {
  		console.log("complete");
  	});
- 	
+}
+
+function llenacombo(array){
+
 }
