@@ -816,7 +816,9 @@ function calcular_edad(){
               <td class="etiqueta" align="right" width="20%">CATEGORA &nbsp;&nbsp;</td>
               <td class="objeto" width="1%">&nbsp;</td>
               <td class="objeto" width="72%">
-			  <?php if($_GET["sw"]==3){?>
+              	<select name="categoria" id="categoria" class="cajatexto">
+              	</select>
+			  <!-- <?php if($_GET["sw"]==3){?>
 			  <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" onChange="mostrarcurso()">
             <option value=''>---- Seleccione Opcion ----</option>
 					<?php if($idcategoria==1 || $idcategoria==2 || $idcategoria==3 || $idcategoria==7 || $idcategoria==8 || $idcategoria==9 || $idcategoria==10 || $idcategoria==11 || $idcategoria==17 ){?>
@@ -848,7 +850,8 @@ function calcular_edad(){
                       <option value="11" <?php if($tiptra=='AIII-c') echo"selected"; ?>>AIII-c</option>
                       <option value="17" <?php if($tiptra=='AIV') echo"selected"; ?>>AIV-especial</option>
                           </select>
-             <?php }?>			  </td>
+             <?php }?> -->			  
+             </td>
               <td class="objeto" width="6%">&nbsp;</td>
             </tr>
 			  
