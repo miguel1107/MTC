@@ -1,5 +1,4 @@
 <?php
-	//prueba gto
 	session_start();
 	if(!isset($_SESSION["usuario"])) header("location:index.php");
 
@@ -1014,15 +1013,28 @@ function calcular_edad(){
               <td class="objeto"><input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64"></td>
               <td class="objeto">&nbsp;</td>
             </tr>
-            
+          
             <tr valign="middle">
+              <td class="marco">&nbsp;</td>
+              <td class="etiqueta" align="right">Teléfono &nbsp;&nbsp;</td>
+              <td class="objeto">&nbsp;</td>
+              <td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="9" maxlength="9"></td>
+              <td class="objeto">&nbsp;</td>
+			</tr>
+			<tr valign="middle">
+              <td class="marco">&nbsp;</td>
+              <td class="etiqueta" align="right">Correo &nbsp;&nbsp;</td>
+              <td class="objeto">&nbsp;</td>
+              <td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64" maxlength="64"></td>
+              <td class="objeto">&nbsp;</td>
+			</tr>
+			<tr valign="middle">
               <td class="marco">&nbsp;</td>
               <td class="etiqueta" align="right">&nbsp;</td>
               <td class="objeto">&nbsp;</td>
               <td class="objeto">&nbsp;</td>
               <td class="objeto">&nbsp;</td>
-            </tr>
-            
+ 			</tr>
             <tr>
             <td colspan="5"><table width="50%" border="0" cellpadding="0" cellspacing="0">
                   <tbody>
