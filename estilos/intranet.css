@@ -1,0 +1,56 @@
+TABLE {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Verdana, Arial, "Times New Roman"
+}
+.main {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: black 0px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.sidebar {
+	BORDER-RIGHT: black 0px solid; BORDER-TOP: black 0px solid; BORDER-LEFT: #666666 1px solid; BORDER-BOTTOM: black 0px solid; BACKGROUND-COLOR: #f0f0f0
+}
+.menuitem {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.sidebarmenuitem {
+	BORDER-RIGHT: #DDDDDD 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #dddddd 1px solid; PADDING-LEFT: 4px; PADDING-BOTTOM: 3px; BORDER-LEFT: #DDDDDD 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #dddddd 1px solid
+}
+.leer {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.cuadroml {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #ffffff
+}
+SELECT {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Verdana, Arial, "Times New Roman"
+}
+.titulo {
+	 FONT-WEIGHT: bold; FONT-SIZE: 10px;  COLOR: #ff6600;  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.menubar {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: black 0px solid; BORDER-LEFT: black 0px solid; BORDER-BOTTOM: black 0px solid; BACKGROUND-COLOR: #f0f0f0
+}
+.linea {
+	BORDER-RIGHT: black 0px solid; BORDER-TOP: black 0px solid; BORDER-LEFT: black 0px solid; BORDER-BOTTOM: #006600 1px solid
+}
+TEXTAREA {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.cuadro {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid; BACKGROUND-COLOR: #ffffff
+}
+/*A:link {
+	FONT-WEIGHT: normal; COLOR: #336699; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-WEIGHT: normal; TEXT-DECORATION: none; COLOR: #336699
+}
+A:active {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-WEIGHT: normal; COLOR: #336699; TEXT-DECORATION: underline
+}*/
+A.underline:hover {
+	TEXT-DECORATION: underline
+}
+input { font-family: Tahoma,Verdana, Arial; font-size: 11px; color: #000000; background-color: #FFFFFF; border: #000000; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+textarea  { font-family: Verdana, Arial,Tahoma; font-size: 11px; color: #000000; background-color: #FFFFFF; border: #000000	; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
