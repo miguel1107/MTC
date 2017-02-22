@@ -950,6 +950,7 @@ function MM_goToURL() { //v3.0
 			<option value="CASADO">CASADO</option>
 			<option value="VIUDO">VIUDO</option>
 			<option value="DIVORCIADO">DIVORCIADO</option>
+			
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>

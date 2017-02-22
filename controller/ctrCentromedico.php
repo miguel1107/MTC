@@ -13,7 +13,7 @@
 		// for ($i=0; $i < count($ar) ; $i++) { 
 		// 	echo $ar[$i][0].',';
 		// }
-		foreach ($ar as $key => $val) {
+		foreach ($ls as $key => $val) {
 			$val->label=$val->nombre;
 		}
 		echo json_encode($ar);
