@@ -19,16 +19,25 @@ function mostrarcurso(){
  		console.log("complete");
  	});
 }
+
+function cursoespecial() {
+	var cat=$('#categoria').val();
+	alert(cat);
+}
+
 $(document).ready(function() {
 	$("#nomcentro").autocomplete({
-	source:'controller/ctrCentromedico.php',
-	select : function(event,ui) {
-		event.preventDefault();
-		$('#idcentro').val(ui.item.idcentro);
-		$('#nomcentro').val(ui.item.nombre);
-	},
-});
-	
+		source:'controller/ctrCentromedico.php',
+		// select(function(event) {
+		// 	console.log('select');
+		// });
+		select : function(event,ui) {
+			console.log(ui);
+			//event.preventDefault();
+			$('#nomcentro').val(ui.item.label);
+			$('#idcentro').val(ui.item.id);
+		},
+	});
 });
 	
 

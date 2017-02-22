@@ -825,7 +825,7 @@ function MM_goToURL() { //v3.0
 									<td class="etiqueta" align="right" width="20%">CATEGORA &nbsp;&nbsp;</td>
 									<td class="objeto" width="1%">&nbsp;</td>
 									<td class="objeto" width="72%">
-										<select name="categoria" id="categoria" class="cajatexto">
+										<select name="categoria" id="categoria" class="cajatexto" onchange="cursoespecial()">
 										</select>
 			  <!-- <?php if($_GET["sw"]==3){?>
 			  <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" onChange="mostrarcurso()">
@@ -950,7 +950,6 @@ function MM_goToURL() { //v3.0
 			<option value="CASADO">CASADO</option>
 			<option value="VIUDO">VIUDO</option>
 			<option value="DIVORCIADO">DIVORCIADO</option>
-			
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>
@@ -1095,7 +1094,7 @@ function MM_goToURL() { //v3.0
     	<td class="objeto" width="72%">
     		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
 
-			<input name="idcentro" type="text" class="cajatexto" id="idcentro" style="width: 250px;" >
+			<input name="idcentro" type="hidden" class="cajatexto" id="idcentro" style="width: 250px;" >
 			<input name="nomcentro" type="text" class="cajatexto" id="nomcentro" style="width: 250px;">
     		<!-- <?php
     			$sqx="select * from centro_medico where estado='1' ";
