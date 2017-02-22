@@ -87,13 +87,13 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                     <tr>
                                       <td style="width: 8px;" height="20"><img src="main.php6_files/spacer.gif" height="1" width="8"></td>
                                       <td class="LL">|</td>
-                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=3')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar </td>
-                                      <td class="LL">|</td>
-                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Postulante</td>
-                                      <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="location='buscar_tramite.php'" nowrap="nowrap"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                                       <td class="LL">|</td>
+                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Programación</td>
+                                      <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'solicitud_ficha.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Solicitud " width="15" height="12" hspace="1" border="0" align="absmiddle">  Solicitud </td>
+                                      <td class="LL">|</td>
+                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=3')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar </td>
                                       <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalletramite_ficha.php')" nowrap="nowrap"><img src="imag/adjuntar.gif" alt="Generar Record" width="18" height="18" hspace="1" border="0" align="absmiddle"> Record</td>
                                       <td class="LL">|</td>

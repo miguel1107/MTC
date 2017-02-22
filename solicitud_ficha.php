@@ -184,7 +184,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
 			
 			/*	$sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[24]."'";
 		$rs27=pg_query($link,$sql27);
-		$fila27 =pg_fetch_array($rs27);		*/  ?>                              </td>
+		$fila27 =pg_fetch_array($rs27);		*/      ?>                          </td>
                               <td width="13%"><table width="100%" height="80" border="0" align="center">
                                   <tr>
                                     <td><table width="100%" height="70" border="1" id="datos">
@@ -195,7 +195,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                               </tr>
                                               <tr>
                                                 <td><div align="center"><strong>
-                                                    <?=$fila2[28]?>
+                                                    <?php echo $fila2[28]?>
                                                 </strong>
                                                     <input type="hidden" name="numerosolicitudpost" value="<?=$fila2[28]?>">
                                                 </div></td>
@@ -232,8 +232,8 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                           <tr>
                                             <td><table width="100%" id="datos" border="1" align="center" cellpadding="1" cellspacing="1">
                                               <tr>
-                                                <td width="123" height="17"><?=$fila2[2]?>
-                                                  <input type="hidden" name="idpost" value="<?=$fila2[0]?>"></td>
+                                                <td width="123" height="17"><?php echo $fila2[2]?>
+                                                  <input type="hidden" name="idpost" value="<? php echo $fila2[0]?>"></td>
                                                         </tr>
                                               <tr>
                                                 <td height="17"><div align="center" class="Estilo18">Apellido Paterno </div></td>
@@ -243,7 +243,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                           <tr>
                                             <td><table width="98%"  id="datos" border="1" align="center" cellpadding="1" cellspacing="1">
                                               <tr>
-                                                <td width="451" height="17"><?=$fila2[3]?></td>
+                                                <td width="451" height="17"><?php echo $fila2[3]?></td>
                                                         </tr>
                                               <tr>
                                                 <td height="17"><div align="center" class="Estilo18">Apellido Materno </div></td>
@@ -253,7 +253,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                           <tr>
                                             <td><table width="96%" border="1"   id="datos" align="center" cellpadding="1" cellspacing="1">
                                               <tr>
-                                                <td width="443" height="17"><?=$fila2[1]?></td>
+                                                <td width="443" height="17"><?php echo $fila2[1]?></td>
                                                         </tr>
                                               <tr>
                                                 <td height="19"><div align="center" class="Estilo18">Nombres</div></td>
@@ -287,7 +287,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                                 </tr>
                                                                 <tr>
                                                                   <td>
-                                                                    <div align="center"><? if($fila2[10]!=''){echo $fila2[10];}else{echo $fila2[8];}?></div></td>
+                                                                    <div align="center"><? php if($fila2[10]!=''){echo $fila2[10];}else{echo $fila2[8];}?></div></td>
                                                                 </tr>
                                                               </table></td>
                                                               <td width="87">&nbsp;</td>
@@ -297,7 +297,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                                 </tr>
                                                                 <tr>
                                                                   <td><div align="center">
-                                                                    <?=normal($fila2[4])?>
+                                                                    <?php echo normal($fila2[4])?>
                                                                     </div></td>
                                                                 </tr>
                                                               </table></td>
@@ -333,7 +333,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                 <tr>
                                                   <td width="16">&nbsp;</td>
                                                   <td width="250"><div align="center">
-                                                    <input name="sisgedo" type="text" id="sisgedo" method="post" onKeyPress="return AceptaNumero(event);"   value="<?=$fila275[5]?>"   size="20" maxlength="20">
+                                                    <input name="sisgedo" type="text" id="sisgedo" method="post" onKeyPress="return AceptaNumero(event);"   value="<?php echo $fila275[5]?>"   size="20" maxlength="20">
                                                   </div></td>
                                                 </tr>
                                             </table></td>
@@ -353,9 +353,9 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                   <td width="8">&nbsp;</td>
                                                   <td ><div align="center"><strong>
 												  <?php  if ( $fila2[23] =="17"){?>
-                                                    <?=$fila_especial[6]?>
+                                                    <? php echo $fila_especial[6]?>
                                                     <?   }else{ ?>
-                                                    <input name="primigenia" type="text" id="primigenia" value="<?=$fila275[1]?>" size="20" maxlength="25">
+                                                    <input name="primigenia" type="text" id="primigenia" value="<?php echo $fila275[1]?>" size="20" maxlength="25">
                                                     <? }?>
                                                   </strong></div></td>
                                                 </tr>
@@ -370,8 +370,8 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
 
                                                 <tr>
                                                   <td colspan="2" valign="top" class="Estilo18"><div align="justify">Restricciones<span class="K"><strong>
-                                                    <? if($fila2[20]=='SIN RESTRICCIONES'){echo "S/R";}else{echo "C/C";
-}?>
+                                                    <?php if($fila2[20]=='SIN RESTRICCIONES'){echo "S/R";}else{echo "C/C";
+                                                        }?>
                                                   </strong></span></div></td>
                                                   </tr>
 <!--                                                  <tr>
@@ -436,7 +436,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                 <tr>
                                                   <td><table width="91%" id="datos" border="1" cellpadding="0" cellspacing="0">
                                                       <tr>
-                                                        <td><?=$fila2[14]?></td>
+                                                        <td><?php echo $fila2[14]?></td>
                                                       </tr>
                                                       <tr>
                                                         <td><div align="center">DIRECCION ACTUAL </div></td>
@@ -796,7 +796,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                                     </tr>
                                                     <tr>
                                                       <td><div align="center"><strong>
-                                                          <?=$fila2[28]?>
+                                                          <?php echo $fila2[28]?>
                                                       </strong></div></td>
                                                     </tr>
                                                 </table></td>
@@ -1006,12 +1006,12 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                     <tr>
                                       <td align="left"><div align="center">
                                           <!--<a href="javascript:imprimir()"><img src="imag/print.gif" width="97" height="27" border="0"></a>-->
-<? if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION'){?>
+<?php if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION'){?>
                  <input type="hidden" name="pagina" value="listado_tramite.php">
-<? }else{?>				 
+<?}else{?>				 
              <input type="hidden" name="pagina" value="list_soli.php">
 <? }?>
-                                          <input type="hidden" name="id" value="<?=$fila2[15]?>">
+                                          <input type="hidden" name="id" value="<?php echo $fila2[15]?>">
                                           <input type="submit" name="Submit" value=":::: Imprimir ::::">
                                       </div></td>
                                     </tr>
@@ -1033,9 +1033,9 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
   </tr>
 </tbody></table>
 <div class="Estilo23" id="Layer1">
-	  <div align="center"><?=$fila2[26]?> <?=$fila2[32]?> </div>
+	  <div align="center"><?php echo $fila2[26]?> <?=$fila2[32]?> </div>
 </div>
 	<div class="Estilo23"  id="Layer2">
-	  <div align="center" ><?=$fila2[26]?> <?=$fila2[32]?></div>
+	  <div align="center" ><?php echo $fila2[26]?> <?=$fila2[32]?></div>
 </div>
 </body></html>
