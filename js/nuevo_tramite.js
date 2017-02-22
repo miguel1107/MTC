@@ -21,7 +21,7 @@ function mostrarcurso(){
 }
 
 function cursoespecial() {
-	var tramite=$('#tipotramite').val();
+	var tra=$('#tipotramite').val();
 	var cat=$('#categoria').val();
 	var hoy =new Date();
 	var mes=(hoy.getMonth()+1);
@@ -30,8 +30,30 @@ function cursoespecial() {
 		divC = document.getElementById("especial");
  		divC.style.display="block";
 	}else if (parseInt(mes)<4) {
-		divC = document.getElementById("especial");
- 		divC.style.display="none";
+		if (tra=='1' || tra=='2') {
+			divC = document.getElementById("especial");
+ 			divC.style.display="block";
+ 			divM = document.getElementById("medico");
+ 			divM.style.display="block";	
+		}
+		else if(tra=='3'){
+			if (cat=='1') {
+				divC = document.getElementById("especial");
+ 				divC.style.display="none";
+ 				divM = document.getElementById("medico");
+ 				divM.style.display="block";
+			}else{
+				divC = document.getElementById("especial");
+ 				divC.style.display="block";
+ 				divM = document.getElementById("medico");
+ 				divM.style.display="block";	
+			}
+		}else if( tra='4'){
+			divC = document.getElementById("especial");
+ 			divC.style.display="none";
+ 			divM = document.getElementById("medico");
+ 			divM.style.display="none";	
+		}
 	}
 }
 

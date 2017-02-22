@@ -150,8 +150,20 @@ function MM_goToURL() { //v3.0
 			form1.direccion.focus();
 			return false;
 		}
-
-		if (form1.tipotra.value!="DUPLICADO")
+		if (form1.correo.value==""){
+			alert("Debe Ingresar Correo");
+			form1.cooreo.focus();
+			return false;
+		}else{
+			var co=form1.correo.value;
+			if (co.includes('@')) {
+			}else{
+				alert('Le falta el @ al correo');
+				form1.correo.focus;
+			}
+			
+		}
+		if (form1.tipotra.value!="4")
 		{
 			if (form1.fechaexamen.value==""){
 				alert("Debe Ingresar Fecha de Exomen");
@@ -174,7 +186,7 @@ function MM_goToURL() { //v3.0
 	  if ( tramite.value  != ""){
 	  	if (sel.value=="17" && tramite.value  != "RECATEGORIZACION" ){*/
 
-	  		if (form1.categoria.value=="17" && form1.tipotra.value!="DUPLICADO")
+	  		if (form1.categoria.value=="7" && form1.tipotra.value!="4")
 	  		{
 	  			if (form1.licencia.value==""){
 	  				alert("Debe Ingresar Nro de Licencia");
@@ -215,7 +227,7 @@ function MM_goToURL() { //v3.0
 		form1.categoria.focus(); 
 		return false;
 	}*/
-	if (clave=='RECATEGORIZACION' && clave1==1) { 
+	if (clave=='2' && clave1==1) { 
 		alert("El tipo de Tromite no conciden, Verifique");
 		form1.categoria.focus(); 
 		return false;
@@ -320,166 +332,158 @@ function MM_goToURL() { //v3.0
 </script> 
 <script>
 	function nombre(sel){
-
-
 		var m=sel.label;
-
 		for(var i=form1.categoria.options.length; i>=0; i--) {
 			form1.categoria.remove(i);
 		}
+		if(m==1){  //NUEVO
+			var cat = new Option();
+			cat.value = "";
+			cat.text = "---- Seleccione Opcion ----";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "1";
+			cat.text = "AI";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "8";
+			cat.text = "AII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "9";
+			cat.text = "AIII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "10";
+			cat.text = "AIII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
 
-	if(m==1){  //NUEVO
-		var cat = new Option();
-		cat.value = "";
-		cat.text = "---- Seleccione Opcion ----";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		var cat = new Option();
-		cat.value = "1";
-		cat.text = "AI";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		var cat = new Option();
-		cat.value = "7";
-		cat.text = "AII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "8";
-		cat.text = "AII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "9";
-		cat.text = "AIII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "10";
-		cat.text = "AIII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "11";
+			cat.text = "AIII-c";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AIV-especial";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+		}else if(m==2){ //RECATEGORIZACION
+			var cat = new Option();
+			cat.value = "";
+			cat.text = "---- Seleccione Opcion ----";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "8";
+			cat.text = "AII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "9";
+			cat.text = "AIII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "10";
+			cat.text = "AIII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "11";
+			cat.text = "AIII-c";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+		}else if(m==3){  // REVALIDACION
+			var cat = new Option();
+			cat.value = "";
+			cat.text = "---- Seleccione Opcion ----";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "4";
+			cat.text = "AI";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "12";
+			cat.text = "AII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "13";
+			cat.text = "AII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "14";
+			cat.text = "AIII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "15";
+			cat.text = "AIII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "16";
+			cat.text = "AIII-c";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AIV-especial";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+		}else if(m==4){  //NUEVO
+			var cat = new Option();
+			cat.value = "";
+			cat.text = "---- Seleccione Opcion ----";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "1";
+			cat.text = "AI";
+			form1.categoria.options[form1.categoria.options.length] = cat;
 
-		var cat = new Option();
-		cat.value = "11";
-		cat.text = "AIII-c";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "17";
-		cat.text = "AIV-especial";
-		form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			var cat = new Option();
+			cat.value = "8";
+			cat.text = "AII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "9";
+			cat.text = "AIII-a";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "10";
+			cat.text = "AIII-b";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "11";
+			cat.text = "AIII-c";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+			
+			var cat = new Option();
+			cat.value = "7";
+			cat.text = "AIV-especial";
+			form1.categoria.options[form1.categoria.options.length] = cat;
+		}
 	}
-	
-	else if(m==2){ //RECATEGORIZACION
-		var cat = new Option();
-		cat.value = "";
-		cat.text = "---- Seleccione Opcion ----";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "7";
-		cat.text = "AII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "8";
-		cat.text = "AII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "9";
-		cat.text = "AIII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "10";
-		cat.text = "AIII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "11";
-		cat.text = "AIII-c";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-	}
-	else if(m==3){  // REVALIDACION
-		var cat = new Option();
-		cat.value = "";
-		cat.text = "---- Seleccione Opcion ----";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		var cat = new Option();
-		cat.value = "4";
-		cat.text = "AI";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		var cat = new Option();
-		cat.value = "12";
-		cat.text = "AII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "13";
-		cat.text = "AII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "14";
-		cat.text = "AIII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "15";
-		cat.text = "AIII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "16";
-		cat.text = "AIII-c";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "17";
-		cat.text = "AIV-especial";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-	}
-	else if(m==4){  //NUEVO
-		var cat = new Option();
-		cat.value = "";
-		cat.text = "---- Seleccione Opcion ----";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "1";
-		cat.text = "AI";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-
-		var cat = new Option();
-		cat.value = "7";
-		cat.text = "AII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		var cat = new Option();
-		cat.value = "8";
-		cat.text = "AII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "9";
-		cat.text = "AIII-a";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "10";
-		cat.text = "AIII-b";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "11";
-		cat.text = "AIII-c";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-		
-		var cat = new Option();
-		cat.value = "17";
-		cat.text = "AIV-especial";
-		form1.categoria.options[form1.categoria.options.length] = cat;
-	}
-}
 </script>
 
 <script>
@@ -487,7 +491,7 @@ function MM_goToURL() { //v3.0
 // 	tramite = document.getElementById("tipotramite");
 // 	sel= document.getElementById("categoria");
 // 	if ( tramite.value  != ""){
-// 		if (sel.value=="17"){
+// 		if (sel.value=="7"){
 // 		  	if (tramite.value  != "RECATEGORIZACION" ){
 // 			   	divC = document.getElementById("especial");
 // 			   	divC.style.display = "";
@@ -503,7 +507,6 @@ function MM_goToURL() { //v3.0
 // 		}
 // 	}	
 // }
-
 </script>
 
 <SCRIPT LANGUAGE="JavaScript">
@@ -521,45 +524,43 @@ function MM_goToURL() { //v3.0
 				return false;
 		}
 		return (key <= 13 || key==46 ||  (key >= 38 && key <= 57));
-
 	}
-
 
 	function calcular_edad(){
 
-    //calculo la fecha de hoy
+	    //calculo la fecha de hoy
 
-    var fecha=document.getElementById("fefe").value;
+	    var fecha=document.getElementById("fefe").value;
 
-    var fechaActual = new Date()
-    var diaActual = fechaActual.getDate();
-    var mmActual = fechaActual.getMonth() + 1;
-    var yyyyActual = fechaActual.getFullYear();
-    FechaNac = fecha.split("/");
-    var diaCumple = FechaNac[0];
-    var mmCumple = FechaNac[1];
-    var yyyyCumple = FechaNac[2];
-	//retiramos el primer cero de la izquierda
-	if (mmCumple.substr(0,1) == 0) {
-		mmCumple= mmCumple.substring(1, 2);
-	}
-	//retiramos el primer cero de la izquierda
-	if (diaCumple.substr(0, 1) == 0) {
-		diaCumple = diaCumple.substring(1, 2);
-	}
-	var edad = yyyyActual - yyyyCumple;
+	    var fechaActual = new Date()
+	    var diaActual = fechaActual.getDate();
+	    var mmActual = fechaActual.getMonth() + 1;
+	    var yyyyActual = fechaActual.getFullYear();
+	    FechaNac = fecha.split("/");
+	    var diaCumple = FechaNac[0];
+	    var mmCumple = FechaNac[1];
+	    var yyyyCumple = FechaNac[2];
+		//retiramos el primer cero de la izquierda
+		if (mmCumple.substr(0,1) == 0) {
+			mmCumple= mmCumple.substring(1, 2);
+		}
+		//retiramos el primer cero de la izquierda
+		if (diaCumple.substr(0, 1) == 0) {
+			diaCumple = diaCumple.substring(1, 2);
+		}
+		var edad = yyyyActual - yyyyCumple;
 	
-	//validamos si el mes de cumpleaoos es menor al actual
-	//o si el mes de cumpleaoos es igual al actual
-	//y el dia actual es menor al del nacimiento
-	//De ser asi, se resta un aoo
-	if ((mmActual < mmCumple) || (mmActual == mmCumple && diaActual < diaCumple)) {
-		edad--;
-	}
+		//validamos si el mes de cumpleaoos es menor al actual
+		//o si el mes de cumpleaoos es igual al actual
+		//y el dia actual es menor al del nacimiento
+		//De ser asi, se resta un aoo
+		if ((mmActual < mmCumple) || (mmActual == mmCumple && diaActual < diaCumple)) {
+			edad--;
+		}
 
-	document.getElementById("edad").value = edad;
-	//return edad
-} 
+		document.getElementById("edad").value = edad;
+		//return edad
+	} 
 
 // -->
 </SCRIPT>
@@ -933,7 +934,7 @@ function MM_goToURL() { //v3.0
 
 <tr valign="middle">
 	<td class="marco" width="1%">&nbsp;</td>
-	<td class="etiqueta" align="right" width="20%">Profesi&oacute;n o Ocup. &nbsp;&nbsp;</td>
+	<td class="etiqueta" align="right" width="20%">Profesión o Ocup. &nbsp;&nbsp;</td>
 	<td class="objeto" width="1%">&nbsp;</td>
 	<td class="objeto" width="72%"><input name="profe"  type="text" class="cajatexto" id="profe" onKeyPress="return formato(event,form,this,80)" value="<?=$prof?>" size="64" maxlength="60"></td>
 	<td class="objeto" width="6%">&nbsp;</td>
@@ -950,6 +951,7 @@ function MM_goToURL() { //v3.0
 			<option value="CASADO">CASADO</option>
 			<option value="VIUDO">VIUDO</option>
 			<option value="DIVORCIADO">DIVORCIADO</option>
+			<option value="CONVIVIENTE">CONVIVIENTE</option>
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>
@@ -1060,189 +1062,185 @@ function MM_goToURL() { //v3.0
     	<td class="objeto">&nbsp;</td>
     </tr>
     <tr>
-    	<td colspan="5"><table width="50%" border="0" cellpadding="0" cellspacing="0">
-    		<tbody>
-    			<tr>
-    				<td  height="10" width="10">&nbsp;</td>
-    				<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MEDICO </span></td>
-    				<td width="125" height="20" align="right"></td>
-    			</tr>
-    		</tbody>
-    	</table></td>
-    </tr>
-    <tr valign="middle">
-    	<td class="marco">&nbsp;</td>
-    	<td class="etiqueta" align="right">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    </tr>
-    <tr valign="middle">
-    	<td class="marco" width="1%">&nbsp;</td>
-    	<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
-    	<td class="objeto" width="1%">&nbsp;</td>
-    	<td class="objeto" width="72%">
-    		<input name="fechaexamen" type="text" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
-    		<? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?>
+    	<td colspan="5">
+    		<div id="medico" style="display: block;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+					    	<td colspan="5">
+					    		<table width="50%" border="0" cellpadding="0" cellspacing="0">
+					    			<tbody>
+					    				<tr>
+						    				<td  height="10" width="10">&nbsp;</td>
+						    				<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MEDICO </span></td>
+						    				<td width="125" height="20" align="right"></td>
+						    			</tr>
+						    		</tbody>
+					    		</table>
+					    	</td>
+					    </tr>
+					    <tr valign="middle">
+					    	<td class="marco">&nbsp;</td>
+					    	<td class="etiqueta" align="right">&nbsp;</td>
+					    	<td class="objeto">&nbsp;</td>
+					    	<td class="objeto">&nbsp;</td>
+					    	<td class="objeto">&nbsp;</td>
+					    </tr>
+					    <tr valign="middle">
+					    	<td class="marco" width="1%">&nbsp;</td>
+					    	<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
+					    	<td class="objeto" width="1%">&nbsp;</td>
+					    	<td class="objeto" width="72%">
+					    		<input name="fechaexamen" type="text" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
+					    		<? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?>
+					    	</td>
+					    	<td class="objeto" width="6%">&nbsp;</td>
+					    </tr>
+					    <tr valign="middle">
+					    	<td class="marco" width="1%">&nbsp;</td>
+					    	<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
+					    	<td class="objeto" width="1%">&nbsp;</td>
+					    	<td class="objeto" width="72%">
+					    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
+
+								<input name="idcentro" type="hidden" class="cajatexto" id="idcentro" style="width: 250px;" >
+								<input name="nomcentro" type="text" class="cajatexto" id="nomcentro" style="width: 250px;">
+							</td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
+						<tr valign="middle">
+							<td class="marco" width="1%">&nbsp;</td>
+							<td class="etiqueta" align="right" width="20%">Resultado&nbsp;&nbsp;</td>
+							<td class="objeto" width="1%">&nbsp;</td>
+							<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
+								<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
+								<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
+							</select></td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
+						<tr valign="middle">
+							<td class="marco" width="1%">&nbsp;</td>
+							<td class="etiqueta" align="right" width="20%">Restricciones&nbsp;&nbsp;</td>
+							<td class="objeto" width="1%">&nbsp;</td>
+							<td class="objeto" width="72%"><select name="restricciones" class="cajatexto" id="restricciones"  onkeypress="return formato(event,form,this)">
+								<option value="SIN RESTRICCIONES" <? if($rest=='SIN RESTRICCIONES') echo"selected"; ?>SIN RESTRICCIONES</option>
+								<option value="CON RESTRICCIONES" <? if($rest=='CON RESTRICCIONES') echo"selected"; ?>CON RESTRICCOINES</option>
+							</select></td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
+						<tr valign="middle">
+							<td class="marco" width="1%">&nbsp;</td>
+							<td class="etiqueta" align="right" width="20%">Observacion&nbsp;&nbsp;</td>
+							<td class="objeto" width="1%">&nbsp;</td>
+							<td class="objeto" width="72%"><input name="observacion"  type="text" class="cajatexto" id="observacion" onKeyPress="return formato(event,form,this,80)" value="<?=$obse?>" size="60" maxlength="60"></td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="5" class="marco seccionblank">&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
     	</td>
-    	<td class="objeto" width="6%">&nbsp;</td>
     </tr>
-    <tr valign="middle">
-    	<td class="marco" width="1%">&nbsp;</td>
-    	<td class="etiqueta" align="right" width="20%">N&ordm;  de Ficha &nbsp;&nbsp;</td>
-    	<td class="objeto" width="1%">&nbsp;</td>
-    	<td class="objeto" width="72%">
-    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
-
-			<input name="idcentro" type="hidden" class="cajatexto" id="idcentro" style="width: 250px;" >
-			<input name="nomcentro" type="text" class="cajatexto" id="nomcentro" style="width: 250px;">
-    		<!-- <?php
-    			$sqx="select * from centro_medico where estado='1' ";
-				$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
-			?> 
- -->			<!-- <select name="idcentro" class="cajatexto" id="idcentro">
-				<option  value="">--------Seleccione --------</option>
-			<?php while($rex=pg_fetch_array($rsx)) { ?> -->
-					<!-- <option value="<?php echo $rex[0]; ?> "> <?php echo $rex[1]; ?></option> -->
-				<!-- <option value="<?php echo $rex[0]?>" <?php if($rex[0]==$idcentro) echo "SELECTED"?><?php echo $rex[1] ?></option -->
-				<!-- <?php } ?> 
-			</select> -->    
-
-		</td>
-		<td class="objeto" width="6%">&nbsp;</td>
-	</tr>
-	<tr valign="middle">
-		<td class="marco" width="1%">&nbsp;</td>
-		<td class="etiqueta" align="right" width="20%">Resultado&nbsp;&nbsp;</td>
-		<td class="objeto" width="1%">&nbsp;</td>
-		<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
-			<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
-			<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
-		</select></td>
-		<td class="objeto" width="6%">&nbsp;</td>
-	</tr>
-	<tr valign="middle">
-		<td class="marco" width="1%">&nbsp;</td>
-		<td class="etiqueta" align="right" width="20%">Restricciones&nbsp;&nbsp;</td>
-		<td class="objeto" width="1%">&nbsp;</td>
-		<td class="objeto" width="72%"><select name="restricciones" class="cajatexto" id="restricciones"  onkeypress="return formato(event,form,this)">
-			<option value="SIN RESTRICCIONES" <? if($rest=='SIN RESTRICCIONES') echo"selected"; ?>SIN RESTRICCIONES</option>
-			<option value="CON RESTRICCIONES" <? if($rest=='CON RESTRICCIONES') echo"selected"; ?>CON RESTRICCOINES</option>
-		</select></td>
-		<td class="objeto" width="6%">&nbsp;</td>
-	</tr>
-	<tr valign="middle">
-		<td class="marco" width="1%">&nbsp;</td>
-		<td class="etiqueta" align="right" width="20%">Observacion&nbsp;&nbsp;</td>
-		<td class="objeto" width="1%">&nbsp;</td>
-		<td class="objeto" width="72%"><input name="observacion"  type="text" class="cajatexto" id="observacion" onKeyPress="return formato(event,form,this,80)" value="<?=$obse?>" size="60" maxlength="60"></td>
-		<td class="objeto" width="6%">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="5" class="marco seccionblank">&nbsp;</td>
-	</tr>
-
 
 	<!-- CURSO DE PROFESIONALIZACION -->
-
 	<tr>
 		<td colspan="5">
-			<?php if($_GET["sw"]==3) {?>
-			<div id="especial">              
-				<?php } else {?>
+			<?php if($_GET["sw"]==3) { ?>
+				<div id="especial">              
+			<?php } else { ?>
 				<div id="especial" style="display: none;">              
-					<?php }?>
-
+			<?php }?>
 					<table width="100%" border="0" cellpadding="0" cellspacing="0">
 						<tbody>
 							<tr>
-								<td colspan="5"  align="left" width="215"><span class="Estilo1">
-									&nbsp;DATOS DEL CURSO DE ESPECIALIZACION - CATEGORIA ESPECIAL</span></td>
-								</tr> 
-							</tbody>
-						</table>
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tbody>    
-								<tr valign="middle">
-									<td class="marco">&nbsp;</td>
-									<td class="etiqueta" align="right">&nbsp;</td>
-									<td class="objeto">&nbsp;</td>
-									<td class="objeto">&nbsp;</td>
-
-								</tr>
+								<td colspan="5"  align="left" width="215">
+									<span class="Estilo1">
+										&nbsp;DATOS DEL CURSO DE ESPECIALIZACION - CATEGORIA ESPECIAL
+									</span>
+								</td>
+							</tr> 
+						</tbody>
+					</table>
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody>    
+							<tr valign="middle">
+								<td class="marco">&nbsp;</td>
+								<td class="etiqueta" align="right">&nbsp;</td>
+								<td class="objeto">&nbsp;</td>
+								<td class="objeto">&nbsp;</td>
+							</tr>
+							<tr valign="middle">
+								<td class="marco" width="1%">&nbsp;</td>
+								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
+								<td class="objeto" width="1%">&nbsp;</td>
+								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="60" maxlength="60"></td>
+								<td class="objeto" width="6%">&nbsp;</td>
+							</tr>
+							<tr valign="middle">
+								<td class="marco" width="1%">&nbsp;</td>
+								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
+								<td class="objeto" width="1%">&nbsp;</td>
+								<td class="objeto" width="72%">
+									<input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
+									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15">
+								</td>
+							</tr>
 								<tr valign="middle">
 									<td class="marco" width="1%">&nbsp;</td>
-									<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
-									<td class="objeto" width="1%">&nbsp;</td>
-									<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="60" maxlength="60"></td>
-									<td class="objeto" width="6%">&nbsp;</td>
-								</tr>
-								<tr valign="middle">
-									<td class="marco" width="1%">&nbsp;</td>
-									<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
+									<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
 									<td class="objeto" width="1%">&nbsp;</td>
 									<td class="objeto" width="72%">
-										<input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
-										&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"></td>
-
-									</tr>
-									<tr valign="middle">
-										<td class="marco" width="1%">&nbsp;</td>
-										<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
-										<td class="objeto" width="1%">&nbsp;</td>
-										<td class="objeto" width="72%">
-											<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
-											<?php //llenarcombo($link,'centro_medico','idcentro, nombre',' ORDER BY 2', $idcentro, '','idcentro'); ?>
-											<?php
+										<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
+										<?php
 											$sqx="select * from curso_especial where estado='1' ";
-                      $rsx=pg_query($link,$sqx);// or die ("error : $sqx");
-                      ?> 
-                      <select name="idcentrocurso" class="cajatexto" id="idcentrocurso">
-                      	<option  value="">--------Seleccione --------</option>
-                      	<?php while($rex=pg_fetch_array($rsx)) {?>
-                      	<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
-                      	<?php } ?>
-                      </select>     
-                  </td>
+                      						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
+                      					?> 
+                      					<select name="idcentrocurso" class="cajatexto" id="idcentrocurso">
+                      						<option  value="">--------Seleccione --------</option>
+                      						<?php while($rex=pg_fetch_array($rsx)) {?>
+                      						<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
+                      						<?php } ?>
+                      					</select>     
+                  					</td>
+				            </tr>
+				        </tbody>
+      				</table>
+  				</div>
+			</td>
+		</tr>
 
-              </tr>
-          </tbody>
-      </table>
-  </div>
-
+		<tr>
+			<td colspan="5" class="marco seccionblank">&nbsp;</td>
+		</tr>
+		<!-- FIN DE REGISTRO DE CURSO DE PROFESIONALIZACION-->
+		<tr>
+			<td colspan="7" height="30">
+				<table border="0" cellpadding="3" cellspacing="1" width="100%">
+					<tbody>
+	                  <tr align="center">
+	                  	<td class="catBottom" colspan="7" height="28">
+	                  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	                  			<tbody>
+	                  				<tr>
+	                  					<td align="left" width="100%">
+	                  						<input class="boton" name="btn_Grabar" value=".:: Grabar ::." type="submit">
+	                  					</td>
+	                  					<td width="50%"></td>
+	                  					<td align="right" width="25%"></td>
+	                  				</tr>
+	                  			</tbody>
+	                  		</table>
+	                  	</td>
+	                  </tr>
+	              	</tbody>
+          		</table>
+          	</td>
+      	</tr>
+  	</table>
+</form>
 </td>
-</tr>
-
-<tr>
-	<td colspan="5" class="marco seccionblank">&nbsp;</td>
-</tr>
-
-<!-- FIN DE REGISTRO DE CURSO DE PROFESIONALIZACION-->
-<tr>
-	<td colspan="7" height="30"><table border="0" cellpadding="3" cellspacing="1" width="100%">
-		<tbody>
-                    <!--<tr>
-                      <td class="spaceRow" colspan="7" height="1"><img src="main.php7_files/spacer.htm" alt="" height="1" width="1"></td>
-                  </tr>-->
-                  <tr align="center">
-                  	<td class="catBottom" colspan="7" height="28"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                  		<tbody>
-                  			<tr>
-                  				<td align="left" width="100%"><input class="boton" name="btn_Grabar" value=".:: Grabar ::." type="submit">                              </td>
-                  				<td width="50%">
-
-                  				</td>
-                  				<td align="right" width="25%">
-                  				</td>
-                  			</tr>
-                  		</tbody>
-                  	</table></td>
-                  </tr>
-              </tbody>
-          </table></td>
-      </tr>
-  </table>
-</form></td>
 </tr>
 
 </table></td>
