@@ -15,7 +15,6 @@ $con=Conectarse();
 .Estilo4 {color: #006666}
 .Estilo5 {color: #FF9900}
 
--->
 
 </style>
 <title>:: WEBMASTER - DRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
@@ -26,7 +25,7 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
--->
+
 </style></head>
 <body>
 <?php
@@ -50,9 +49,9 @@ include("paginator.inc.php");
             <td height="23" colspan="10"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="50%"><div align="left" class="ord">
-      <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div>          </td>
+      <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div>          </td>
                 <td width="50%"><strong><font face='verdana' size='-2'>
-                  <?=$_pagi_result2?> 
+                  <?php echo $_pagi_result2?> 
                   Registros
                 </font></strong></td>
               </tr>
@@ -74,7 +73,7 @@ include("paginator.inc.php");
             <TH width="71"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>GENERADO </nobr></font></span></TH>
           </tr>
 
-          <?php  while($reg=pg_fetch_array($_pagi_result)) { ?>
+          <?php  while($reg=pg_fetch_array($_pagi_result)) { }?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
             <td height="22" align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -82,37 +81,37 @@ include("paginator.inc.php");
             </font></td>
 
             <td align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[8]?>
+              <?php echo $reg[8]?>
             </font></td>
             <td>
 
               <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
   
-              <nobr>  <?=$reg[1]?></nobr>
+              <nobr>  <?php echo $reg[1]?></nobr>
   
             </font></div></td>
 
             <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-               <nobr> <?=$reg[2]?> <?=$reg[3]?></nobr>
+               <nobr> <?php echo $reg[2]?> <?=$reg[3]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=normal($reg[10])?>
+              <?php echo normal($reg[10])?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[9]?>
+              <? php echo $reg[9]?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?=normal($reg[4])?></nobr>
+             <nobr> <?php echo normal($reg[4])?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[7]?>
+              <? php echo $reg[7]?>
             </font></td>
 
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?=$reg[5]?>
+              <?php echo $reg[5]?>
             </nobr> </font></div></td>
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?=$reg[11]?>&nbsp;
+              <?php echo $reg[11]?>&nbsp;
             </nobr> </font></div></td>
           </tr>
 
@@ -121,10 +120,13 @@ include("paginator.inc.php");
         <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
 
           <TR bgcolor="#FFFFFF">
-            <td width="189" height="20" bgcolor="#EBF3FB">   <div align="left" class="ord">
-      <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div>         </Td>
+            <td width="189" height="20" bgcolor="#EBF3FB">   
+              <div align="left" class="ord">
+                <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font>
+              </div>
+            </Td>
             <td width="189" height="20" bgcolor="#EBF3FB"><strong><font face='verdana' size='-2'>
-              <?=$_pagi_result2?> 
+              <?php echo $_pagi_result2?> 
               Registros
             </font></strong></Td>
           </TR>

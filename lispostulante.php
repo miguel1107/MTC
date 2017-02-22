@@ -6,32 +6,29 @@ include ("conectar.php");
 $con=Conectarse();
 ?>
 <html>
-<head>
-<script  language="javascript" src="estilos/script.js"></script>
-<script language="javascript" src="estilos/checkall.js"></script>
-<link href="../../estilos/button.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-.Estilo3 {
-	color: #006699;
-	font-weight: bold;
-}
-.Estilo4 {color: #006666}
-.Estilo5 {color: #FF9900}
+  <head>
+        <script  language="javascript" src="estilos/script.js"></script>
+        <script language="javascript" src="estilos/checkall.js"></script>
+        <link href="../../estilos/button.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
 
--->
+        .Estilo3 {
+	               color: #006699;
+	               font-weight: bold;
+        }
+        .Estilo4 {color: #006666}
+        .Estilo5 {color: #FF9900}
 
-</style>
-<title>:: WEBMASTER - DRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></head>
+        </style>
+              <title>:: WEBMASTER - DRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
+              body {
+	                 margin-left: 0px;
+	                 margin-top: 0px;
+	                 margin-right: 0px;
+	                 margin-bottom: 0px;
+              }
+                </style>
+    </head>
 <body>
 <?php
 $_pagi_sql = "select * from postulante where  nombres like '".$_GET["frase"]."%' and apepat like '".$_GET["frase12"]."%' and apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' order by idpostulante DESC ";
@@ -89,29 +86,29 @@ include("paginator.inc.php");
 
               <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
   
-              <nobr>  <?=$reg[1]?></nobr>
+              <nobr>  <?php echo $reg[1]?></nobr>
   
             </font></div></td>
 
             <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-               <nobr> <?=$reg[2]?> <?=$reg[3]?></nobr>
+               <nobr> <?php echo $reg[2]?> <?php echo $reg[3]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?=normal($reg[4])?></nobr>
             </font></div></td>
             <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?=$reg[6]?>
+              <? php echo $reg[6]?>
             </nobr> </font></div></td>
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <nobr><?=$reg[8]?></nobr>
+              <nobr><? php echo $reg[8]?></nobr>
             </font></div></td>
 
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?=$reg[14]?></nobr>
+             <nobr> <?php echo $reg[14]?></nobr>
             </font></td>
           </tr>
 
-          <? }?>
+          <?php } ?>
         </table>
         <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
 

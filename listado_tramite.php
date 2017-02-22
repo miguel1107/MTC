@@ -106,7 +106,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                          <? if($_SESSION["cargo"]=='2' || $_SESSION["cargo"]=='1'){?>
                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('restaurar',0,1,'restaurar_tramites.php?sw=4155')" nowrap="nowrap"><img src="imag/restaurar.png" alt="Restaurar Tr�mite" width="22" height="18" hspace="1" border="0" align="absmiddle">  Restaurar Tramite</td>
                                       <td class="LL">|</td>
-                                      <!-- <?php } ?> -->
+                                      <?php ?> 
                                     </tr>
                                   </tbody>
                               </table></td>

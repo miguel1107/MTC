@@ -40,6 +40,7 @@ if($_pagi_conteo_alternativo == false){
 //echo "fredy";
 //$con = pg_connect("dbname=licencia port=5432 user=postgres password=postgres ");
 $_pagi_sqlConta = "SELECT COUNT(*) as a FROM (".$_pagi_sql.") as f";
+
 $_pa2 =pg_query($con,$_pagi_sqlConta);
 $_pagi_result2 = pg_result($_pa2,"0","a");
 
