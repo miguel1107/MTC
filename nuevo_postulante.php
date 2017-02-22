@@ -18,6 +18,7 @@ $rs=$tipo->retornaLista();
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/autocomplete.css">
 <link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
 <link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
 <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
