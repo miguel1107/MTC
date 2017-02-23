@@ -57,14 +57,29 @@ function cursoespecial() {
 	}
 }
 
+function solonumeros(e) {
+	var key = window.Event ? e.which : e.keyCode
+	return (key >= 48 && key <= 57)
+}	
+
 $(document).ready(function() {
 	$("#nomcentro").autocomplete({
-		source:'controller/ctrCentromedico.php',
+		source:'autocompletes/centromedico.php',
 		select : function(event,ui) {
 			console.log(ui);
 			event.preventDefault();
 			$('#nomcentro').val(ui.item.label);
 			$('#idcentro').val(ui.item.id);
+		},
+	});
+
+	$("#nomcentrocurso").autocomplete({
+		source:'autocompletes/escuelaprofesional.php',
+		select : function(event,ui) {
+			console.log(ui);
+			event.preventDefault();
+			$('#nomcentrocurso').val(ui.item.label);
+			$('#idcentrocurso').val(ui.item.id);
 		},
 	});
 });
