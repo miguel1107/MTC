@@ -671,8 +671,18 @@ function MM_goToURL() { //v3.0
 					$idcentro = $fila2->idcentro;
 					$fecha = $fila2->fecha_inscripcion;
 					$tiptra = $fila2->tipotramite;
+					//--
+					$nomcento;
+					
+	                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
+	                    $f=pg_query($link,$sq);
+	                    $filatra=pg_fetch_array($f);
+	                    $nomcento= $filatra[0];
+	                
 
-					if ($idcategoria =="17")
+                            //--
+
+					if ($idcategoria =="7")
 					{
 						$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
 						$rs_especial=pg_query($link,$sql_especial);
@@ -953,11 +963,11 @@ function MM_goToURL() { //v3.0
 	<td class="objeto">
 		<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 			<option value="'0">--Seleccion un estado--</option>
-			<option value="SOLTERO">SOLTERO</option>
-			<option value="CASADO">CASADO</option>
-			<option value="VIUDO">VIUDO</option>
-			<option value="DIVORCIADO">DIVORCIADO</option>
-			<option value="CONVIVIENTE">CONVIVIENTE</option>
+			<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
+			<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>CASADO</option>
+			<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>VIUDO</option>
+			<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>DIVORCIADO</option>
+			<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>CONVIVIENTE</option>
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>
@@ -1115,8 +1125,8 @@ function MM_goToURL() { //v3.0
 					    	<td class="objeto" width="72%">
 					    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
 
-								<input name="idcentro" type="hidden" class="cajatexto" id="idcentro" style="width: 250px;" >
-								<input name="nomcentro" type="text" class="cajatexto" id="nomcentro" style="width: 250px;">
+								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
+								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
 						</tr>

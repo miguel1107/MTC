@@ -58,11 +58,11 @@ include("paginator.inc.php");
             <th width="63"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">CODIGO</font></div></th>
 
             <th width="143" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRES</font></div></th>
-
             <th width="182" height="23" bgcolor="#ebf3fb"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font></th>
+            <th width="57"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI</font></span></th>
             <th width="83"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>FECHA NAC.</nobr></font></th>
             <th width="99"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">PROFESION</font></div></th>
-            <th width="57"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI</font></span></th>
+            
 
             <TH width="102"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">DIRECCION</font></TH>
           </tr>
@@ -70,38 +70,42 @@ include("paginator.inc.php");
 		  <?php  while($reg=pg_fetch_array($_pagi_result)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#ffffff')">
-            <td align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <input type="checkbox" border="0" value="<?=$reg[0]?>" name="chk[]" onClick="uncheck(frmList,this)">
-            </font></td>
-
+            <td align="center">
+              <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                <input type="checkbox" border="0" value="<?=$reg[0]?>" name="chk[]" onClick="uncheck(frmList,this)">
+              </font>
+            </td>
             <td height="22" align="center">
-
-              <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-
-              <nobr>  <?=$reg[0]?></nobr>
-
-            </font></div></td>
-
+              <div align="center">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr><?=$reg[0]?></nobr>
+                </font>
+              </div>
+            </td>
             <td>
-
-              <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-  
-              <nobr>  <?php echo $reg[1]?></nobr>
-  
-            </font></div></td>
-
-            <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-               <nobr> <?php echo $reg[2]?> <?php echo $reg[3]?></nobr>
+              <div align="left">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr> <?php echo $reg[1]?></nobr>
+                </font>
+              </div>
+            </td>
+            <td>
+              <div align="left">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr> <?php echo $reg[2]?> <?php echo $reg[3]?></nobr>
+                </font>
+              </div>
+            </td>
+            <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+              <nobr><?php echo $reg[8]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?=normal($reg[4])?></nobr>
             </font></div></td>
             <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <? php echo $reg[6]?>
+              <?php echo $reg[6]?>
             </nobr> </font></div></td>
-            <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <nobr><? php echo $reg[8]?></nobr>
-            </font></div></td>
+            
 
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?php echo $reg[14]?></nobr>
