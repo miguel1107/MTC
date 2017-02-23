@@ -65,6 +65,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                 <form name="frmgriprin" method="post">
                 </form>
                 <tbody>
+
                   <tr height="21">
                     <td width="100%" height="23" bgcolor="#336699"><table width="100%" border="0" cellpadding="3" cellspacing="0">
                         <tr>
@@ -72,6 +73,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                         </tr>
                     </table></td>
                   </tr>
+
                   <tr height="21" valign="top">
                     <td height="24" valign="top"><!-- menu mx !-->
                         <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" bgcolor="#B2CDFB" class="N" id="HMTB">
@@ -84,8 +86,8 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                   <tbody>
                                     <tr>
                                       <td width="8" height="20" style="width: 8px;"><img src="imag/spacer.gif" height="1" width="8"></td>
-                                      <td width="6"  class="LL">|</td>
-                                      <td width="122" nowrap="nowrap" class="P" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=2')" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><nobr><img src="imag/derivar.gif" alt="Realizatr Tr�mite" width="15" height="12" hspace="1" border="0" align="absmiddle"> Realizar Tramite</nobr></td>
+                                      <!-- SE ELIMINO REALIZAR TRAMITE DOS LINEAS!-->
+                                      
                                       <td width="10"   class="LL">|</td>
                                       <td width="78"  nowrap="nowrap" class="P" onClick="location='buscar_postulante.php'" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                                       <td width="10" class="LL">|</td>
@@ -127,8 +129,8 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                 <tbody>
                                   <tr>
                                     <td width="8" height="20" style="width: 8px;"><img src="imag/spacer.gif" height="1" width="8"></td>
-                                    <td width="6"  class="LL">|</td>
-                                    <td width="122" nowrap="nowrap" class="P" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=2')" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><nobr><img src="imag/derivar.gif" alt="Realizatr Tr&aacute;mite" width="15" height="12" hspace="1" border="0" align="absmiddle"> Realizar Tramite</nobr></td>
+                                    <!-- SE ELIMINO REALIZAR TRAMITE       !-->
+                                    
                                     <td width="10"   class="LL">|</td>
                                     <td width="78"  nowrap="nowrap" class="P" onClick="location='buscar_postulante.php'" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                                     <td width="10" class="LL">|</td>
