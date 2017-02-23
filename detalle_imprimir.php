@@ -20,6 +20,25 @@ $rs27=pg_query($link,$sql27);
 $fila27 =pg_fetch_array($rs27);
 $hora =  date("H:i:s");
 
+//--
+$link=Conectarse();
+	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
+	$rs2=pg_query($link,$sql2);
+	$fila2 =pg_fetch_array($rs2);
+	//--
+	$echotra;
+	$tra=$fila2[8];
+	  $long=strlen($tra);  
+	  if ($long==1) {
+	    $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";
+	    $f=pg_query($link,$sq);
+	    $filatra=pg_fetch_array($f);
+	    $echotra =$filatra[0];
+	  }else{
+	    $echotra=$tra;
+	  }     
+//--
+
 require('pdf/fpdf.php');
 
 class PDF extends FPDF
@@ -30,10 +49,23 @@ function Footer()
 	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
 	$rs2=pg_query($link,$sql2);
 	$fila2 =pg_fetch_array($rs2);
+	//--
+	$echotra;
+	$tra=$fila2[8];
+	  $long=strlen($tra);  
+	  if ($long==1) {
+	    $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";
+	    $f=pg_query($link,$sq);
+	    $filatra=pg_fetch_array($f);
+	    $echotra =$filatra[0];
+	  }else{
+	    $echotra=$tra;
+	  }                     
+	//--
     $this->SetY(-32);
 	$this->SetFont('Arial','B',20);
 	$this->SetX(15);
-	$this->Cell(85,5,$fila2[8],0,0,'R',1);
+	$this->Cell(85,5,$echotra,0,0,'R',1);
 	$this->Cell(10,5,$fila2[9],0,1,'L',1);
 	$this->SetY(-15);
 	$this->SetFont('Arial','B',9);
@@ -118,7 +150,7 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
 $pdf->Cell(42,5,'TIPO TRAMITE:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(65,5,$fila2[8].' '.$fila2[9],0,0,'L',0);
+$pdf->Cell(65,5,$echotra.' '.$fila2[9],0,0,'L',0);
 $pdf->Cell(20,7,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,0,'L',1);
 $pdf->Cell(40,5,'',0,0,'L',0);
@@ -137,42 +169,6 @@ $pdf->SetX(12);
 $pdf->Cell(43,6,'',1,0,'L',1);
 $pdf->Cell(44,6,'',1,0,'L',1);
 $pdf->Cell(43,6,'',1,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(130,7,'REGLAMENTO SERVICIO PUBLICO - CARGA Y PASAJEROS',1,0,'C',1);
-$pdf->Cell(20,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'_____________________',0,0,'L',1);
-$pdf->Cell(40,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'_____________________',0,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(130,7,'TEORICO PRACTICO DE MECANICA AUTOMOTRIZ',1,1,'C',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(20,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'_____________________',0,0,'L',1);
-$pdf->Cell(40,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'_____________________',0,1,'L',1);
-$pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
 $pdf->SetX(12);
 $pdf->Cell(130,7,'MANEJO',1,1,'C',1);
 $pdf->SetX(12);
@@ -194,7 +190,7 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetXY(160, 30);
 $pdf->Cell(10,5,' Usuario : '.utf8_decode ($fila2[10]),0,0,'L',1);
 
-if ($fila2[8]=='NUEVO' || $fila2[8]=='RECATEGORIZACION')
+if ($fila2[8]=='NUEVO' || $fila2[8]=='RECATEGORIZACION' || $fila2[8]==1 || $fila2[8]==2)
 {
 $pdf->SetXY(160, 34);
 $pdf->Cell(10,5,' Fecha Examen : '.(!empty( $filaexamen[0]) ?date_format( date_create( $filaexamen[0]), 'd/m/Y' ):'' ),0,0,'L',0);

@@ -520,7 +520,7 @@ function MM_goToURL() { //v3.0
 			return false;
 		}
 		if(obj.value.length >= lgd) {
-			if(key!=8 && key!=0)
+			if(key!=9 && key!=0)
 				return false;
 		}
 		return (key <= 13 || key==46 ||  (key >= 38 && key <= 57));
@@ -671,8 +671,18 @@ function MM_goToURL() { //v3.0
 					$idcentro = $fila2->idcentro;
 					$fecha = $fila2->fecha_inscripcion;
 					$tiptra = $fila2->tipotramite;
+					//--
+					$nomcento;
+					
+	                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
+	                    $f=pg_query($link,$sq);
+	                    $filatra=pg_fetch_array($f);
+	                    $nomcento= $filatra[0];
+	                
 
-					if ($idcategoria =="17")
+                            //--
+
+					if ($idcategoria =="7")
 					{
 						$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
 						$rs_especial=pg_query($link,$sql_especial);
@@ -714,7 +724,13 @@ function MM_goToURL() { //v3.0
 	  //onSubmit="return true "
 
 		if($_GET["sw"]==4){
-			$sql="SELECT * FROM postulante WHERE dni='".$_GET["liqui"]."'";
+			$filtro=$_GET["liqui"];
+			$long=strlen($filtro);
+			if ($long==9) {
+				$sql="SELECT * FROM postulante WHERE ce='".$filtro."'";	
+			}else if($long==8){
+				$sql="SELECT * FROM postulante WHERE dni='".$filtro."'";	
+			}
 			$rs=pg_query($link,$sql);
 			$fila =pg_fetch_object($rs);
 			$idpostulante= $fila->idpostulante;
@@ -764,7 +780,7 @@ function MM_goToURL() { //v3.0
 								<td  height="10" width="6">&nbsp;</td>
 								<td  align="left" width="221"><span class="Estilo1">&nbsp;DATOS DEL REGISTRO</span></td>
 								<td width="159" height="20" align="right" ><div align="left">
-									<input name="dni2" type="text" class="cajatexto" id="dni2" style="text-align: right;" onKeyPress="return buscarpostulante(event,this,8)"   value="<?=$dni?>" size="12">
+									<input name="dni2" type="text" class="cajatexto" id="dni2" style="text-align: right;" onKeyPress="return buscarpostulante(event,this,9)"   value="<?=$dni?>" size="9">
 								</div></td>
 								<td width="216" align="right" ><span class="Estilo1">&nbsp;N&ordm; REGISTRO: </span></td>
 								<td width="19" align="right" >&nbsp;</td>
@@ -947,11 +963,11 @@ function MM_goToURL() { //v3.0
 	<td class="objeto">
 		<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 			<option value="'0">--Seleccion un estado--</option>
-			<option value="SOLTERO">SOLTERO</option>
-			<option value="CASADO">CASADO</option>
-			<option value="VIUDO">VIUDO</option>
-			<option value="DIVORCIADO">DIVORCIADO</option>
-			<option value="CONVIVIENTE">CONVIVIENTE</option>
+			<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
+			<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>CASADO</option>
+			<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>VIUDO</option>
+			<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>DIVORCIADO</option>
+			<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>CONVIVIENTE</option>
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>
@@ -1000,9 +1016,15 @@ function MM_goToURL() { //v3.0
 						<table width="307" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td width="36">DNI</td>
-								<td width="107"><input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="12" maxlength="8"></td>
+								<td width="107">
+									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
+									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8">
+								</td>
 								<td width="32">C.E</td>
-								<td width="90"><input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"></td>
+								<td width="90">
+									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
+									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9">
+								</td>
 								<td width="19">&nbsp;</td>
 								<td width="23">&nbsp;</td>
 							</tr>
@@ -1103,8 +1125,8 @@ function MM_goToURL() { //v3.0
 					    	<td class="objeto" width="72%">
 					    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
 
-								<input name="idcentro" type="hidden" class="cajatexto" id="idcentro" style="width: 250px;" >
-								<input name="nomcentro" type="text" class="cajatexto" id="nomcentro" style="width: 250px;">
+								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
+								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
 						</tr>
@@ -1193,7 +1215,9 @@ function MM_goToURL() { //v3.0
 									<td class="objeto" width="1%">&nbsp;</td>
 									<td class="objeto" width="72%">
 										<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
-										<?php
+										<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" style="width: 250px;" >
+										<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" style="width: 250px;">
+										<!-- <?php
 											$sqx="select * from curso_especial where estado='1' ";
                       						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
                       					?> 
@@ -1202,7 +1226,7 @@ function MM_goToURL() { //v3.0
                       						<?php while($rex=pg_fetch_array($rsx)) {?>
                       						<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
                       						<?php } ?>
-                      					</select>     
+                      					</select>     --> 
                   					</td>
 				            </tr>
 				        </tbody>

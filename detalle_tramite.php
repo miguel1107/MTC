@@ -126,11 +126,15 @@ function imprimir(cod) {
                           </tr>
                           <tr>
                             <td width="12" rowspan="8" background="main.php7_files/titulo1.jpg">&nbsp;</td>
-                            <td width="118" rowspan="8" background="main.php7_files/titulo1.jpg"><table width="80%" height="113" border="1" cellpadding="1" cellspacing="1">
-                              <tr>
-                                <td height="109"><img src="imag/foto.jpg" width="96" height="108"></td>
-                              </tr>
-                            </table></td>
+                            <td width="118" rowspan="8" background="main.php7_files/titulo1.jpg">
+                              <table width="80%" height="113" border="1" cellpadding="1" cellspacing="1">
+                                <tr>
+                                  <td height="109">
+                                    <img src="imag/foto.jpg" width="96" height="108">
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
                             <td background="main.php7_files/titulo1.jpg" height="20">&nbsp;</td>
                             <td height="20" colspan="2" align="left"><div align="center" class="Estilo4">GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES </div></td>
                           </tr>
@@ -175,12 +179,29 @@ function imprimir(cod) {
                           <tr>
                             <td background="main.php7_files/titulo1.jpg" height="20">&nbsp;</td>
                             <td height="20" align="left">N&ordm; Y FECHA EX. MEDICO : </td>
-                            <td height="20" align="left"><?=$fila2[5]?>  &nbsp;&nbsp;&nbsp;                            <?=$fila27[1]?></td>
+                            <td height="20" align="left"><?=$fila2[5]?>  &nbsp;&nbsp;&nbsp;                <?=$fila27[1]?></td>
                           </tr>
                           <tr>
                             <td background="main.php7_files/titulo1.jpg" height="18">&nbsp;</td>
                             <td height="18" align="left">TIPO TRAMITE: </td>
-                            <td height="18" align="left"><?=$fila2[8]?> <?=$fila2[9]?></td>
+                            <td height="18" align="left">  
+                            <?php 
+                              $tra=$fila2[8];
+                              $long=strlen($tra);  
+                              if ($long==1) {
+                                $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                                $f=pg_query($link,$sq);
+                                $filatra=pg_fetch_array($f);
+                                echo $filatra[0];
+                              }else{
+                                echo $tra;
+                              }
+                            ?>
+                            <?php
+                              echo $fila2[9];
+                            ?>
+                            </td>
+                            <!-- <td height="18" align="left"><?=$fila2[8]?> <?=$fila2[9]?></td> -->
                           </tr>
                         </tbody>
                     </table></td>
@@ -202,42 +223,6 @@ function imprimir(cod) {
                             <td width="30%">&nbsp;</td>
                             <td width="36%">&nbsp;</td>
                             <td width="34%">&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td colspan="3"><div align="center">REGLAMENTO SERVICIO PUBLICO - CARGA Y PASAJEROS </div></td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td colspan="3"><div align="center">TEORICO PRACTICO DE MECANICA AUTOMOTRIZ </div></td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
                           </tr>
                           <tr>
                             <td>&nbsp;</td>
@@ -275,13 +260,17 @@ function imprimir(cod) {
 
                   <tr valign="middle">
                     <td>&nbsp;</td>
-                    <td align="right">&nbsp;</td>
+                    <td align="right">
+                      <div align="center">
+                        <img src="imag/huella.png" width="96" height="108">
+                      </div>
+                    </td>
                     <td>&nbsp;</td>
-                    </tr>
+                  </tr>
                   <tr valign="middle">
                     <td>&nbsp;</td>
+                    <td><div align="center">Huella</div></td>
                     <td align="right">&nbsp;</td>
-                    <td>&nbsp;</td>
                   </tr>
                   <tr valign="middle">
                     <td>&nbsp;</td>
@@ -325,12 +314,8 @@ function imprimir(cod) {
                   </tr>
                 </tbody>
               </table>
-                <div class="Estilo26" id="Layer2">
-                  <div align="center">
-                    <?=$fila2[8]?>
-                    <?=$fila2[9]?>
-                  </div>
-                </div></td>
+                
+              </td>
             </tr>
           </tbody>
         </table></td>
