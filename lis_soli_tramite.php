@@ -75,7 +75,7 @@ include("paginator.inc.php");
             <TH width="71"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>GENERADO </nobr></font></span></TH>
           </tr>
 
-          <?php  echo $_pagi_result;
+          <?php  
           while($reg=pg_fetch_array($_pagi_result)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
@@ -107,7 +107,20 @@ include("paginator.inc.php");
              <nobr> <?php echo normal($reg[4])?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?php echo $reg[7]?>
+              <?php 
+                $echotra;
+                $tra=$reg[7];
+                $long=strlen($tra);
+                if ($long==1) {
+                  $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                  $rs=pg_query($con,$sql);
+                  $fila =pg_fetch_array($rs);
+                  echo $echotra=$fila[1];
+                }else if($long>1){
+                  echo $reg[7];
+                }
+                
+              ?>
             </font></td>
 
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
