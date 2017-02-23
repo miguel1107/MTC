@@ -38,6 +38,8 @@ $_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscri
 //cantidad de resultados por página (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;
+
+
 include("paginator.inc.php");
 ?>
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
@@ -73,7 +75,8 @@ include("paginator.inc.php");
             <TH width="71"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>GENERADO </nobr></font></span></TH>
           </tr>
 
-          <?php  while($reg=pg_fetch_array($_pagi_result)) { }?>
+          <?php  echo $_pagi_result;
+          while($reg=pg_fetch_array($_pagi_result)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
             <td height="22" align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -98,13 +101,13 @@ include("paginator.inc.php");
               <?php echo normal($reg[10])?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <? php echo $reg[9]?>
+              <?php echo $reg[9]?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?php echo normal($reg[4])?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <? php echo $reg[7]?>
+              <?php echo $reg[7]?>
             </font></td>
 
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
@@ -115,7 +118,7 @@ include("paginator.inc.php");
             </nobr> </font></div></td>
           </tr>
 
-          <? }?>
+          <?php } ?>
         </table>
         <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
 
