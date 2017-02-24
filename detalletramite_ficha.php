@@ -400,8 +400,8 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
               </table>
                 <div class="Estilo26" id="Layer2">
                   <div align="center">
-                    <?=$fila2[26]?>
-                    <?=$fila2[32]?>
+                    <!-- <?=$fila2[26]?>
+                    <?=$fila2[32]?> -->
                   </div>
                 </div></td>
             </tr>

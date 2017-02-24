@@ -994,10 +994,10 @@ function MM_goToURL() { //v3.0
 		<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 			<option value="'0">--Seleccion un estado--</option>
 			<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
-			<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>CASADO</option>
-			<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>VIUDO</option>
-			<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>DIVORCIADO</option>
-			<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>CONVIVIENTE</option>
+			<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO</option>
+			<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO</option>
+			<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO</option>
+			<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>>CONVIVIENTE</option>
 		</select>
 		<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
 	</td>
@@ -1048,12 +1048,12 @@ function MM_goToURL() { //v3.0
 								<td width="36">DNI</td>
 								<td width="107">
 									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
-									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8">
+									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4) {echo 'readonly';} ?> >
 								</td>
 								<td width="32">C.E</td>
 								<td width="90">
 									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
-									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9">
+									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4) {echo 'readonly';} ?> >
 								</td>
 								<td width="19">&nbsp;</td>
 								<td width="23">&nbsp;</td>
@@ -1235,8 +1235,9 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
 								<td class="objeto" width="1%">&nbsp;</td>
 								<td class="objeto" width="72%">
-									<input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
-									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15">
+								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" placeholder="24/04/2015">
+									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
+									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>
 							</tr>
 								<tr valign="middle">
