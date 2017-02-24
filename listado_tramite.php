@@ -137,7 +137,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                             <td class="LL">|</td>
                             <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=3')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar </td>
                             <td class="LL">|</td>
-                            <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Postulante</td>
+                            <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Programacion</td>
                             <td class="LL">|</td>
                             <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="location='buscar_tramite.php'" nowrap="nowrap"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                             <td class="LL">|</td>

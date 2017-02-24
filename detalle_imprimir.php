@@ -22,12 +22,12 @@ $hora =  date("H:i:s");
 
 //--
 $link=Conectarse();
-	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
-	$rs2=pg_query($link,$sql2);
-	$fila2 =pg_fetch_array($rs2);
+	$sql22="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
+	$rs2=pg_query($link,$sql22);
+	$fila22 =pg_fetch_array($rs2);
 	//--
 	$echotra;
-	$tra=$fila2[8];
+	$tra=$fila22[8];
 	  $long=strlen($tra);  
 	  if ($long==1) {
 	    $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";
@@ -75,7 +75,7 @@ function Footer()
 	$this->Cell(50,5,'',0,0,'L',0);
 	$this->Cell(20,5,'_________________________',0,1,'L',0);
 	$this->Cell(100,5,'',0,0,'L',0);
-	$this->Cell(20,5,'Firma',0,1,'L',0);
+	$this->Cell(20,5,utf8_decode ($fila2[10]),0,1,'L',0);
 	
 }
 }
@@ -186,6 +186,17 @@ $pdf->Cell(43,7,'',1,0,'L',1);
 $pdf->Cell(55,7,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,1,'L',1);
 
+//---
+$pdf->Cell(40,5,'',0,0,'L',0);
+$pdf->Image('imag/huella.png',15,120,30,40,'PNG');
+//$pdf->Cell(60,78,'HUELLA',0,0,'L',1);
+$pdf->Cell(0,55,'_________________________',0,1,'L',0);
+$pdf->Cell(0,0,'',0,1,'L',0);
+$pdf->Cell(10000,0,'Huella y Firma del postulante',0,1,'L',0);
+
+
+
+//--
 $pdf->SetFont('Arial','',9);
 $pdf->SetXY(160, 30);
 $pdf->Cell(10,5,' Usuario : '.utf8_decode ($fila2[10]),0,0,'L',1);
