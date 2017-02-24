@@ -158,7 +158,7 @@ function validar(form1)
                                     </table></td>
                                   </tr>
                                 </table>
-                                  <?
+                                  <?php echo 
  $cant=count($_POST["chk"]);
  if($cant > 0)
 	{
@@ -1026,7 +1026,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                     </tr>
                   </tbody>
                 </table>
-              </form>              
+              </form>              </td>
             </tr>
           </tbody>
         </table></td>
