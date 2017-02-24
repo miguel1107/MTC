@@ -63,6 +63,36 @@ function MM_goToURL() { //v3.0
 	<!--
 	function validar(form1)
 	{
+		console.log("--------------------------------------");
+		console.log("Apellido Paterno: " + form1.apepat.value);
+		console.log("Apellido Materno: " + form1.apemat.value);
+		console.log("Nombre: " + form1.txtnom.value);
+		console.log("--------------------------------------");
+		var $apaterno = form1.apepat.value;
+		var $amaternos = form1.apemat.value;
+		var $name = form1.txtnom.value;
+		var $salida1 = '';
+		var $salida2 = '';
+		var $cont=0;
+		console.log('tamaño de nombre: ' + $apaterno.length);
+		for (var i = 0; i < $apaterno.length; i++) {
+			var $aux = $apaterno.substring(i, (i+1));
+			if($aux != "'") {
+				$salida1 = $salida1+$aux;				
+			}else {
+				$cont = i;
+				break;
+			}
+		};
+		for (var i = $cont + 1; i < $apaterno.length; i++) {
+			var $aux = $apaterno.substring(i, (i+1));
+			$salida2 = $salida2+ $aux;
+		};
+		console.log("=====================");
+		console.log("salida1: "+ $salida1);
+		console.log("salida 2: "+ $salida2);
+		console.log("======================");
+
 		if (form1.tipotra.value=="")
 		{
 			alert("Debe ingresar Tipo de Tramite");

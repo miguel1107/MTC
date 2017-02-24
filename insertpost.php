@@ -227,7 +227,8 @@ if(isset($realizar)){ //inicio de para ver si existe la variable
 		  $sr2=pg_query($link,$sql2); 
 		}else{
 ///////////////////////////////////////////////////////
-			$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono) values('".$_POST["txtnom"]."','".$_POST["apepat"]."','".$_POST["apemat"]."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."')";
+			$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono) 
+			values('".$_POST["txtnom"]."','".$_POST["apepat"]."','".$_POST["apemat"]."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."')";
 			$sr=pg_query($link, $sql); 
 
 			$sq3="Select max(idpostulante) from postulante ";

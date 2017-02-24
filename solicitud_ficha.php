@@ -1006,10 +1006,13 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                                     <tr>
                                       <td align="left"><div align="center">
                                           <!--<a href="javascript:imprimir()"><img src="imag/print.gif" width="97" height="27" border="0"></a>-->
-<?php if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION'){?>
+                <?php if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION')
+                {?>
                  <input type="hidden" name="pagina" value="listado_tramite.php">
-<?}else{?>				 
-             <input type="hidden" name="pagina" value="list_soli.php">
+                <?
+                }else{
+                  ?>				 
+                <input type="hidden" name="pagina" value="list_soli.php">
 <? }?>
                                           <input type="hidden" name="id" value="<?php echo $fila2[15]?>">
                                           <input type="submit" name="Submit" value=":::: Imprimir ::::">
@@ -1023,7 +1026,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                     </tr>
                   </tbody>
                 </table>
-              </form>              </td>
+              </form>              
             </tr>
           </tbody>
         </table></td>
