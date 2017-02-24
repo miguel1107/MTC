@@ -269,7 +269,7 @@ $link=Conectarse();
                                                 </td>
                                               </tr>
                                             </table>
-                                              <?php echo 
+                                              <? 
                                                 $cant=count($_POST["chk"]);
                                                 exit;
                                                 if($cant > 0){
@@ -315,9 +315,9 @@ $link=Conectarse();
                                                               <td>
                                                                 <div align="center">
                                                                   <strong>
-                                                                    <?php echo $fila2[28]?>
+                                                                    <? echo $fila2[28]?>
                                                                   </strong>
-                                                                  <input type="hidden" name="numerosolicitudpost" value="<?php echo $fila2[28]?>">
+                                                                  <input type="hidden" name="numerosolicitudpost" value="<? echo $fila2[28]?>">
                                                                 </div>
                                                               </td>
                                                             </tr>
@@ -370,8 +370,8 @@ $link=Conectarse();
                                                             <td>
                                                               <table width="100%" id="datos" border="1" align="center" cellpadding="1" cellspacing="1">
                                                                 <tr>
-                                                                  <td width="123" height="17"><?php echo $fila2[2]?>
-                                                                    <input type="hidden" name="idpost" value="<?php echo $fila2[0]?>">
+                                                                  <td width="123" height="17"><? echo $fila2[2]?>
+                                                                    <input type="hidden" name="idpost" value="<? echo $fila2[0]?>">
                                                                   </td>
                                                                 </tr>
                                                                 <tr>
@@ -387,7 +387,7 @@ $link=Conectarse();
                                                               <table width="98%"  id="datos" border="1" align="center" cellpadding="1" cellspacing="1">
                                                                 <tr>
                                                                   <td width="451" height="17">
-                                                                    <?php echo $fila2[3]?>
+                                                                    <? echo $fila2[3]?>
                                                                   </td>
                                                                 </tr>
                                                                 <tr>
@@ -403,7 +403,7 @@ $link=Conectarse();
                                                               <table width="96%" border="1"   id="datos" align="center" cellpadding="1" cellspacing="1">
                                                               <tr>
                                                                 <td width="443" height="17">
-                                                                  <?php echo $fila2[1]?>
+                                                                  <? echo $fila2[1]?>
                                                                 </td>
                                                               </tr>
                                                               <tr>
@@ -450,7 +450,7 @@ $link=Conectarse();
                                                                           <tr>
                                                                             <td>
                                                                               <div align="center">
-                                                                                <?php if($fila2[10]!=''){
+                                                                                <? if($fila2[10]!=''){
                                                                                   echo $fila2[10];
                                                                                 }else{
                                                                                   echo $fila2[8];
@@ -474,7 +474,7 @@ $link=Conectarse();
                                                                             <tr>
                                                                               <td>
                                                                                 <div align="center">
-                                                                                  <?php echo normal($fila2[4])?>
+                                                                                  <? echo normal($fila2[4])?>
                                                                                 </div>
                                                                               </td>
                                                                             </tr>
@@ -504,7 +504,7 @@ $link=Conectarse();
                                                                     <td >
                                                                       <div align="center">
                                                                         <strong>
-                                                                          <?php echo date('d/m/Y')?>
+                                                                          <? echo date('d/m/Y')?>
                                                                         </strong>
                                                                       </div>
                                                                     </td>
@@ -552,7 +552,7 @@ $link=Conectarse();
                                                                     <td colspan="2" valign="top" class="Estilo18">
                                                                       <div align="justify">N&uacute;mero de Licencias de Conducir 
                                                                         <span class="Estilo20">
-                                                                          <input name="idprimigenia" type="hidden" value="<?php echo $fila275[0]?>">
+                                                                          <input name="idprimigenia" type="hidden" value="<? echo $fila275[0]?>">
                                                                         </span>
                                                                       </div>
                                                                     </td>
@@ -562,9 +562,9 @@ $link=Conectarse();
                                                                       <td >
                                                                         <div align="center">
                                                                           <strong>
-  												                                                    <?php  if ( $fila2[23] =="17"){?>
-                                                                              <?php echo $fila_especial[6]?>
-                                                                              <?   
+  												                                                    <?  if ( $fila2[23] =="17"){
+                                                                              echo $fila_especial[6];
+                                                                              
                                                                               }else{ 
                                                                               ?>
                                                                               <input name="primigenia" type="text" id="primigenia" value="<?php echo $fila275[1]?>" size="20" maxlength="25">
@@ -590,7 +590,7 @@ $link=Conectarse();
                                                                         <div align="justify">Restricciones
                                                                           <span class="K">
                                                                             <strong>
-                                                                              <?php if($fila2[20]=='SIN RESTRICCIONES'){echo "S/R";}else{echo "C/C";
+                                                                              <? if($fila2[20]=='SIN RESTRICCIONES'){echo "S/R";}else{echo "C/C";
                                                                               }?>
                                                                             </strong>
                                                                           </span>
@@ -692,7 +692,7 @@ $link=Conectarse();
                                                                         <table width="91%" id="datos" border="1" cellpadding="0" cellspacing="0">
                                                                           <tr>
                                                                             <td>
-                                                                              <?php echo $fila2[14]?>
+                                                                              <? echo $fila2[14]?>
                                                                             </td>
                                                                           </tr>
                                                                           <tr>
@@ -1146,7 +1146,7 @@ $link=Conectarse();
                                                                       <td>
                                                                         <div align="center">
                                                                           <strong>
-                                                                            <?php echo $fila2[28]?>
+                                                                            <? echo $fila2[28]?>
                                                                           </strong>
                                                                         </div>
                                                                       </td>
@@ -1366,15 +1366,14 @@ $link=Conectarse();
                                               <td align="left">
                                                 <div align="center">
                                                 <!--<a href="javascript:imprimir()"><img src="imag/print.gif" width="97" height="27" border="0"></a>-->
-                                                  <?php if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION')
-                                                  {?>
-                                                  <input type="hidden" name="pagina" value="listado_tramite.php">
+                                                  <? if($fila2[26]=='NUEVO' || $fila2[26]=='RECATEGORIZACION' || $fila2[26]=='CANJE RECATEGORIZACION'){ ?>
+                                                  <input type="hidden" name="pagina" value="listado_tramite.">
                                                   <?
                                                   }else{
                                                   ?>				 
-                                                  <input type="hidden" name="pagina" value="list_soli.php">
+                                                  <input type="hidden" name="pagina" value="list_soli.">
                                                   <? }?>
-                                                  <input type="hidden" name="id" value="<?php echo $fila2[15]?>">
+                                                  <input type="hidden" name="id" value="<? echo $fila2[15]?>">
                                                   <input type="submit" name="Submit" value=":::: Imprimir ::::">
                                                 </div>
                                               </td>
@@ -1402,10 +1401,10 @@ $link=Conectarse();
   </tbody>
 </table>
 <div class="Estilo23" id="Layer1">
-  <div align="center"><?php echo $fila2[26]?> <?php echo $fila2[32]?> </div>
+  <div align="center"><? echo $fila2[26]?> <? echo $fila2[32]?> </div>
 </div>
   <div class="Estilo23"  id="Layer2">
-	  <div align="center" ><?php echo $fila2[26]?> <?php echo $fila2[32]?></div>
+	  <div align="center" ><? echo $fila2[26]?> <? echo $fila2[32]?></div>
 </div>
 </body>
 </html>
