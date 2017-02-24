@@ -9,8 +9,7 @@ $link=Conectarse();
 
 	//cambios
 require_once 'model/tipotramite.php';
-$tipo= new tipotramite();
-$rs=$tipo->retornaLista();
+
 	//--
 
 ?>
@@ -851,6 +850,8 @@ function MM_goToURL() { //v3.0
 									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso()">
 										<option value="0">---Seleccione Tipo---</option>
 										<?php 
+										$tipo= new tipotramite();
+										$rs=$tipo->retornaLista();
 										while ($n=pg_fetch_array($rs)) {
 											?>
 											<option value="<?php echo $n[0]; ?>"> <?php echo $n[1]; ?></option>
