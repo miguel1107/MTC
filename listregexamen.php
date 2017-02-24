@@ -98,28 +98,28 @@ include("paginator.inc.php");
             </font></td>
 
             <td height="22" align="center" >
-              <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  <?=$reg[0]?></nobr>  </font></div></td>
+              <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  <?php echo $reg[0]?></nobr>  </font></div></td>
             <td>
 
               <div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?=$reg[1]?>
+                <?php echo $reg[1]?>
             </font></nobr></div></td>
 
             <td><div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?=$reg[2]?> <?=$reg[3]?>
+                <?php echo $reg[2]?> <?php echo $reg[3]?>
             </font></nobr></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=$reg[7]?></nobr>
+            <nobr>  <?php echo $reg[7]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?=normal($reg[4])?></nobr>
+             <nobr> <?php echo normal($reg[4])?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>
               <div align="left">
-                <?=$reg[11]?>
+                <?php echo $reg[11]?>
                 </div>
             </nobr> </font></td>
-            <? $sq35="Select nombre from categoria where idcategoria='".$reg[5]."' ";
+            <?php $sq35="Select nombre from categoria where idcategoria='".$reg[5]."' ";
 $rs35=pg_query($con,$sq35); // or die ("Error :$sq");
 while($reg35=pg_fetch_array($rs35)) { 
 $codigo=$reg35[0];
@@ -127,13 +127,13 @@ $codigo=$reg35[0];
 $cat=$codigo;
 ?>
 			<td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-           <nobr> <?=$cat?></nobr>
+           <nobr> <?php echo $cat?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=$reg[8]?></nobr>
+            <nobr>  <?php echo $reg[8]?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?=$reg[9]?></nobr>
+             <nobr> <?php echo $reg[9]?></nobr>
             </font></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  
               <div align="left">
@@ -154,13 +154,13 @@ $cat=$codigo;
               
               <!-- ESTO ME MUESTRA EL USUARIO-->
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[13]?>&nbsp;
+              <?php echo $reg[13]?>&nbsp;
             </font></div></td>
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-		      <?=normal($reg[12])?>
+		      <?php echo normal($reg[12])?>
 	        </font></div></td>
             <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-		      <?=$reg[14]?>
+		      <?php echo$reg[14]?>
 	        </font></div></td>
 	      </tr>
 
@@ -171,9 +171,9 @@ $cat=$codigo;
           <TR bgcolor="#FFFFFF">
             <TD width="100%" height="20" colspan="3" bgcolor="#EBF3FB"><table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
               <TR bgcolor="#FFFFFF">
-                <td width="50%" height="20" bgcolor="#EBF3FB"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div></Td>
+                <td width="50%" height="20" bgcolor="#EBF3FB"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div></Td>
                 <td width="50%" height="20" bgcolor="#EBF3FB"><strong><font face='verdana' size='-2'>
-                  <?=$_pagi_result2?>
+                  <?php echo $_pagi_result2?>
                   Registros </font></strong></Td>
               </TR>
             </table></TD>
