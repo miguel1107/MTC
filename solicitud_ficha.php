@@ -4,109 +4,185 @@ include ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
 ?>
-<html><head><title></title>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
+    <link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
+    <link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
+    <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
+    <script type="text/javascript" src="estilos/libjsgen.js"> </script>
+    <script type="text/javascript" src="estilos/popcalendar.js"> </script>
+    <script type="text/javascript" src="estilos/script.js"></script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
-<link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
-<link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
-<link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
-<script type="text/javascript" src="estilos/libjsgen.js"> </script>
-<script type="text/javascript" src="estilos/popcalendar.js"> </script>
-<script type="text/javascript" src="estilos/script.js"></script>
+    <style type="text/css">
 
-<style type="text/css">
-<!--
-.Estilo12 {
-	font-size: 18px;
-	font-weight: bold;
-}
-.Estilo18 {font-size: 9px}
-.Estilo20 {font-size: 10px}
-.Estilo21 {font-size: 10px; font-weight: bold; }
--->
-</style>
-<link href="estilos/tablas.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-.Estilo3 {color: #999999}
-#Layer1 {
-	position:absolute;
-	left:89px;
-	top:722px;
-	width:721px;
-	height:18px;
-	z-index:1;
-}
-#Layer2 {
-	position:absolute;
-	left:189px;
-	top:174px;
-	width:682px;
-	height:22px;
-	z-index:2;
-
-	
-}
-.Estilo23 {
-	font-size: 36px;
-	font-weight: bold;
-	font-style: oblique;
-	color: #999999;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-}
--->
-</style>
-<script language="JavaScript">
-<!--
-function validar(form1)
-{
-	 if (form1.sisgedo.value=="")
-	 {
-	 alert("Debe ingresar el N�mero de SISGEDO");
-	 form1.sisgedo.focus();
-	 return false;
-	 }
-	 return true;
-}
-//-->
-</script>
-<script type="text/javascript" language="javascript">
-    function AceptaNumero(evt) 
-    {
+      .Estilo12 {
+      	font-size: 18px;
+      	font-weight: bold;
+      }
+      .Estilo18 {font-size: 9px}
+      .Estilo20 {font-size: 10px}
+      .Estilo21 {font-size: 10px; font-weight: bold; }
+    </style>
+    <link href="estilos/tablas.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      .Estilo3 {color: #999999}
+      #Layer1 {
+      	position:absolute;
+      	left:89px;
+      	top:722px;
+      	width:721px;
+      	height:18px;
+      	z-index:1;
+      }
+      #Layer2 {
+      	position:absolute;
+      	left:189px;
+      	top:174px;
+      	width:682px;
+      	height:22px;
+      	z-index:2;  	
+      }
+      .Estilo23 {
+      	font-size: 36px;
+      	font-weight: bold;
+      	font-style: oblique;
+      	color: #999999;
+      	font-family: Verdana, Arial, Helvetica, sans-serif;
+      }
+    </style>
+    <script language="JavaScript">
+      function validar(form1){
+        if (form1.sisgedo.value==""){
+          alert("Debe ingresar el N�mero de SISGEDO");
+          form1.sisgedo.focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+    <script type="text/javascript" language="javascript">
+      function AceptaNumero(evt) {
         var nav4 = window.Event ? true : false;
         var key = nav4 ? evt.which : evt.keyCode; 
         return (key <= 13 || key==46 ||  (key >= 38 && key <= 57)); 
-
-    }
-</script>
-</head>
-<body>
+      }
+    </script>
+  </head>
+  <body>
 		<table align="center" bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%">
- <tbody><tr><td height="36"><table border="0" cellpadding="0" cellspacing="0" width="52%">
-   <tbody>
-     <tr>
-       <td class="tabsline" width="34"><img src="imag/tabinion2.gif" border="0" height="36" width="29"></td>
-       <td width="121" align="center" background="imag/div3.gif" ><nobr><b><a href="buscar_postulante.php"><b><span class="G">Buscar</span></b></a></b></nobr></td>
-       <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td width="104" align="center" background="imag/div3.gif" ><span ><nobr><b><a href="nuevo_postulante.php"><b>&nbsp;<span class="G">Nuevo  Tramite</span></b></a></b></nobr></span></td>
-       <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td width="108" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Lista Postulante</span></b></a></b></nobr></td>
-       <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td width="119" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
-       <td class="tabsline" ><span class="tabson"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td  background="imag/div1.gif" ><span class="Estilo3"><nobr><b><a href="list_soli.php"><b>Lista Solicitudes </b></a></b></nobr></span> </td>
-       <td class="tabsline" width="30"><span class="tabson"><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="128"  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">Tramites Anulados</span></b></a></b></nobr></td>
-       <td class="tabsline" width="15"></td>
-       <td class="tabsline" width="58"><span class="tabson"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></span></td>
-     </tr>
-   </tbody>
- </table></td>
- </tr>
-</tbody></table>
-
-<table width="100%" height="93%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
+      <tbody>
+        <tr>
+          <td height="36">
+            <table border="0" cellpadding="0" cellspacing="0" width="52%">
+              <tbody>
+                <tr>
+                  <td class="tabsline" width="34">
+                    <img src="imag/tabinion2.gif" border="0" height="36" width="29">
+                  </td>
+                  <td width="121" align="center" background="imag/div3.gif" >
+                    <nobr>
+                      <b>
+                        <a href="buscar_postulante.php">
+                          <b>
+                            <span class="G">Buscar</span>
+                          </b>
+                        </a>
+                      </b>
+                    </nobr>
+                  </td>
+                  <td class="tabson" width="35">
+                    <img src="imag/div222.gif" alt="" border="0" height="36" width="29">
+                  </td>
+                  <td width="104" align="center" background="imag/div3.gif">
+                    <span >
+                      <nobr>
+                        <b>
+                          <a href="nuevo_postulante.php">
+                            <b>&nbsp;
+                              <span class="G">Nuevo  Tramite</span>
+                            </b>
+                          </a>
+                        </b>
+                      </nobr>
+                    </span>
+                  </td>
+                  <td class="tabson" width="35">
+                    <img src="imag/div222.gif" alt="" border="0" height="36" width="29">
+                  </td>
+                  <td width="108" align="center" background="imag/div3.gif" >
+                    <nobr>
+                      <b>
+                        <a href="listado_postulante.php">
+                          <b>
+                            <span class="G">Lista Postulante</span>
+                          </b>
+                        </a>
+                      </b>
+                    </nobr>
+                  </td>
+                  <td class="tabson" width="35">
+                    <img src="imag/div222.gif" alt="" border="0" height="36" width="29">
+                  </td>
+                  <td width="119" background="imag/div3.gif" >
+                    <nobr>
+                      <b>
+                        <a href="listado_tramite.php">
+                          <b>
+                            <span class="G">Lista de Tramite</span>
+                          </b>
+                        </a>
+                      </b>
+                    </nobr>
+                  </td>
+                  <td class="tabsline" >
+                    <span class="tabson">
+                      <img src="imag/div22.gif" alt="" border="0" height="36" width="29">
+                    </span>
+                  </td>
+                  <td  background="imag/div1.gif" >
+                    <span class="Estilo3">
+                      <nobr>
+                        <b>
+                          <a href="list_soli.php">
+                            <b>Lista Solicitudes</b>
+                          </a>
+                        </b>
+                      </nobr>
+                    </span>
+                  </td>
+                  <td class="tabsline" width="30">
+                    <span class="tabson">
+                      <img src="imag/div2.gif" alt="" border="0" height="36" width="29">
+                    </span>
+                  </td>
+                  <td width="128"  background="imag/div3.gif">
+                    <nobr>
+                      <b>
+                        <a href="listado_tramites_anulados.php">
+                          <b>
+                            <span class="G">Tramites Anulados</span>
+                          </b>
+                        </a>
+                      </b>
+                    </nobr>
+                  </td>
+                  <td class="tabsline" width="15"></td>
+                  <td class="tabsline" width="58">
+                    <span class="tabson">
+                      <img src="imag/div4.gif" alt="" border="0" height="36" width="29">
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table width="100%" height="93%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
 <tbody>
   <tr>
     <td height="1172" valign="top"><table width="100%" height="100%" border="0" align="center">
@@ -159,7 +235,7 @@ function validar(form1)
                                   </tr>
                                 </table>
                                   <?php echo 
- $cant=count($_POST["chk"]);
+ $cant=count($_POST["chk"]);exit;
  if($cant > 0)
 	{
 	foreach($_POST["chk"] as $k =>$v)
