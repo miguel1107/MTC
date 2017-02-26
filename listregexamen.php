@@ -87,39 +87,38 @@ include("paginator.inc.php");
             <th width="236"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif"><nobr>SITUACION</nobr></font></th>
           </tr>
  <? //  while($reg=pg_fetch_array($_pagi_result)) { ?>
-          <?php  while($reg=pg_fetch_array($_pagi_result)) {  ?>
-		<?php if($reg[9]!=''){?>
+          <? while($reg=pg_fetch_array($_pagi_result)) {  ?>
+		<? if($reg[9]!=''){?>
           <tr bgcolor="#FFF794" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFF794')">
-		  <?php }else{?>
+		  <? }else{?>
 		  <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
-		  <?php }?>
+		  <? }?>
             <td align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <input type="checkbox" border="0" value="<?=$reg[6]?>" name="chk[]" onClick="checkform(frmList,this)">
+              <input type="checkbox" border="0" value="<? echo $reg[6]?>" name="chk[]" onClick="checkform(frmList,this)">
             </font></td>
-
             <td height="22" align="center" >
-              <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  <?php echo $reg[0]?></nobr>  </font></div></td>
+              <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  <? echo $reg[0]?></nobr>  </font></div></td>
             <td>
 
               <div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?php echo $reg[1]?>
+                <? echo $reg[1]?>
             </font></nobr></div></td>
 
             <td><div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?php echo $reg[2]?> <?php echo $reg[3]?>
+                <? echo $reg[2]?> <? echo $reg[3]?>
             </font></nobr></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?php echo $reg[7]?></nobr>
+            <nobr>  <? echo $reg[7]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?php echo normal($reg[4])?></nobr>
+             <nobr> <? echo normal($reg[4])?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>
               <div align="left">
-                <?php echo $reg[11]?>
+                <? echo $reg[11]?>
                 </div>
             </nobr> </font></td>
-            <?php $sq35="Select nombre from categoria where idcategoria='".$reg[5]."' ";
+            <? echo  $sq35="Select nombre from categoria where idcategoria='".$reg[5]."' ";
 $rs35=pg_query($con,$sq35); // or die ("Error :$sq");
 while($reg35=pg_fetch_array($rs35)) { 
 $codigo=$reg35[0];
@@ -127,13 +126,13 @@ $codigo=$reg35[0];
 $cat=$codigo;
 ?>
 			<td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-           <nobr> <?php echo $cat?></nobr>
+           <nobr> <? echo $cat?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?php echo $reg[8]?></nobr>
+            <nobr>  <? echo $reg[8]?></nobr>
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?php echo $reg[9]?></nobr>
+             <nobr> <? echo $reg[9]?></nobr>
             </font></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>  
               <div align="left">
@@ -154,13 +153,13 @@ $cat=$codigo;
               
               <!-- ESTO ME MUESTRA EL USUARIO-->
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?php echo $reg[13]?>&nbsp;
+              <? echo $reg[13]?>&nbsp;
             </font></div></td>
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-		      <?php echo normal($reg[12])?>
+		      <? echo normal($reg[12])?>
 	        </font></div></td>
             <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-		      <?php echo$reg[14]?>
+		      <? echo$reg[14]?>
 	        </font></div></td>
 	      </tr>
 
@@ -171,9 +170,9 @@ $cat=$codigo;
           <TR bgcolor="#FFFFFF">
             <TD width="100%" height="20" colspan="3" bgcolor="#EBF3FB"><table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
               <TR bgcolor="#FFFFFF">
-                <td width="50%" height="20" bgcolor="#EBF3FB"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div></Td>
+                <td width="50%" height="20" bgcolor="#EBF3FB"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div></Td>
                 <td width="50%" height="20" bgcolor="#EBF3FB"><strong><font face='verdana' size='-2'>
-                  <?php echo $_pagi_result2?>
+                  <? echo $_pagi_result2?>
                   Registros </font></strong></Td>
               </TR>
             </table></TD>
