@@ -781,12 +781,22 @@ function MM_goToURL() { //v3.0
 			$tel=$fila->telefono;
 			$dis=$fila->iddistrito;
 			//--
+			if (!empty($dis)) {
 				$nomdis;
 			
-            	$sq2="SELECT nombre FROM distrito WHERE iddistrito='".$dis."'";
+            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
                 $f2=pg_query($link,$sq2);
                 $filatra2=pg_fetch_array($f2);
-                $nomdis= $filatra2[0];
+               	$provi=$filatra2[1];
+			?>
+				<script type="text/javascript">
+					var di="<?php echo $dis; ?>";
+					var pr="<?php echo $provi; ?>";
+					//alert(di);
+					cargadistrito(di,pr);
+				</script>
+			<?php 
+			}
             //--
 
 		}
@@ -1100,14 +1110,14 @@ function MM_goToURL() { //v3.0
     	<td class="etiqueta" align="right">Domicilio &nbsp;&nbsp;</td>
     	<td class="objeto">&nbsp;</td>
     	<td class="objeto">
-    		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito()" style="width: 100px;">
+    		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito(0,0)" style="width: 100px;">
 				<option value="0">---Provincia---</option>
 				<?php 
 				$pro= new provincia();
 				$rs2=$pro->retornaLista();
 				while ($n2=pg_fetch_array($rs2)) {
 					?>
-					<option value="<?php echo $n2[0]; ?>"> <?php echo $n2[1]; ?></option>
+					<option value="<?php echo $n2[0]; ?> " <?php if($n2[0]==$provi){echo "selected";} ?>> <?php echo $n2[1]; ?></option>
 					<?php 
 				}
 				?>

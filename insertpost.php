@@ -198,7 +198,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}else{
 			$record=pg_query($link,"select * from postulante where dni='".$_POST["dni"]."'");
 			if(pg_num_rows($record) > 0){
-				$sql89="update postulante set nombres='".$_POST["txtnom"]."',apepat='".$_POST["apepat"]."',apemat='".$_POST["apemat"]."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."' where dni='".$_POST["dni"]."'";
+				$sql89="update postulante set nombres='".$_POST["txtnom"]."',apepat='".$_POST["apepat"]."',apemat='".$_POST["apemat"]."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."' where dni='".$_POST["dni"]."',iddistrito='".$_POST["distrito"]."' ";
 				$sr89=pg_query($link,$sql89); 
 					  //////////// 	
 				$sq3="Select idpostulante from postulante where dni='".$_POST["dni"]."' ";
@@ -220,7 +220,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}							
 			$sr2=pg_query($link,$sql2); 
 		}else{
-			$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono) values('".$_POST["txtnom"]."','".$_POST["apepat"]."','".$_POST["apemat"]."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."')";
+			$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono,iddistrito) values('".$_POST["txtnom"]."','".$_POST["apepat"]."','".$_POST["apemat"]."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."','".$_POST["distrito"]."')";
 			$sr=pg_query($link, $sql); 
 
 			$sq3="Select max(idpostulante) from postulante ";

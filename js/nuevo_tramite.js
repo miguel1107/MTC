@@ -62,13 +62,18 @@ function solonumeros(e) {
 	return (key >= 48 && key <= 57)
 }	
 
-function cargadistrito() {
-	var prov=$('#provincia').val();
+function cargadistrito(di,pro) {
+	if (pro==0) {
+		var prov=$('#provincia').val();
+	}else{
+		prov=pro;
+	}
 	var	options={
 		type: 'post',
  		url: 'controller/ctrDistrito.php',
  		data: {
  			id:prov,
+ 			dis:di,
  			action: 'cargacombo'
  		},
 	};
@@ -81,8 +86,7 @@ function cargadistrito() {
 	})
 	.always(function() {
 		console.log("complete");
-	});
-	
+	});	
 }
 
 $(document).ready(function() {
@@ -105,4 +109,5 @@ $(document).ready(function() {
 			$('#idcentrocurso').val(ui.item.id);
 		},
 	});
+	//cargadistrito(0);
 });
