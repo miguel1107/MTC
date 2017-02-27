@@ -60,8 +60,7 @@ function MM_goToURL() { //v3.0
 
 <script language="JavaScript">
 	<!--
-	function validar(form1)
-	{
+	function validar(form1){
 		console.log("--------------------------------------");
 		console.log("Apellido Paterno: " + form1.apepat.value);
 		console.log("Apellido Materno: " + form1.apemat.value);
@@ -92,91 +91,137 @@ function MM_goToURL() { //v3.0
 		console.log("salida 2: "+ $salida2);
 		console.log("======================");
 
-		if (form1.tipotra.value=="")
-		{
+
+		if (form1.tipotra.value=="0"){
 			alert("Debe ingresar Tipo de Tramite");
 			form1.tipotra.focus();
 			return false;
 		}
-		if (form1.categoria.value=="")
-		{
-			alert("Debe ingresar Tipo de Categoria");
+		if (form1.categoria.value=="0"){
+			alert("Debe ingresar Categoria");
 			form1.categoria.focus();
 			return false;
 		}
-
-		if (form1.apepat.value=="")
-		{
+		if (form1.apepat.value==""){
 			alert ("Debe Ingresar Apellido Paterno");
 			form1.apepat.focus();
 			return false;
 		}
-		if (form1.apemat.value=="")
-		{
+		if (form1.apemat.value==""){
 			alert("Debe Ingresar Apellido Materno");
 			form1.apemat.focus();
 			return false;
 		}
-		if (form1.txtnom.value=="")
-		{
+		if (form1.txtnom.value==""){
 			alert("Debe Ingresar  Nombre");
 			form1.txtnom.focus();
 			return false;
-		} 
-		if (form1.fefe.value=="")
-		{
+		}
+		if (form1.fefe.value==""){
 			alert("Debe Ingresar Fecha de Programacion");
 			form1.fefe.focus();
 			return false;
 		} 
-		if (form1.edad.value=="")
-		{
-			alert("Debe Ingresar su Edad");
+		if (fefe != undefined && form1.fefe.value != "" ){
+		 
+		 	if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fefe.value)){
+			 	alert("formato de fecha no volido (dd/mm/aaaa)");
+			 	form1.fefe.focus();
+			 	return false;
+			}
+			var dia  =  parseInt(fefe.value.substring(0,2),10);
+			var mes  =  parseInt(fefe.value.substring(3,5),10);
+			var anio =  parseInt(fefe.value.substring(6),10);
+			switch(mes){
+				case 1:
+			 	case 3:
+			 	case 5:
+			 	case 7:
+			 	case 8:
+			 	case 10:
+			 	case 12:
+			 	numDias=31;
+			 	break;
+			 	case 4: case 6: case 9: case 11:
+			 	numDias=30;
+			 	break;
+			 	case 2:
+			 	if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
+			 	break;
+			 	default:
+			 	alert("Fecha introducida erronea");
+			 	form1.fefe.focus();
+			 	return false;
+
+			}
+			if (dia>numDias || dia==0){
+				alert("Fecha introducida erronea");
+				form1.fefe.focus();
+				return false;
+			}
+        }
+        if (form1.edad.value==""){
+			alert("Debe Ingresar su fecha de nacimiento");
 			form1.edad.focus();
 			return false;
-		} 
-		if (form1.profe.value=="")
-		{
+		}
+		if (form1.profe.value==""){
 			alert("Debe Ingresar su Profesion");
 			form1.profe.focus();
 			return false;
 		} 
-
-		if (form1.estadocivil.value=="")
-		{
+		if (form1.estadocivil.value=="0"){
 			alert("Debe Ingresar su Estado Civil");
 			form1.estadocivil.focus();
 			return false;
 		}
-
-		if (form1.dni.value!="")
-		{
+		if (form1.dni.value!=""){
 			var campo = form1.dni.value;
 			if (campo.length!=8) {
 				alert("Por Favor, Ingrese el DNI con 8 digitos.");
 				form1.dni.focus();
 				return (false);
 			}
+		}else if(form1.dni.value==""){
+			alert("Debe ingresar Dni");
+			form1.dni.focus();
+			return false;
 		}
-		if (form1.ce.value!="")
-		{
+		if (form1.ce.value!=""){
 			var campo = form1.ce.value;
 			if (campo.length!=9) {
 				alert("Por Favor, Ingrese el Carnet Extranjeria con 9 digitos.");
 				form1.ce.focus();
 				return (false);
 			}
+		}else if(form1.ce.value==""){
+			alert("Debe ingresar C.E");
+			form1.ce.focus();
+			return false;
 		}
-		if (form1.estatura.value=="")
-		{
+		if (form1.estatura.value==""){
 			alert("Debe Ingresar Estatura");
 			form1.estatura.focus();
 			return false;
 		} 
-		if (form1.direccion.value=="")
-		{
+		if (form1.provincia.value=="0"){
+			alert("Debe escoger una provincia");
+			form1.provincia.focus();
+			return false;
+		}
+		if (form1.distrito.value=="0"){
+			alert("Debe escoger un distrito");
+			form1.distrito.focus();
+			return false;
+		}
+		if (form1.direccion.value==""){
 			alert("Debe Ingresar Direccion");
 			form1.direccion.focus();
+			return false;
+		}
+		if (form1.telefono.value==""){
+			alert("Debe Ingresar telefono");
+			form1.telefono.focus();
 			return false;
 		}
 		if (form1.correo.value==""){
@@ -189,11 +234,10 @@ function MM_goToURL() { //v3.0
 			}else{
 				alert('Le falta el @ al correo');
 				form1.correo.focus;
+				return false;
 			}
-			
 		}
-		if (form1.tipotra.value!="4")
-		{
+		if (form1.tipotra.value!="4"){
 			if (form1.fechaexamen.value==""){
 				alert("Debe Ingresar Fecha de Exomen");
 				form1.fechaexamen.focus();
@@ -210,103 +254,37 @@ function MM_goToURL() { //v3.0
 				return false;
 			}
 		}
-
-	  /*ramite = document.getElementById("tipotramite");
-	  if ( tramite.value  != ""){
-	  	if (sel.value=="17" && tramite.value  != "RECATEGORIZACION" ){*/
-
-	  		if (form1.categoria.value=="7" && form1.tipotra.value!="4")
-	  		{
-	  			if (form1.licencia.value==""){
-	  				alert("Debe Ingresar Nro de Licencia");
-	  				form1.licencia.focus();
-	  				return false;
-	  			}
-	  			if (form1.nrofichacurso.value==""){
-	  				alert("Debe Ingresar Nro de Ficha de Curso");
-	  				form1.nrofichacurso.focus();
-	  				return false;
-	  			}
-	  			if (form1.fechacurso.value==""){
-	  				alert("Debe Ingresar Fecha del Curso");
-	  				form1.fechacurso.focus();
-	  				return false;
-	  			}
-	  			if (form1.idcentrocurso.value==""){
-	  				alert("Debe Seleccionar Centro de Capacitacion");
-	  				form1.idcentrocurso.focus();
-	  				return false;
-	  			}
-	  		}else
-
-	  		{
-		/* if (form1.licencia.value==""){
-		 alert("Debe Ingresar Nro de Licencia");
-		 form1.licencia.focus();
-		 return false;
-		}*/
-
-	}
-	  ///***
-
-	  var clave = form1.tipotra.value;  
-	  var clave1 = form1.categoria.value;  
-	/*if (clave=='NUEVO' && clave1!=1) { 
-		alert("El tipo de Tromite no conciden, Verifique");
-		form1.categoria.focus(); 
-		return false;
-	}*/
-	if (clave=='2' && clave1==1) { 
-		alert("El tipo de Tromite no conciden, Verifique");
-		form1.categoria.focus(); 
-		return false;
-	}	
-	  ///****
-	  
-
-	  
-	  if (fefe != undefined && form1.fefe.value != "" ){
-		 //calcular_edad();
-		 if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fefe.value)){
-		 	alert("formato de fecha no volido (dd/mm/aaaa)");
-		 	form1.fefe.focus();
-		 	return false;
-		 }
-		 var dia  =  parseInt(fefe.value.substring(0,2),10);
-		 var mes  =  parseInt(fefe.value.substring(3,5),10);
-		 var anio =  parseInt(fefe.value.substring(6),10);
-		 switch(mes){
-		 	case 1:
-		 	case 3:
-		 	case 5:
-		 	case 7:
-		 	case 8:
-		 	case 10:
-		 	case 12:
-		 	numDias=31;
-		 	break;
-		 	case 4: case 6: case 9: case 11:
-		 	numDias=30;
-		 	break;
-		 	case 2:
-		 	if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
-		 	break;
-		 	default:
-		 	alert("Fecha introducida erronea");
-		 	form1.fefe.focus();
-		 	return false;
-
-		 }
-		 if (dia>numDias || dia==0){
-		 	alert("Fecha introducida erronea");
-		 	form1.fefe.focus();
-		 	return false;
-		 }
-             // return true;
-
-         }
-		  ////***
-		  if (fechaexamen != undefined && form1.fechaexamen.value != "" ){
+		if (form1.categoria.value=="7" && form1.tipotra.value!="4"){
+  			if (form1.licencia.value==""){
+  				alert("Debe Ingresar Nro de Licencia");
+  				form1.licencia.focus();
+  				return false;
+  			}
+  			if (form1.nrofichacurso.value==""){
+  				alert("Debe Ingresar Nro de Ficha de Curso");
+  				form1.nrofichacurso.focus();
+  				return false;
+  			}
+  			if (form1.fechacurso.value==""){
+  				alert("Debe Ingresar Fecha del Curso");
+  				form1.fechacurso.focus();
+  				return false;
+  			}
+  			if (form1.idcentrocurso.value==""){
+  				alert("Debe Seleccionar Centro de Capacitacion");
+  				form1.idcentrocurso.focus();
+  				return false;
+  			}
+  		}
+  		var clave = form1.tipotra.value;  
+	  	var clave1 = form1.categoria.value;  
+		
+		if (clave=='2' && clave1==1) { 
+			alert("El tipo de Tromite no conciden, Verifique");
+			form1.categoria.focus(); 
+			return false;
+		}	
+		if (fechaexamen != undefined && form1.fechaexamen.value != "" ){
 		  	if(form1.fechaexamen.value != ""){
 		  		if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fechaexamen.value)){
 		  			alert("formato de fecha no volido (dd/mm/aaaa)");
@@ -344,19 +322,36 @@ function MM_goToURL() { //v3.0
 		  		}
 		  		return true;
 		  	}
-		  }
-		  /////**
 		}
+		if (form1.fefe.value==""){
+			alert("Debe Ingresar Fecha de de examen");
+			form1.fefe.focus();
+			return false;
+		} 
 
-		function comprobarSiBisisesto(anio){
-			if ( ( anio % 100 != 0) && ((anio % 4 == 0) || (anio % 400 == 0))) {
-				return true;
-			}
-			else {
-				return false;
-			}
+		
+		
+		
+		
+		
+
+  		
+
+		
+		
+		  
+		
+	}
+
+	function comprobarSiBisisesto(anio){
+		if ( ( anio % 100 != 0) && ((anio % 4 == 0) || (anio % 400 == 0))) {
 			return true;
 		}
+		else {
+			return false;
+		}
+		return true;
+	}
 //-->
 </script> 
 <script>
@@ -513,29 +508,6 @@ function MM_goToURL() { //v3.0
 			form1.categoria.options[form1.categoria.options.length] = cat;
 		}
 	}
-</script>
-
-<script>
-// function mostrarcurso() {
-// 	tramite = document.getElementById("tipotramite");
-// 	sel= document.getElementById("categoria");
-// 	if ( tramite.value  != ""){
-// 		if (sel.value=="7"){
-// 		  	if (tramite.value  != "RECATEGORIZACION" ){
-// 			   	divC = document.getElementById("especial");
-// 			   	divC.style.display = "";
-// 		  	}else{ 
-// 				if (tramite.value  != "DUPLICADO" ){
-// 					divC = document.getElementById("especial");
-// 		        	divC.style.display="none";
-// 				}
-// 		  	}
-// 		}else{
-// 		   divC = document.getElementById("especial");
-// 		   divC.style.display="none";
-// 		}
-// 	}	
-// }
 </script>
 
 <SCRIPT LANGUAGE="JavaScript">
@@ -700,6 +672,8 @@ function MM_goToURL() { //v3.0
 					$idcentro = $fila2->idcentro;
 					$fecha = $fila2->fecha_inscripcion;
 					$tiptra = $fila2->tipotramite;
+					$correo=$fila->correo;
+					$tel=$fila->telefono;
 					//--
 						$long=strlen($tiptra);
 						if ($long==1) {
@@ -811,44 +785,51 @@ function MM_goToURL() { //v3.0
 				$sql="SELECT * FROM postulante WHERE dni='".$filtro."'";	
 			}
 			$rs=pg_query($link,$sql);
-			$fila =pg_fetch_object($rs);
-			$idpostulante= $fila->idpostulante;
-			$nom= $fila->nombres;		
-			$apep= $fila->apepat;
-			$apem= $fila->apemat;		
-			$fecnac= $fila->fecnac;
-			$edad= $fila->edad;
-			$prof = $fila->profesion;
-			$estado = $fila->estadocivil;
-			$dni = $fila->dni;
-			$lm = $fila->lm;
-			$ce = $fila->ce;
-			$ci = $fila->ci;
-			$sex = $fila->sexo;
-			$est = $fila->estatura;
-			$dom = $fila->domicilio;
-			$correo=$fila->correo;
-			$tel=$fila->telefono;
-			$dis=$fila->iddistrito;
-			//--
-			if (!empty($dis)) {
-				$nomdis;
-			
-            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
-                $f2=pg_query($link,$sq2);
-                $filatra2=pg_fetch_array($f2);
-               	$provi=$filatra2[1];
-			?>
-				<script type="text/javascript">
-					var di="<?php echo $dis; ?>";
-					var pr="<?php echo $provi; ?>";
-					//alert(di);
-					cargadistrito(di,pr);
+			if (pg_num_rows($rs)==0) {
+				?>
+				<script>
+					alert('EL DNI/CE NO EXISTE');
 				</script>
-			<?php 
+				<?php
+			}else{
+				$fila =pg_fetch_object($rs);
+				$idpostulante= $fila->idpostulante;
+				$nom= $fila->nombres;		
+				$apep= $fila->apepat;
+				$apem= $fila->apemat;		
+				$fecnac= $fila->fecnac;
+				$edad= $fila->edad;
+				$prof = $fila->profesion;
+				$estado = $fila->estadocivil;
+				$dni = $fila->dni;
+				$lm = $fila->lm;
+				$ce = $fila->ce;
+				$ci = $fila->ci;
+				$sex = $fila->sexo;
+				$est = $fila->estatura;
+				$dom = $fila->domicilio;
+				$correo=$fila->correo;
+				$tel=$fila->telefono;
+				$dis=$fila->iddistrito;
+				//--
+				if (!empty($dis)) {
+					$nomdis;
+				
+	            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
+	                $f2=pg_query($link,$sq2);
+	                $filatra2=pg_fetch_array($f2);
+	               	$provi=$filatra2[1];
+				?>
+					<script type="text/javascript">
+						var di="<?php echo $dis; ?>";
+						var pr="<?php echo $provi; ?>";
+						//alert(di);
+						cargadistrito(di,pr);
+					</script>
+				<?php 
+				}
 			}
             //--
-
 		}
 
 		?>	
@@ -1063,7 +1044,7 @@ function MM_goToURL() { //v3.0
 	<td class="objeto">&nbsp;</td>
 	<td class="objeto">
 		<select name="estadocivil"  class="cajatexto" id="cestadocivil">
-			<option value="'0">--Seleccion un estado--</option>
+			<option value="0">--Seleccion un estado--</option>
 			<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
 			<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO</option>
 			<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO</option>
@@ -1182,7 +1163,7 @@ function MM_goToURL() { //v3.0
     	<td class="marco">&nbsp;</td>
     	<td class="etiqueta" align="right">Teléfono &nbsp;&nbsp;</td>
     	<td class="objeto">&nbsp;</td>
-    	<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono" onKeyPress="return formato(event,form,this,80)" value="<?=$tel?>" size="9" maxlength="9"></td>
+    	<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono"  value="<?=$tel?>" size="9" maxlength="9" onKeyPress="return solonumeros(event)"></td>
     	<td class="objeto">&nbsp;</td>
     </tr>
     <tr valign="middle">
@@ -1240,8 +1221,15 @@ function MM_goToURL() { //v3.0
 					    	<td class="objeto" width="1%">&nbsp;</td>
 					    	<td class="objeto" width="72%">
 					    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
-
-								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
+							</td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
+						 <tr valign="middle">
+					    	<td class="marco" width="1%">&nbsp;</td>
+					    	<td class="etiqueta" align="right" width="20%">Centro Médico &nbsp;&nbsp;</td>
+					    	<td class="objeto" width="1%">&nbsp;</td>
+					    	<td class="objeto" width="72%">
+					    		<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
 								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
@@ -1313,7 +1301,7 @@ function MM_goToURL() { //v3.0
 								<td class="marco" width="1%">&nbsp;</td>
 								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
 								<td class="objeto" width="1%">&nbsp;</td>
-								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="60" maxlength="60"></td>
+								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="9" maxlength="9"></td>
 								<td class="objeto" width="6%">&nbsp;</td>
 							</tr>
 							<tr valign="middle">
@@ -1321,30 +1309,37 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
 								<td class="objeto" width="1%">&nbsp;</td>
 								<td class="objeto" width="72%">
-								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" placeholder="24/04/2015" value="<?php echo $fechacer; ?>">
+								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo $fechacer; ?>"> (dd/mm/yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>
 							</tr>
-								<tr valign="middle">
-									<td class="marco" width="1%">&nbsp;</td>
-									<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
-									<td class="objeto" width="1%">&nbsp;</td>
-									<td class="objeto" width="72%">
-										<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
-										<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 250px;" >
-										<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 250px;">
-										<!-- <?php
-											$sqx="select * from curso_especial where estado='1' ";
-                      						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
-                      					?> 
-                      					<select name="idcentrocurso" class="cajatexto" id="idcentrocurso">
-                      						<option  value="">--------Seleccione --------</option>
-                      						<?php while($rex=pg_fetch_array($rsx)) {?>
-                      						<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
-                      						<?php } ?>
-                      					</select>     --> 
-                  					</td>
+							<tr valign="middle">
+								<td class="marco" width="1%">&nbsp;</td>
+								<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
+								<td class="objeto" width="1%">&nbsp;</td>
+								<td class="objeto" width="72%">
+									<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
+								</td>
+				            </tr>
+				            <tr valign="middle">
+								<td class="marco" width="1%">&nbsp;</td>
+								<td class="etiqueta" align="right" width="20%">Escuela de Manejo &nbsp;&nbsp;</td>
+								<td class="objeto" width="1%">&nbsp;</td>
+								<td class="objeto" width="72%">
+									<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 250px;" >
+									<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 250px;">
+									<!-- <?php
+										$sqx="select * from curso_especial where estado='1' ";
+                  						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
+                  					?> 
+                  					<select name="idcentrocurso" class="cajatexto" id="idcentrocurso">
+                  						<option  value="">--------Seleccione --------</option>
+                  						<?php while($rex=pg_fetch_array($rsx)) {?>
+                  						<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
+                  						<?php } ?>
+                  					</select>     --> 
+              					</td>
 				            </tr>
 				        </tbody>
       				</table>

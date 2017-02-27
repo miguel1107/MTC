@@ -114,4 +114,56 @@ $(document).ready(function() {
 			$('#idcentrocurso').val(ui.item.id);
 		},
 	});
+
+	$('#dni').blur(function() {
+		var dni=$(this).val();
+		var options={
+			type: 'post',
+	 		url: 'controller/ctrPostulante.php',
+	 		data: {
+	 			dni:dni,
+	 			action: 'buscadni'
+	 		},
+		}
+		$.ajax(options)
+		.done(function(data) {
+			if (data==1) {
+				alert("DNI YA EXISTE");
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+	});
+
+	$('#ce').blur(function() {
+		var ce=$(this).val();
+		var options={
+			type: 'post',
+	 		url: 'controller/ctrPostulante.php',
+	 		data: {
+	 			ce:ce,
+	 			action: 'buscace'
+	 		},
+		}
+		$.ajax(options)
+		.done(function(data) {
+			if (data==1) {
+				alert("C.E YA EXISTE");
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+	});
 });
+
+

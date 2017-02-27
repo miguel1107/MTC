@@ -75,7 +75,7 @@ function Footer()
 	$this->Cell(50,5,'',0,0,'L',0);
 	$this->Cell(20,5,'_________________________',0,1,'L',0);
 	$this->Cell(100,5,'',0,0,'L',0);
-	$this->Cell(20,5,utf8_decode ($fila2[10]),0,1,'L',0);
+	$this->Cell(20,5,utf8_decode ($_SESSION["usu"]),0,1,'L',0);
 	
 }
 }
