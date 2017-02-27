@@ -1,14 +1,15 @@
-<?
+<?php
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 require ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
 		$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante  INNER JOIN categoria c on c.idcategoria=t.idcategoria  WHERE t.idtramite='".$_GET["idtramite"]."'";
+
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 
-		$sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[24]."'";
+		$sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[27]."'";
 		$rs27=pg_query($link,$sql27);
 		$fila27 =pg_fetch_array($rs27);
 		$dafu1=$fila2[26];

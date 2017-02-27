@@ -147,13 +147,14 @@ function imprimir(cod) {
 		{
 		$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c on
 c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
+
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 		//$result=pg_query($sql)or die ("Error : $sql");
 		//$row=pg_fetch_array($result);
 		}
 	}
-				$sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[24]."'";
+				$sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[27]."'";
 		$rs27=pg_query($link,$sql27);
 		$fila27 =pg_fetch_array($rs27);		  ?>
                         <tr>
@@ -388,7 +389,7 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
                             <td class="catBottom" colspan="7" height="33"><table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[15]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[18]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                 </tbody>
                             </table></td>
