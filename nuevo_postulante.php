@@ -9,7 +9,7 @@ $link=Conectarse();
 
 	//cambios
 require_once 'model/tipotramite.php';
-
+require_once 'model/provincia.php';
 	//--
 
 ?>
@@ -701,15 +701,15 @@ function MM_goToURL() { //v3.0
 					$fecha = $fila2->fecha_inscripcion;
 					$tiptra = $fila2->tipotramite;
 					//--
-					$nomcento;
+						$nomcento;
 					
 	                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
 	                    $f=pg_query($link,$sq);
 	                    $filatra=pg_fetch_array($f);
 	                    $nomcento= $filatra[0];
-	                
 
-                            //--
+
+                    //--
 
 					if ($idcategoria =="7")
 					{
@@ -779,6 +779,16 @@ function MM_goToURL() { //v3.0
 			$dom = $fila->domicilio;
 			$correo=$fila->correo;
 			$tel=$fila->telefono;
+			$dis=$fila->iddistrito;
+			//--
+				$nomdis;
+			
+            	$sq2="SELECT nombre FROM distrito WHERE iddistrito='".$dis."'";
+                $f2=pg_query($link,$sq2);
+                $filatra2=pg_fetch_array($f2);
+                $nomdis= $filatra2[0];
+            //--
+
 		}
 
 		?>	
@@ -1089,7 +1099,22 @@ function MM_goToURL() { //v3.0
     	<td class="marco">&nbsp;</td>
     	<td class="etiqueta" align="right">Domicilio &nbsp;&nbsp;</td>
     	<td class="objeto">&nbsp;</td>
-    	<td class="objeto"><input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64"></td>
+    	<td class="objeto">
+    		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito()" style="width: 100px;">
+				<option value="0">---Provincia---</option>
+				<?php 
+				$pro= new provincia();
+				$rs2=$pro->retornaLista();
+				while ($n2=pg_fetch_array($rs2)) {
+					?>
+					<option value="<?php echo $n2[0]; ?>"> <?php echo $n2[1]; ?></option>
+					<?php 
+				}
+				?>
+			</select>
+			<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;"></select>
+
+    		<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64"></td>
     	<td class="objeto">&nbsp;</td>
     </tr>
 

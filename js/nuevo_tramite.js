@@ -62,6 +62,29 @@ function solonumeros(e) {
 	return (key >= 48 && key <= 57)
 }	
 
+function cargadistrito() {
+	var prov=$('#provincia').val();
+	var	options={
+		type: 'post',
+ 		url: 'controller/ctrDistrito.php',
+ 		data: {
+ 			id:prov,
+ 			action: 'cargacombo'
+ 		},
+	};
+	$.ajax(options)
+	.done(function(data) {
+		$('#distrito').html(data);
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+}
+
 $(document).ready(function() {
 	$("#nomcentro").autocomplete({
 		source:'autocompletes/centromedico.php',
