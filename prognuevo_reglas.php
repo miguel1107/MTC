@@ -225,7 +225,7 @@ function MM_goToURL() { //v3.0
                    $idusuario=$reg11[0];
                  }
                  $idtraaa=$idusuario;
-                 $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$v."' and t.estado='1'";
+                 $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
                  $result=pg_query($sql)or die ("Error : $sql");
                  $row=pg_fetch_array($result);
                }
@@ -244,7 +244,7 @@ function MM_goToURL() { //v3.0
 //		$sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idpostulante='".$v."' and t.estado='1'";
                  $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
                  
-                 $result=pg_query($sql) or die ("Error : $sql");
+                 $result=pg_query($sql)or die ("Error : $sql");
                  $row=pg_fetch_array($result);
                }
              }
