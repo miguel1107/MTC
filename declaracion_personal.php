@@ -77,6 +77,7 @@ function imprimir(cod) {
 	foreach($_POST["chk"] as $k =>$v)
 		{
 		$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE t.idtramite='".$v."'";
+    
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 	///**************
@@ -314,8 +315,8 @@ echo $xfila27[0];		?>
                                           <!--<a href="javascript:imprimir()"><img src="imag/print.gif" width="97" height="27" border="0"></a>-->
                                           <input type="hidden" name="idpost" value="<?=$fila2[0]?>">
                                           <input type="hidden" name="pagina" value="listado_tramite.php">
-                                          <input type="hidden" name="id" value="<?=$fila2[15]?>">
-                                          <a href="javascript:imprimir(<?=$fila2[15]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                          <input type="hidden" name="id" value="<?=$fila2[18]?>">
+                                          <a href="javascript:imprimir(<?=$fila2[18]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                   </tbody>
                               </table></td>
