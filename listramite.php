@@ -110,7 +110,22 @@ include("paginator.inc.php");
             <td>
 
               <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-               <nobr> <?=$reg[11]?></nobr>
+               <nobr> 
+                 <?php 
+                $echotra;
+                $tra=$reg[11];
+                $long=strlen($tra);
+                if ($long==1) {
+                  $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                  $rs=pg_query($con,$sql);
+                  $fila =pg_fetch_array($rs);
+                  echo $echotra=$fila[1];
+                }else if($long>1){
+                  echo $reg[11];
+                }
+                
+              ?>
+               </nobr>
               </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
             <nobr>  <?=$reg[5]?></nobr>

@@ -1,10 +1,15 @@
-function mostrarcurso(){
-	idtipo=$('#tipotramite').val();
+function mostrarcurso(cat,tip){
+	if (tip==0) {
+		idtipo=$('#tipotramite').val();
+	}else{
+		idtipo=tip;
+	}
  	var options={
  		type: 'post',
  		url: 'controller/ctrCategoria.php',
  		data: {
  			id:idtipo,
+ 			cat:cat,
  			action: 'cargacombo'
  		},
  	};
@@ -109,5 +114,4 @@ $(document).ready(function() {
 			$('#idcentrocurso').val(ui.item.id);
 		},
 	});
-	//cargadistrito(0);
 });

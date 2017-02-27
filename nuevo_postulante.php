@@ -701,27 +701,59 @@ function MM_goToURL() { //v3.0
 					$fecha = $fila2->fecha_inscripcion;
 					$tiptra = $fila2->tipotramite;
 					//--
-						$nomcento;
-					
-	                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
-	                    $f=pg_query($link,$sq);
-	                    $filatra=pg_fetch_array($f);
-	                    $nomcento= $filatra[0];
+						$long=strlen($tiptra);
+						if ($long==1) {
+							$idtiptra=$tiptra;
 
+						}else if($long>1){
+							$sqltipo="SELECT id_tipo FROM tipo_tramite WHERE nombre='".$tiptra."'";
+							$gg=pg_query($link,$sqltipo);
+							$tt=pg_fetch_array($gg);
+							$idtiptra=$tt[0];
+						}
+						?>
+							<script type="text/javascript">
+								var di="<?php echo $idcategoria; ?>";
+								var pr="<?php echo $idtiptra; ?>";
+								//alert(di);
+								mostrarcurso(di,pr);
+							</script>
+					<?php 
+						if (!empty($idcentro)) {
+							$nomcento;
+		                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
+		                    $f=pg_query($link,$sq);
+		                    $filatra=pg_fetch_array($f);
+		                    $nomcento= $filatra[0];
+						}
 
+	                    $sqlcerti="SELECT * FROM certificado_curso WHERE idtramite='".$v."'";
+						$fc=pg_query($link,$sqlcerti);
+						if (pg_num_rows($fc)!=0) {
+							$filcer=pg_fetch_array($fc);
+							$licencia=$filcer[1];
+							$fechacer=$filcer[2];
+							$nrofichacurso=$filcer[3];
+							$idcursocer=$filcer[4];
+							$sqles="SELECT nombre_curso_especial FROM 	curso_especial WHERE id_curso_especial='".$idcursocer."'";
+							$rrr=pg_query($link,$sqles);
+							$fi=pg_fetch_array($rrr);
+							$nomcursocer=$fi[0];
+							
+						}
                     //--
 
-					if ($idcategoria =="7")
-					{
-						$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
-						$rs_especial=pg_query($link,$sql_especial);
-						$fila_especial =pg_fetch_object($rs_especial);
-						$nrofichacurso = $fila_especial->nrofichacurso;
-						$id_curso= $fila_especial->id_curso_especial;
-						$fechacurso = $fila_especial->fechacurso;
-						$licencia = $fila_especial->licencia;
+					// if ($idcategoria =="7")
+					// {
+					// 	$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
+					// 	$rs_especial=pg_query($link,$sql_especial);
+					// 	$fila_especial =pg_fetch_object($rs_especial);
+					// 	$nrofichacurso = $fila_especial->nrofichacurso;
+					// 	$id_curso= $fila_especial->id_curso_especial;
+					// 	$fechacurso = $fila_especial->fechacurso;
+					// 	$licencia = $fila_especial->licencia;
 
-					}
+					// }
 				}
 			}
 
@@ -747,6 +779,24 @@ function MM_goToURL() { //v3.0
 			$dom = $fila->domicilio;
 			$correo=$fila->correo;
 			$tel=$fila->telefono;
+			$dis=$fila->iddistrito;
+			if (!empty($dis)) {
+				$nomdis;
+			
+            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
+                $f2=pg_query($link,$sq2);
+                $filatra2=pg_fetch_array($f2);
+               	$provi=$filatra2[1];
+			?>
+				<script type="text/javascript">
+					var di="<?php echo $dis; ?>";
+					var pr="<?php echo $provi; ?>";
+					//alert(di);
+					cargadistrito(di,pr);
+				</script>
+			<?php
+			}
+
 		//pg_free_result($rs);
 
 		}
@@ -829,7 +879,7 @@ function MM_goToURL() { //v3.0
 								<td  height="10" width="6">&nbsp;</td>
 								<td  align="left" width="221"><span class="Estilo1">&nbsp;DATOS DEL REGISTRO</span></td>
 								<td width="159" height="20" align="right" ><div align="left">
-									<input name="dni2" type="text" class="cajatexto" id="dni2" style="text-align: right;" onKeyPress="return buscarpostulante(event,this,9)"   value="<?=$dni?>" size="9">
+									<input name="dni2" type="text" class="cajatexto" id="dni2" style="text-align: right;" onKeyPress="return buscarpostulante(event,this,9)"   value="<?=$dni?>" size="9" <?php if($_GET["sw"]==3) {echo 'readonly';} ?>>
 								</div></td>
 								<td width="216" align="right" ><span class="Estilo1">&nbsp;N&ordm; REGISTRO: </span></td>
 								<td width="19" align="right" >&nbsp;</td>
@@ -867,14 +917,14 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right">TIPO DE TRAMITE &nbsp;</td>
 								<td class="objeto">&nbsp;</td>
 								<td class="objeto">
-									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso()">
+									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso(0,0)">
 										<option value="0">---Seleccione Tipo---</option>
 										<?php 
 										$tipo= new tipotramite();
 										$rs=$tipo->retornaLista();
 										while ($n=pg_fetch_array($rs)) {
 											?>
-											<option value="<?php echo $n[0]; ?>"> <?php echo $n[1]; ?></option>
+											<option value="<?php echo $n[0];  ?>" <?php if ($idtiptra==$n[0]) {echo 'selected';} ?> > <?php echo $n[1]; ?></option>
 											<?php 
 										}
 										?>
@@ -941,7 +991,7 @@ function MM_goToURL() { //v3.0
                   			<tr>
                   				<td  height="10" width="10">&nbsp;</td>
                   				<td  align="left" width="90%"><span class="Estilo1">&nbsp;DATOS PERSONALES </span></td>
-                  				<td align="right" height="20"><?=$idcategoria?></td>
+                  				<td align="right" height="20"></td>
                   			</tr>
                   		</tbody>
                   	</table></td>
@@ -1069,12 +1119,12 @@ function MM_goToURL() { //v3.0
 								<td width="36">DNI</td>
 								<td width="107">
 									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
-									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4) {echo 'readonly';} ?> >
+									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="32">C.E</td>
 								<td width="90">
 									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
-									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4) {echo 'readonly';} ?> >
+									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="19">&nbsp;</td>
 								<td width="23">&nbsp;</td>
@@ -1271,7 +1321,7 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
 								<td class="objeto" width="1%">&nbsp;</td>
 								<td class="objeto" width="72%">
-								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" placeholder="24/04/2015">
+								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" placeholder="24/04/2015" value="<?php echo $fechacer; ?>">
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>
@@ -1282,8 +1332,8 @@ function MM_goToURL() { //v3.0
 									<td class="objeto" width="1%">&nbsp;</td>
 									<td class="objeto" width="72%">
 										<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
-										<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" style="width: 250px;" >
-										<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" style="width: 250px;">
+										<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 250px;" >
+										<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 250px;">
 										<!-- <?php
 											$sqx="select * from curso_especial where estado='1' ";
                       						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
