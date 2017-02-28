@@ -10,17 +10,20 @@
 			$id=$_POST['id'];
 			$cate=$_POST['cat'];
 			$rs=$cat->cargacombo($id);
-			echo "<option value='0'>---SELECCIONE CATEGORIA</option>";
+			$r= "<option value='0'>---SELECCIONE CATEGORIA</option>";
 			while ($n=pg_fetch_array($rs)) {
 				if ($cate==0) {
-					echo "<option value='".$n[0]."'>". $n[1]."</option>";
+					$r=$r."<option value='".$n[0]."'>". $n[1]."</option>";
 				}else{
 					if ($cate==$n[0]) {
-						echo "<option value='".$n[0]."' selected>". $n[1]."</option>";
+						$r=$r."<option value='".$n[0]."' selected>". $n[1]."</option>";
+					}else{
+						$r=$r."<option value='".$n[0]."'>". $n[1]."</option>";	
 					}
 				}
 				
 			}
+			echo $r;
 			break;
 		
 		default:

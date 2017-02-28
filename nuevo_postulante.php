@@ -52,11 +52,11 @@ require_once 'model/provincia.php';
 	</script>
 
 	<script languaje="JavaScript">
-function MM_goToURL() { //v3.0
-	var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-	for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-}
-</script>
+		function MM_goToURL() { //v3.0
+			var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+			for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+		}
+	</script>
 
 <script language="JavaScript">
 	<!--
@@ -123,35 +123,35 @@ function MM_goToURL() { //v3.0
 			return false;
 		} 
 		if (fefe != undefined && form1.fefe.value != "" ){
-		 
-		 	if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fefe.value)){
-			 	alert("formato de fecha no volido (dd/mm/aaaa)");
-			 	form1.fefe.focus();
-			 	return false;
+
+			if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fefe.value)){
+				alert("formato de fecha no volido (dd/mm/aaaa)");
+				form1.fefe.focus();
+				return false;
 			}
 			var dia  =  parseInt(fefe.value.substring(0,2),10);
 			var mes  =  parseInt(fefe.value.substring(3,5),10);
 			var anio =  parseInt(fefe.value.substring(6),10);
 			switch(mes){
 				case 1:
-			 	case 3:
-			 	case 5:
-			 	case 7:
-			 	case 8:
-			 	case 10:
-			 	case 12:
-			 	numDias=31;
-			 	break;
-			 	case 4: case 6: case 9: case 11:
-			 	numDias=30;
-			 	break;
-			 	case 2:
-			 	if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
-			 	break;
-			 	default:
-			 	alert("Fecha introducida erronea");
-			 	form1.fefe.focus();
-			 	return false;
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+				numDias=31;
+				break;
+				case 4: case 6: case 9: case 11:
+				numDias=30;
+				break;
+				case 2:
+				if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
+				break;
+				default:
+				alert("Fecha introducida erronea");
+				form1.fefe.focus();
+				return false;
 
 			}
 			if (dia>numDias || dia==0){
@@ -159,8 +159,8 @@ function MM_goToURL() { //v3.0
 				form1.fefe.focus();
 				return false;
 			}
-        }
-        if (form1.edad.value==""){
+		}
+		if (form1.edad.value==""){
 			alert("Debe Ingresar su fecha de nacimiento");
 			form1.edad.focus();
 			return false;
@@ -255,29 +255,29 @@ function MM_goToURL() { //v3.0
 			}
 		}
 		if (form1.categoria.value=="7" && form1.tipotra.value!="4"){
-  			if (form1.licencia.value==""){
-  				alert("Debe Ingresar Nro de Licencia");
-  				form1.licencia.focus();
-  				return false;
-  			}
-  			if (form1.nrofichacurso.value==""){
-  				alert("Debe Ingresar Nro de Ficha de Curso");
-  				form1.nrofichacurso.focus();
-  				return false;
-  			}
-  			if (form1.fechacurso.value==""){
-  				alert("Debe Ingresar Fecha del Curso");
-  				form1.fechacurso.focus();
-  				return false;
-  			}
-  			if (form1.idcentrocurso.value==""){
-  				alert("Debe Seleccionar Centro de Capacitacion");
-  				form1.idcentrocurso.focus();
-  				return false;
-  			}
-  		}
-  		var clave = form1.tipotra.value;  
-	  	var clave1 = form1.categoria.value;  
+			if (form1.licencia.value==""){
+				alert("Debe Ingresar Nro de Licencia");
+				form1.licencia.focus();
+				return false;
+			}
+			if (form1.nrofichacurso.value==""){
+				alert("Debe Ingresar Nro de Ficha de Curso");
+				form1.nrofichacurso.focus();
+				return false;
+			}
+			if (form1.fechacurso.value==""){
+				alert("Debe Ingresar Fecha del Curso");
+				form1.fechacurso.focus();
+				return false;
+			}
+			if (form1.idcentrocurso.value==""){
+				alert("Debe Seleccionar Centro de Capacitacion");
+				form1.idcentrocurso.focus();
+				return false;
+			}
+		}
+		var clave = form1.tipotra.value;  
+		var clave1 = form1.categoria.value;  
 		
 		if (clave=='2' && clave1==1) { 
 			alert("El tipo de Tromite no conciden, Verifique");
@@ -285,62 +285,49 @@ function MM_goToURL() { //v3.0
 			return false;
 		}	
 		if (fechaexamen != undefined && form1.fechaexamen.value != "" ){
-		  	if(form1.fechaexamen.value != ""){
-		  		if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fechaexamen.value)){
-		  			alert("formato de fecha no volido (dd/mm/aaaa)");
-		  			form1.fechaexamen.focus();
-		  			return false;
-		  		}
-		  		var dia  =  parseInt(fechaexamen.value.substring(0,2),10);
-		  		var mes  =  parseInt(fechaexamen.value.substring(3,5),10);
-		  		var anio =  parseInt(fechaexamen.value.substring(6),10);
-		  		switch(mes){
-		  			case 1:
-		  			case 3:
-		  			case 5:
-		  			case 7:
-		  			case 8:
-		  			case 10:
-		  			case 12:
-		  			numDias=31;
-		  			break;
-		  			case 4: case 6: case 9: case 11:
-		  			numDias=30;
-		  			break;
-		  			case 2:
-		  			if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
-		  			break;
-		  			default:
-		  			alert("Fecha introducida erronea");
-		  			form1.fechaexamen.focus();
-		  			return false;
-		  		}
-		  		if (dia>numDias || dia==0){
-		  			alert("Fecha introducida erronea");
-		  			form1.fechaexamen.focus();
-		  			return false;
-		  		}
-		  		return true;
-		  	}
+			if(form1.fechaexamen.value != ""){
+				if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fechaexamen.value)){
+					alert("formato de fecha no volido (dd/mm/aaaa)");
+					form1.fechaexamen.focus();
+					return false;
+				}
+				var dia  =  parseInt(fechaexamen.value.substring(0,2),10);
+				var mes  =  parseInt(fechaexamen.value.substring(3,5),10);
+				var anio =  parseInt(fechaexamen.value.substring(6),10);
+				switch(mes){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+					numDias=31;
+					break;
+					case 4: case 6: case 9: case 11:
+					numDias=30;
+					break;
+					case 2:
+					if (comprobarSiBisisesto(anio)){ numDias=29 }else{ numDias=28};
+					break;
+					default:
+					alert("Fecha introducida erronea");
+					form1.fechaexamen.focus();
+					return false;
+				}
+				if (dia>numDias || dia==0){
+					alert("Fecha introducida erronea");
+					form1.fechaexamen.focus();
+					return false;
+				}
+				return true;
+			}
 		}
 		if (form1.fefe.value==""){
 			alert("Debe Ingresar Fecha de de examen");
 			form1.fefe.focus();
 			return false;
 		} 
-
-		
-		
-		
-		
-		
-
-  		
-
-		
-		
-		  
-		
 	}
 
 	function comprobarSiBisisesto(anio){
@@ -352,6 +339,7 @@ function MM_goToURL() { //v3.0
 		}
 		return true;
 	}
+
 //-->
 </script> 
 <script>
@@ -550,7 +538,7 @@ function MM_goToURL() { //v3.0
 			diaCumple = diaCumple.substring(1, 2);
 		}
 		var edad = yyyyActual - yyyyCumple;
-	
+
 		//validamos si el mes de cumpleaoos es menor al actual
 		//o si el mes de cumpleaoos es igual al actual
 		//y el dia actual es menor al del nacimiento
@@ -675,100 +663,100 @@ function MM_goToURL() { //v3.0
 					$correo=$fila->correo;
 					$tel=$fila->telefono;
 					//--
-						$long=strlen($tiptra);
-						if ($long==1) {
-							$idtiptra=$tiptra;
+					$long=strlen($tiptra);
+					if ($long==1) {
+						$idtiptra=$tiptra;
+					}else if($long>1){
+						$sqltipo="SELECT id_tipo FROM tipo_tramite WHERE nombre='".$tiptra."'";
+						$gg=pg_query($link,$sqltipo);
+						$tt=pg_fetch_array($gg);
+						$idtiptra=$tt[0];
+					}
+					
+					?>
+					<script type="text/javascript">
+						var di="<?php echo $idcategoria; ?>";
+						var pr="<?php echo $idtiptra; ?>";
+						//alert(di);
+						mostrarcurso(di,pr);
+					</script>
+							<?php 
+							if (!empty($idcentro)) {
+								$nomcento;
+								$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
+								$f=pg_query($link,$sq);
+								$filatra=pg_fetch_array($f);
+								$nomcento= $filatra[0];
+							}
 
-						}else if($long>1){
-							$sqltipo="SELECT id_tipo FROM tipo_tramite WHERE nombre='".$tiptra."'";
-							$gg=pg_query($link,$sqltipo);
-							$tt=pg_fetch_array($gg);
-							$idtiptra=$tt[0];
-						}
-						?>
-							<script type="text/javascript">
-								var di="<?php echo $idcategoria; ?>";
-								var pr="<?php echo $idtiptra; ?>";
-								//alert(di);
-								mostrarcurso(di,pr);
-							</script>
-					<?php 
-						if (!empty($idcentro)) {
-							$nomcento;
-		                	$sq="SELECT nombre FROM centro_medico WHERE idcentro='".$idcentro."'";
-		                    $f=pg_query($link,$sq);
-		                    $filatra=pg_fetch_array($f);
-		                    $nomcento= $filatra[0];
-						}
+							$sqlcerti="SELECT * FROM certificado_curso WHERE idtramite='".$v."'";
+							$fc=pg_query($link,$sqlcerti);
+							if (pg_num_rows($fc)!=0) {
+								$filcer=pg_fetch_array($fc);
+								$licencia=$filcer[1];
+								$fechacer=$filcer[2];
+								$nrofichacurso=$filcer[3];
+								$idcursocer=$filcer[4];
+								$sqles="SELECT nombre_curso_especial FROM 	curso_especial WHERE id_curso_especial='".$idcursocer."'";
+								$rrr=pg_query($link,$sqles);
+								$fi=pg_fetch_array($rrr);
+								$nomcursocer=$fi[0];
 
-	                    $sqlcerti="SELECT * FROM certificado_curso WHERE idtramite='".$v."'";
-						$fc=pg_query($link,$sqlcerti);
-						if (pg_num_rows($fc)!=0) {
-							$filcer=pg_fetch_array($fc);
-							$licencia=$filcer[1];
-							$fechacer=$filcer[2];
-							$nrofichacurso=$filcer[3];
-							$idcursocer=$filcer[4];
-							$sqles="SELECT nombre_curso_especial FROM 	curso_especial WHERE id_curso_especial='".$idcursocer."'";
-							$rrr=pg_query($link,$sqles);
-							$fi=pg_fetch_array($rrr);
-							$nomcursocer=$fi[0];
-							
-						}
+							}
                     //--
 
-					// if ($idcategoria =="7")
-					// {
-					// 	$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
-					// 	$rs_especial=pg_query($link,$sql_especial);
-					// 	$fila_especial =pg_fetch_object($rs_especial);
-					// 	$nrofichacurso = $fila_especial->nrofichacurso;
-					// 	$id_curso= $fila_especial->id_curso_especial;
-					// 	$fechacurso = $fila_especial->fechacurso;
-					// 	$licencia = $fila_especial->licencia;
+							if ($idcategoria =="7")
+							{
+								$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
+								$rs_especial=pg_query($link,$sql_especial);
+								$fila_especial =pg_fetch_object($rs_especial);
+								$nrofichacurso = $fila_especial->nrofichacurso;
+								$id_curso= $fila_especial->id_curso_especial;
+								$fechacurso = $fila_especial->fechacurso;
+								$licencia = $fila_especial->licencia;
 
-					// }
-				}
-			}
+							}
+						}
+					}
 
 	//foreach($_POST["chk"] as $k =>$v)
 		//{
-			$sql="SELECT * FROM postulante WHERE idpostulante='".$idpo."'";
-			$rs=pg_query($link,$sql);
-			$fila =pg_fetch_object($rs);
-			$idpostulante= $fila->idpostulante;
-			$nom= $fila->nombres;		
-			$apep= $fila->apepat;
-			$apem= $fila->apemat;		
-			$fecnac= $fila->fecnac;
-			$edad= $fila->edad;
-			$prof = $fila->profesion;
-			$estado = $fila->estadocivil;
-			$dni = $fila->dni;
-			$lm = $fila->lm;
-			$ce = $fila->ce;
-			$ci = $fila->ci;
-			$sex = $fila->sexo;
-			$est = $fila->estatura;
-			$dom = $fila->domicilio;
-			$correo=$fila->correo;
-			$tel=$fila->telefono;
-			$dis=$fila->iddistrito;
-			if (!empty($dis)) {
-				$nomdis;
-			
-            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
-                $f2=pg_query($link,$sq2);
-                $filatra2=pg_fetch_array($f2);
-               	$provi=$filatra2[1];
-			?>
-				<script type="text/javascript">
-					var di="<?php echo $dis; ?>";
-					var pr="<?php echo $provi; ?>";
+					$sql="SELECT * FROM postulante WHERE idpostulante='".$idpo."'";
+					$rs=pg_query($link,$sql);
+					$fila =pg_fetch_object($rs);
+					$idpostulante= $fila->idpostulante;
+					$nom= $fila->nombres;		
+					$apep= $fila->apepat;
+					$apem= $fila->apemat;		
+					$fecnac= $fila->fecnac;
+					$edad= $fila->edad;
+					$prof = $fila->profesion;
+					$estado = $fila->estadocivil;
+					$dni = $fila->dni;
+					$lm = $fila->lm;
+					$ce = $fila->ce;
+					$ci = $fila->ci;
+					$sex = $fila->sexo;
+					$est = $fila->estatura;
+					$dom = $fila->domicilio;
+					$correo=$fila->correo;
+					$tel=$fila->telefono;
+					$dis=$fila->iddistrito;
+					if (!empty($dis)) {
+						$nomdis;
+
+						$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
+						$f2=pg_query($link,$sq2);
+						$filatra2=pg_fetch_array($f2);
+						$provi=$filatra2[1];
+						?>
+						<script type="text/javascript">
+							var di="<?php echo $dis; ?>";
+							var pr="<?php echo $provi; ?>";
 					//alert(di);
 					cargadistrito(di,pr);
 				</script>
-			<?php
+				<?php
 			}
 
 		//pg_free_result($rs);
@@ -814,19 +802,19 @@ function MM_goToURL() { //v3.0
 				//--
 				if (!empty($dis)) {
 					$nomdis;
-				
-	            	$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
-	                $f2=pg_query($link,$sq2);
-	                $filatra2=pg_fetch_array($f2);
-	               	$provi=$filatra2[1];
-				?>
+
+					$sq2="select p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
+					$f2=pg_query($link,$sq2);
+					$filatra2=pg_fetch_array($f2);
+					$provi=$filatra2[1];
+					?>
 					<script type="text/javascript">
 						var di="<?php echo $dis; ?>";
 						var pr="<?php echo $provi; ?>";
 						//alert(di);
 						cargadistrito(di,pr);
 					</script>
-				<?php 
+					<?php 
 				}
 			}
             //--
@@ -898,7 +886,7 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right">TIPO DE TRAMITE &nbsp;</td>
 								<td class="objeto">&nbsp;</td>
 								<td class="objeto">
-									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso(0,0)">
+									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso(0,0)" <?php if($_GET["sw"]==3){echo 'disabled';} ?> >
 										<option value="0">---Seleccione Tipo---</option>
 										<?php 
 										$tipo= new tipotramite();
@@ -1142,174 +1130,174 @@ function MM_goToURL() { //v3.0
     	<td class="objeto">&nbsp;</td>
     	<td class="objeto">
     		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito(0,0)" style="width: 100px;">
-				<option value="0">---Provincia---</option>
-				<?php 
-				$pro= new provincia();
-				$rs2=$pro->retornaLista();
-				while ($n2=pg_fetch_array($rs2)) {
-					?>
-					<option value="<?php echo $n2[0]; ?> " <?php if($n2[0]==$provi){echo "selected";} ?>> <?php echo $n2[1]; ?></option>
-					<?php 
-				}
-				?>
-			</select>
-			<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;"></select>
+    			<option value="0">---Provincia---</option>
+    			<?php 
+    			$pro= new provincia();
+    			$rs2=$pro->retornaLista();
+    			while ($n2=pg_fetch_array($rs2)) {
+    				?>
+    				<option value="<?php echo $n2[0]; ?> " <?php if($n2[0]==$provi){echo "selected";} ?>> <?php echo $n2[1]; ?></option>
+    				<?php 
+    			}
+    			?>
+    		</select>
+    		<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;"></select>
 
     		<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64"></td>
-    	<td class="objeto">&nbsp;</td>
-    </tr>
+    		<td class="objeto">&nbsp;</td>
+    	</tr>
 
-    <tr valign="middle">
-    	<td class="marco">&nbsp;</td>
-    	<td class="etiqueta" align="right">Teléfono &nbsp;&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono"  value="<?=$tel?>" size="9" maxlength="9" onKeyPress="return solonumeros(event)"></td>
-    	<td class="objeto">&nbsp;</td>
-    </tr>
-    <tr valign="middle">
-    	<td class="marco">&nbsp;</td>
-    	<td class="etiqueta" align="right">Correo &nbsp;&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$correo?>" size="64" maxlength="64"></td>
-    	<td class="objeto">&nbsp;</td>
-    </tr>
-    <tr valign="middle">
-    	<td class="marco">&nbsp;</td>
-    	<td class="etiqueta" align="right">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    	<td class="objeto">&nbsp;</td>
-    </tr>
-    <tr>
-    	<td colspan="5">
-    		<div id="medico" style="display: block;">
-				<table width="100%" border="0" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr>
-					    	<td colspan="5">
-					    		<table width="50%" border="0" cellpadding="0" cellspacing="0">
-					    			<tbody>
-					    				<tr>
-						    				<td  height="10" width="10">&nbsp;</td>
-						    				<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MEDICO </span></td>
-						    				<td width="125" height="20" align="right"></td>
-						    			</tr>
-						    		</tbody>
-					    		</table>
-					    	</td>
-					    </tr>
-					    <tr valign="middle">
-					    	<td class="marco">&nbsp;</td>
-					    	<td class="etiqueta" align="right">&nbsp;</td>
-					    	<td class="objeto">&nbsp;</td>
-					    	<td class="objeto">&nbsp;</td>
-					    	<td class="objeto">&nbsp;</td>
-					    </tr>
-					    <tr valign="middle">
-					    	<td class="marco" width="1%">&nbsp;</td>
-					    	<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
-					    	<td class="objeto" width="1%">&nbsp;</td>
-					    	<td class="objeto" width="72%">
-					    		<input name="fechaexamen" type="text" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
-					    		<? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?>
-					    	</td>
-					    	<td class="objeto" width="6%">&nbsp;</td>
-					    </tr>
-					    <tr valign="middle">
-					    	<td class="marco" width="1%">&nbsp;</td>
-					    	<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
-					    	<td class="objeto" width="1%">&nbsp;</td>
-					    	<td class="objeto" width="72%">
-					    		<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
-							</td>
-							<td class="objeto" width="6%">&nbsp;</td>
-						</tr>
-						 <tr valign="middle">
-					    	<td class="marco" width="1%">&nbsp;</td>
-					    	<td class="etiqueta" align="right" width="20%">Centro Médico &nbsp;&nbsp;</td>
-					    	<td class="objeto" width="1%">&nbsp;</td>
-					    	<td class="objeto" width="72%">
-					    		<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
-								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
-							</td>
-							<td class="objeto" width="6%">&nbsp;</td>
-						</tr>
-						<tr valign="middle">
-							<td class="marco" width="1%">&nbsp;</td>
-							<td class="etiqueta" align="right" width="20%">Resultado&nbsp;&nbsp;</td>
-							<td class="objeto" width="1%">&nbsp;</td>
-							<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
-								<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
-								<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
-							</select></td>
-							<td class="objeto" width="6%">&nbsp;</td>
-						</tr>
-						<tr valign="middle">
-							<td class="marco" width="1%">&nbsp;</td>
-							<td class="etiqueta" align="right" width="20%">Restricciones&nbsp;&nbsp;</td>
-							<td class="objeto" width="1%">&nbsp;</td>
-							<td class="objeto" width="72%"><select name="restricciones" class="cajatexto" id="restricciones"  onkeypress="return formato(event,form,this)">
-								<option value="SIN RESTRICCIONES" <? if($rest=='SIN RESTRICCIONES') echo"selected"; ?>SIN RESTRICCIONES</option>
-								<option value="CON RESTRICCIONES" <? if($rest=='CON RESTRICCIONES') echo"selected"; ?>CON RESTRICCOINES</option>
-							</select></td>
-							<td class="objeto" width="6%">&nbsp;</td>
-						</tr>
-						<tr valign="middle">
-							<td class="marco" width="1%">&nbsp;</td>
-							<td class="etiqueta" align="right" width="20%">Observacion&nbsp;&nbsp;</td>
-							<td class="objeto" width="1%">&nbsp;</td>
-							<td class="objeto" width="72%"><input name="observacion"  type="text" class="cajatexto" id="observacion" onKeyPress="return formato(event,form,this,80)" value="<?=$obse?>" size="60" maxlength="60"></td>
-							<td class="objeto" width="6%">&nbsp;</td>
-						</tr>
-						<tr>
-							<td colspan="5" class="marco seccionblank">&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-    	</td>
-    </tr>
+    	<tr valign="middle">
+    		<td class="marco">&nbsp;</td>
+    		<td class="etiqueta" align="right">Teléfono &nbsp;&nbsp;</td>
+    		<td class="objeto">&nbsp;</td>
+    		<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono"  value="<?=$tel?>" size="9" maxlength="9" onKeyPress="return solonumeros(event)"></td>
+    		<td class="objeto">&nbsp;</td>
+    	</tr>
+    	<tr valign="middle">
+    		<td class="marco">&nbsp;</td>
+    		<td class="etiqueta" align="right">Correo &nbsp;&nbsp;</td>
+    		<td class="objeto">&nbsp;</td>
+    		<td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$correo?>" size="64" maxlength="64"></td>
+    		<td class="objeto">&nbsp;</td>
+    	</tr>
+    	<tr valign="middle">
+    		<td class="marco">&nbsp;</td>
+    		<td class="etiqueta" align="right">&nbsp;</td>
+    		<td class="objeto">&nbsp;</td>
+    		<td class="objeto">&nbsp;</td>
+    		<td class="objeto">&nbsp;</td>
+    	</tr>
+    	<tr>
+    		<td colspan="5">
+    			<div id="medico" style="display: block;">
+    				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    					<tbody>
+    						<tr>
+    							<td colspan="5">
+    								<table width="50%" border="0" cellpadding="0" cellspacing="0">
+    									<tbody>
+    										<tr>
+    											<td  height="10" width="10">&nbsp;</td>
+    											<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MEDICO </span></td>
+    											<td width="125" height="20" align="right"></td>
+    										</tr>
+    									</tbody>
+    								</table>
+    							</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco">&nbsp;</td>
+    							<td class="etiqueta" align="right">&nbsp;</td>
+    							<td class="objeto">&nbsp;</td>
+    							<td class="objeto">&nbsp;</td>
+    							<td class="objeto">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%">
+    								<input name="fechaexamen" type="text" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
+    								<? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?>
+    							</td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%">
+    								<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
+    							</td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">Centro Médico &nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%">
+    								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
+    								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
+    							</td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">Resultado&nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
+    								<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
+    								<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
+    							</select></td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">Restricciones&nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%"><select name="restricciones" class="cajatexto" id="restricciones"  onkeypress="return formato(event,form,this)">
+    								<option value="SIN RESTRICCIONES" <? if($rest=='SIN RESTRICCIONES') echo"selected"; ?>SIN RESTRICCIONES</option>
+    								<option value="CON RESTRICCIONES" <? if($rest=='CON RESTRICCIONES') echo"selected"; ?>CON RESTRICCOINES</option>
+    							</select></td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr valign="middle">
+    							<td class="marco" width="1%">&nbsp;</td>
+    							<td class="etiqueta" align="right" width="20%">Observacion&nbsp;&nbsp;</td>
+    							<td class="objeto" width="1%">&nbsp;</td>
+    							<td class="objeto" width="72%"><input name="observacion"  type="text" class="cajatexto" id="observacion" onKeyPress="return formato(event,form,this,80)" value="<?=$obse?>" size="60" maxlength="60"></td>
+    							<td class="objeto" width="6%">&nbsp;</td>
+    						</tr>
+    						<tr>
+    							<td colspan="5" class="marco seccionblank">&nbsp;</td>
+    						</tr>
+    					</tbody>
+    				</table>
+    			</div>
+    		</td>
+    	</tr>
 
-	<!-- CURSO DE PROFESIONALIZACION -->
-	<tr>
-		<td colspan="5">
-			<?php if($_GET["sw"]==3) { ?>
-				<div id="especial">              
-			<?php } else { ?>
-				<div id="especial" style="display: none;">              
-			<?php }?>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td colspan="5"  align="left" width="215">
-									<span class="Estilo1">
-										&nbsp;DATOS DEL CURSO DE ESPECIALIZACION - CATEGORIA ESPECIAL
-									</span>
-								</td>
-							</tr> 
-						</tbody>
-					</table>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>    
-							<tr valign="middle">
-								<td class="marco">&nbsp;</td>
-								<td class="etiqueta" align="right">&nbsp;</td>
-								<td class="objeto">&nbsp;</td>
-								<td class="objeto">&nbsp;</td>
-							</tr>
-							<tr valign="middle">
-								<td class="marco" width="1%">&nbsp;</td>
-								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
-								<td class="objeto" width="1%">&nbsp;</td>
-								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="9" maxlength="9"></td>
-								<td class="objeto" width="6%">&nbsp;</td>
-							</tr>
-							<tr valign="middle">
-								<td class="marco" width="1%">&nbsp;</td>
-								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
-								<td class="objeto" width="1%">&nbsp;</td>
-								<td class="objeto" width="72%">
-								<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo $fechacer; ?>"> (dd/mm/yyyy)
+    	<!-- CURSO DE PROFESIONALIZACION -->
+    	<tr>
+    		<td colspan="5">
+    			<?php if($_GET["sw"]==3) { ?>
+    			<div id="especial">              
+    				<?php } else { ?>
+    				<div id="especial" style="display: none;">              
+    					<?php }?>
+    					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    						<tbody>
+    							<tr>
+    								<td colspan="5"  align="left" width="215">
+    									<span class="Estilo1">
+    										&nbsp;DATOS DEL CURSO DE ESPECIALIZACION - CATEGORIA ESPECIAL
+    									</span>
+    								</td>
+    							</tr> 
+    						</tbody>
+    					</table>
+    					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    						<tbody>    
+    							<tr valign="middle">
+    								<td class="marco">&nbsp;</td>
+    								<td class="etiqueta" align="right">&nbsp;</td>
+    								<td class="objeto">&nbsp;</td>
+    								<td class="objeto">&nbsp;</td>
+    							</tr>
+    							<tr valign="middle">
+    								<td class="marco" width="1%">&nbsp;</td>
+    								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
+    								<td class="objeto" width="1%">&nbsp;</td>
+    								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="9" maxlength="9"></td>
+    								<td class="objeto" width="6%">&nbsp;</td>
+    							</tr>
+    							<tr valign="middle">
+    								<td class="marco" width="1%">&nbsp;</td>
+    								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
+    								<td class="objeto" width="1%">&nbsp;</td>
+    								<td class="objeto" width="72%">
+    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo $fechacer; ?>"> (dd/mm/yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>
@@ -1321,8 +1309,8 @@ function MM_goToURL() { //v3.0
 								<td class="objeto" width="72%">
 									<input name="nrofichacurso" type="text" class="cajatexto" id="nrofichacurso" onKeyPress="return formato(event,form,this,9)" value="<?php echo $nrofichacurso ?>" size="9">
 								</td>
-				            </tr>
-				            <tr valign="middle">
+							</tr>
+							<tr valign="middle">
 								<td class="marco" width="1%">&nbsp;</td>
 								<td class="etiqueta" align="right" width="20%">Escuela de Manejo &nbsp;&nbsp;</td>
 								<td class="objeto" width="1%">&nbsp;</td>
@@ -1339,43 +1327,43 @@ function MM_goToURL() { //v3.0
                   						<option value="<?php echo $rex[0]; ?>"  <?php if($rex[0]==$id_curso) echo "SELECTED"?>><?php echo $rex[1] ?>   </option>
                   						<?php } ?>
                   					</select>     --> 
-              					</td>
-				            </tr>
-				        </tbody>
-      				</table>
-  				</div>
-			</td>
-		</tr>
+                  				</td>
+                  			</tr>
+                  		</tbody>
+                  	</table>
+                  </div>
+              </td>
+          </tr>
 
-		<tr>
-			<td colspan="5" class="marco seccionblank">&nbsp;</td>
-		</tr>
-		<!-- FIN DE REGISTRO DE CURSO DE PROFESIONALIZACION-->
-		<tr>
-			<td colspan="7" height="30">
-				<table border="0" cellpadding="3" cellspacing="1" width="100%">
-					<tbody>
-	                  <tr align="center">
-	                  	<td class="catBottom" colspan="7" height="28">
-	                  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
-	                  			<tbody>
-	                  				<tr>
-	                  					<td align="left" width="100%">
-	                  						<input class="boton" name="btn_Grabar" value=".:: Grabar ::." type="submit">
-	                  					</td>
-	                  					<td width="50%"></td>
-	                  					<td align="right" width="25%"></td>
-	                  				</tr>
-	                  			</tbody>
-	                  		</table>
-	                  	</td>
-	                  </tr>
-	              	</tbody>
+          <tr>
+          	<td colspan="5" class="marco seccionblank">&nbsp;</td>
+          </tr>
+          <!-- FIN DE REGISTRO DE CURSO DE PROFESIONALIZACION-->
+          <tr>
+          	<td colspan="7" height="30">
+          		<table border="0" cellpadding="3" cellspacing="1" width="100%">
+          			<tbody>
+          				<tr align="center">
+          					<td class="catBottom" colspan="7" height="28">
+          						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+          							<tbody>
+          								<tr>
+          									<td align="left" width="100%">
+          										<input class="boton" name="btn_Grabar" value=".:: Grabar ::." type="submit">
+          									</td>
+          									<td width="50%"></td>
+          									<td align="right" width="25%"></td>
+          								</tr>
+          							</tbody>
+          						</table>
+          					</td>
+          				</tr>
+          			</tbody>
           		</table>
           	</td>
-      	</tr>
-  	</table>
-</form>
+          </tr>
+      </table>
+  </form>
 </td>
 </tr>
 
