@@ -117,7 +117,8 @@ $(document).ready(function() {
 
 	$('#dni').blur(function() {
 		var dni=$(this).val();
-		var options={
+		if (dni!="") {
+			var options={
 			type: 'post',
 	 		url: 'controller/ctrPostulante.php',
 	 		data: {
@@ -129,6 +130,8 @@ $(document).ready(function() {
 		.done(function(data) {
 			if (data==1) {
 				alert("DNI YA EXISTE");
+				$('#dni').val("");
+				$('#dni').focus();
 			}
 		})
 		.fail(function() {
@@ -137,32 +140,35 @@ $(document).ready(function() {
 		.always(function() {
 			console.log("complete");
 		});
-		
+		}		
 	});
 
 	$('#ce').blur(function() {
 		var ce=$(this).val();
-		var options={
-			type: 'post',
-	 		url: 'controller/ctrPostulante.php',
-	 		data: {
-	 			ce:ce,
-	 			action: 'buscace'
-	 		},
-		}
-		$.ajax(options)
-		.done(function(data) {
-			if (data==1) {
-				alert("C.E YA EXISTE");
+		if (ce!="") {
+			var options={
+				type: 'post',
+		 		url: 'controller/ctrPostulante.php',
+		 		data: {
+		 			ce:ce,
+		 			action: 'buscace'
+		 		},
 			}
-		})
-		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
-		});
-		
+			$.ajax(options)
+			.done(function(data) {
+				if (data==1) {
+					alert("C.E YA EXISTE");
+					$('#ce').val("");
+					$('#ce').focus();
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+		}
 	});
 });
 

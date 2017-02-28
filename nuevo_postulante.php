@@ -182,8 +182,8 @@ require_once 'model/provincia.php';
 				form1.dni.focus();
 				return (false);
 			}
-		}else if(form1.dni.value==""){
-			alert("Debe ingresar Dni");
+		}else if(form1.dni.value=="" && form1.ce.value==""){
+			alert("Debe ingresar Dni/C.E");
 			form1.dni.focus();
 			return false;
 		}
@@ -194,9 +194,9 @@ require_once 'model/provincia.php';
 				form1.ce.focus();
 				return (false);
 			}
-		}else if(form1.ce.value==""){
-			alert("Debe ingresar C.E");
-			form1.ce.focus();
+		}else if(form1.dni.value=="" && form1.ce.value==""){
+			alert("Debe ingresar Dni/C.E");
+			form1.dni.focus();
 			return false;
 		}
 		if (form1.estatura.value==""){
@@ -886,15 +886,21 @@ require_once 'model/provincia.php';
 								<td class="etiqueta" align="right">TIPO DE TRAMITE &nbsp;</td>
 								<td class="objeto">&nbsp;</td>
 								<td class="objeto">
-									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso(0,0)" <?php if($_GET["sw"]==3){echo 'disabled';} ?> >
+									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso(0,0)"  >
 										<option value="0">---Seleccione Tipo---</option>
 										<?php 
-										$tipo= new tipotramite();
-										$rs=$tipo->retornaLista();
-										while ($n=pg_fetch_array($rs)) {
-											?>
+											$tipo= new tipotramite();
+											$rs=$tipo->retornaLista();
+											while ($n=pg_fetch_array($rs)) {
+												if ($_GET['sw']==3 && $n[0]==$idtiptra) {
+										?>
+												<option value="<?php echo $n[0];  ?>" <?php if ($idtiptra==$n[0]) {echo 'selected';} ?> > <?php echo $n[1]; ?></option>
+										<?php			
+												}else if($_GET['sw']!=3){
+										?>
 											<option value="<?php echo $n[0];  ?>" <?php if ($idtiptra==$n[0]) {echo 'selected';} ?> > <?php echo $n[1]; ?></option>
 											<?php 
+											}
 										}
 										?>
 									</select>
