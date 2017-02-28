@@ -172,17 +172,22 @@ include("paginator.inc.php");
 
           <?php }?>
         </table>
-        <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
 
+        <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
           <TR bgcolor="#FFFFFF">
-            <TD width="100%" height="18" colspan="3" bgcolor="#EBF3FB"><table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
-              <TR bgcolor="#FFFFFF">
-                <td width="189" height="20" bgcolor="#EBF3FB"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div></Td>
-                <td width="189" height="20" bgcolor="#EBF3FB"><strong><font face='verdana' size='-2'>
-                  <?=$_pagi_result2?>
-                  Registros </font></strong></Td>
-              </TR>
-            </table></TD>
+            <td width="189" height="20" bgcolor="#EBF3FB">   
+              <div align="left" class="ord">
+                <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font>
+              </div>
+            </td>
+            <td width="189" height="20" bgcolor="#EBF3FB">
+              <strong>
+                <font face='verdana' size='-2'>
+                  <?php echo $_pagi_result2?> 
+                  Registros 
+                </font>
+              </strong>
+            </td>
           </TR>
         </table>
 
