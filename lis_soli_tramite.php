@@ -51,7 +51,7 @@ include("paginator.inc.php");
             <td height="23" colspan="10"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="50%"><div align="left" class="ord">
-      <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div>          </td>
+                    <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div>          </td>
                 <td width="50%"><strong><font face='verdana' size='-2'>
                   <?php echo $_pagi_result2?> 
                   Registros
