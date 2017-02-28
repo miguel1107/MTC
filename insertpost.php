@@ -253,7 +253,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}
 			header($loc);
 		}
-
+		echo $certificado.'dd';exit;
 		if ($certificado=='si') {
 			$fecha=$_POST['fechacurso'];
 			$mesexte=substr($fecha, 3,2);

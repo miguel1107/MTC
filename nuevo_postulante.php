@@ -705,8 +705,7 @@ require_once 'model/provincia.php';
 							}
                     //--
 
-							if ($idcategoria =="7")
-							{
+							if ($idcategoria =="7"){
 								$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
 								$rs_especial=pg_query($link,$sql_especial);
 								$fila_especial =pg_fetch_object($rs_especial);
@@ -714,7 +713,6 @@ require_once 'model/provincia.php';
 								$id_curso= $fila_especial->id_curso_especial;
 								$fechacurso = $fila_especial->fechacurso;
 								$licencia = $fila_especial->licencia;
-
 							}
 						}
 					}
