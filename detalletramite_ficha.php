@@ -389,7 +389,7 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
                             <td class="catBottom" colspan="7" height="33"><table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[18]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[19]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                 </tbody>
                             </table></td>

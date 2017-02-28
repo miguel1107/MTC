@@ -314,8 +314,8 @@ echo $xfila27[0];		?>
                                           <!--<a href="javascript:imprimir()"><img src="imag/print.gif" width="97" height="27" border="0"></a>-->
                                           <input type="hidden" name="idpost" value="<?=$fila2[0]?>">
                                           <input type="hidden" name="pagina" value="listado_tramite.php">
-                                          <input type="hidden" name="id" value="<?=$fila2[18]?>">
-                                          <a href="javascript:imprimir(<?=$fila2[18]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                          <input type="hidden" name="id" value="<?=$fila2[19]?>">
+                                          <a href="javascript:imprimir(<?=$fila2[19]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                   </tbody>
                               </table></td>
