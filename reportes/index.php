@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+<?php
+	include ("../conectar.php");
+	$link=Conectarse();
+	$tra=$_GET['tra'];
+	$sis=$_GET['sis'];
+	$sql="SELECT t.tipotramite,t.idcategoria,p.*
+		FROM tramite t
+		INNER JOIN postulante p on p.idpostulante=t.idpostulante
+		WHERE t.idtramite='".$tra."'";
+	$rs=pg_query($link,$sql);
+	$datos=pg_fetch_array($rs);
+	$tt=$datos[0];
+
+		$echotra;
+        $long=strlen($tt);
+        if ($long==1) {
+          $sql1="SELECT * FROM tipo_tramite WHERE id_tipo='".$tt."'";
+          $rs1=pg_query($link,$sql1);
+          $fila =pg_fetch_array($rs1);
+          $echotra=$fila[1];
+        }else if($long>1){
+          $echotra=$tt;
+        }
+    $cat=$datos[1];
+    $nom=$datos[3];
+    $app=$datos[4];
+    $apm=$datos[5];
+?>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -35,7 +62,7 @@
 				<table>
 					<tr>
 						<td>N° SOLICITUD</td>
-						<td></td>
+						<td><?php echo $sis; ?></td>
 					</tr>
 					<tr>
 						<td>FECHA DE REGISTRO</td>
@@ -75,39 +102,39 @@
 						</tr>
 						<tr>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box">x</div>
-								<div class="flc-tabla-check-txt">OBTENCIÓN</div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='NUEVO') {echo "X";} ?></div>
+								<div class="flc-tabla-check-txt">NUEVO</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
-								<div class="flc-tabla-check-txt">REVALIDACIÓN</div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='REVALIDACION') {echo "X";} ?></div>
+								<div class="flc-tabla-check-txt">REVALIDACION</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='RECATEGORIZACION') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">RECATEGORIZACIÓN</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='DUPLICADO') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">DUPLICADO</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='DIPLOMÁTICO EXTRANJEROS') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">DIPLOMÁTICO EXTRANJEROS</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='EXPEDIDA EN OTRO PAÍS') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">EXPEDIDA EN OTRO PAÍS</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='MODIFICACÓN DE LA INFORMACIÓN') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">MODIFICACÓN DE LA INFORMACIÓN</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='MILITAR O POLICIAL') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">MILITAR O POLICIAL</div>
 							</td>
 							<td class="flc-tabla-check">
-								<div class="flc-tabla-check-box"></div>
+								<div class="flc-tabla-check-box"><?php if ($echotra=='REFUGIADOS O AISLADOS') {echo "X";} ?></div>
 								<div class="flc-tabla-check-txt">REFUGIADOS O AISLADOS</div>
 							</td>
 						</tr>
@@ -124,16 +151,16 @@
 				</td>
 				<td colspan="6" style="font-size: 0; padding: 18pt 12pt 2pt 12pt">
 					<div class="flc-tabla-title" style="margin-bottom: 10pt">CATEGORÍAS</div>
-					<div class="flc-tabla-check2"><i></i><span>I</span></div>
-					<div class="flc-tabla-check2"><i></i><span>II A</span></div>
-					<div class="flc-tabla-check2"><i></i><span>II B</span></div>
-					<div class="flc-tabla-check2"><i></i><span>III A</span></div>
-					<div class="flc-tabla-check2"><i></i><span>III B</span></div>
-					<div class="flc-tabla-check2"><i></i><span>III C</span></div>
-					<div class="flc-tabla-check2"><i></i><span>I</span></div>
-					<div class="flc-tabla-check2"><i></i><span>II A</span></div>
-					<div class="flc-tabla-check2"><i></i><span>II B</span></div>
-					<div class="flc-tabla-check2"><i></i><span>II C</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='1'){echo "X";}?></span></s></i><span>I</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='2'){echo "X";}?></span></i><span>II A</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='3'){echo "X";}?></span></i><span>II B</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='4'){echo "X";}?></span></i><span>III A</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='5'){echo "X";}?></span></i><span>III B</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='6'){echo "X";}?></span></i><span>III C</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat==''){echo "X";}?></span></i><span>I</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='2'){echo "X";}?></span></i><span>II A</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat=='3'){echo "X";}?></span></i><span>II B</span></div>
+					<div class="flc-tabla-check2"><i><span><?php if($cat==''){echo "X";}?></span></i><span>II C</span></div>
 				</td>
 			</tr>
 			<tr>
@@ -141,7 +168,6 @@
 			</tr>
 			<tr>
 				<td colspan="7" class="flc-tabla-dato">
-					<p>NOMBRES Y APELLIDOS</p>
 					<div>
 						<span style="width: 40%">Nombres</span>
 						<span style="width: 30%">Apellido Paterno</span>

@@ -45,7 +45,8 @@
   margin-left: 2pt;
 }
 .flc-slide {
-  margin: 0.2cm auto 0.5cm auto;
+  margin: 0.0cm auto 0.5cm auto;
+  margin-top: 0cm;
   width: 80%;
 }
 .flc-slide img {
@@ -70,7 +71,7 @@
 }
 .flc-datos-iz-tit {
   display: inline-block;
-  font-size: 12pt;
+  font-size: 11pt;
   border: 1px solid #444;
   padding: 5pt 8pt;
   border-radius: 5pt;
@@ -83,7 +84,7 @@
 .flc-datos-de {
   display: inline-block;
   width: 30%;
-  font-size: 7pt;
+  font-size: 3pt;
   vertical-align: middle;
   font-weight: bold;
   line-height: 11pt;
