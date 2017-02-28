@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+
+	"settings": {
+        "Stylus": {
+            "compress": false,
+            "compileOnSave": true,
+            "compileDir": ""
+        }
+    }
+
+}

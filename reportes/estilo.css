@@ -1,0 +1,245 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.flc {
+  width: 21cm;
+  margin: 0 auto;
+  font-family: 'Arial';
+  color: #444;
+  padding: 1cm;
+  box-sizing: border-box;
+}
+.flc-head-hr {
+  display: block;
+  margin-bottom: 0.06cm;
+  border: none;
+  border-top: 1px solid #555;
+}
+.flc-head-cont {
+  font-size: 14pt;
+  margin-top: 0.1cm;
+  margin-bottom: 0.1cm;
+  position: relative;
+}
+.flc-head-cont-cod {
+  position: absolute;
+  left: 0;
+  font-family: 'Arial Black';
+}
+.flc-head-cont-tit {
+  text-align: center;
+  font-family: 'Arial Black';
+}
+.flc-head-cont-dat {
+  position: absolute;
+  right: 0;
+  top: 0.25cm;
+  font-size: 8pt;
+  font-weight: bold;
+}
+.flc-head-cont-dat img {
+  height: 14pt;
+  float: right;
+  margin-top: -3pt;
+  margin-left: 2pt;
+}
+.flc-slide {
+  margin: 0.2cm auto 0.5cm auto;
+  width: 80%;
+}
+.flc-slide img {
+  display: block;
+  width: 100%;
+}
+.flc-subtit {
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: center;
+}
+.flc-datos {
+  font-size: 0;
+  margin-top: 0.5cm;
+}
+.flc-datos-iz {
+  display: inline-block;
+  width: 70%;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
+}
+.flc-datos-iz-tit {
+  display: inline-block;
+  font-size: 12pt;
+  border: 1px solid #444;
+  padding: 5pt 8pt;
+  border-radius: 5pt;
+}
+.flc-datos-iz-subtit {
+  display: inline-block;
+  font-size: 9pt;
+  margin-top: 5pt;
+}
+.flc-datos-de {
+  display: inline-block;
+  width: 30%;
+  font-size: 7pt;
+  vertical-align: middle;
+  font-weight: bold;
+  line-height: 11pt;
+}
+.flc-datos-de table {
+  border-collapse: collapse;
+}
+.flc-datos-de table td {
+  vertical-align: middle;
+  padding: 4pt 6pt;
+  width: 1.8cm;
+  border: 1px solid #444;
+}
+.flc-tabla {
+  border-collapse: collapse;
+  margin-top: 0.5cm;
+  font-size: 9pt;
+  font-weight: bold;
+  table-layout: fixed;
+}
+.flc-tabla td {
+  border: 1px solid #444;
+  padding: 4pt;
+}
+.flc-tabla td table {
+  width: 100%;
+}
+.flc-tabla td table td {
+  border-collapse: collapse;
+  border: none;
+  padding: 0;
+}
+.flc-tabla-title {
+  font-size: 7pt;
+  border: 1px solid #444;
+  padding: 2pt;
+  border-radius: 3pt;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2pt;
+}
+.flc-tabla-check {
+  position: relative;
+  padding: 2pt !important;
+  vertical-align: top;
+  text-align: center;
+}
+.flc-tabla-check-box {
+  height: 6pt;
+  width: 6pt;
+  border: 1px solid #444;
+  position: absolute;
+  left: 0;
+  vertical-align: middle;
+  margin-top: -1pt;
+  font-size: 11px;
+  line-height: 7px;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+.flc-tabla-check-txt {
+  font-size: 6pt;
+  font-weight: bold;
+  margin-left: 7pt;
+}
+.flc-tabla-check2 {
+  width: 16.666666666666668%;
+  display: inline-block;
+  margin: 8pt 0;
+}
+.flc-tabla-check2 i {
+  width: 9pt;
+  height: 12pt;
+  border: 1pt solid #444;
+  display: inline-block;
+  margin-right: 4pt;
+  float: left;
+  margin-top: -3pt;
+}
+.flc-tabla-check2 span {
+  font-size: 8pt;
+  font-weight: bold;
+}
+.flc-tabla-dato {
+  vertical-align: top;
+  padding: 4pt 6pt !important;
+}
+.flc-tabla-dato p {
+  font-size: 8pt;
+  padding-bottom: 0.8cm;
+}
+.flc-tabla-dato div {
+  border-top: 1px solid #444;
+  padding-top: 2pt;
+}
+.flc-tabla-dato div span {
+  font-size: 7pt;
+  display: inline-block;
+}
+.flc-foot-acep {
+  margin-top: 0.4cm;
+}
+.flc-foot-acep p {
+  margin-left: 16pt;
+  font-weight: bold;
+  font-size: 8pt;
+  line-height: 12pt;
+  text-align: justify;
+}
+.flc-foot-acep span {
+  display: block;
+  float: left;
+  border: 1pt solid #444;
+  width: 8pt;
+  height: 8pt;
+  margin-top: 1pt;
+}
+.flc-foot-entr {
+  text-align: center;
+  font-size: 10pt;
+  font-weight: bold;
+  padding: 12pt 0;
+}
+.flc-foot-entr span {
+  display: inline-block;
+  margin-left: 10pt;
+}
+.flc-foot-decl {
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: justify;
+}
+.flc-foot-fihu {
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: center;
+}
+.flc-foot-fihu-fi {
+  display: inline-block;
+  margin-right: 2cm;
+}
+.flc-foot-fihu-fi span {
+  height: 2cm;
+  width: 4cm;
+  border-bottom: 1pt solid #444;
+  margin-bottom: 2pt;
+  display: block;
+}
+.flc-foot-fihu-hu {
+  display: inline-block;
+}
+.flc-foot-fihu-hu span {
+  height: 2cm;
+  width: 2cm;
+  border: 1pt solid #444;
+  margin-bottom: 2pt;
+  display: block;
+}
