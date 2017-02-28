@@ -41,19 +41,32 @@ include("paginator.inc.php");
 ?>
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
   <tr>
-
-    <td  colspan="2" bgcolor="#FFFFFF"><form  name="frmList" action="" method="post"  target="_parent"><table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+    <td  colspan="2" bgcolor="#FFFFFF">
+      <form  name="frmList" action="" method="post"  target="_parent">
+        <table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
 
           <tr bgcolor="#ebf3fb">
-            <td height="23" colspan="10"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="50%"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <?php  echo $_pagi_navegacion;?></font></div></td>
-                <td width="50%"><strong><font face='verdana' size='-2'>
-                  <?=$_pagi_result2?>
-                  Registros </font></strong></td>
-              </tr>
-            </table></td>
+            <td height="23" colspan="10">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="50%">
+                    <div align="left" class="ord">
+                      <font face='verdana' size='-2'>&nbsp;&nbsp; <?php  echo $_pagi_navegacion;?></font>
+                    </div>
+                  </td>
+                  <td width="50%">
+                    <strong>
+                      <font face='verdana' size='-2'>
+                        <?=$_pagi_result2?>
+                        Registros
+                      </font>
+                    </strong>
+                  </td>
+                </tr>
+              </table>
+            </td>
           </tr>
+          
           <tr bgcolor="#ebf3fb">
             <th width="32"><!--<input  border="0" name="allbox" type="checkbox" onClick="CA()">-->-</th>
 
@@ -116,19 +129,25 @@ include("paginator.inc.php");
 
           <?php }?>
         </table>
+        
         <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
-
           <TR bgcolor="#FFFFFF">
-            <Td width="755" height="20" colspan="3" bgcolor="#EBF3FB"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="50%"><div align="left" class="ord"> <font face='verdana' size='-2'>&nbsp;&nbsp; <? echo $_pagi_navegacion;?></font></div></td>
-                <td width="50%"><strong><font face='verdana' size='-2'>
-                  <?=$_pagi_result2?>
-                  Registros </font></strong></td>
-              </tr>
-            </table></Td>
+            <td width="189" height="20" bgcolor="#EBF3FB">   
+              <div align="left" class="ord">
+                <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font>
+              </div>
+            </td>
+            <td width="189" height="20" bgcolor="#EBF3FB">
+              <strong>
+                <font face='verdana' size='-2'>
+                  <?php echo $_pagi_result2?> 
+                  Registros 
+                </font>
+              </strong>
+            </td>
           </TR>
         </table>
+
 
     </form>    </td>
   </tr>
