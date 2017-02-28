@@ -44,21 +44,32 @@ include("paginator.inc.php");
 ?>
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
   <tr>
-
-    <td  colspan="2" bgcolor="#FFFFFF"><form  name="frmList" action="" method="post"  target="_parent"><table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+    <td  colspan="2" bgcolor="#FFFFFF">
+      <form  name="frmList" action="" method="post"  target="_parent">
+        <table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
 
           <tr bgcolor="#ebf3fb">
-            <td height="23" colspan="10"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="50%"><div align="left" class="ord">
-                    <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font></div>          </td>
-                <td width="50%"><strong><font face='verdana' size='-2'>
-                  <?php echo $_pagi_result2?> 
-                  Registros
-                </font></strong></td>
-              </tr>
-            </table></td>
+            <td height="23" colspan="10">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="50%">
+                    <div align="left" class="ord">
+                      <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font>
+                    </div>
+                  </td>
+                  <td width="50%">
+                    <strong>
+                      <font face='verdana' size='-2'>
+                        <?php echo $_pagi_result2?> 
+                        Registros
+                      </font>
+                    </strong>
+                  </td>
+                </tr>
+              </table>
+            </td>
           </tr>
+          
           <tr bgcolor="#ebf3fb">
             <th width="32">-</th>
 
