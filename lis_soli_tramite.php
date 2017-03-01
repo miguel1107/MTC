@@ -30,9 +30,9 @@ body {
 <body>
 <?php
 if ($_GET["frase3"]!=''){
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
+$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
 }else{
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase12"]."%' and p.apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
+$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase12"]."%' and p.apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
 
 }
 //cantidad de resultados por página (opcional, por defecto 20)
@@ -78,7 +78,7 @@ include("paginator.inc.php");
 
             <th width="196" height="23" bgcolor="#ebf3fb"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS </font></th>
             <th width="89"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>FEC. NACIMIENTO</nobr> </font></span></th>
-            <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">DNI </font></th>
+            <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></th>
             <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">FECHA </font></th>
             <th width="139"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>TIPO DE TRAMITE</nobr></font></span></th>
 
@@ -112,7 +112,14 @@ include("paginator.inc.php");
               <?php echo normal($reg[10])?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?php echo $reg[9]?>
+              <?php 
+                if ($reg[9]=="") {
+                  echo $reg[12];
+                }else if ($reg[12]=="") {
+                  echo $reg[9];
+                }
+
+              ?>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?php echo normal($reg[4])?></nobr>

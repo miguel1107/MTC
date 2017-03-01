@@ -62,7 +62,7 @@ include("paginator.inc.php");
 
             <th width="143" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRES</font></div></th>
             <th width="182" height="23" bgcolor="#ebf3fb"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font></th>
-            <th width="57"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI</font></span></th>
+            <th width="57"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></span></th>
             <th width="83"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>FECHA NAC.</nobr></font></th>
             <th width="99"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">PROFESION</font></div></th>
             
@@ -100,7 +100,16 @@ include("paginator.inc.php");
               </div>
             </td>
             <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <nobr><?php echo $reg[8]?></nobr>
+              <nobr>
+                <?php 
+                  if ($reg[8]=="") {
+                    echo $reg[10];
+                  }elseif ($reg[10]=="") {
+                    echo $reg[8];
+                  }
+
+                ?>
+              </nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?=normal($reg[4])?></nobr>
