@@ -220,11 +220,11 @@ function MM_goToURL() { //v3.0
                 <?php
                 if(isset($_GET["idpos"])){
                   $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$_GET["idpos"]."' and t.estado=55 and t.tipotramite ='DUPLICADO' and t.idtramite<'9966737'";
+                echo $sq;exit;
                   $rs=pg_query($link,$sq) or die ("Error :$sq");
                   while($reg11=pg_fetch_array($rs)) { 
                    $idusuario=$reg11[0];
                  }
-                 $idtraaa=$idusuario;
                  $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
                  $result=pg_query($sql)or die ("Error : $sql");
                  $row=pg_fetch_array($result);
