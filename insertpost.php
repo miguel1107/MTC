@@ -148,7 +148,6 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 	}
 	if(isset($realizar)){
-
 		if($_POST["sw"]!=3){
 			$sqk="Select max(numero) from numeros where tipo='SOLICITUDES' ";
 			$rsk=pg_query($link,$sqk); 
@@ -189,11 +188,11 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				}
 			}			
 			
-			if($_POST["tipotra"]=='1' || $_POST["tipotra"]=='2' || $_POST["tipotra"]=='CANJE 2' || $_POST["tipotra"]=='3' || $_POST["tipotra"]=='CANJE 3'){
-				header("location:listado_tramite.php");
-			}else{
-				header("location:list_soli.php");
-			}
+			// if($_POST["tipotra"]=='1' || $_POST["tipotra"]=='2' || $_POST["tipotra"]=='CANJE 2' || $_POST["tipotra"]=='3' || $_POST["tipotra"]=='CANJE 3'){
+			// 	header("location:listado_tramite.php");
+			// }else{
+			// 	header("location:list_soli.php");
+			// }
 		}else{
 			if($_POST['dni']==""){
 				$record=pg_query($link,"select * from postulante where ce='".$_POST["ce"]."'");	
@@ -251,9 +250,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 					}
 				}
 			}
-			header($loc);
 		}
-		echo $certificado.'dd';exit;
 		if ($certificado=='si') {
 			$fecha=$_POST['fechacurso'];
 			$mesexte=substr($fecha, 3,2);
@@ -270,9 +267,9 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}
 			$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."');" ;
 			$ss=pg_query($link,$sqlser);
-			echo $sqlser;exit;
 			header($loc);
 		}
+		header($loc);
 	}
 }
 ?>
