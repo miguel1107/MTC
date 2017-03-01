@@ -1183,7 +1183,7 @@ require_once 'model/provincia.php';
     									<tbody>
     										<tr>
     											<td  height="10" width="10">&nbsp;</td>
-    											<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MEDICO </span></td>
+    											<td  align="left" width="215"><span class="Estilo1">&nbsp;DATOS DEL EXAMEN MÉDICO </span></td>
     											<td width="125" height="20" align="right"></td>
     										</tr>
     									</tbody>
@@ -1221,8 +1221,8 @@ require_once 'model/provincia.php';
     							<td class="etiqueta" align="right" width="20%">Centro Médico &nbsp;&nbsp;</td>
     							<td class="objeto" width="1%">&nbsp;</td>
     							<td class="objeto" width="72%">
-    								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 250px;" >
-    								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 250px;">
+    								<input name="idcentro" type="hidden" class="cajatexto" value="<?php echo $idcentro; ?>" id="idcentro" style="width: 400px;" >
+    								<input name="nomcentro" type="text" class="cajatexto" value="<?php echo $nomcento; ?>" id="nomcentro" style="width: 400px;">
     							</td>
     							<td class="objeto" width="6%">&nbsp;</td>
     						</tr>
@@ -1275,7 +1275,7 @@ require_once 'model/provincia.php';
     							<tr>
     								<td colspan="5"  align="left" width="215">
     									<span class="Estilo1">
-    										&nbsp;DATOS DEL CURSO DE ESPECIALIZACION - CATEGORIA ESPECIAL
+    										&nbsp;DATOS DEL CURSO DE ESPECIALIZACIÓN
     									</span>
     								</td>
     							</tr> 
@@ -1319,8 +1319,8 @@ require_once 'model/provincia.php';
 								<td class="etiqueta" align="right" width="20%">Escuela de Manejo &nbsp;&nbsp;</td>
 								<td class="objeto" width="1%">&nbsp;</td>
 								<td class="objeto" width="72%">
-									<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 250px;" >
-									<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 250px;">
+									<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 350px;" >
+									<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 350px;">
 									<!-- <?php
 										$sqx="select * from curso_especial where estado='1' ";
                   						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");

@@ -4,13 +4,13 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
 include ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
-
-$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
+$tra=$_GET['id'];
+$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
 $rs2=pg_query($link,$sql2);
 $fila2 =pg_fetch_array($rs2);
 
 
-$sql33="select fecha,* from evaluacion where opcion =(select max (opcion) from evaluacion where idtramite ='".$_GET["idtramite"]."') and idtramite ='".$_GET["idtramite"]."' and idexamen =4";
+$sql33="select fecha,* from evaluacion where opcion =(select max (opcion) from evaluacion where idtramite ='".$tra."') and idtramite ='".$tra."' and idexamen =4";
 $rs3 = pg_query($link,$sql33);
 $filaexamen = pg_fetch_array($rs3);
 
@@ -22,7 +22,7 @@ $hora =  date("H:i:s");
 
 //--
 $link=Conectarse();
-	$sql22="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
+	$sql22="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
 	$rs2=pg_query($link,$sql22);
 	$fila22 =pg_fetch_array($rs2);
 	//--
@@ -46,7 +46,8 @@ class PDF extends FPDF
 function Footer()
 {
 	$link=Conectarse();
-	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$_GET["idtramite"]."'";
+	$tra=$_GET['id'];
+	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
 	$rs2=pg_query($link,$sql2);
 	$fila2 =pg_fetch_array($rs2);
 	//--
@@ -62,10 +63,10 @@ function Footer()
 	    $echotra=$tra;
 	  }                     
 	//--
-    $this->SetY(-32);
+    $this->SetY(-28);
 	$this->SetFont('Arial','B',20);
 	$this->SetX(15);
-	$this->Cell(85,5,$echotra,0,0,'R',1);
+	$this->Cell(75,5,$echotra,0,0,'R',1);
 	$this->Cell(10,5,$fila2[9],0,1,'L',1);
 	$this->SetY(-15);
 	$this->SetFont('Arial','B',9);
@@ -187,12 +188,12 @@ $pdf->Cell(55,7,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,1,'L',1);
 
 //---
-$pdf->Cell(40,5,'',0,0,'L',0);
-$pdf->Image('imag/huella.png',15,120,30,40,'PNG');
-//$pdf->Cell(60,78,'HUELLA',0,0,'L',1);
+$pdf->Cell(0,10,'  Firma postulante           Huella postulante',0,1,'L',0);
 $pdf->Cell(0,55,'_________________________',0,1,'L',0);
-$pdf->Cell(0,0,'',0,1,'L',0);
-$pdf->Cell(10000,0,'Huella y Firma del postulante',0,1,'L',0);
+$pdf->Image('imag/huella.png',45,133,30,40,'PNG');
+//$pdf->Cell(60,78,'HUELLA',0,0,'L',1);
+
+//$pdf->Cell(0,0,'Huella y Firma del postulante',0,1,'L',0);
 
 
 
@@ -201,18 +202,14 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetXY(160, 30);
 $pdf->Cell(10,5,' Usuario : '.utf8_decode ($fila2[10]),0,0,'L',1);
 
-if ($fila2[8]=='NUEVO' || $fila2[8]=='RECATEGORIZACION' || $fila2[8]==1 || $fila2[8]==2)
-{
-$pdf->SetXY(160, 34);
-$pdf->Cell(10,5,' Fecha Examen : '.(!empty( $filaexamen[0]) ?date_format( date_create( $filaexamen[0]), 'd/m/Y' ):'' ),0,0,'L',0);
-$pdf->SetXY(160, 38);
-$pdf->Cell(10,5,' Hora Impresion :'. $hora ,0,0,'L',0);
-}
-else
-{
-$pdf->SetXY(160, 34);
-$pdf->Cell(10,5,' Hora Impresion :'. $hora ,0,0,'L',0);
-
+if ($fila2[8]=='NUEVO' || $fila2[8]=='RECATEGORIZACION' || $fila2[8]==1 || $fila2[8]==2){
+	$pdf->SetXY(160, 34);
+	$pdf->Cell(10,5,' Fecha Examen : '.(!empty( $filaexamen[0]) ?date_format( date_create( $filaexamen[0]), 'd/m/Y' ):'' ),0,0,'L',0);
+	$pdf->SetXY(160, 38);
+	$pdf->Cell(10,5,' Hora Impresion :'. $hora ,0,0,'L',0);
+}else{
+	$pdf->SetXY(160, 34);
+	$pdf->Cell(10,5,' Hora Impresion :'. $hora ,0,0,'L',0);
 }
 /*$pdf->SetXY(160, 42);
 $pdf->Cell(10,5,' SITUACION :'. $hora ,0,0,'L',0);

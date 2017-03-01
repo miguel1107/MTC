@@ -12,6 +12,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/script.js"></script>
+<script src="js/solicitud.js"></script>
 <style type="text/css">
 <!--
 .Estilo1 {font-size: 12px}
@@ -88,7 +89,8 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                       <td style="width: 8px;" height="20"><img src="main.php6_files/spacer.gif" height="1" width="8"></td>
                                       <td class="LL">|</td><td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=3')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar </td>
                                       <td class="LL">|</td>
-                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Programación</td>
+                                      <!-- <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalle_tramite.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Programación</td> -->
+                                      <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'prueba.php')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ficha Postulante" width="15" height="12" hspace="1" border="0" align="absmiddle"> Ficha Programación</td>
                                       <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="location='buscar_tramite.php'" nowrap="nowrap"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                                       <td class="LL">|</td>

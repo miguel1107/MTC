@@ -31,7 +31,7 @@ $con=Conectarse();
     </head>
 <body>
 <?php
-$_pagi_sql = "select * from postulante where  nombres like '".$_GET["frase"]."%' and apepat like '".$_GET["frase12"]."%' and apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and estado='1' order by idpostulante DESC ";
+$_pagi_sql = "select * from postulante where  nombres like '".$_GET["frase"]."%' and apepat like '".$_GET["frase12"]."%' and apemat like '".$_GET["frase122"]."%' and (dni like '".$_GET["frase2"]."%' or ce like '".$_GET["frase2"]."%' )and estado='1' order by idpostulante DESC ";
 //cantidad de resultados por página (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;

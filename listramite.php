@@ -46,7 +46,7 @@ include("paginator.inc.php");
         <table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
 
           <tr bgcolor="#ebf3fb">
-            <td height="23" colspan="10">
+            <td height="23" colspan="13">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="50%">
