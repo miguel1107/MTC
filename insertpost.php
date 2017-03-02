@@ -162,7 +162,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 		if($_POST["sw"]==3){
 			$tramite=$_POST["idtramite"];
-			$sql89="update postulante set nombres='".$_POST["txtnom"]."',apepat='".$_POST["apepat"]."',apemat='".$_POST["apemat"]."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where idpostulante='".$_POST["idpostulante"]."'";
+			$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where idpostulante='".$_POST["idpostulante"]."'";
 			$sr89=pg_query($link,$sql89); //or die ("Error : $sql");
 			
 			if ($_POST["categoria"]=='7'){
@@ -200,7 +200,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				$record=pg_query($link,"select * from postulante where dni='".$_POST["dni"]."'");
 			}
 			if(pg_num_rows($record) > 0){
-				$sql89="update postulante set nombres='".$_POST["txtnom"]."',apepat='".$_POST["apepat"]."',apemat='".$_POST["apemat"]."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where dni='".$_POST["dni"]."',iddistrito='".$_POST["distrito"]."' ";
+				$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where dni='".$_POST["dni"]."',iddistrito='".$_POST["distrito"]."' ";
 				$sr89=pg_query($link,$sql89); 
 					  //////////// 	
 				$sq3="Select idpostulante from postulante where dni='".$_POST["dni"]."' ";
