@@ -184,8 +184,8 @@
 					<div class="flc1-tabla-check2"><i><?php if($cat=='5'){echo "X";}?></i><span>III B</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat=='6'){echo "X";}?></i><span>III C</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>I</span></div>
-					<div class="flc1-tabla-check2"><i><?php if($cat=='2'){echo "X";}?></i><span>II A</span></div>
-					<div class="flc1-tabla-check2"><i><?php if($cat=='3'){echo "X";}?></i><span>II B</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II A</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II B</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II C</span></div>
 				</td>
 			</tr>
