@@ -5,13 +5,16 @@
 
 cctext = #444
 
-.flc
+.page
 	width: 21cm
+	height: 29.7cm
 	margin: 0 auto
 	font-family: 'Arial'
 	color: cctext
 	padding: 1cm
 	box-sizing: border-box
+
+.flc1
 	
 	&-head
 		
@@ -158,6 +161,11 @@ cctext = #444
 				margin-right: 4pt
 				float: left
 				margin-top: -3pt
+				font-size: 10pt
+				font-weight: bold
+				text-align: center
+				vertical-align: middle
+				text-transform: lowercase
 				
 			span
 				font-size: 8pt
@@ -228,3 +236,134 @@ cctext = #444
 					border: 1pt solid cctext
 					margin-bottom: 2pt
 					display: block
+
+.flc2
+	
+	&-s1
+		font-size: 0
+		border: 1pt solid cctext
+		padding: 6pt 4pt
+		margin-bottom: 4pt
+		
+		&-ti
+			font-weight: bold
+			font-size: 9pt
+			margin-bottom: 8pt
+		
+		&-co
+			display: inline-block
+			width: 25%
+			text-align: center
+			padding: 0 8pt
+			box-sizing: border-box
+			div
+				border: 1pt solid cctext
+				padding: 0 10pt
+				span
+					display: block
+					border-top: 1pt solid cctext
+					height: 16pt
+					line-height: 16pt
+					font-size: 6pt
+					margin-top: 1.6cm
+					font-weight: bold
+			p
+				font-size: 6pt
+				margin-top: 3pt
+	
+	&-s2
+		font-size: 0
+		border: 1pt solid cctext
+		padding: 6pt 4pt
+		
+		&-ti
+			font-weight: bold
+			font-size: 9pt
+			margin-bottom: 8pt
+		
+		&-co
+			display: inline-block
+			width: 50%
+			text-align: center
+			padding: 0 4pt
+			box-sizing: border-box
+			div
+				border: 1pt solid cctext
+				padding: 6pt
+				span
+					display: block
+					font-size: 6pt
+					margin-bottom: 0.8cm
+					font-weight: bold
+					text-align: left
+					
+	&-sep
+		margin: 6pt 0
+		border-top: 1pt dashed cctext
+
+	&-s3
+		font-family: 'Arial Black'
+		font-size: 7pt
+		text-align: center
+		width: 100%
+		border-collapse: collapse
+		td
+			vertical-align: middle
+			padding: 0
+			border: none
+			border: 1pt solid cctext
+			padding: 4pt
+				
+		&-se
+			border: none !important
+			padding: 0 0 !important
+		&-de
+			margin-left: 4pt
+			p
+				font-size: 6pt
+				text-align: left
+				margin-top: 2pt
+		&-ti
+			span
+				font-size: 12pt
+			p
+				font-size: 5pt
+
+	&-s4
+		position: relative
+		font-size: 7pt
+		
+		&-wrap
+			position: absolute
+			left: -6pt
+			right: -6pt
+		
+			table
+				border-spacing: 6pt
+				width: 100%
+				td
+					vertical-align: middle
+					border: 1pt solid cctext
+					padding: 4pt
+		&-dat
+			text-align: center
+			p
+				text-align: left
+				margin-bottom: 4pt
+			div
+				font-size: 10pt
+				font-weight: bold
+			span
+				display: block
+				width: 80%
+				margin: 1.5cm auto 10pt auto
+				border-top: 1px solid cctext
+				padding-top: 4pt
+					
+		&-fec
+			font-weight: bold
+			text-align: center
+			span
+				display: block
+				margin-top: 4pt
+				font-size: 10pt

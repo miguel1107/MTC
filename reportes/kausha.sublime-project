@@ -1,16 +1,17 @@
 {
-	"folders": [
+	"folders":
+	[
 		{
-			"path": "."
+			"path": "C:\\AppServ\\www\\sistema"
 		}
 	],
-
-	"settings": {
-        "Stylus": {
-            "compress": false,
-            "compileOnSave": true,
-            "compileDir": ""
-        }
-    }
-
+	"settings":
+	{
+		"Stylus":
+		{
+			"compileDir": "",
+			"compileOnSave": true,
+			"compress": false
+		}
+	}
 }
