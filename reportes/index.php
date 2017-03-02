@@ -41,12 +41,13 @@
     $correo=$datos[18];
     $tel=$datos[19];
     $dis=$datos[20];
-
-   	$sql2="SELECT * FROM provincia p inner join distrito d on d.idprovincia=p.idprovincia where d.iddistrito='".$dis."'";
-   	$ls=pg_query($link,$sql2);
-   	$da=pg_fetch_array($ls);
-   	$distrito=$da[4];
-   	$provincia=$da[1];
+    if ($dis!="") {
+    	$sql2="SELECT * FROM provincia p inner join distrito d on d.idprovincia=p.idprovincia where d.iddistrito='".$dis."'";
+	   	$ls=pg_query($link,$sql2);
+	   	$da=pg_fetch_array($ls);
+	   	$distrito=$da[4];
+	   	$provincia=$da[1];	
+    }
 
 ?>
 <!DOCTYPE html>
@@ -345,7 +346,7 @@
 			</div>
 		</div>
 		<div></div>
-		<div><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s')?></div>
+		<div><?php echo $_SESSION["usu"].'   '.date('d/m/Y H:i:s')?></div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
 

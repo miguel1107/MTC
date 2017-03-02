@@ -31,7 +31,7 @@ body {
 <body>
 <?php
 //echo $_SESSION["usuario"];
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,t.tipotramite,t.tipotramite,t.estado,t.nrosolicitud,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro where t.estado<>'55' and p.nombres like '%".$_GET["frase"]."%' and p.apepat like '%".$_GET["frase1"]."%' and p.apemat like '%".$_GET["frase2"]."%' and p.dni like '".$_GET["frase3"]."%' and CAST (t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.tipotramite <> 'DUPLICADO' and t.tipotramite <> 'CANJE POR MODIFICACION' order by t.fecha_inscripcion DESC,t.idtramite  DESC";
+$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,t.tipotramite,t.tipotramite,t.estado,t.nrosolicitud,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro where t.estado<>'55' and p.nombres like '%".$_GET["frase"]."%' and p.apepat like '%".$_GET["frase1"]."%' and p.apemat like '%".$_GET["frase2"]."%' and p.dni like '".$_GET["frase3"]."%' and CAST (t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.tipotramite <> 'DUPLICADO' and t.tipotramite <> 'CANJE POR MODIFICACION' order by t.fecha_inscripcion DESC,t.idtramite  DESC";
 
 //echo $_pagi_sql;
 //cantidad de resultados por p�gina (opcional, por defecto 20)
@@ -80,7 +80,7 @@ include("paginator.inc.php");
             <th width="65"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">FECHA </font></th>
             <th width="56"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>TIPO TRAMITE </nobr></font></div></th>
             <th width="72" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">CATEGORIA</font></th>
-            <th width="46"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI</font></span></th>
+            <th width="46"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></span></th>
 
             <TH width="116"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>FECHA EXAMEN MEDICO</nobr></font></TH>
             <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">CENTRO MEDICO</font></TH>
@@ -146,7 +146,13 @@ include("paginator.inc.php");
             <nobr>  <?=$reg[5]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=$reg[6]?></nobr>
+            <nobr>  <?php 
+                if ($reg[6]=="") {
+                  echo $reg[15];
+                }else  if ($reg[15]=="") {
+                  echo $reg[6];
+                }
+              ?></nobr>
             </font></div></td>
 
             <td><div align="center"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">

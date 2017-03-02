@@ -234,7 +234,8 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				$idpost=$usuario;
 				if($_POST["tipotra"]!='4' || $_POST["tipotra"]=='7'){			
 					$sql2="insert into tramite (idtramite,nroficha,fechaini,fechafin,resultado,restriccion,observacion,idpostulante,idcategoria,idcentro,fecha_inscripcion,tipotramite,estado,nrosolicitud,usuario) values('".$tramite."',".$_POST["nroficha"].",'".$_POST["fechaexamen"]."','".$fechafin."','".$_POST["resultado"]."','".$_POST["restricciones"]."','".$_POST["observacion"]."',".$idpost.",".$_POST["categoria"].",".$_POST["idcentro"].",'".$_POST["expe_fecha"]."','".$_POST["tipotra"]."','".$estadotramite."','".$solicitud."','".$_SESSION["usu"]."')";
-					$sr2=pg_query($link,$sql2); 	
+					
+					$sr2=pg_query($link,$sql2);	
 
 					if ($_POST["categoria"]=='7'){
 						$sql_especial ="insert into tramite_espe (idtramite,nrofichacurso,id_curso_especial, tipotramite,fechacurso, usuario, licencia) values(".$tramite.",'".$_POST["nrofichacurso"]."','".$_POST["idcentrocurso"]."','".$_POST["tipotra"]."','".$_POST["fechacurso"]."','".$_SESSION["usu"]."','".$_POST["licencia"]."')";
