@@ -1,3 +1,31 @@
+<?php
+	include ("../conectar.php");
+	$link=Conectarse();
+	$tra=$_GET['tra'];
+	$sis=$_GET['sis'];
+	$sql="SELECT t.tipotramite,t.idcategoria,p.*
+		FROM tramite t
+		INNER JOIN postulante p on p.idpostulante=t.idpostulante
+		WHERE t.idtramite='".$tra."'";
+	$rs=pg_query($link,$sql);
+	$datos=pg_fetch_array($rs);
+	$tt=$datos[0];
+
+		$echotra;
+        $long=strlen($tt);
+        if ($long==1) {
+          $sql1="SELECT * FROM tipo_tramite WHERE id_tipo='".$tt."'";
+          $rs1=pg_query($link,$sql1);
+          $fila =pg_fetch_array($rs1);
+          $echotra=$fila[1];
+        }else if($long>1){
+          $echotra=$tt;
+        }
+    $cat=$datos[1];
+    $nom=$datos[3];
+    $app=$datos[4];
+    $apm=$datos[5];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,7 +64,7 @@
 				<table>
 					<tr>
 						<td>N° SOLICITUD</td>
-						<td></td>
+						<td><?php echo $sis; ?></td>
 					</tr>
 					<tr>
 						<td>FECHA DE REGISTRO</td>
@@ -76,19 +104,19 @@
 						</tr>
 						<tr>
 							<td class="flc1-tabla-check">
-								<div class="flc1-tabla-check-box">x</div>
-								<div class="flc1-tabla-check-txt">OBTENCIÓN</div>
+								<div class="flc1-tabla-check-box"><?php if ($echotra=='NUEVO') {echo "X";} ?></div>
+								<div class="flc1-tabla-check-txt">NUEVO</div>
 							</td>
 							<td class="flc1-tabla-check">
-								<div class="flc1-tabla-check-box"></div>
+								<div class="flc1-tabla-check-box"><?php if ($echotra=='REVALIDACION') {echo "X";} ?></div>
 								<div class="flc1-tabla-check-txt">REVALIDACIÓN</div>
 							</td>
 							<td class="flc1-tabla-check">
-								<div class="flc1-tabla-check-box"></div>
+								<div class="flc1-tabla-check-box"><?php if ($echotra=='RECATEGORIZACION') {echo "X";} ?></div>
 								<div class="flc1-tabla-check-txt">RECATEGORIZACIÓN</div>
 							</td>
 							<td class="flc1-tabla-check">
-								<div class="flc1-tabla-check-box"></div>
+								<div class="flc1-tabla-check-box"><?php if ($echotra=='DUPLICADO') {echo "X";} ?></div>
 								<div class="flc1-tabla-check-txt">DUPLICADO</div>
 							</td>
 							<td class="flc1-tabla-check">
@@ -125,16 +153,16 @@
 				</td>
 				<td colspan="6" style="font-size: 0; padding: 18pt 12pt 2pt 12pt">
 					<div class="flc1-tabla-title" style="margin-bottom: 10pt">CATEGORÍAS</div>
-					<div class="flc1-tabla-check2"><i></i><span>I</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>II A</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>II B</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>III A</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>III B</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>III C</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>I</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>II A</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>II B</span></div>
-					<div class="flc1-tabla-check2"><i></i><span>II C</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='1'){echo "X";}?></i><span>I</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='2'){echo "X";}?></i><span>II A</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='3'){echo "X";}?></i><span>II B</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='4'){echo "X";}?></i><span>III A</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='5'){echo "X";}?></i><span>III B</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='6'){echo "X";}?></i><span>III C</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>I</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='2'){echo "X";}?></i><span>II A</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='3'){echo "X";}?></i><span>II B</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II C</span></div>
 				</td>
 			</tr>
 			<tr>
@@ -143,6 +171,11 @@
 			<tr>
 				<td colspan="7" class="flc1-tabla-dato">
 					<p>NOMBRES Y APELLIDOS</p>
+					<p class="flc1-tabla-dato-txt">
+						<span style="width: 40%">MARLON ENMANUEL</span>
+						<span style="width: 30%">MONTALVO</span>
+						<span style="width: 30%">FLORES</span>
+					</p>
 					<div>
 						<span style="width: 40%">Nombres</span>
 						<span style="width: 30%">Apellido Paterno</span>

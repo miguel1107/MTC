@@ -164,6 +164,11 @@
   margin-right: 4pt;
   float: left;
   margin-top: -3pt;
+  font-size: 10pt;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: lowercase;
 }
 .flc1-tabla-check2 span {
   font-size: 8pt;
@@ -172,6 +177,7 @@
 .flc1-tabla-dato {
   vertical-align: top;
   padding: 4pt 6pt !important;
+  position: relative;
 }
 .flc1-tabla-dato p {
   font-size: 8pt;
@@ -180,10 +186,28 @@
 .flc1-tabla-dato div {
   border-top: 1px solid #444;
   padding-top: 2pt;
+  font-size: 0;
 }
 .flc1-tabla-dato div span {
   font-size: 7pt;
   display: inline-block;
+}
+.flc1-tabla-dato-txt {
+  position: absolute;
+  left: 5pt;
+  right: 5pt;
+  top: 0.7cm;
+  font-size: 0 !important;
+  padding: 0 !important;
+}
+.flc1-tabla-dato-txt span {
+  display: inline-block;
+  font-size: 10pt !important;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-right: 2pt solid #fff !important;
+  margin: 0 !important;
 }
 .flc1-foot-acep {
   margin-top: 0.4cm;

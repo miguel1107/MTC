@@ -222,7 +222,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				}							
 				$sr2=pg_query($link,$sql2); 
 			}else{
-				$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono,iddistrito,estado) values('".$_POST["txtnom"]."','".$_POST["apepat"]."','".$_POST["apemat"]."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."','".$_POST["distrito"]."','1')";
+				$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono,iddistrito,estado) values(E'".addslashes($_POST["txtnom"])."',E'".addslashes($_POST["apepat"])."',E'".addslashes($_POST["apemat"])."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."','".$_POST["distrito"]."','1')";
 
 				$sr=pg_query($link, $sql); 
 

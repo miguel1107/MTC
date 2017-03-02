@@ -151,16 +151,16 @@
 				</td>
 				<td colspan="6" style="font-size: 0; padding: 18pt 12pt 2pt 12pt">
 					<div class="flc-tabla-title" style="margin-bottom: 10pt">CATEGORÍAS</div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='1'){echo "X";}?></span></s></i><span>I</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='2'){echo "X";}?></span></i><span>II A</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='3'){echo "X";}?></span></i><span>II B</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='4'){echo "X";}?></span></i><span>III A</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='5'){echo "X";}?></span></i><span>III B</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='6'){echo "X";}?></span></i><span>III C</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat==''){echo "X";}?></span></i><span>I</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='2'){echo "X";}?></span></i><span>II A</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat=='3'){echo "X";}?></span></i><span>II B</span></div>
-					<div class="flc-tabla-check2"><i><span><?php if($cat==''){echo "X";}?></span></i><span>II C</span></div>
+					<div class="flc-tabla-check2"><i><span></span></s></i><span>I</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>II A</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>II B</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>III A</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>III B</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>III C</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>I</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>II A</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>II B</span></div>
+					<div class="flc-tabla-check2"><i><span></span></i><span>II C</span></div>
 				</td>
 			</tr>
 			<tr>
