@@ -179,14 +179,17 @@ function MM_goToURL() { //v3.0
      </td></tr>
    </tbody></table>
  </td></tr>
-</tbody></table>
+</tbody>
+</table>
 
 <table width="101%" height="94%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
   <tbody>
     <tr>
-      <td height="165" valign="top"><table width="100%" height="100%" border="0" align="center" cellspacing="10">
+      <td height="165" valign="top">
+        <table width="100%" height="100%" border="0" align="center" cellspacing="10">
         <tr>
-          <td width="972" height="323" valign="top"><form name="form1" method="post" action="insert_ex_reglas.php" onSubmit="return validar(this)">
+          <td width="972" height="323" valign="top">
+            <form name="form1" method="post" action="insert_ex_reglas.php" onSubmit="return validar(this)">
             <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="90%">
               <tbody>
                 <tr>
@@ -220,7 +223,7 @@ function MM_goToURL() { //v3.0
                 <?php
                 if(isset($_GET["idpos"])){
                   $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$_GET["idpos"]."' and t.estado=55 and t.tipotramite ='DUPLICADO' and t.idtramite<'9966737'";
-                echo $sq;exit;
+                
                   $rs=pg_query($link,$sq) or die ("Error :$sq");
                   while($reg11=pg_fetch_array($rs)) { 
                    $idusuario=$reg11[0];
@@ -234,7 +237,7 @@ function MM_goToURL() { //v3.0
                if($cant > 0){
                 foreach($_POST["chk"] as $k =>$v){
 		// $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado<>55 and t.tipotramite <>'DUPLICADO'  and t.tipotramite<>'REVALIDACION' and t.tipotramite<>'CANJE REVALIDACION  '";
-                 $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado=55 and t.tipotramite ='DUPLICADO' and t.idtramite<'9966737'";
+                 $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado<>55 and t.tipotramite <>'DUPLICADO' and t.idtramite<'9966737'";
                  $rs=pg_query($link,$sq) or die ("Error :$sq");
                  while($reg11=pg_fetch_array($rs)) { 
                    $idusuario=$reg11[0];
@@ -254,30 +257,37 @@ function MM_goToURL() { //v3.0
               <td class="marco" width="1%">&nbsp;</td>
               <td class="etiqueta" align="right" width="20%">Nombres&nbsp;&nbsp;</td>
               <td class="objeto" width="1%">&nbsp;</td>
-              <td colspan="2" class="objeto"><input name="xxxnom" type="text"  disabled="disabled" class="cajatexto" id="xxxnom" value="<?=$row[0]?>" size="40" maxlength="60">
+              <td colspan="2" class="objeto">
+                <input name="xxxnom" type="text"  disabled="disabled" class="cajatexto" id="xxxnom" value="<?=$row[0]?>" size="40" maxlength="60">
                 <input name="idtramite" value="<?=$row[5]?>" type="hidden">
-                <input name="idcategoria" value="<?=$row[6]?>" type="hidden"></td>
+                <input name="idcategoria" value="<?=$row[6]?>" type="hidden">
+              </td>
                 <td class="objeto" width="2%"><input type="hidden" name="valorsesion" value="<?=$_SESSION["cargo"]?>"></td>
               </tr>
               <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="20%">Apellidos&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td colspan="2" class="objeto"><input name="xxxape"  type="text" disabled="disabled" class="cajatexto" id="xxxape" value="<?=$row[1]?> <?=$row[2]?>" size="40" maxlength="60"></td>
+                <td colspan="2" class="objeto">
+                  <input name="xxxape"  type="text" disabled="disabled" class="cajatexto" id="xxxape" value="<?=$row[1]?> <?=$row[2]?>" size="40" maxlength="60">
+                </td>
                 <td class="objeto" width="2%">&nbsp;</td>
               </tr>
               <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="20%">DNI&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td colspan="2" class="objeto"><input name="xxxdni"  type="text" disabled="disabled" class="cajatexto" id="xxxdni" value="<?=$row[3]?>" size="15" maxlength="8"></td>
+                <td colspan="2" class="objeto">
+                  <input name="xxxdni"  type="text" disabled="disabled" class="cajatexto" id="xxxdni" value="<?=$row[3]?>" size="15" maxlength="8">
+                </td>
                 <td class="objeto" width="2%">&nbsp;</td>
               </tr>
               <tr valign="middle">
                 <td class="marco">&nbsp;</td>
                 <td class="etiqueta" align="right">Categoria &nbsp;</td>
                 <td class="objeto">&nbsp;</td>
-                <td colspan="2" class="objeto"><input name="xxxdepe4222" type="text" disabled="disabled" class="cajatexto" id="xxxdepe4222" value="<?=$row[4]?>" size="15" maxlength="8"></td>
+                <td colspan="2" class="objeto">
+                  <input name="xxxdepe4222" type="text" disabled="disabled" class="cajatexto" id="xxxdepe4222" value="<?=$row[4]?>" size="15" maxlength="8"></td>
                 <td class="objeto">&nbsp;</td>
               </tr>
               <tr valign="middle">
@@ -291,7 +301,6 @@ function MM_goToURL() { //v3.0
                     <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
                   </td>
                   <td class="objeto">&nbsp;</td>
-                </tr>
 
                 <tr valign="middle">
                   <td colspan="6" class="marco">&nbsp;&nbsp;
@@ -321,9 +330,14 @@ function MM_goToURL() { //v3.0
                             <tr>
                               <td>&nbsp;&nbsp;<nobr>
                                <?=$reg[1]?></nobr></td>
-                               <td><div align="center">
-                                <? if($reg8[9]==''){echo '<font color=red>En espera ...<font>';}else{echo 'Procesado';} ?>
-                              </div></td>
+                               <td>
+                                <div align="center">
+                                  <? if($reg8[9]==''){ 
+                                    echo '<font color=red>En espera ...<font>';
+                                  }else{
+                                    echo 'Procesado';} ?>
+                                </div>
+                              </td>
                               <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                                 <?=$reg8[8]?>
                               </font></div></td>
@@ -428,7 +442,7 @@ function MM_goToURL() { //v3.0
                          </tr>
                        </table>
                        <? }?>				  </td>
-                     </tr>
+              </tr>
                      <tr>
                       <td colspan="8" height="30"><table border="0" cellpadding="3" cellspacing="1" width="100%">
                         <tbody>
@@ -463,7 +477,8 @@ function MM_goToURL() { //v3.0
 
              </table></td>
            </tr>
-         </tbody></table>
+         </tbody>
+       </table>
          <div class="nb_item" id="nb_item_3"><iframe name="curpro" id="curpro" src="curso_pro.php" width="500" height="145" frameborder="0" scrolling="no"></iframe></div>
          <div id="nbFlash" style="visibility: visible;">
           <? if(isset($_GET["idpos"])){ ?>
