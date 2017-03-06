@@ -3,141 +3,23 @@
   if(!isset($_SESSION["usuario"])) header("location:index.php");
   include ("conectar.php");
   $link=Conectarse();
-  $tienecursopro='No';
+  //$tienecursopro='No';
 ?>
-<html><head><title></title>
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
+  <link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
+  <link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
+  <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
+  <link href="estilos/networkbar.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" media="all" href="estilos/jquery-ui.css">
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
-<link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
-<link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
-<link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
-<link href="estilos/networkbar.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" media="all" href="estilos/jquery-ui.css">
+  <script language="JavaScript" src="estilos/networkbar.js"></script>
+  <script type="text/javascript" src="estilos/libjsgen.js"> </script>
+  <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 
-<script language="JavaScript" src="estilos/networkbar.js"></script>
-<script type="text/javascript" src="estilos/libjsgen.js"> </script>
-<script type="text/javascript" src="estilos/popcalendar.js"> </script>
-
-<script>
-  var Dafu='';
-  function consulta(fecha,tipo,chk){
-    var FechaCPF;
-    FechaCPF=fecha.value;
-
-    if(chk=='Desactivar'){
-    /*miventana=window.open("CalcularPostulanteV.php?nada=nada","CFE","");
-    form1.idexamen.checked=false; */
-      for (var i=0 ; i<=6 ; i++){
-        form1.idexamen[i].checked=false;
-      }
-    }
-
-    if (chk.checked==true ){
-      if(form1.fecha_prog1.value==''){
-        alert("Seleccionar Primero la Fecha");
-        chk.checked=false;
-        exit();
-      }
-      miventana=window.open("CalcularPostulante.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
-      Dafu='Kako';
-      disabledbutton();
-    }else{
-    	miventana=window.open("CalcularPostulanteV.php?nada=nada","CFE","");
-    	disabledbutton();
-    	Dafu='';
-    }
-  }
-
-
-  function disabledbutton(){
-  	setTimeout(function(){ 
-      var datos1 = document.getElementById("variablePadre").value ;
-      array_datos = datos1.split("/")
-
-      var xreg = array_datos[0]
-      var total = xreg || 0;
-    	if(total < 120){   
-       document.getElementById("layer-reg").style.display = 'block'; 
-      }else{
-         document.getElementById("layer-reg").style.display = 'none';  
-      }
-    }, 100);
-  }
-</script>
-
-<style type="text/css">
-  .Estilo2 {
-   font-family: Geneva, Arial, Helvetica, sans-serif;
-   font-weight: bold;
- }
- .Estilo4 {color: #FF0000}
-</style>
-<script languaje="JavaScript">
-  function MM_goToURL() { //v3.0
-    var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-    for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-  }
-</script>
-
-
-<script language="JavaScript">
-  <!--
-  function validar(form1){
-    var w='';
-    w='n';
-
-    if (form1.fecha_prog1.value==""){
-      alert("Debe ingresar la fecha de Programaci�n");
-      form1.fecha_prog1.focus();
-      return false;
-    }
-  	 /*if(form1.idexamen.checked==false)
-      {
-  	 alert("Seleccionar Tipo de Examen");
-  	 return false;
-    }*/
-    if (Dafu!='Kako'){
-      alert("Seleccionar Tipo de Examen");
-      return false;
-    }
-
-    var mydate=new Date();
-    var year=mydate.getYear();
-    if (year < 1000)
-      year+=1900;
-      var day=mydate.getDay();
-      var month=mydate.getMonth()+1;
-    if (month<10)
-      month="0"+month;
-      var daym=mydate.getDate();
-    if (daym<10)
-      daym="0"+daym;
-      var fecc=(""+daym+"/"+month+"/"+year+"")
-
-      var usuario=form1.valorsesion.value;
-      var fecha=form1.fecha_prog1.value;
-      if(usuario!=1){
-       if(fecha==fecc){
-         alert("Usted no Puede Realizar Programaciones en el Mismo D�a");
-         form1.fecha_prog1.focus();
-         return false;
-       }
-     }
-
-    return true;
-  }
-</script>
-<script>
-  function Menu(idtrami,idcatego,idpostu){
-    document.all("curpro").src="curso_pro.php?idtrami="+idtrami+"&idcatego="+idcatego+"&idpostu="+idpostu;
-    nbOpenItem(3);
-  }
-
-  function lista_pro(){
-    window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
-  }
-</script>
 </head>
 <body class="os2hop">
 
@@ -238,34 +120,10 @@
                         </td>
                       </tr>
                       <?php
-                        if(isset($_GET["idpos"])){
-                          $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$_GET["idpos"]."' and t.estad<>55 and t.tipotramite <>'DUPLICADO' and t.idtramite<'9966737'";
-                          
-                          $rs=pg_query($link,$sq) or die ("Error :$sq");
-                          while($reg11=pg_fetch_array($rs)) { 
-                            $idusuario=$reg11[0];
-                          }
-                          $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
-                          $result=pg_query($sql)or die ("Error : $sql");
-                          $row=pg_fetch_array($result);
-                        }
                         $cant=count($_POST["chk"]);
                         if($cant > 0){
                           foreach($_POST["chk"] as $k =>$v){
-  		                      // $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado<>55 and t.tipotramite <>'DUPLICADO'  and t.tipotramite<>'REVALIDACION' and t.tipotramite<>'CANJE REVALIDACION  '";
-                            $sq="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado<>55 and t.tipotramite <>'DUPLICADO' and t.idtramite<'9966737'";
-                            
-                            $rs=pg_query($link,$sq) or die ("Error :$sq");
-                            while($reg11=pg_fetch_array($rs)) { 
-                              $idusuario=$reg11[0];
-                            }
-                            $idtraaa=$idusuario;
-                            //		$sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idpostulante='".$v."' and t.estado='1'";
-                            $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
-                            echo $sql;exit;
-                            $result=pg_query($sql)or die ("Error : $sql");
-                            $row=pg_fetch_array($result);
-                            echo pg_num_rows($result);
+  		                      $sql="";
                           }
                         }
                       ?>
@@ -311,11 +169,11 @@
                         </td>
                         <td valign="middle" class="objeto">
                           <input type="hidden" id="variablePadre">
-                          <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
+                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe> -->
                         </td>
                         <td class="objeto">&nbsp;</td>
                       </tr>
-                      <tr valign="middle">
+                      <!-- <tr valign="middle">
                         <td colspan="6" class="marco">&nbsp;&nbsp;
                           <table width="90%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -328,14 +186,14 @@
                                     <td width="14%"><div align="center"><strong>RESULTADO</strong></div></td>
                                   </tr>
                                   <?
-                                    $ssql="select ec.idcategoria, t.nombre,t.idexamen from examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen where ec.idcategoria='".$row[6]."'";
-                                    $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
-                                    $i=0;
-                                    while($reg=pg_fetch_array($rs)) { 
-  					   					               //   $ssql8="select e.idevaluacion, e.resultado, e.opcion from evaluacion e INNER JOIN tipo_examen t ON e.idexamen=t.idexamen where e.idexamen='".$reg[2]."' and e.idtramite='".$row[5]."' order by e.opcion ASC";
-                                      $ssql8="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where t.idtramite='".$row[5]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
-                                      $rs8=pg_query($link,$ssql8) or die ("error : $ssql"); 
-                                      while($reg8=pg_fetch_array($rs8)) { 
+                              //       $ssql="select ec.idcategoria, t.nombre,t.idexamen from examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen where ec.idcategoria='".$row[6]."'";
+                              //       $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
+                              //       $i=0;
+                              //       while($reg=pg_fetch_array($rs)) { 
+  					   					               // //   $ssql8="select e.idevaluacion, e.resultado, e.opcion from evaluacion e INNER JOIN tipo_examen t ON e.idexamen=t.idexamen where e.idexamen='".$reg[2]."' and e.idtramite='".$row[5]."' order by e.opcion ASC";
+                              //         $ssql8="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where t.idtramite='".$row[5]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
+                              //         $rs8=pg_query($link,$ssql8) or die ("error : $ssql"); 
+                              //         while($reg8=pg_fetch_array($rs8)) { 
                                   ?>
                                   <tr>
                                     <td>&nbsp;&nbsp;
@@ -505,7 +363,7 @@
                             </tbody>
                           </table>
                         </td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </form>        
@@ -519,16 +377,16 @@
   <div class="nb_item" id="nb_item_3">
     <iframe name="curpro" id="curpro" src="curso_pro.php" width="500" height="145" frameborder="0" scrolling="no"></iframe>
   </div>
-  <div id="nbFlash" style="visibility: visible;">
+  <!-- <div id="nbFlash" style="visibility: visible;">
     <? if(isset($_GET["idpos"])){ ?>
         <script>nbInit('<?=$_SERVER['REQUEST_URI']?>');</script>
     <? }else{?>
         <script>nbInit('<?=$_SERVER['REQUEST_URI']."?idpos=".$v.""?>');</script>
     <? }?>
-  </div>
+  </div> -->
   <script type="text/javascript" src="estilos/jquery.min.js"></script>
   <script type="text/javascript" src="estilos/jquery-ui.js"></script>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     function noExcursion(date){ 
       var day = date.getDay();
       return [(day != 0 && day != 6), ''];
@@ -584,6 +442,6 @@
   		  }	
       });
     })
-  </script>
+  </script> -->
 </body>
 </html>

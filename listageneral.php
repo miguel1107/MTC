@@ -119,7 +119,6 @@ $numeroRegistros=pg_num_rows($rs3);
 				//$link=conectarse();
 				$ssql="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.dni like '".$_GET["frase2"]."%'  LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
-				
 				 ?>
         <tr>
 
