@@ -261,11 +261,10 @@
                             }
                             $idtraaa=$idusuario;
                             //		$sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idpostulante='".$v."' and t.estado='1'";
-                            $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";
-                            echo $sql;exit;
+                            $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria WHERE t.idtramite='".$idtraaa."' and t.estado='1'";                            
                             $result=pg_query($sql)or die ("Error : $sql");
                             $row=pg_fetch_array($result);
-                            echo pg_num_rows($result);
+                            
                           }
                         }
                       ?>
@@ -330,6 +329,7 @@
                                   <?
                                     $ssql="select ec.idcategoria, t.nombre,t.idexamen from examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen where ec.idcategoria='".$row[6]."'";
                                     $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
+                                    echo $ssql;exit;
                                     $i=0;
                                     while($reg=pg_fetch_array($rs)) { 
   					   					               //   $ssql8="select e.idevaluacion, e.resultado, e.opcion from evaluacion e INNER JOIN tipo_examen t ON e.idexamen=t.idexamen where e.idexamen='".$reg[2]."' and e.idtramite='".$row[5]."' order by e.opcion ASC";
@@ -553,6 +553,7 @@
       	//$nuevafecha = date('d/m/Y', strtotime("$fecha + 1 days"));
       	//$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
   	   $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
+       $newmax = date('d/m/Y', strtotime('+8 day')) ;
   	   ?>
   	  $( "#fecha_prog1" ).datepicker({
   		  dateFormat: 'dd/mm/yy',
@@ -565,7 +566,7 @@
         <?php } else {?> 		beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
     		//beforeShowDay: noWeekendsOrHolidays,  
     		minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
-    		maxDate: '<?php echo date('28/02/2017')?>',
+    		maxDate: '<?php echo $newmax;?>',
   		  onClose: function(date){			
     			 $.ajax({
       			 url: 'CalcularPostulante.php',

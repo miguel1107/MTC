@@ -9,7 +9,7 @@ $numeroRegistros=0;
 
 switch ( $tipo ) {
 case 1:	
-	$sql3="select count(*), fecha from evaluacion where (idexamen='1' or idexamen='2') and fecha='$fechaexa' group by fecha";
+	$sql3="select count(*), fecha from evaluacion where (idexamen='1' or idexamen='2') and fecha='".$fechaexa."' group by fecha";
 	$rs3=pg_query($link,$sql3); 
 	$row11=pg_fetch_array($rs3); 
 	$numeroRegistros=$row11[0];
