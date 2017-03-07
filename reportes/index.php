@@ -299,7 +299,7 @@
 				</div>
 			</div>
 		</div>
-		<div><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s')?></div>
+		<div><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-Nrt :'.$tra?></div>
 	</section>
 
 	<section class="flc2 page">
@@ -346,7 +346,7 @@
 			</div>
 		</div>
 		<div></div>
-		<div><?php echo $_SESSION["usu"].'   '.date('d/m/Y H:i:s')?></div>
+		<div><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- Nrt :'.$tra ?></div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
 

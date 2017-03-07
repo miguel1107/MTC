@@ -104,24 +104,61 @@ include("paginator.inc.php");
   
             </font></div></td>
 
-            <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-               <nobr> <?=$reg[2]?> <?=$reg[3]?></nobr>
-            </font></div></td>
-            <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?=$reg[9]?>
-            </nobr> </font></div></td>
-            <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?=normal($reg[4])?></nobr>
-            </font></div></td>
-            <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <nobr><?=$reg[5]?></nobr>
-            </font></div></td>
+            <td>
+              <div align="left">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr> <?=$reg[2]?> <?=$reg[3]?></nobr>
+                </font>
+              </div>
+            </td>
+            <td>
+              <div align="center">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                  <nobr>
+                    <?=$reg[9]?>
+                  </nobr> 
+                </font>
+              </div>
+            </td>
+            <td>
+              <div align="center">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr> <?=normal($reg[4])?></nobr>
+                </font>
+              </div>
+            </td>
+            <td>
+              <div align="center">
+                <font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> 
+                </font>
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr><?=$reg[5]?></nobr>
+                </font>
+              </div>
+            </td>
 
-            <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[7]?>
-            </font></td>
-            <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+            <td>
+              <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+             <?php 
+                $echotra;
+                $tra=$reg[7];
+                $long=strlen($tra);
+                if ($long==1) {
+                  $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                  $rs=pg_query($con,$sql);
+                  $fila =pg_fetch_array($rs);
+                  echo $echotra=$fila[1];
+                }else if($long>1){
+                  echo $reg[7];
+                }
+                
+              ?>
+              </font>
+            </td>
+            <td>
+              <div align="center">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"></font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
             <?=$reg[10]?>&nbsp;
             </font></div>              
               </td>

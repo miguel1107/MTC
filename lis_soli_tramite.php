@@ -30,11 +30,12 @@ body {
 <body>
 <?php
 if ($_GET["frase3"]!=''){
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
+$_pagi_sql = "SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and (t.tipotramite='4' or t.tipotramite='DUPLICADO')";
 }else{
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase12"]."%' and p.apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and  t.nrosolicitud<>0 and t.tipotramite <> 'NUEVO' and t.tipotramite <> 'RECATEGORIZACION' and t.tipotramite <> 'CANJE RECATEGORIZACION' and t.tipotramite <> 'REVALIDACION' and t.tipotramite <> 'CANJE REVALIDACION'  order by t.fecha_inscripcion DESC, t.nrosolicitud DESC";
+$_pagi_sql = "SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase12"]."%' and p.apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and  t.nrosolicitud<>0  and (t.tipotramite='4' or t.tipotramite='DUPLICADO')";
 
 }
+
 //cantidad de resultados por página (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;
@@ -96,7 +97,8 @@ include("paginator.inc.php");
 
             <td align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php echo $reg[8]?>
-            </font></td>
+            </font>
+          </td>
             <td>
 
               <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -121,32 +123,55 @@ include("paginator.inc.php");
 
               ?>
             </font></div></td>
-            <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-             <nobr> <?php echo normal($reg[4])?></nobr>
-            </font></div></td>
-            <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?php 
-                $echotra;
-                $tra=$reg[7];
-                $long=strlen($tra);
-                if ($long==1) {
-                  $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
-                  $rs=pg_query($con,$sql);
-                  $fila =pg_fetch_array($rs);
-                  echo $echotra=$fila[1];
-                }else if($long>1){
-                  echo $reg[7];
-                }
-                
-              ?>
-            </font></td>
+            <td>
+              <div align="center">
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr> <?php echo normal($reg[4])?></nobr>
+                </font>
+              </div>
+            </td>
+            <td>
+              <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                <?php 
+                  $echotra;
+                  $tra=$reg[7];
+                  $long=strlen($tra);
+                  if ($long==1) {
+                    $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                    $rs=pg_query($con,$sql);
+                    $fila =pg_fetch_array($rs);
+                    echo $echotra=$fila[1];
+                  }else if($long>1){
+                    echo $reg[7];
+                  }
+                ?>
+              </font>
+            </td>
 
-            <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?php echo $reg[5]?>
-            </nobr> </font></div></td>
-            <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> </font><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <nobr>
-              <?php echo $reg[11]?>&nbsp;
-            </nobr> </font></div></td>
+            <td>
+              <div align="center">
+                <font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a> 
+                </font>
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr>
+                    <?php echo $reg[5]?>
+                  </nobr> 
+                </font>
+              </div>
+            </td>
+            <td>
+              <div align="center">
+                <font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <a href="editardep.php?cod=<?=$reg[0]?>&dir=<?=$reg[8]?>" class="Estilo5"></a>
+                </font>
+                <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                  <nobr>
+                    <?php echo $reg[11]?>&nbsp;
+                  </nobr> 
+                </font>
+              </div>
+            </td>
           </tr>
 
           <?php } ?>

@@ -136,7 +136,7 @@
                   <td class="marco" width="1%">&nbsp;</td>
                   <td class="etiqueta" align="right" width="22%">Número de SISGEDO &nbsp;&nbsp;</td>
                   <td class="objeto" width="1%">&nbsp;</td>
-                  <td class="objeto" width="78%"><input name="numsisgedo" size="40" class="cajatexto" id="numsisgedo" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                  <td class="objeto" width="78%"><input name="numsisgedo" size="8" class="cajatexto" id="numsisgedo" maxlength="8" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                   <td class="objeto" width="1%">&nbsp;</td>
                 </tr>                
                 <tr>

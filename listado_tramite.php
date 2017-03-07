@@ -146,7 +146,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                             <td class="LL">|</td>
                             <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'detalletramite_ficha.php')" nowrap="nowrap"><img src="imag/adjuntar.gif" alt="Generar Record" width="18" height="18" hspace="1" border="0" align="absmiddle"> Record</td>
                             <td class="LL">|</td>
-                            <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'solicitud_personal.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Solicitud Personal" width="15" height="12" hspace="1" border="0" align="absmiddle"> Solicitud Personal</td>
+                            <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Solicitud Personal" width="15" height="12" hspace="1" border="0" align="absmiddle"> Solicitud Personal</td>
                             <td class="LL">|</td>
                             <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('anular',0,1,'delete_tramites_anulados.php?sw=4152')" nowrap="nowrap"><img src="imag/rechazar.gif" alt="Anular Tr&aacute;mite" width="22" height="18" hspace="1" border="0" align="absmiddle"> Anular Tramite</td>
                             <td class="LL">|</td>
