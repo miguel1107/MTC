@@ -6,31 +6,31 @@ $fechaexa = $_GET["fechann"];
 $fechalimite = '2016-04-01';
 $tipo = 1;
 $numeroRegistros=0;
+if ($fechaexa!="") {
+	switch ( $tipo ) {
+		case 1:	
+			$sql3="select count(*), fecha from evaluacion where (idexamen='1' or idexamen='2') and fecha='".$fechaexa."' group by fecha";
+			$rs3=pg_query($link,$sql3); 
+			$row11=pg_fetch_array($rs3); 
+			$numeroRegistros=$row11[0];
+			$fecha = $row11[1];
+			break;
 
-switch ( $tipo ) {
-case 1:	
-	$sql3="select count(*), fecha from evaluacion where (idexamen='1' or idexamen='2') and fecha='$fechaexa' group by fecha";
-	$rs3=pg_query($link,$sql3); 
-	$row11=pg_fetch_array($rs3); 
-	$numeroRegistros=$row11[0];
-	$fecha = $row11[1];
-	break;
+		case 4:	
+			$sql3="select count(*), fecha from evaluacion where idexamen='4' and fecha='$fechaexa' group by fecha";  
+			$rs3=pg_query($link,$sql3); 
+			$row11=pg_fetch_array($rs3); 
+			$numeroRegistros=$row11[0]; 
+			$fecha = $row11[1];
+			break;
+	}
 
-case 4:	
-	$sql3="select count(*), fecha from evaluacion where idexamen='4' and fecha='$fechaexa' group by fecha";  
-	$rs3=pg_query($link,$sql3); 
-	$row11=pg_fetch_array($rs3); 
-	$numeroRegistros=$row11[0]; 
-	$fecha = $row11[1];
-	break;
+	if (isset($_GET['xajax']) && !empty($_GET['xajax']) ){
+		echo $numeroRegistros;
+		echo $fecha;
+		exit();
+	}
 }
-
-if (isset($_GET['xajax']) && !empty($_GET['xajax']) ){
-	echo $numeroRegistros;
-	echo $fecha;
-	exit();
-}
-
 ?>
 <html>
 <head>

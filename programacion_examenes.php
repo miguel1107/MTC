@@ -3,7 +3,7 @@
   if(!isset($_SESSION["usuario"])) header("location:index.php");
   include ("conectar.php");
   $link=Conectarse();
-  //$tienecursopro='No';
+  $tienecursopro='No';
 ?>
 <html>
 <head>
@@ -20,6 +20,122 @@
   <script type="text/javascript" src="estilos/libjsgen.js"> </script>
   <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 
+  <script src="js/jquery-2.0.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
+  <script src="js/jquery-ui.js"> </script>
+  <script src="js/prog_examenes.js"></script>
+  <script>
+    var Dafu='';
+    function consulta(fecha,tipo,chk){
+      console.log(fecha.value+"-"+tipo+"-"+chk);
+      var FechaCPF;
+      FechaCPF=fecha.value;
+
+      // if(chk=='Desactivar'){
+      //   for (var i=0 ; i<=6 ; i++){
+      //     form1.idexamen[i].checked=false;
+      //   }
+      // }else{
+        if (chk.checked==true ){
+          if(form1.fecha_prog1.value==''){
+            alert("Seleccionar Primero la Fecha");
+            chk.checked=false;
+            exit();
+          }
+          miventana=window.open("CalcularPostulante.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
+          Dafu='Kako';
+          disabledbutton();
+        }else{
+          miventana=window.open("CalcularPostulanteV.php?nada=nada","CFE","");
+          disabledbutton();
+          Dafu='';
+        }
+      //}
+    }
+
+
+    function disabledbutton(){
+      setTimeout(function(){ 
+        var datos1 = document.getElementById("variablePadre").value ;
+        array_datos = datos1.split("/")
+
+        var xreg = array_datos[0]
+        var total = xreg || 0;
+        if(total < 120){   
+          document.getElementById("#layer-reg").style.display='block'; 
+          //document.getElementById("#layer-reg").attr({display: 'block'}); 
+        }else{
+          document.getElementById("#layer-reg").style.display='none';  
+        }
+      }, 100);
+    }
+</script>
+
+<style type="text/css">
+  .Estilo2 {
+   font-family: Geneva, Arial, Helvetica, sans-serif;
+   font-weight: bold;
+ }
+ .Estilo4 {color: #FF0000}
+</style>
+<script languaje="JavaScript">
+  function MM_goToURL() { //v3.0
+    var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+    for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+  }
+</script>
+
+
+<script language="JavaScript">
+  <!--
+  // function validar(form1){
+  //   var w='';
+  //   w='n';
+  //   if (form1.fecha_prog1.value==""){
+  //     alert("Debe ingresar la fecha de Programaci�n");
+  //     form1.fecha_prog1.focus();
+  //     return false;
+  //   }
+  //   if (Dafu!='Kako'){
+  //     alert("Seleccionar Tipo de Examen");
+  //     return false;
+  //   }
+
+  //   var mydate=new Date();
+  //   var year=mydate.getYear();
+  //   if (year < 1000)
+  //     year+=1900;
+  //     var day=mydate.getDay();
+  //     var month=mydate.getMonth()+1;
+  //   if (month<10)
+  //     month="0"+month;
+  //     var daym=mydate.getDate();
+  //   if (daym<10)
+  //     daym="0"+daym;
+  //     var fecc=(""+daym+"/"+month+"/"+year+"")
+
+  //     var usuario=form1.valorsesion.value;
+  //     var fecha=form1.fecha_prog1.value;
+  //     if(usuario!=1){
+  //      if(fecha==fecc){
+  //        alert("Usted no Puede Realizar Programaciones en el Mismo Dia");
+  //        form1.fecha_prog1.focus();
+  //        return false;
+  //      }
+  //    }
+  //   return true;
+  // }
+</script>
+<script>
+  function Menu(idtrami,idcatego,idpostu){
+    document.all("curpro").src="curso_pro.php?idtrami="+idtrami+"&idcatego="+idcatego+"&idpostu="+idpostu;
+    nbOpenItem(3);
+  }
+
+  function lista_pro(){
+    window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
+  }
+</script>
 </head>
 <body class="os2hop">
 
@@ -123,8 +239,18 @@
                         $cant=count($_POST["chk"]);
                         if($cant > 0){
                           foreach($_POST["chk"] as $k =>$v){
-  		                      $sql="";
+  		                      $sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55 and t.tipotramite !='DUPLICADO' and t.idtramite<'9966737'";
+                            $rs=pg_query($link,$sql) or die ("Error :$sql");
+                            while($reg1=pg_fetch_array($rs)) { 
+                              $id=$reg1[0];
+                            }
+                            $idtra=$id;
+                            $sql1="SELECT p.nombres,p.apepat,p.apemat,p.dni,p.ce,t.idcategoria,t.idtramite,t.fechafin FROM tramite t inner join postulante p on p.idpostulante=t.idpostulante where t.idtramite= '".$idtra."'" ;
+                            $rs1=pg_query($link,$sql1);
+                            $row=pg_fetch_array($rs1);
+
                           }
+                          
                         }
                       ?>
                       <tr valign="middle">
@@ -132,8 +258,8 @@
                         <td class="etiqueta" align="right" width="20%">Nombres&nbsp;&nbsp;</td>
                         <td class="objeto" width="1%">&nbsp;</td>
                         <td colspan="2" class="objeto"><input name="xxxnom" type="text"  disabled="disabled" class="cajatexto" id="xxxnom" value="<?=$row[0]?>" size="40" maxlength="60">
-                          <input name="idtramite" value="<?=$row[5]?>" type="hidden">
-                          <input name="idcategoria" value="<?=$row[6]?>" type="hidden"></td>
+                          <input name="idtramite" value="<?=$idtra?>" type="hidden">
+                          <input name="idcategoria" value="<?=$row[5]?>" type="hidden"></td>
                         <td class="objeto" width="2%">
                           <input type="hidden" name="valorsesion" value="<?=$_SESSION["cargo"]?>">
                         </td>
@@ -147,37 +273,60 @@
                       </tr>
                       <tr valign="middle">
                         <td class="marco" width="1%">&nbsp;</td>
-                        <td class="etiqueta" align="right" width="20%">DNI&nbsp;&nbsp;</td>
+                        <td class="etiqueta" align="right" width="20%">DNI/C.E&nbsp;&nbsp;</td>
                         <td class="objeto" width="1%">&nbsp;</td>
-                        <td colspan="2" class="objeto"><input name="xxxdni"  type="text" disabled="disabled" class="cajatexto" id="xxxdni" value="<?=$row[3]?>" size="15" maxlength="8"></td>
+                        <td colspan="2" class="objeto"><input name="xxxdni"  type="text" disabled="disabled" class="cajatexto" id="xxxdni" value="<?php if($row[3]==""){echo $row[4];}elseif($row[4]==""){echo $row[3];} ?>" size="15" maxlength="8"></td>
                         <td class="objeto" width="2%">&nbsp;</td>
                       </tr>
                       <tr valign="middle">
                         <td class="marco">&nbsp;</td>
-                        <td class="etiqueta" align="right">Categoria &nbsp;</td>
+                        <td class="etiqueta" align="right">Fecha de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
-                        <td colspan="2" class="objeto"><input name="xxxdepe4222" type="text" disabled="disabled" class="cajatexto" id="xxxdepe4222" value="<?=$row[4]?>" size="15" maxlength="8"></td>
+                        <td width="23%" class="objeto">
+                          <!-- <input name="fefe" type="text" class="cajatexto" id="fefe" onkeypress="return formato(event,form,this,80)" value="" size="15" maxlength="10" onkeyup=""> -->
+                          <input name="fecha_prog1" class="cajatexto" id="fecha_prog1"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
+                          
+                          <!-- <img src="imag/calendaricon.gif" onclick="popUpCalendar(this, form1.fefe, &quot;dd/mm/yyyy&quot;)" border="0" height="15" width="15"> -->
+                        </td>
+                        <td valign="middle" class="objeto">
+                          <input type="hidden" id="variablePadre">
+                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
+-->
+                                                  
+                        </td>
                         <td class="objeto">&nbsp;</td>
                       </tr>
                       <tr valign="middle">
                         <td class="marco">&nbsp;</td>
-                        <td class="etiqueta" align="right">Fecha de Examen  &nbsp;<img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15"></td>
+                        <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
-                        <td width="23%" class="objeto">
-                          <input name="fecha_prog1" class="cajatexto" id="fecha_prog1"  size="15" maxlength="10" type="text" onChange="consulta(form1.fecha_prog1,1,'Desactivar')" readonly> Click sobre la caja de texto
-                          <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fecha_prog1, "dd/mm/yyyy");consulta(form1.fecha_prog1,1,"Desactivar");' border="0" height="15" width="15">-->
+                        <td class="objeto" width="23%">
+                          <select name="hora" id="hora" class="objeto">
+                            <option value="0">--Seleccione hora--</option>
+                            <?php 
+                              $sss="SELECT * FROM hora order by idhora";
+                              $rr=pg_query($link,$sss);
+                              while ($rd=pg_fetch_array($rr)) {
+                             ?>
+                            <option value="<?php echo $rd[0]; ?>"><?php echo $rd[1]; ?></option>
+                            <?php      
+                              }
+                            ?>  
+                            </select>
                         </td>
-                        <td valign="middle" class="objeto">
-                          <input type="hidden" id="variablePadre">
-                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe> -->
-                        </td>
-                        <td class="objeto">&nbsp;</td>
+                        <td class="objeto" width="2%">&nbsp;</td>
+                        <td class="objeto" width="2%">&nbsp;</td>
                       </tr>
-                      <!-- <tr valign="middle">
-                        <td colspan="6" class="marco">&nbsp;&nbsp;
+                      <tr valign="middle">
+                        <td colspan="6" class="marco">&nbsp;&nbsp; 
                           <table width="90%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
-                              <td>
+                               <td>
+                               <?php
+                                  $ssql="SELECT ec.idcategoria, t.nombre,t.idexamen FROM examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen WHERE ec.idcategoria='".$row[5]."'";
+                                  $rs=pg_query($link,$ssql) or die ("error : $ssql");
+                                  $i=0;
+                               ?>
                                 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
                                   <tr>
                                     <td width="59%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
@@ -185,15 +334,11 @@
                                     <td width="10%"><div align="center"><strong>OPCION</strong></div></td>
                                     <td width="14%"><div align="center"><strong>RESULTADO</strong></div></td>
                                   </tr>
-                                  <?
-                              //       $ssql="select ec.idcategoria, t.nombre,t.idexamen from examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen where ec.idcategoria='".$row[6]."'";
-                              //       $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
-                              //       $i=0;
-                              //       while($reg=pg_fetch_array($rs)) { 
-  					   					               // //   $ssql8="select e.idevaluacion, e.resultado, e.opcion from evaluacion e INNER JOIN tipo_examen t ON e.idexamen=t.idexamen where e.idexamen='".$reg[2]."' and e.idtramite='".$row[5]."' order by e.opcion ASC";
-                              //         $ssql8="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where t.idtramite='".$row[5]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
-                              //         $rs8=pg_query($link,$ssql8) or die ("error : $ssql"); 
-                              //         while($reg8=pg_fetch_array($rs8)) { 
+                                  <?php 
+                                    while ($reg=pg_fetch_array($rs)) {
+                                      $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
+                                      $rs8=pg_query($link,$ssql8) or die ("error : $ssql");
+                                      while ($reg8=pg_fetch_array($rs8)) {
                                   ?>
                                   <tr>
                                     <td>&nbsp;&nbsp;
@@ -203,9 +348,9 @@
                                     </td>
                                     <td>
                                       <div align="center">
-                                        <? 
+                                        <?php 
                                           if($reg8[9]==''){
-                                            echo '<font color=red>En espera ...<font>';
+                                            echo "<font color=red> En espera ...<font>";
                                           }else{
                                             echo 'Procesado';
                                           } 
@@ -227,110 +372,76 @@
                                       </font>
                                     </td>
                                   </tr>
-                                  <? } 
-                                  }
+                                  <?php      
+                                      }
+                                    }
+                                    
                                   ?>
                                 </table>
                               </td>
                             </tr>
                           </table>
-                          <? //no mostrar si no hay examenes }?>o
-                          <? if($row[7]>date('Y-m-d')){?>
-                          <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
-                            <tr>             
-                              <td bgcolor="#FFFFFF">
-                                <? 
-                                  if($tienecursopro=='No'){ 
-                                    if(isset($_GET["idpos"])){
-                                ?> 
-                                      <input type="checkbox" name="cursopro" id="cursopro" value="CP" onClick="Menu('<?=$idtraaa?>','<?=$row[6]?>','<?=$_GET["idpos"]?>')">
-                                <? }else{?> 
-                                      <input type="checkbox" name="cursopro" id="cursopro" value="CP" onClick="Menu('<?=$idtraaa?>','<?=$row[6]?>','<?=$v?>')"> <? }?>
-                                      <strong>CURSO DE PROFESIONALIZACION</strong>
-                                <? }?>
-                              </td>
-                              </tr>
-                              <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                          </table>
-                          <table width="80%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
+                          <br>
+                          <br>
+                          <?php
+                            if ($row[7]>date('Y-m-d')) {
+                          ?>
+                          <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
                               <td>
-                                <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+                                <table width="50%" border="1" align="center" cellpadding="0" cellspacing="0">
                                   <tr>
-                                    <td width="3%"><div align="center"></div></td>
-                                    <td width="58%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
+                                    <td width="5%"><div align="center"></div></td>
+                                    <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                   </tr>
-                                  <?
-                                    $ssql8="select e.resultado, e.opcion,e.idexamen,e.idevaluacion from evaluacion e INNER JOIN tipo_examen t ON e.idexamen=t.idexamen where e.idtramite='".$row[5]."' ORDER BY e.idevaluacion ASC";
-                                    $rs8=pg_query($link,$ssql8) or die ("error : $ssql"); 
-                                    while($reg8=pg_fetch_array($rs8)) { 
-                                      $resu=$reg8[0];
-                                      $optc=$reg8[1];
-                                      $exa=$reg8[2];
-                                    }
-
-                                    $ssql="select ec.idcategoria, t.nombre,t.idexamen from examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen where ec.idcategoria='".$row[6]."'";
-                                    $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
-                                    $i=0;
-                                    while($reg=pg_fetch_array($rs)){  
+                                  <?php 
+                                    $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
+                                    $rs2=pg_query($link,$sql2);
+                                    $row=pg_num_rows($rs2);
+                                    $da2=pg_fetch_array($rs2);
+                                    $estado=$da2[6];
                                   ?>
                                   <tr>
                                     <td>
-                                      <div align="center">
-                                        <? if($exa==3 || $exa==4){ $i=$i+1; ?>
-
-                                          <? if($reg[2]==$exa && substr($resu,0,8)=='APROBADO'){ $i=-1;?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);" disabled="disabled">
-                                          <? }elseif($reg[2]==$exa && $resu=='DESAPROBADO'){ ?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this)">
-                                          <? }elseif($reg[2]==$exa && $resu=='NO SE PRESENTO'){?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);" >
-                                          <? }elseif($resu=='' && $optc>0){?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);"   disabled="disabled">
-                                          <? }elseif($i==0){?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);" >
-                                          <? }else{?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);"  disabled="disabled">
-                                          <? }?>
-                                        <? }else{  ?>
-                                          <? if($reg[2]==$exa && substr($resu,0,8)=='APROBADO'){ ?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);" disabled="disabled">
-                                          <? }elseif($reg[2]==$exa && $resu=='DESAPROBADO'){ $i=$i+1; ?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this)">
-                                          <? }elseif($reg[2]==$exa && $resu=='NO SE PRESENTO'){ $i=$i+1;?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);" >
-                                          <? }elseif($resu=='' && $optc>0){?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);"   disabled="disabled">
-                                          <? }elseif($i==0){  $i=$i+1;?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);">
-                                          <? }else{?>
-                                            <input type="checkbox" name="idexamen" id="idexamen" value="<?=$reg[2]?>" onClick="consulta(form1.fecha_prog1,<?=$reg[2]?>,this);"  disabled="disabled">
-                                          <? }?>
-                                        <? } ?>
-                                      </div>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1" <?php if ($estado=='0') {echo 'disabled';}else{ echo 'checked';} ?> >
                                     </td>
-                                    <td><nobr> <?=$reg[1]?></nobr></td>
+                                    <td>EXAMEN DE CONOCIMIENTO</td>
                                   </tr>
-                                  <? }   ?>
+                                  <tr>
+                                    <td>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" <?php if ($estado=='0') {echo 'checked';}else{echo 'disabled';} ?> >
+                                    </td>
+                                    <td>
+                                      EXAMEN DE MANEJO
+                                    </td>
+                                  </tr>
                                 </table>
                               </td>
                             </tr>
                           </table>
-                          <? }else{?>
+                          <br>
+                          <br>
+                          <?php
+                            }else{
+                          ?>
                           <table width="90%" border="0" align="center">
                             <tr>
                               <td><span class="Estilo4"></span></td>
                             </tr>
                             <tr>
                               <td><div align="center"><span class="Estilo4">
-                               USTED YA NO SE PUEDE PROGRAMARSE, SU EXAMEN MoDICO YA EXPIRO</span></div></td>
+                               USTED YA NO SE PUEDE PROGRAMARSE, SU EXAMEN MÉDICO YA EXPIRO</span></div></td>
                              </tr>
                           </table>
-                          <? }?>				  
+                          <br>
+                          <br>
+                          <?php
+                            }
+                          ?>
                         </td>
                       </tr>
+                      <br>
+                      <br>
                       <tr>
                         <td colspan="8" height="30">
                           <table border="0" cellpadding="3" cellspacing="1" width="100%">
@@ -345,13 +456,14 @@
                                     <tbody>
                                       <tr>
                                         <td align="left" width="100%">
-                                          <? if($row[7]>date('Y-m-d')){?>
-                                          <div id='layer-reg' style="display:none">
-                                            <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit" >
-                                          </div>
-                                          <? }else{?>
+                                          <!-- <?php if($row[7]>date('Y-m-d')){  ?> -->
+                                          <!-- <div id="ayer-reg" > -->
+                                            
+                                          <!-- </div> -->
+                                          <!-- <?php }else{?> -->
                                             <input class="boton" name="btn_volver2" value=".:: Volver ::." onClick="location='buscar_reg_examen.php'" type="button">
-                                          <? }?>          
+                                            <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit"  >
+                                         <!--  <?php } ?>    -->       
                                         </td>
                                         <td width="50%"></td>
                                         <td align="right" width="25%"></td>
@@ -363,7 +475,7 @@
                             </tbody>
                           </table>
                         </td>
-                      </tr> -->
+                      </tr>
                     </tbody>
                   </table>
                 </form>        
@@ -379,19 +491,20 @@
   </div>
   <!-- <div id="nbFlash" style="visibility: visible;">
     <? if(isset($_GET["idpos"])){ ?>
-        <script>nbInit('<?=$_SERVER['REQUEST_URI']?>');</script>
+        <script>nbInit('<?php echo $_SERVER['REQUEST_URI']?>');</script>
     <? }else{?>
         <script>nbInit('<?=$_SERVER['REQUEST_URI']."?idpos=".$v.""?>');</script>
     <? }?>
   </div> -->
   <script type="text/javascript" src="estilos/jquery.min.js"></script>
   <script type="text/javascript" src="estilos/jquery-ui.js"></script>
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     function noExcursion(date){ 
       var day = date.getDay();
       return [(day != 0 && day != 6), ''];
     };
     var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016"];
+
     function noWeekendsOrHolidays(date) {
       var m = date.getMonth();
       var d = date.getDate();
@@ -404,44 +517,47 @@
       var noWeekend = $.datepicker.noWeekends(date);
        return !noWeekend[0] ? noWeekend : [true];
     }
+
     $(document).ready(function(){
       <?php
         $fecha = date('d/m/Y');
-      	//$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
-      	//$nuevafecha = date('d/m/Y', strtotime("$fecha + 1 days"));
-      	//$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
-  	   $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-  	   ?>
-  	  $( "#fecha_prog1" ).datepicker({
-  		  dateFormat: 'dd/mm/yy',
-  		  changeMonth: true,
+        //$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
+        //$nuevafecha = date('d/m/Y', strtotime("$fecha + 1 days"));
+        //$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
+       $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
+       $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
+       ?>
+      $( "#fecha_prog1" ).datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
         changeYear: true,
         constrainInput: true,
-    		//beforeShowDay: fechas,
-    		//beforeShowDay: $.datepicker.noWeekends, 
-    		<?php if ($exa == '1') { ?>	beforeShowDay: noExcursion , 
-        <?php } else {?> 		beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
-    		//beforeShowDay: noWeekendsOrHolidays,  
-    		minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
-    		maxDate: '<?php echo date('28/02/2017')?>',
-  		  onClose: function(date){			
-    			 $.ajax({
-      			 url: 'CalcularPostulante.php',
-      			 type: 'GET',
-      			 data: { fechann: date , tiponn: $('#txtidexamen').val(), xajax : true },
-      			 success: function(datos){
-      				datos = parseInt(datos);
-      				if(datos < 120){
-      					$('#txtsubmit').show();
-      				} else {
-      					alert('Supero el limite de programaciones diarias de postulantes')
-      					$('#txtsubmit').hide();
-      				}								
-      			}
-    		  })
-  		  }	
+        //beforeShowDay: fechas,
+        //beforeShowDay: $.datepicker.noWeekends, 
+        <?php if ($exa == '1') { ?> beforeShowDay: noExcursion , 
+        <?php } else {?>    beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
+        //beforeShowDay: noWeekendsOrHolidays,  
+        minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
+        maxDate: '<?php echo $newmax;?>',
+        onClose: function(date){
+          console.log(date);
+          // $.ajax({
+          //   url: 'CalcularPostulante.php',
+          //   type: 'GET',
+          //   data: { fechann: date , tiponn: $('#txtidexamen').val(), xajax : true },
+          //   success: function(datos){
+          //     datos = parseInt(datos);
+          //     if(datos < 120){
+          //       $('#txtsubmit').show();
+          //     } else {
+          //       alert('Supero el limite de programaciones diarias de postulantes')
+          //       $('#txtsubmit').hide();
+          //     }               
+          //   }
+          // })
+        } 
       });
     })
-  </script> -->
+  </script>
 </body>
 </html>

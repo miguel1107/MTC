@@ -233,7 +233,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                               <tr>
                                 <td width="8" height="21" style="width: 8px;"><img src="main.php6_files/spacer.gif" height="1" width="8"></td>
                                 <td width="6" class="LL">|</td>
-                                <td width="122" nowrap="nowrap" class="P" onClick="Subm('select',0,1,'programacion_examenes.php')" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><img src="imag/derivar.gif" alt="Derivar" width="15" height="12" hspace="1" border="0" align="absmiddle"> Programación</td>
+                                <td width="122" nowrap="nowrap" class="P" onClick="Subm('select',0,1,'prognuevo_reglas.php')" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><img src="imag/derivar.gif" alt="Derivar" width="15" height="12" hspace="1" border="0" align="absmiddle"> Programación</td>
                                 <td width="10" class="LL">|</td>
                                 <td width="147" class="LL">&nbsp;</td>
                                 <td width="424">&nbsp;</td>
