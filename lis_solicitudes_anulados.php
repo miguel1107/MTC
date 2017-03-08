@@ -33,7 +33,8 @@ body {
 //$con="host=localhost dbname=licencia port=5432 user=postgres password=postgres ";
 //$conecta=pg_connect($con);
 //Sentencia sql (sin limit)
-$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado='55' and  p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.apemat like '".$_GET["frase2"]."%' and dni like '".$_GET["frase3"]."%' and CAST(t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.nrosolicitud<>'0' order by t.fecha_inscripcion DESC, t.nrosolicitud DESC ";
+$_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado='55' and  p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.apemat like '".$_GET["frase2"]."%' and dni like '".$_GET["frase3"]."%' and CAST(t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.nrosolicitud<>'0' order by t.fecha_inscripcion DESC, t.nrosolicitud DESC ";
+
 //cantidad de resultados por página (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;
@@ -75,7 +76,7 @@ include("paginator.inc.php");
             <th width="154" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRES</font></div></th>
 
             <th width="196" height="23" bgcolor="#ebf3fb"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS </font></th>
-            <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">DNI </font></th>
+            <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E </font></th>
             <th width="89"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">FECHA </font></th>
             <th width="139"><span class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>CATEGORIA</nobr></font></span></th>
 
@@ -115,7 +116,14 @@ include("paginator.inc.php");
               <div align="center">
                 <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
                   <nobr>
-                    <?=$reg[9]?>
+                    <?php 
+                      if ($reg[9]=="") {
+                    echo $reg[11];
+                  }elseif ($reg[11]=="") {
+                    echo $reg[9];
+                  }
+                     ?>
+                    
                   </nobr> 
                 </font>
               </div>
