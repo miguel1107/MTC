@@ -22,19 +22,19 @@ function consultaCupo() {
 	};
 	$.ajax(options)
 	.done(function(data) {
-		if (data<120) {
-			
-		}else{
-			alert("ERROR!! SE SUPERO EL NUMERO DIARIO DE EXAMENES, PRUEBE CAMBIANDO DE FECHA");
-			
-		}
+		$('#hora').html(data);
 	});
 }
 
 function validar(fomr1) {
-	if (form1.fecha_prog1.value==""){
+	if ($('#fecha_prog1').val()==''){
     	alert("Debe ingresar la fecha de Programación");
-		form1.fecha_prog1.focus();
+		$('#fecha_prog1').focus();
+		return false;
+    }
+    if ($('#hora').val()=='0'){
+    	alert("Debe ingresar la hora de Programación");
+		$('#hora').focus();
 		return false;
     }
 	if($("#conocimiento").prop('checked')){
@@ -47,10 +47,11 @@ function validar(fomr1) {
 	}else{
 		man='0';
 	}
-	if (con=='0' && man='0') {
+	if (con=='0'&& man=='0') {
 		alert("Seleccionar Tipo de Examen");
 		return false;
 	}
+	return true;
 }
 
 function registraExamen() {

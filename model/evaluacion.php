@@ -10,9 +10,9 @@ require_once __DIR__.'/../conectar.php';
 			
 		}
 
-		public function cosultaCupos($fecha,$examen){
+		public function cosultaCupos($fecha,$examen,$hora){
 			$link=Conectarse();
-			$sql="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."' group by fecha";
+			$sql="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."' and idhora='".$hora."'group by fecha";
 			$rs=pg_query($link,$sql);
 			return $rs;
 		}

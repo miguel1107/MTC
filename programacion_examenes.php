@@ -301,18 +301,7 @@
                         <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
                         <td class="objeto" width="23%">
-                          <select name="hora" id="hora" class="objeto">
-                            <option value="0">--Seleccione hora--</option>
-                            <?php 
-                              $sss="SELECT * FROM hora order by idhora";
-                              $rr=pg_query($link,$sss);
-                              while ($rd=pg_fetch_array($rr)) {
-                             ?>
-                            <option value="<?php echo $rd[0]; ?>"><?php echo $rd[1]; ?></option>
-                            <?php      
-                              }
-                            ?>  
-                            </select>
+                          <select name="hora" id="hora" class="objeto"></select>
                         </td>
                         <td class="objeto" width="2%">&nbsp;</td>
                         <td class="objeto" width="2%">&nbsp;</td>
@@ -337,8 +326,9 @@
                                   <?php 
                                     while ($reg=pg_fetch_array($rs)) {
                                       $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
-                                      $rs8=pg_query($link,$ssql8) or die ("error : $ssql");
+                                      $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
+                                        $aux='';
                                   ?>
                                   <tr>
                                     <td>&nbsp;&nbsp;
@@ -350,8 +340,32 @@
                                       <div align="center">
                                         <?php 
                                           if($reg8[9]==''){
+                                            if ($reg8[10]=='1') {
+                                              $esperacon="si";
+                                            }
+                                            if ($reg8[10]=='2') {
+                                              $esperacon="si";
+                                            }
+                                            if ($reg8[10]=='3') {
+                                              $esperacon="si";
+                                            }
+                                            if ($reg8[10]=='4') {
+                                              $esperaman="si";
+                                            }
                                             echo "<font color=red> En espera ...<font>";
                                           }else{
+                                            if ($reg8[10]=='1') {
+                                              $procesadocon="si";
+                                            }
+                                            if ($reg8[10]=='2') {
+                                              $procesadocon="si";
+                                            }
+                                            if ($reg8[10]=='3') {
+                                              $procesadocon="si";
+                                            }
+                                            if ($reg8[10]=='4') {
+                                              $procesadoman="si";
+                                            }
                                             echo 'Procesado';
                                           } 
                                         ?>
@@ -401,20 +415,7 @@
                                     $da2=pg_fetch_array($rs2);
                                     $estado=$da2[6];
                                   ?>
-                                  <tr>
-                                    <td>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1" <?php if ($estado=='0') {echo 'disabled';}else{ echo 'checked';} ?> >
-                                    </td>
-                                    <td>EXAMEN DE CONOCIMIENTO</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" <?php if ($estado=='0') {echo 'checked';}else{echo 'disabled';} ?> >
-                                    </td>
-                                    <td>
-                                      EXAMEN DE MANEJO
-                                    </td>
-                                  </tr>
+                                  
                                 </table>
                               </td>
                             </tr>
@@ -539,6 +540,9 @@
         //beforeShowDay: noWeekendsOrHolidays,  
         minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
         maxDate: '<?php echo $newmax;?>',
+        onSelect: function () {
+          consultaCupo();
+        },
         onClose: function(date){
           console.log(date);
           // $.ajax({
