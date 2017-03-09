@@ -338,8 +338,9 @@
                                     </td>
                                     <td>
                                       <div align="center">
-                                        <?php 
-                                          if($reg8[9]==''){
+                                        <?php
+                                          $resul=$reg8[9]; 
+                                          if($resul==''){
                                             if ($reg8[10]=='1') {
                                               $esperacon="si";
                                             }
@@ -354,17 +355,20 @@
                                             }
                                             echo "<font color=red> En espera ...<font>";
                                           }else{
-                                            if ($reg8[10]=='1') {
-                                              $procesadocon="si";
-                                            }
-                                            if ($reg8[10]=='2') {
-                                              $procesadocon="si";
-                                            }
-                                            if ($reg8[10]=='3') {
-                                              $procesadocon="si";
-                                            }
-                                            if ($reg8[10]=='4') {
-                                              $procesadoman="si";
+                                            if ($reg8[10]=='1'  ||  $reg8[10]=='2'  ||$reg8[10]=='3'  ) {
+                                              if (substr($resul,0,8)=='APROBADO') {
+                                                $aprobocon='si';
+                                              }else {
+                                                $aprobocon='no';
+                                                $opcion=$reg8[8];
+                                              }
+                                            }else if ($reg8[10]=='4') {
+                                               if (substr($resul,0,8)=='APROBADO') {
+                                                $aproboman='si';
+                                              }else {
+                                                $aproboman='no';
+                                                $opcion=$reg8[8];
+                                              }
                                             }
                                             echo 'Procesado';
                                           } 
@@ -381,7 +385,7 @@
                                     <td nowrap>
                                       <nobr></nobr>
                                       <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                                        <?=$reg8[9]?> &nbsp;
+                                        <?=$resul?> &nbsp;
                                         <? if(substr($reg8[9],9,1)=='(') $tienecursopro='Si'; ?>
                                       </font>
                                     </td>
@@ -414,8 +418,49 @@
                                     $row=pg_num_rows($rs2);
                                     $da2=pg_fetch_array($rs2);
                                     $estado=$da2[6];
+                                    if ($estado=='0') {
+                                      $aprobocon='si';
+                                    }elseif ($estado=='1') {
+                                      $aprobocon='no';
+                                    }
                                   ?>
-                                  
+                                  <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
+                                  <tr>
+                                    <td>
+                                      <?php 
+                                        if ($aprobocon=='no' && $opcion<=3) {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <?php     
+                                        }else if ($aprobocon=='si' || $esperacon=='si') {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <?php 
+                                        }
+                                      ?>
+                                    </td>
+                                    <td>EXÁMEN DE CONOCIMIENTOS</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <?php 
+                                        if ($aprobocon=='si' && $esperaman=='no') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <?php 
+                                        }else if ($aproboman=='no' && $opcion<=3) {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <?php 
+                                        }else if ($esperaman=='si' || $aproboman=='si' || $esperacon=='si' || $aprobocon=='no') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
+                                        }
+                                      ?>
+                                    </td>
+                                    <td>EXÁMEN DE MANEJO</td>
+                                  </tr>
                                 </table>
                               </td>
                             </tr>
@@ -463,8 +508,12 @@
                                           <!-- </div> -->
                                           <!-- <?php }else{?> -->
                                             <input class="boton" name="btn_volver2" value=".:: Volver ::." onClick="location='buscar_reg_examen.php'" type="button">
-                                            <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit"  >
                                          <!--  <?php } ?>    -->       
+                                        </td>
+                                        <td align="left">
+                                          <div id="boton">
+                                              <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit"  >  
+                                            </div>
                                         </td>
                                         <td width="50%"></td>
                                         <td align="right" width="25%"></td>
@@ -522,11 +571,8 @@
     $(document).ready(function(){
       <?php
         $fecha = date('d/m/Y');
-        //$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
-        //$nuevafecha = date('d/m/Y', strtotime("$fecha + 1 days"));
-        //$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
-       $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-       $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
+        $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
+        $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
        ?>
       $( "#fecha_prog1" ).datepicker({
         dateFormat: 'dd/mm/yy',
@@ -545,20 +591,6 @@
         },
         onClose: function(date){
           console.log(date);
-          // $.ajax({
-          //   url: 'CalcularPostulante.php',
-          //   type: 'GET',
-          //   data: { fechann: date , tiponn: $('#txtidexamen').val(), xajax : true },
-          //   success: function(datos){
-          //     datos = parseInt(datos);
-          //     if(datos < 120){
-          //       $('#txtsubmit').show();
-          //     } else {
-          //       alert('Supero el limite de programaciones diarias de postulantes')
-          //       $('#txtsubmit').hide();
-          //     }               
-          //   }
-          // })
         } 
       });
     })

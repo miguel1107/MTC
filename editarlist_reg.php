@@ -1,9 +1,10 @@
 <?php
-session_start();
-if(!isset($_SESSION["usuario"])) header("location:index.php");
-include ("traducefecha.php");
-include ("conectar.php");
-$link=Conectarse();
+  session_start();
+  if(!isset($_SESSION["usuario"])) header("location:index.php");
+  include ("traducefecha.php");
+  include ("conectar.php");
+  $link=Conectarse();
+  //echo $_POST["sw"].'g';exit;
 ?>
 <html><head><title></title>
 
@@ -19,91 +20,66 @@ $link=Conectarse();
 <script type="text/javascript" src="main.php15_files/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script languaje="JavaScript">
-function MM_goToURL() { //v3.0
-  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-}
-
+  function MM_goToURL() { //v3.0
+    var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+    for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+  }
 </script>
 <script language="JavaScript">
-<!--
-function validar(form1)
-{
-	if (form1.xxxfecha.value=="")
-	 {
-	 alert("Debe ingresar la nueva Fecha de Programaci�n");
-	 form1.xxxfecha.focus();
-	 return false;
-	 }
-	 return true;
-}
-//-->
+  function validar(form1){
+  	if (form1.xxxfecha.value=="")
+  	 {
+  	 alert("Debe ingresar la nueva Fecha de Programaci�n");
+  	 form1.xxxfecha.focus();
+  	 return false;
+  	 }
+  	 return true;
+  }
+  var Dafu='';
+  function consulta(fecha,tipo,chk){
+    var FechaCPF;
+    FechaCPF=fecha.value;
+    if(form1.xxxfecha.value==''){
+		  alert("Seleccionar Primero la Fecha");
+		  exit();
+    }else{	
+      miventana=window.open("CalcularPostulante_edicion.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
+      Dafu='Kako';
+      disabledbutton(); 
+    }
+  }
 
+  function consulta1(fecha,tipo,chk){
+    var FechaCPF;
+    FechaCPF=fecha.value;
+    if(form1.xxxfecha.value==''){
+		  alert("Seleccionar Primero la Fecha");
+		  exit();
+    }else{	
+      miventana=window.open("CalcularPostulante_edicion.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
+      Dafu='Kako';
+      disabledbutton(); 
+    }
+  }
 
-var Dafu='';
-function consulta(fecha,tipo,chk)
-{
-var FechaCPF;
-FechaCPF=fecha.value;
+  function disabledbutton(){
+    setTimeout(function(){ 
+      var datos = document.getElementById("variablePadre").value ;
+      array_datos = datos.split("/")
+      var xreg = array_datos[0]
+      var total = xreg || 0;
+      if( total < 100 ){	
+        document.getElementById("layer-reg").style.display = 'block';  
+      }else{	
+        document.getElementById("layer-reg").style.display = 'none'; 
+      }
+    }, 100);
+  }
 
-if(form1.xxxfecha.value==''){
-		alert("Seleccionar Primero la Fecha");
-		exit();
-}
-else
-{	miventana=window.open("CalcularPostulante_edicion.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
-	Dafu='Kako';
-	disabledbutton(); 
-}
-
-}
-
-function consulta1(fecha,tipo,chk)
-{
-var FechaCPF;
-FechaCPF=fecha.value;
-
-if(form1.xxxfecha.value==''){
-		alert("Seleccionar Primero la Fecha");
-		
-		exit();
-}
-else
-{	miventana=window.open("CalcularPostulante_edicion.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
-	Dafu='Kako';
-	disabledbutton(); 
-}
-
-}
-
-function disabledbutton(){
-	
-	
-	setTimeout(function(){ 
-	
-	var datos = document.getElementById("variablePadre").value ;
-	array_datos = datos.split("/")
-	
-	var xreg = array_datos[0]
-	var total = xreg || 0;
-	
-	if( total < 100 )
-	{	
-	document.getElementById("layer-reg").style.display = 'block';  }
-	else
-	{	document.getElementById("layer-reg").style.display = 'none'; 
-	}
-	
-	}, 100);
-	
-}
-
-
-
-function lista_pro(){
-window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
-}
-
+  function lista_pro(){
+    window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); 
+    return false
+  }
 
 </script>
 <style type="text/css">
@@ -116,52 +92,47 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
 </style>
 </head>
 <body class="os2hop">
-
-<div id="selectMonth" style="z-index: 999; position: absolute; visibility: hidden;"></div><div id="selectYear" style="z-index: 999; position: absolute; visibility: hidden;"></div>
-
-<table align="center" bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%">
- <tbody><tr><td>
-	<table border="0" cellpadding="0" cellspacing="0" width="20%">
-		<tbody><tr>
-          <td class="tabs">
-			<table border="0" cellpadding="0" cellspacing="0" width="48%">
-				<tbody>
-                <tr>
-					<td class="tabsline" width="20"><img src="imag/tabinion2.gif" border="0" height="36" width="29"></td>	
-					<td width="119" align="center" background="imag/div3.gif" ><span ><nobr><b>
-                    <a href="buscar_reg_examen.php"><b><span class="G">Programar  Postulante</span></b></a></b></nobr></span></td>	
-					<td><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>	 
-                    <td width="119" align="center" background="imag/div1.gif" ><nobr><b>
-                    <a href="listado_reg_examen.php"><b>Lista de  Postulante</b></a></b></nobr></td>
-                    <td class="tabson" width="52"><img src="imag/div44.gif" alt="" border="0" height="36" width="29"></td>
-                    <td class="tabsline" width="175">					    </td>
-				</tr>	
+  <div id="selectMonth" style="z-index: 999; position: absolute; visibility: hidden;"></div>
+  <div id="selectYear" style="z-index: 999; position: absolute; visibility: hidden;"></div>
+  <table align="center" bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+      <tr>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="20%">
+		        <tbody>
+              <tr>
+                <td class="tabsline" width="29"><img src="imag/tabinion2.gif" border="0" height="36" width="29"></td>
+                <td width="125" align="center" background="imag/div3.gif">
+                  <span>
+                    <nobr><b><a href="buscar_reg_examen.php"><b><span class="G">Programar Postulante</span></b></a></b></nobr>
+                  </span>
+                </td>
+                <td width="29"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>
+                <td width="124" align="center" background="imag/div1.gif" ><nobr><b><a href="listado_reg_examen.php"><b>Lista de  Postulante</b></a></b></nobr></td>
+                <td class="tabson" width="29"><img src="imag/div44.gif" alt="" border="0" height="36" width="29"></td>
+                <td class="tabsline" width="1"></td>             
+		          </tr>	
         		</tbody>
-             </table>
-		   </td>
-        </tr></tbody>
-     </table>
- </td></tr></tbody>
-</table>
-
-<table width="100%" height="93%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
-  <tbody>
-    <tr>
-      <td height="445" valign="top">
-        <table width="100%" border="0" align="center">
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table width="100%" height="93%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
+    <tbody>
+      <tr>
+        <td height="445" valign="top">
+          <table width="100%" border="0" align="center">
           <?php
-		        if($_POST["sw"]==2){ 	// EDITAR
-			       $cant=count($_POST["chk"]);
+		        if($_GET["sw"]==2){
+              $cant=count($_POST["chk"]);
 		 	        if($cant > 0){
-				        foreach($_POST["chk"] as $k =>$v)
-				        {
-      					$sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,
-      					t.fechafin,ev.idevaluacion,ev.fecha,ev.idexamen, ev.resultado FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
-      					INNER JOIN evaluacion ev ON ev.idtramite=t.idtramite WHERE ev.idevaluacion='".$v."'";
-      					$result=pg_query($sql)or die ("Error : $sql");
-      					$row=pg_fetch_array($result);
-				        }
-			         }
+				        foreach($_POST["chk"] as $k =>$v){
+                  $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin,ev.idevaluacion,ev.fecha,ev.idexamen, ev.resultado FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria INNER JOIN evaluacion ev ON ev.idtramite=t.idtramite WHERE ev.idevaluacion='".$v."'";
+        					$result=pg_query($sql)or die ("Error : $sql");
+        					$row=pg_fetch_array($result);
+  				      }
+              }
 		        }
 	         ?>
 	         <tr>
@@ -255,11 +226,11 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                       </td>
                       <td class="objeto">&nbsp;</td>
                     </tr>
-      			         <? if(date('Y-m-d') < $row[9] && empty($row[11]))
-                     {?>
+      			         <?php if(date('Y-m-d') < $row[9] && empty($row[11])){ ?>
                     <tr valign="middle">
                       <td class="marco" width="1%">&nbsp;</td>
-                      <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp; <img src="imag/calendaricon.gif" onClick='' border="0" height="15" width="15"></td>
+                      <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp; <img src="imag/calendaricon.gif" onClick='' border="0" height="15" width="15">
+                      </td>
                       <td class="objeto" width="1%">&nbsp;</td>
                       <td class="objeto" width="78%">
                         <input name="xxxfecha" class="cajatexto" id="xxxfecha" onChange="consulta(form1.xxxfecha,<?=$row['idexamen']?>,'Desactivar')"  size="15" maxlength="10" type="text" readonly>
@@ -280,7 +251,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                       <td valign="middle" class="objeto"></td>
                       <td class="objeto">&nbsp;</td>
                     </tr> 
-                    <? }elseif($_SESSION["cargo"]=='1'){ ?>
+                    <?php }elseif($_SESSION["cargo"]=='1'){ ?>
             			    <tr valign="middle">
                         <td class="marco" width="1%">&nbsp;</td>
                         <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp;</td>
@@ -311,7 +282,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                           </td>
                           <td valign="middle" class="objeto"></td>
                       </tr> 
-                    <? }else{?>
+                    <?php }else{?>
 			                <tr>
                         <td colspan="7" height="30">
                           <table border="0" cellpadding="3" cellspacing="1" width="100%">
@@ -326,7 +297,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                                   </div>
                                 </td>
                               </tr>
-					          <? }?>
+					          <?php }?>
                       <tr align="center">
                         <td class="catBottom" colspan="7" height="28">
                           <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -403,6 +374,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
     //	$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
     //	$nuevafecha = date('d/m/Y', strtotime('+2 day')) ; 
     	$nuevafecha = date('d/m/Y', strtotime('+1  day')) ; 
+      $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
 
     	?>	
     	$( "#xxxfecha" ).datepicker({
@@ -416,7 +388,8 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
     		//beforeShowDay: noWeekendsOrHolidays,  
     		<?php /*?>minDate: '<?php echo date('d/m/Y')?>',<?php */?>
     		minDate: '<?php if ($_SESSION["cargo"]=='1' || $row[10] =='1' ) { echo 0;} else echo $nuevafecha;?>',
-    		maxDate: '<?php echo date('28/02/2017')?>',	   
+    		maxDate: '<?php echo date('28/02/2017')?>',
+        maxDate: '<?php echo $newmax;?>',
     		onClose: function(date){			
     			$.ajax({
     				url: 'CalcularPostulante_edicion.php',
