@@ -6,8 +6,7 @@ include ("traducefecha.php");
 include("comun/function.php");
 include ("conectar.php");
 $link=Conectarse();
-$horaactual= date("G:H:s");
-echo $horaactual;exit;
+
 
 	//cambios
 require_once 'model/tipotramite.php';
@@ -63,35 +62,35 @@ require_once 'model/provincia.php';
 <script language="JavaScript">
 	<!--
 	function validar(form1){
-		console.log("--------------------------------------");
-		console.log("Apellido Paterno: " + form1.apepat.value);
-		console.log("Apellido Materno: " + form1.apemat.value);
-		console.log("Nombre: " + form1.txtnom.value);
-		console.log("--------------------------------------");
-		var $apaterno = form1.apepat.value;
-		var $amaternos = form1.apemat.value;
-		var $name = form1.txtnom.value;
-		var $salida1 = '';
-		var $salida2 = '';
-		var $cont=0;
-		console.log('tamaño de nombre: ' + $apaterno.length);
-		for (var i = 0; i < $apaterno.length; i++) {
-			var $aux = $apaterno.substring(i, (i+1));
-			if($aux != "'") {
-				$salida1 = $salida1+$aux;				
-			}else {
-				$cont = i;
-				break;
-			}
-		};
-		for (var i = $cont + 1; i < $apaterno.length; i++) {
-			var $aux = $apaterno.substring(i, (i+1));
-			$salida2 = $salida2+ $aux;
-		};
-		console.log("=====================");
-		console.log("salida1: "+ $salida1);
-		console.log("salida 2: "+ $salida2);
-		console.log("======================");
+		// console.log("--------------------------------------");
+		// console.log("Apellido Paterno: " + form1.apepat.value);
+		// console.log("Apellido Materno: " + form1.apemat.value);
+		// console.log("Nombre: " + form1.txtnom.value);
+		// console.log("--------------------------------------");
+		// var $apaterno = form1.apepat.value;
+		// var $amaternos = form1.apemat.value;
+		// var $name = form1.txtnom.value;
+		// var $salida1 = '';
+		// var $salida2 = '';
+		// var $cont=0;
+		// console.log('tamaño de nombre: ' + $apaterno.length);
+		// for (var i = 0; i < $apaterno.length; i++) {
+		// 	var $aux = $apaterno.substring(i, (i+1));
+		// 	if($aux != "'") {
+		// 		$salida1 = $salida1+$aux;				
+		// 	}else {
+		// 		$cont = i;
+		// 		break;
+		// 	}
+		// };
+		// for (var i = $cont + 1; i < $apaterno.length; i++) {
+		// 	var $aux = $apaterno.substring(i, (i+1));
+		// 	$salida2 = $salida2+ $aux;
+		// };
+		// console.log("=====================");
+		// console.log("salida1: "+ $salida1);
+		// console.log("salida 2: "+ $salida2);
+		// console.log("======================");
 
 
 		if (form1.tipotra.value=="0"){
@@ -877,9 +876,10 @@ require_once 'model/provincia.php';
 							<td class="objeto" width="1%">&nbsp;</td>
 							<td width="72%" class="objeto">
 								<input name="expe_fecha" class="cajatexto" id="Fecha de Registro" onKeyPress="return formato(event,form,this,10)" value="<?php if($_GET["sw"]==3){ echo normal($fecha);}else{echo $fecha;}?>" size="20" maxlength="10" readonly type="text">
-								&nbsp;</td>
-								<td class="objeto" width="6%">&nbsp;</td>
-							</tr>
+								&nbsp;
+							</td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
 
 							<tr valign="middle">
 								<td height="19" class="marco">&nbsp;</td>
@@ -956,7 +956,16 @@ require_once 'model/provincia.php';
                       </td>
                       <td class="objeto" width="6%">&nbsp;</td>
                   </tr>
-
+					<tr valign="middle">
+							<td class="marco" width="1%">&nbsp;</td>
+							<td class="etiqueta" align="right" width="20%">NÚMERO DE SISGEDO &nbsp;&nbsp;</td>
+							<td class="objeto" width="1%">&nbsp;</td>
+							<td width="72%" class="objeto">
+								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="9">
+								&nbsp;
+							</td>
+							<td class="objeto" width="6%">&nbsp;</td>
+						</tr>
                   <tr>
                   	<td colspan="5" class="marco seccionblank">&nbsp;</td>
                   </tr>
