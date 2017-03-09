@@ -30,7 +30,7 @@ body {
 <body>
 <?php
 if ($_GET["frase3"]!=''){
-$_pagi_sql = "SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and (t.tipotramite='4' or t.tipotramite='DUPLICADO')";
+$_pagi_sql = "SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario, p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and t.nrosolicitud=".$_GET["frase3"]." and  t.nrosolicitud<>0 and (t.tipotramite='4' or t.tipotramite='DUPLICADO')";
 }else{
 $_pagi_sql = "SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,p.fecnac,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where t.estado<>'55' and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase12"]."%' and p.apemat like '".$_GET["frase122"]."%' and dni like '".$_GET["frase2"]."%' and  t.nrosolicitud<>0  and (t.tipotramite='4' or t.tipotramite='DUPLICADO')";
 

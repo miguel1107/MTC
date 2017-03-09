@@ -85,7 +85,7 @@ include("paginator.inc.php");
             <TH width="116"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>FECHA EXAMEN MEDICO</nobr></font></TH>
             <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">CENTRO MEDICO</font></TH>
             <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>No SOLICITUD</nobr></font></TH>
-            <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">ESTADO</font></TH>
+            <!-- <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif">ESTADO</font></TH> -->
             <TH width="156"><font size="1" class="Estilo4" face="Verdana, Arial, Helvetica, sans-serif"><nobr>GENERADO </nobr></font></TH>
           </tr>
 
@@ -168,9 +168,7 @@ include("paginator.inc.php");
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?=$reg[13]?>&nbsp;
             </font></div></td>
-            <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <? if($reg[12]=='1'){echo "ACTIVO";}else{echo "FINALIZADO";}?>
-            </font></div></td>
+           
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?=$reg[14];?>&nbsp;
             </font></div></td>

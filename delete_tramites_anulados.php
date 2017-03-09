@@ -30,14 +30,14 @@ $cant=count($_POST["chk"]);
 		$estado=$fila->estado;
 		$nrosolicitud=$fila->nrosolicitud;
 		/////////
-		if($tipotramite=='NUEVO'){
+		if($tipotramite=='NUEVO' || $tipotramite=='1'){
 		$sql2="update  tramite set estado='1' WHERE idtramite='".$v."'";
-		}elseif($tipotramite=='RECATEGORIZACION'){
+		}elseif($tipotramite=='RECATEGORIZACION' || $tipotramite=='2'){
 		$sql2="update  tramite set estado='1' WHERE idtramite='".$v."'";
-		}elseif($tipotramite=='REVALIDACION'){
+		}elseif($tipotramite=='REVALIDACION'|| $tipotramite=='3'){
 		//$sql2="update  tramite set estado='3' WHERE idtramite='".$v."'";
 		$sql2="update  tramite set estado='1' WHERE idtramite='".$v."'";
-		}elseif($tipotramite=='DUPLICADO'){
+		}elseif($tipotramite=='DUPLICADO' || $tipotramite=='4'){
 		$sql2="update  tramite set estado='4' WHERE idtramite='".$v."'";
 		}elseif($tipotramite=='CANJE RECATEGORIZACION'){
 		$sql2="update  tramite set estado='1' WHERE idtramite='".$v."'";
