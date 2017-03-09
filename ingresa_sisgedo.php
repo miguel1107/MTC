@@ -12,6 +12,15 @@
       $numtra=$v;
     }
   }
+  $sql="SELECT sisgedo FROM tramite WHERE idtramite='".$numtra."'";
+  $rs=pg_query($link,$sql);
+  $data=pg_fetch_array($rs);
+  $sisg=$data[0];
+  if ($sisg!='') {
+    $accion='mostrar';
+  }else{
+    $accion='insertar';
+  }
 ?>
 <html>
 <head>
@@ -136,7 +145,7 @@
                   <td class="marco" width="1%">&nbsp;</td>
                   <td class="etiqueta" align="right" width="22%">Número de SISGEDO &nbsp;&nbsp;</td>
                   <td class="objeto" width="1%">&nbsp;</td>
-                  <td class="objeto" width="78%"><input name="numsisgedo" size="9" class="cajatexto" id="numsisgedo" maxlength="9" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                  <td class="objeto" width="78%"><input name="numsisgedo" size="9" class="cajatexto" id="numsisgedo" maxlength="9" onKeyPress="return formato(event,form,this,80)" type="text" value="<?php echo $sisg; ?>"  <?php if ($sisg!='') {echo 'readonly';} ?>></td>
                   <td class="objeto" width="1%">&nbsp;</td>
                 </tr>                
                 <tr>
@@ -151,7 +160,7 @@
                             <tr>
                               <td align="left" width="100%"><input name="_action" value="" type="hidden">
                                 <input name="_setfocus" value="" type="hidden">
-                                <input class="boton" name="btn_Buscar" value=".:: Ver Solicitud ::." type="submit" onclick="verSolicitud()">
+                                <input class="boton" name="btn_Buscar" value=".:: Ver Solicitud ::." type="submit" onclick="verSolicitud('<?php echo $accion; ?>')">
                               </td>
                                 <td width="50%"></td>
                                 <td align="right" width="25%"></td>

@@ -6,6 +6,8 @@ include ("traducefecha.php");
 include("comun/function.php");
 include ("conectar.php");
 $link=Conectarse();
+$horaactual= date("G:H:s");
+echo $horaactual;exit;
 
 	//cambios
 require_once 'model/tipotramite.php';

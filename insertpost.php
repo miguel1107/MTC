@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
-//include ("traducefecha.php");
+	$horaactual= CURRENT_TIMESTAMP;
 	include("comun/function.php");
 	include ("conectar.php");
 	$link=Conectarse();
@@ -148,6 +148,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 	}
 	if(isset($realizar)){
+		$accioncertificado='inserta';
 		if($_POST["sw"]!=3){
 			$sqk="Select max(numero) from numeros where tipo='SOLICITUDES' ";
 			$rsk=pg_query($link,$sqk); 
@@ -266,9 +267,19 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}else if($mes>=4){
 				$est='1';
 			}
-			$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."');" ;
-			$ss=pg_query($link,$sqlser);
-			header($loc);
+			if ($_POST["sw"]==3) {
+				$idtra=$_POST["idtramite"];
+				$bussql="SELECT * FROM certificado_curso WHERE idtramite='".$idtra."'";
+				$rrrr=pg_query($link,$bussql);
+				if (pg_num_rows($rrrr)==0) {
+					$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."');" ;
+				}else{
+					$sqlser="UPDATE certificado_curso SET (licencia='".$_POST['licencia']."', fecha_certificado='".$_POST['fechacurso']."', numero_ficha='".$_POST['nrofichacurso']."', idcurso='".$_POST['idcentrocurso']."',idtramite='".$tramite."',estado='".$est."') WHERE idtramite='".$idtra."'" ;
+				}
+			}else{
+				$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."');" ;
+			}
+			$ss=pg_query($link,$sqlser);			
 		}
 		header($loc);
 	}
