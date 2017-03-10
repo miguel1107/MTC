@@ -118,7 +118,7 @@ a:visited {
                       </table></td>
                     </tr>
                     <tr valign="middle">
-                      <td height="9" colspan="3"><? if($_GET["categoria"]<>3 && $_GET["categoria"]<>4){?>
+                      <td height="9" colspan="3"><?php if($_GET["categoria"]<>3 && $_GET["categoria"]<>4){?>
 					  <table width="95%" border="1" align="center" cellpadding="1" cellspacing="1">
                           <tr>
                             <td colspan="8"><strong>
@@ -132,7 +132,7 @@ a:visited {
                           </tr>
                           <?
 					//	  $cant=count($_POST["chk"]);
- 		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen<>3 and e.idexamen<>4 and e.fecha='".$_GET["xxxfecha"]."' order by p.apepat ASC"; //and e.resultado=''
+ 		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen<>3 and e.idexamen<>4 and e.fecha='".$_GET["xxxfecha"]."' order by p.apepat ASC"; 
 		$rs2=pg_query($link,$sql2);
 		
 		

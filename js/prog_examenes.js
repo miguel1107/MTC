@@ -22,7 +22,11 @@ function consultaCupo() {
 	};
 	$.ajax(options)
 	.done(function(data) {
-		$('#hora').html(data);
+		if (man=='4') {
+			$('#cupo').html(data);
+		}else{
+			$('#hora').html(data);
+		}
 	});
 }
 
@@ -68,5 +72,9 @@ function registraExamen() {
 	.always(function() {
 		console.log("complete");
 	});
-	
+}
+
+function desabilitaCombo() {
+	console.log('disabled');
+	$('#hora').attr('disabled', 'disabled')
 }

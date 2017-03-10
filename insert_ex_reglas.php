@@ -32,7 +32,13 @@
 	}else{
 		$opcion=$opc+1;
 	}
-	$sql2="insert into evaluacion (opcion,fecha,idtramite,idexamen,fechapro,usuario, situacion, ip_acceso,idhora) values('".$opcion."','".$fecha."',".$_POST["idtramite"].",".$idexamen.",'".date('d/m/Y')."','".$_SESSION["usu"]."','APERTURADO', '".$_SERVER['REMOTE_ADDR']."','".$_POST["hora"]."')";
+	if ($_POST["hora"]=='') {
+		$hora='0';
+	}else{
+		$hora=$_POST["hora"];
+	}
+	$sql2="insert into evaluacion (opcion,fecha,idtramite,idexamen,fechapro,usuario, situacion, ip_acceso,idhora) values('".$opcion."','".$fecha."',".$_POST["idtramite"].",".$idexamen.",'".date('d/m/Y')."','".$_SESSION["usu"]."','APERTURADO', '".$_SERVER['REMOTE_ADDR']."','".$hora."')";
+
 	$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
 
 	$sqlmoni="insert into monitoreo_eval (opcion,fecha,idtramite,idexamen,fechapro,usuario, situacion, hora) values('".$opcion."','".$fecha."',".$_POST["idtramite"].",".$idexamen.",'".date('d/m/Y')."','".$_SESSION["usu"]."','APERTURADO','".$horaactual."')";

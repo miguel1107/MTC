@@ -283,16 +283,21 @@
                         <td class="etiqueta" align="right">Fecha de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
                         <td width="23%" class="objeto">
-                          <!-- <input name="fefe" type="text" class="cajatexto" id="fefe" onkeypress="return formato(event,form,this,80)" value="" size="15" maxlength="10" onkeyup=""> -->
                           <input name="fecha_prog1" class="cajatexto" id="fecha_prog1"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
-                          
-                          <!-- <img src="imag/calendaricon.gif" onclick="popUpCalendar(this, form1.fefe, &quot;dd/mm/yyyy&quot;)" border="0" height="15" width="15"> -->
                         </td>
                         <td valign="middle" class="objeto">
-                          <input type="hidden" id="variablePadre">
-                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
--->
-                                                  
+                          <body>
+                            <table width="565" height="18" border="1" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td width="34" height="16" valign="top" id="cupo">
+                                </td>
+                                <td width="399" valign="top">
+                                   <span class="Estilo2">Cupos disponibles</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </body>
+                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>-->                        
                         </td>
                         <td class="objeto">&nbsp;</td>
                       </tr>
@@ -423,16 +428,19 @@
                                     }elseif ($estado=='1') {
                                       $aprobocon='no';
                                     }
+                                    $fechafincer=$da2[7];
+                                    
                                   ?>
-                                  <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
+                                  <!-- <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?> -->
                                   <tr>
                                     <td>
                                       <?php 
-                                        if ($aprobocon=='no' && $opcion<=3) {
+                                        if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
                                         }else if ($aprobocon=='si' || $esperacon=='si') {
+                                          $disabledcon='si';
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php 
@@ -447,15 +455,22 @@
                                         if ($aprobocon=='si' && $esperaman=='no') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <script>desabilitaCombo();</script>
                                       <?php 
-                                        }else if ($aproboman=='no' && $opcion<=3) {
+                                        }else if ($aproboman=='no' && $esperaman=='no') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($esperaman=='si' || $aproboman=='si' || $esperacon=='si' || $aprobocon=='no') {
+                                          $disabledman='si';
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
+                                        }else if ($esperaman=='si' && $aprobocon=='si'&& $aproboman=='no') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php 
                                         }
                                       ?>
                                     </td>
@@ -502,18 +517,8 @@
                                     <tbody>
                                       <tr>
                                         <td align="left" width="100%">
-                                          <!-- <?php if($row[7]>date('Y-m-d')){  ?> -->
-                                          <!-- <div id="ayer-reg" > -->
-                                            
-                                          <!-- </div> -->
-                                          <!-- <?php }else{?> -->
                                             <input class="boton" name="btn_volver2" value=".:: Volver ::." onClick="location='buscar_reg_examen.php'" type="button">
-                                         <!--  <?php } ?>    -->       
-                                        </td>
-                                        <td align="left">
-                                          <div id="boton">
-                                              <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit"  >  
-                                            </div>
+                                            <input class="boton" name="btn_Buscar" id="registrar" value=".:: Registrar ::." type="submit" <?php if ($disabledman=='si' && $disabledcon=='si') { echo 'style="display: none;"';} ?> >
                                         </td>
                                         <td width="50%"></td>
                                         <td align="right" width="25%"></td>
