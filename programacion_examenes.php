@@ -24,118 +24,30 @@
   <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
   <script src="js/jquery-ui.js"> </script>
   <script src="js/prog_examenes.js"></script>
+
+  <style type="text/css">
+    .Estilo2 {
+     font-family: Geneva, Arial, Helvetica, sans-serif;
+     font-weight: bold;
+   }
+   .Estilo4 {color: #FF0000}
+  </style>
+  <script languaje="JavaScript">
+    function MM_goToURL() { //v3.0
+      var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+      for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+    }
+  </script>
   <script>
-    var Dafu='';
-    function consulta(fecha,tipo,chk){
-      console.log(fecha.value+"-"+tipo+"-"+chk);
-      var FechaCPF;
-      FechaCPF=fecha.value;
-
-      // if(chk=='Desactivar'){
-      //   for (var i=0 ; i<=6 ; i++){
-      //     form1.idexamen[i].checked=false;
-      //   }
-      // }else{
-        if (chk.checked==true ){
-          if(form1.fecha_prog1.value==''){
-            alert("Seleccionar Primero la Fecha");
-            chk.checked=false;
-            exit();
-          }
-          miventana=window.open("CalcularPostulante.php?fechann=" + FechaCPF + "&tiponn=" + tipo + "","CFE","");
-          Dafu='Kako';
-          disabledbutton();
-        }else{
-          miventana=window.open("CalcularPostulanteV.php?nada=nada","CFE","");
-          disabledbutton();
-          Dafu='';
-        }
-      //}
+    function Menu(idtrami,idcatego,idpostu){
+      document.all("curpro").src="curso_pro.php?idtrami="+idtrami+"&idcatego="+idcatego+"&idpostu="+idpostu;
+      nbOpenItem(3);
     }
 
-
-    function disabledbutton(){
-      setTimeout(function(){ 
-        var datos1 = document.getElementById("variablePadre").value ;
-        array_datos = datos1.split("/")
-
-        var xreg = array_datos[0]
-        var total = xreg || 0;
-        if(total < 120){   
-          document.getElementById("#layer-reg").style.display='block'; 
-          //document.getElementById("#layer-reg").attr({display: 'block'}); 
-        }else{
-          document.getElementById("#layer-reg").style.display='none';  
-        }
-      }, 100);
+    function lista_pro(){
+      window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
     }
-</script>
-
-<style type="text/css">
-  .Estilo2 {
-   font-family: Geneva, Arial, Helvetica, sans-serif;
-   font-weight: bold;
- }
- .Estilo4 {color: #FF0000}
-</style>
-<script languaje="JavaScript">
-  function MM_goToURL() { //v3.0
-    var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-    for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-  }
-</script>
-
-
-<script language="JavaScript">
-  <!--
-  // function validar(form1){
-  //   var w='';
-  //   w='n';
-  //   if (form1.fecha_prog1.value==""){
-  //     alert("Debe ingresar la fecha de Programaci�n");
-  //     form1.fecha_prog1.focus();
-  //     return false;
-  //   }
-  //   if (Dafu!='Kako'){
-  //     alert("Seleccionar Tipo de Examen");
-  //     return false;
-  //   }
-
-  //   var mydate=new Date();
-  //   var year=mydate.getYear();
-  //   if (year < 1000)
-  //     year+=1900;
-  //     var day=mydate.getDay();
-  //     var month=mydate.getMonth()+1;
-  //   if (month<10)
-  //     month="0"+month;
-  //     var daym=mydate.getDate();
-  //   if (daym<10)
-  //     daym="0"+daym;
-  //     var fecc=(""+daym+"/"+month+"/"+year+"")
-
-  //     var usuario=form1.valorsesion.value;
-  //     var fecha=form1.fecha_prog1.value;
-  //     if(usuario!=1){
-  //      if(fecha==fecc){
-  //        alert("Usted no Puede Realizar Programaciones en el Mismo Dia");
-  //        form1.fecha_prog1.focus();
-  //        return false;
-  //      }
-  //    }
-  //   return true;
-  // }
-</script>
-<script>
-  function Menu(idtrami,idcatego,idpostu){
-    document.all("curpro").src="curso_pro.php?idtrami="+idtrami+"&idcatego="+idcatego+"&idpostu="+idpostu;
-    nbOpenItem(3);
-  }
-
-  function lista_pro(){
-    window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
-  }
-</script>
+  </script>
 </head>
 <body class="os2hop">
 
@@ -333,7 +245,6 @@
                                       $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
                                       $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
-                                        $aux='';
                                   ?>
                                   <tr>
                                     <td>&nbsp;&nbsp;
@@ -408,6 +319,18 @@
                           <br>
                           <?php
                             if ($row[7]>date('Y-m-d')) {
+                              $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
+                              $rs2=pg_query($link,$sql2);
+                              $row=pg_num_rows($rs2);
+                              $da2=pg_fetch_array($rs2);
+                              $estado=$da2[6];
+                              if ($estado=='0') {
+                                $aprobocon='si';
+                              }elseif ($estado=='1') {
+                                $aprobocon='no';
+                              }
+                              $fechafincer=$da2[7];
+                              if ($fechafincer>date('Y-m-d')) {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -416,21 +339,7 @@
                                   <tr>
                                     <td width="5%"><div align="center"></div></td>
                                     <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
-                                  </tr>
-                                  <?php 
-                                    $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
-                                    $rs2=pg_query($link,$sql2);
-                                    $row=pg_num_rows($rs2);
-                                    $da2=pg_fetch_array($rs2);
-                                    $estado=$da2[6];
-                                    if ($estado=='0') {
-                                      $aprobocon='si';
-                                    }elseif ($estado=='1') {
-                                      $aprobocon='no';
-                                    }
-                                    $fechafincer=$da2[7];
-                                    
-                                  ?>
+                                  </tr>                                  
                                   <!-- <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?> -->
                                   <tr>
                                     <td>
@@ -483,6 +392,19 @@
                           <br>
                           <br>
                           <?php
+                              }else{
+                          ?>
+                                <table width="90%" border="0" align="center">
+                            <tr>
+                              <td><span class="Estilo4"></span></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><span class="Estilo4">
+                               USTED YA NO SE PUEDE PROGRAMARSE, SU CURSO YA EXPIRO</span></div></td>
+                             </tr>
+                          </table>
+                          <?php
+                              }
                             }else{
                           ?>
                           <table width="90%" border="0" align="center">

@@ -103,6 +103,18 @@ require_once 'model/provincia.php';
 			form1.categoria.focus();
 			return false;
 		}
+
+		if (form1.sisgedo.value=='') {
+			alert("Debe ingresar N° de Sisgedo");
+			form1.sisgedo.focus();
+			return false;
+		}else{
+			if (form1.sisgedo.value.length<9) {
+				alert("EL número de sisgedo es incorrecto");
+				form1.sisgedo.focus();
+				return false;
+			}
+		}
 		if (form1.apepat.value==""){
 			alert ("Debe Ingresar Apellido Paterno");
 			form1.apepat.focus();
@@ -663,6 +675,7 @@ require_once 'model/provincia.php';
 					$tiptra = $fila2->tipotramite;
 					$correo=$fila->correo;
 					$tel=$fila->telefono;
+					$sisgedo=$fila2->sisgedo;
 					//--
 					$long=strlen($tiptra);
 					if ($long==1) {
@@ -961,7 +974,7 @@ require_once 'model/provincia.php';
 							<td class="etiqueta" align="right" width="20%">NÚMERO DE SISGEDO &nbsp;&nbsp;</td>
 							<td class="objeto" width="1%">&nbsp;</td>
 							<td width="72%" class="objeto">
-								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="9">
+								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="9" onKeyPress="return buscarpostulante(event,this,9)" value="<?php echo $sisgedo; ?>">
 								&nbsp;
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
@@ -1103,12 +1116,12 @@ require_once 'model/provincia.php';
 								<td width="36">DNI</td>
 								<td width="107">
 									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
-									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
+									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
 								</td>
 								<td width="32">C.E</td>
 								<td width="90">
 									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
-									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
+									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
 								</td>
 								<td width="19">&nbsp;</td>
 								<td width="23">&nbsp;</td>

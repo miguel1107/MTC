@@ -35,6 +35,7 @@ body {
 //Sentencia sql (sin limit)
 $_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , r.fecha, c.nombre ,t.fechaini, t.tipotramite,t.nrosolicitud,p.dni,r.usuario, t.estado from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria inner join restaure r on CAST(t.idtramite  AS varchar(11)) = r.idtramite where p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.apemat like '".$_GET["frase2"]."%' and dni like '".$_GET["frase3"]."%' and CAST(t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.nrosolicitud<>'0' order by r.fecha DESC, t.nrosolicitud DESC ";
 
+
 //cantidad de resultados por p�gina (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;

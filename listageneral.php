@@ -68,8 +68,9 @@ body {
 
 <?php
 $link=conectarse();
-$sql3="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.dni like '".$_GET["frase2"]."%'";
+$sql3="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni like '".$_GET["frase2"]."%'or p.ce like '".$_GET["frase2"]."%')";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
+
 $numeroRegistros=pg_num_rows($rs3);
 //////////elementos para el orden 
     if(!isset($orden)) 
@@ -117,7 +118,7 @@ $numeroRegistros=pg_num_rows($rs3);
 ?>
 			        <?php
 				//$link=conectarse();
-				$ssql="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.dni like '".$_GET["frase2"]."%'  LIMIT ".$tamPag." OFFSET ".$limitInf;
+				$ssql="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion,p.ce  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni like '".$_GET["frase2"]."%' or p.ce like '".$_GET["frase2"]."%') LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				 ?>
         <tr>
@@ -132,7 +133,7 @@ $numeroRegistros=pg_num_rows($rs3);
             <th width="116" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRES</font></div></th>
 
             <th width="138" bgcolor="#ebf3fb"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font></th>
-            <th width="127" height="23" bgcolor="#ebf3fb"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI</font></th>
+            <th width="127" height="23" bgcolor="#ebf3fb"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></th>
             <th width="278"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">PROFESION</font></th>
           </tr>
 
@@ -163,7 +164,14 @@ $numeroRegistros=pg_num_rows($rs3);
                <nobr> <?=$reg[2]?> <?=$reg[3]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=$reg[4]?></nobr>
+            <nobr>  
+            <?php 
+              if ($reg[4]=='') {
+                echo $reg[6];
+              }else if ($reg[6]=='') {
+                echo $reg[4];
+              }
+            ?></nobr>
             </font></div></td>
             <td><div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <nobr><?=$reg[5]?></nobr>

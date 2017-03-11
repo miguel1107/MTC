@@ -2,7 +2,6 @@
 session_start();
 if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 	$horaactual=  date("H:i:s");
-	echo $horaactual;exit;
 	//$horaactual= CURRENT_TIMESTAMP;
 	include("comun/function.php");
 	include ("conectar.php");

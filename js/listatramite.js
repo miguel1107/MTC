@@ -27,6 +27,9 @@ function verSolicitud(act) {
 					alert("EL NÚMERO DE SISGEDO YA EXITE!! :c");
 					$('#numsisgedo').focus();
 					return false;
+				}else{
+					var url='reportes/index.php?tra='+tramite+'&&sis='+sisgedo;
+					window.open(url);
 				}
 			})
 			.fail(function() {

@@ -11,13 +11,14 @@
 			$sisg=$_POST["sisg"];
 			$tramite= new tramite();
 			$tra=$tramite->retornaTramite($sisg);
+			$rs;
 			if ($tra=='') {
 				$rs=$tramite->actualizaSisgedo($sisg,$idtra);
-				echo "true";
+				$rs= "true";
 			}else{
-				echo "false";
+				$rs= "false";
 			}
-			
+			echo $rs;exit;
 			break;
 		default:
 			# code...
