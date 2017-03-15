@@ -330,7 +330,10 @@
                                 $aprobocon='no';
                               }
                               $fechafincer=$da2[7];
-                              if ($fechafincer>date('Y-m-d')) {
+                              if ($fechafincer=='') {
+                                $aux='0';
+                              }
+                              if ($fechafincer>date('Y-m-d') || $aux=='0') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -340,7 +343,7 @@
                                     <td width="5%"><div align="center"></div></td>
                                     <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                   </tr>                                  
-                                  <!-- <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?> -->
+                                  <!-- <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>  -->
                                   <tr>
                                     <td>
                                       <?php 
@@ -348,6 +351,10 @@
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <?php
                                         }else if ($aprobocon=='si' || $esperacon=='si') {
                                           $disabledcon='si';
                                       ?>
@@ -361,7 +368,7 @@
                                   <tr>
                                     <td>
                                       <?php 
-                                        if ($aprobocon=='si' && $esperaman=='no') {
+                                        if ($aprobocon=='si' || ($aprobocon=='si' && $esperaman=='no')) {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
