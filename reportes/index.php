@@ -355,7 +355,7 @@
 				<td style="width: 85%" class="flc2-s3-ti">
 					SOLICITUD PARA ATENCION DE SERVICIOS<br>
 					<span>DE LICENCIA DE CONDUCIR</span>
-					<p>20/02/2017 10:01:43</p>
+					<p><?php echo date('d/m/Y H:i:s')?></p>
 				</td>
 				<td style="width: 0.5%" class="flc2-s3-se"></td>
 				<td style="width: 14.5%" class="flc2-s3-de">
