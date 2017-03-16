@@ -24,6 +24,8 @@
 			$tra=$dat[0];
 			return $tra;
 		}
+
+		
 	}
 
 

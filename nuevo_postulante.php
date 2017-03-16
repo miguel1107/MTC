@@ -933,6 +933,13 @@ require_once 'model/provincia.php';
 									<td class="objeto" width="72%">
 										<select name="categoria" id="categoria" class="cajatexto" onchange="cursoespecial()">
 										</select>
+										<?php  
+											if ($_GET["sw"]==3 && $idtiptra==4) {
+										?>
+										<script> cursoespecial(); </script>
+										<?php 
+											}
+										?>
 			  <!-- <?php if($_GET["sw"]==3){?>
 			  <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" onChange="mostrarcurso()">
             <option value=''>---- Seleccione Opcion ----</option>
@@ -1117,11 +1124,13 @@ require_once 'model/provincia.php';
 								<td width="107">
 									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
 									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
+									<input name="dni2" type="hidden" class="cajatexto" id="dni2" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="32">C.E</td>
 								<td width="90">
 									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
 									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
+									<input name="ce2" type="hidden" class="cajatexto" id="ce2" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="19">&nbsp;</td>
 								<td width="23">&nbsp;</td>

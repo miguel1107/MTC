@@ -170,6 +170,34 @@ $(document).ready(function() {
 			});
 		}
 	});
+
+	$('#sisgedo').blur(function() {
+		var sis=$(this).val();
+		if (sis!="") {
+			var options={
+				type: 'post',
+		 		url: 'controller/ctrPostulante.php',
+		 		data: {
+		 			sis:sis,
+		 			action: 'buscasis'
+		 		},
+			}
+			$.ajax(options)
+			.done(function(data) {
+				if (data==1) {
+					alert("SISGEDO YA EXISTE");
+					$('#sisgedo').val("");
+					$('#sisgedo').focus();
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+		}
+	});
 });
 
 

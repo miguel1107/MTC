@@ -23,6 +23,13 @@ require_once __DIR__.'/../conectar.php';
 			$rs=pg_query($link,$sql);
 			return $rs;
 		}
+
+		public function returnSis($sisgedo){
+			$link=Conectarse();
+			$sql="SELECT * FROM tramite WHERE sisgedo='".$sisgedo."'";
+			$rs=pg_query($link,$sql);
+			return $rs;
+		}
 	}
 
 

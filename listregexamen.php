@@ -133,7 +133,20 @@ include("paginator.inc.php");
             </font></div></td>
             <td><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><nobr>
               <div align="left">
-                <?php echo $reg[11]?>
+                <?php 
+                $echotra;
+                $tra=$reg[11];
+                $long=strlen($tra);
+                if ($long==1) {
+                  $sql="SELECT * FROM tipo_tramite WHERE id_tipo='".$tra."'";
+                  $rs=pg_query($con,$sql);
+                  $fila =pg_fetch_array($rs);
+                  echo $echotra=$fila[1];
+                }else if($long>1){
+                  echo $reg[11];
+                }
+                
+              ?>
                 </div>
             </nobr> </font></td>
             <?php $sq35="Select nombre from categoria where idcategoria='".$reg[5]."' ";

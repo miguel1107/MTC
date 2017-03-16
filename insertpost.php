@@ -164,7 +164,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 		if($_POST["sw"]==3){
 			$tramite=$_POST["idtramite"];
-			$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where idpostulante='".$_POST["idpostulante"]."'";
+			$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni2"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce2"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where idpostulante='".$_POST["idpostulante"]."'";
 			$sr89=pg_query($link,$sql89); //or die ("Error : $sql");
 			
 			if ($_POST["categoria"]=='7'){
@@ -174,14 +174,14 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			
 			
 			if($_POST["tipotra"]!='4'){				
-				$sql2="update tramite set nroficha='".$_POST["nroficha"]."',fechaini='".$_POST["fechaexamen"]."',fechafin='".$fechafin."',resultado='".$_POST["resultado"]."',restriccion='".$_POST["restricciones"]."',observacion='".$_POST["observacion"]."',idpostulante=".$_POST["idpostulante"].",idcategoria=".$_POST["categoria"].",idcentro=".$_POST["idcentro"].",fecha_inscripcion='".$_POST["expe_fecha"]."', tipotramite='".$_POST["tipotra"]."' where idtramite='".$tramite."'";
+				$sql2="update tramite set nroficha='".$_POST["nroficha"]."',fechaini='".$_POST["fechaexamen"]."',fechafin='".$fechafin."',resultado='".$_POST["resultado"]."',restriccion='".$_POST["restricciones"]."',observacion='".$_POST["observacion"]."',idpostulante=".$_POST["idpostulante"].",idcategoria=".$_POST["categoria"].",idcentro=".$_POST["idcentro"].",fecha_inscripcion='".$_POST["expe_fecha"]."', tipotramite='".$_POST["tipotra"]."',sisgedo='".$_POST["sisgedo"]."' where idtramite='".$tramite."'";
 				$sr2=pg_query($sql2);
 				if ($_POST["categoria"]=='7'){
 					$sql_especial ="update tramite_espe set nrofichacurso ='".$_POST["nrofichacurso"]."', id_curso_especial='".$_POST["idcentrocurso"]."', tipotramite = '".$_POST["tipotra"]."',fechacurso = '".$_POST["fechacurso"]."', usuario = '".$_SESSION["usu"]."', licencia = '".$_POST["licencia"]."' where idtramite='".$tramite."'";
 					$sr_especial=pg_query($link,$sql_especial); 
 				} 
 			}else{
-				$sql2="update tramite set resultado='".$_POST["resultado"]."',restriccion='".$_POST["restricciones"]."',observacion='".$_POST["observacion"]."',idpostulante=".$_POST["idpostulante"].",idcategoria=".$_POST["categoria"].",fecha_inscripcion='".$_POST["expe_fecha"]."', tipotramite='".$_POST["tipotra"]."' where idtramite='".$tramite."'";
+				$sql2="update tramite set resultado='".$_POST["resultado"]."',restriccion='".$_POST["restricciones"]."',observacion='".$_POST["observacion"]."',idpostulante=".$_POST["idpostulante"].",idcategoria=".$_POST["categoria"].",fecha_inscripcion='".$_POST["expe_fecha"]."', tipotramite='".$_POST["tipotra"]."' where idtramite='".$tramite."' ,sisgedo='".$_POST["sisgedo2"]."' ";
 				$sr2=pg_query($link, $sql2); 
 				
 				if ($_POST["categoria"]=='7'){
