@@ -157,10 +157,28 @@
                               $id=$reg1[0];
                             }
                             $idtra=$id;
-                            $sql1="SELECT p.nombres,p.apepat,p.apemat,p.dni,p.ce,t.idcategoria,t.idtramite,t.fechafin FROM tramite t inner join postulante p on p.idpostulante=t.idpostulante where t.idtramite= '".$idtra."'" ;
+                            $sql1="SELECT p.nombres,p.apepat,p.apemat,p.dni,p.ce,t.idcategoria,t.idtramite,t.fechafin,t.tipotramite FROM tramite t inner join postulante p on p.idpostulante=t.idpostulante where t.idtramite= '".$idtra."'" ;
                             $rs1=pg_query($link,$sql1);
                             $row=pg_fetch_array($rs1);
+                            $sss="select nombre from categoria where idcategoria='".$row[5]."'";
+                            $rs11=pg_query($link,$sss);
+                            
+                            if (pg_num_rows($rs11)==0) {
+                              $catt=$row[5];
+                            }else{
+                              $row11=pg_fetch_array($rs11);
+                              $catt=$row11[0];
+                            }
 
+                            $sss2="select nombre from tipo_tramite where id_tipo='".$row[8]."'";
+                            $rs112=pg_query($link,$sss2);
+                            
+                            if (pg_num_rows($rs112)==0) {
+                              $tipt=$row[8];
+                            }else{
+                              $row112=pg_fetch_array($rs112);
+                              $tipt=$row112[0];
+                            }
                           }
                           
                         }
@@ -189,6 +207,13 @@
                         <td class="objeto" width="1%">&nbsp;</td>
                         <td colspan="2" class="objeto"><input name="xxxdni"  type="text" disabled="disabled" class="cajatexto" id="xxxdni" value="<?php if($row[3]==""){echo $row[4];}elseif($row[4]==""){echo $row[3];} ?>" size="15" maxlength="8"></td>
                         <td class="objeto" width="2%">&nbsp;</td>
+                      </tr>
+                      <tr valign="middle">
+                        <td class="marco">&nbsp;</td>
+                        <td class="etiqueta" align="right">Tipo tramite &nbsp;</td>
+                        <td class="objeto">&nbsp;</td>
+                        <td colspan="2" class="objeto"><input name="xxxdepe4222" size="40" maxlength="60" type="text" disabled="disabled" class="cajatexto" id="xxxdepe4222" value="<?php  echo $tipt.'-'.$catt?>" ></td>
+                        <td class="objeto">&nbsp;</td>
                       </tr>
                       <tr valign="middle">
                         <td class="marco">&nbsp;</td>
@@ -229,8 +254,8 @@
                             <tr>
                                <td>
                                <?php
-                                  $ssql="SELECT ec.idcategoria, t.nombre,t.idexamen FROM examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen WHERE ec.idcategoria='".$row[5]."'";
-                                  
+                                  $ssql="SELECT ec.idcategoria, t.nombre,t.idexamen FROM examen_categoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen WHERE ec.idcategoria='".$row[5]."'";
+                                  //echo $ssql.'--';
                                   $rs=pg_query($link,$ssql) or die ("error : $ssql");
                                   $i=0;
                                ?>
@@ -244,7 +269,7 @@
                                   <?php 
                                     while ($reg=pg_fetch_array($rs)) {
                                       $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
-                                      // echo $ssql8;
+                                      //echo $ssql8.'--';
                                       $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
                                   ?>
