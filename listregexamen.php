@@ -33,19 +33,19 @@ body {
 
 if($_GET["xxxfecha"]!=''){
 	if($_GET["categoria"]=='1'){
-		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and p.dni like '".$_GET["xxxdni"]."%' and e.fecha = '".$_GET["xxxfecha"]."' and (CAST(e.idexamen AS varchar(3))='1' or CAST(e.idexamen AS varchar(3))='2') order by e.fechapro ASC ";
+		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and e.fecha = '".$_GET["xxxfecha"]."' and (CAST(e.idexamen AS varchar(3))='1' or CAST(e.idexamen AS varchar(3))='2') order by e.fechapro ASC ";
 	}else{
-    $_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and p.dni like '".$_GET["xxxdni"]."%' and e.fecha = '".$_GET["xxxfecha"]."' and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro ASC ";
+    $_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and(p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and e.fecha = '".$_GET["xxxfecha"]."' and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro ASC ";
 	}			
 }else{
 	if($_GET["categoria"]=='1'){			
-		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and p.dni like '".$_GET["xxxdni"]."%' and (CAST(e.idexamen AS varchar(3))='1' or CAST(e.idexamen AS varchar(3))='2') order by e.fechapro DESC ";				
+		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and (CAST(e.idexamen AS varchar(3))='1' or CAST(e.idexamen AS varchar(3))='2') order by e.fechapro DESC ";				
 	}else{
-		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and p.dni like '".$_GET["xxxdni"]."%' and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro DESC ";		
+		$_pagi_sql="select t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro DESC ";		
 		
 		}
 }
-
+//echo $_pagi_sql;exit;
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;
 include("paginator.inc.php");
@@ -72,7 +72,7 @@ include("paginator.inc.php");
             <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font>
           </th>
           <th width="42">
-            <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">DNI</font>
+            <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font>
           </th>
           <th width="122">
             <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif"><nobr>FECHA DE EXAMEN</nobr></font>
@@ -126,7 +126,15 @@ include("paginator.inc.php");
                 <?php echo $reg[2]?> <?php echo $reg[3]?>
             </font></nobr></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?php echo $reg[7]?></nobr>
+            <nobr> 
+            <?php 
+            if($reg[7]==''){
+              echo $reg[15];
+            }else{
+              echo $reg[7];
+            }
+            ?>
+            </nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
              <nobr> <?php echo normal($reg[4])?></nobr>

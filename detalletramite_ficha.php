@@ -147,7 +147,7 @@ function imprimir(cod) {
 		{
 		$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c on
 c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
-
+//echo $sql2;exit;
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 		//$result=pg_query($sql)or die ("Error : $sql");
@@ -252,8 +252,8 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
                     </table></td>
                     <td rowspan="3" valign="top"><table width="95%" border="0">
                       <tr>
-                        <td colspan="2"><div align="center"><span class="Estilo12">N&ordm;
-                            <?=$fila2[15]?>
+                        <td colspan="2"><div align="center"><span class="Estilo12">N°
+                            <?=$fila2[19]?>
                         </span></div></td>
                       </tr>
                       <tr>
@@ -263,7 +263,7 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
 		$rs2735=pg_query($link,$sql2735);
 		$fila2735 =pg_fetch_array($rs2735);	  ?>
                       <tr>
-                        <td colspan="2">N&ordm; Licencia &nbsp;&nbsp; <strong>
+                        <td colspan="2">N° Licencia &nbsp;&nbsp; <strong>
                           <? if($fila2735[1]!=''){echo $fila2735[1];}else{ echo "__________";}?></strong> </td>
                       </tr>
                       <tr>

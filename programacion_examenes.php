@@ -230,6 +230,7 @@
                                <td>
                                <?php
                                   $ssql="SELECT ec.idcategoria, t.nombre,t.idexamen FROM examen_catagoria ec INNER JOIN tipo_examen t ON ec.idexamen=t.idexamen WHERE ec.idcategoria='".$row[5]."'";
+                                  
                                   $rs=pg_query($link,$ssql) or die ("error : $ssql");
                                   $i=0;
                                ?>
@@ -243,6 +244,7 @@
                                   <?php 
                                     while ($reg=pg_fetch_array($rs)) {
                                       $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
+                                      // echo $ssql8;
                                       $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
                                   ?>
@@ -255,7 +257,7 @@
                                     <td>
                                       <div align="center">
                                         <?php
-                                          $resul=$reg8[9]; 
+                                          $resul=$reg8[9];
                                           if($resul==''){
                                             if ($reg8[10]=='1') {
                                               $esperacon="si";
@@ -343,7 +345,7 @@
                                     <td width="5%"><div align="center"></div></td>
                                     <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                   </tr>                                  
-                                  <!-- <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>  -->
+                                  <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
                                   <tr>
                                     <td>
                                       <?php 
@@ -368,7 +370,8 @@
                                   <tr>
                                     <td>
                                       <?php 
-                                        if ($aprobocon=='si' || ($aprobocon=='si' && $esperaman=='no')) {
+                                        if (($aprobocon=='si' && $esperaman=='no')) {
+                                          echo "1";
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
@@ -383,7 +386,7 @@
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
-                                        }else if ($esperaman=='si' && $aprobocon=='si'&& $aproboman=='no') {
+                                        }else if ($esperaman=='si' && $aprobocon=='si') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php 

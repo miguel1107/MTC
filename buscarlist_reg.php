@@ -116,7 +116,7 @@ function prueba(){
               </tr>
               <tr valign="middle">
                 <td class="marco">&nbsp;</td>
-                <td class="etiqueta" align="right">Topo de Examen  &nbsp;&nbsp;</td>
+                <td class="etiqueta" align="right">TIpo de Exámen  &nbsp;&nbsp;</td>
                 <td class="objeto">&nbsp;</td>
                 <td class="objeto"><select name="categoria" class="cajatexto" id="categoria" onkeypress="return formato(event,form,this)">
                   <option value="">------- Seleccione Opci&oacute;n -------</option>

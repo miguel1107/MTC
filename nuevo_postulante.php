@@ -62,37 +62,6 @@ require_once 'model/provincia.php';
 <script language="JavaScript">
 	<!--
 	function validar(form1){
-		// console.log("--------------------------------------");
-		// console.log("Apellido Paterno: " + form1.apepat.value);
-		// console.log("Apellido Materno: " + form1.apemat.value);
-		// console.log("Nombre: " + form1.txtnom.value);
-		// console.log("--------------------------------------");
-		// var $apaterno = form1.apepat.value;
-		// var $amaternos = form1.apemat.value;
-		// var $name = form1.txtnom.value;
-		// var $salida1 = '';
-		// var $salida2 = '';
-		// var $cont=0;
-		// console.log('tamaño de nombre: ' + $apaterno.length);
-		// for (var i = 0; i < $apaterno.length; i++) {
-		// 	var $aux = $apaterno.substring(i, (i+1));
-		// 	if($aux != "'") {
-		// 		$salida1 = $salida1+$aux;				
-		// 	}else {
-		// 		$cont = i;
-		// 		break;
-		// 	}
-		// };
-		// for (var i = $cont + 1; i < $apaterno.length; i++) {
-		// 	var $aux = $apaterno.substring(i, (i+1));
-		// 	$salida2 = $salida2+ $aux;
-		// };
-		// console.log("=====================");
-		// console.log("salida1: "+ $salida1);
-		// console.log("salida 2: "+ $salida2);
-		// console.log("======================");
-
-
 		if (form1.tipotra.value=="0"){
 			alert("Debe ingresar Tipo de Tramite");
 			form1.tipotra.focus();
@@ -109,7 +78,7 @@ require_once 'model/provincia.php';
 			form1.sisgedo.focus();
 			return false;
 		}else{
-			if (form1.sisgedo.value.length<9) {
+			if (form1.sisgedo.value.length>10) {
 				alert("EL número de sisgedo es incorrecto");
 				form1.sisgedo.focus();
 				return false;
@@ -981,7 +950,7 @@ require_once 'model/provincia.php';
 							<td class="etiqueta" align="right" width="20%">NÚMERO DE SISGEDO &nbsp;&nbsp;</td>
 							<td class="objeto" width="1%">&nbsp;</td>
 							<td width="72%" class="objeto">
-								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="9" onKeyPress="return buscarpostulante(event,this,9)" value="<?php echo $sisgedo; ?>">
+								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="10" onKeyPress="return buscarpostulante(event,this,10)" value="<?php echo $sisgedo; ?>">
 								&nbsp;
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
@@ -1123,13 +1092,13 @@ require_once 'model/provincia.php';
 								<td width="36">DNI</td>
 								<td width="107">
 									<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
-									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
+									<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==3) {echo 'disabled';} ?> >
 									<input name="dni2" type="hidden" class="cajatexto" id="dni2" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="32">C.E</td>
 								<td width="90">
 									<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
-									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'disabled';} ?> >
+									<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==3) {echo 'disabled';} ?> >
 									<input name="ce2" type="hidden" class="cajatexto" id="ce2" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 								</td>
 								<td width="19">&nbsp;</td>
@@ -1207,7 +1176,18 @@ require_once 'model/provincia.php';
     	</tr>
     	<tr>
     		<td colspan="5">
+    			<?php  
+    				if ($_GET["sw"]==3 && $idtiptra=='4') {
+    			?>
+    			<div id="medico" style="display: none;">
+    			<?php 
+    				}else{
+    			?>
     			<div id="medico" style="display: block;">
+    			<?php 
+    				}
+    			?>
+    			
     				<table width="100%" border="0" cellpadding="0" cellspacing="0">
     					<tbody>
     						<tr>
@@ -1298,9 +1278,11 @@ require_once 'model/provincia.php';
     	<!-- CURSO DE PROFESIONALIZACION -->
     	<tr>
     		<td colspan="5">
-    			<?php if($_GET["sw"]==3) { ?>
-    			<div id="especial">              
-    				<?php } else { ?>
+    			<?php if($_GET["sw"]==3 && $idtiptra=='4' ) { ?>
+    				<div id="especial" style="display: none;">              
+    			<?php }elseif ($_GET["sw"]==3) {?>
+    				<div id="especial"> 
+    			<?php } else { ?>
     				<div id="especial" style="display: none;">              
     					<?php }?>
     					<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -1322,7 +1304,7 @@ require_once 'model/provincia.php';
     								<td class="objeto">&nbsp;</td>
     								<td class="objeto">&nbsp;</td>
     							</tr>
-    							<tr valign="middle">
+    							<tr valign="middle" id="lice">
     								<td class="marco" width="1%">&nbsp;</td>
     								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
     								<td class="objeto" width="1%">&nbsp;</td>
@@ -1334,7 +1316,7 @@ require_once 'model/provincia.php';
     								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
     								<td class="objeto" width="1%">&nbsp;</td>
     								<td class="objeto" width="72%">
-    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo $fechacer; ?>"> (dd/mm/yyyy)
+    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo ereg_replace('-','/',normal($fechacer)) ?>"> (dd/mm/yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>

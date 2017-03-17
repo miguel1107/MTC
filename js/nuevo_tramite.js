@@ -30,6 +30,10 @@ function cursoespecial() {
 	var cat=$('#categoria').val();
 	var hoy =new Date();
 	var mes=(hoy.getMonth()+1);
+	if (tra=='1' && cat=='1') {
+		lic=document.getElementById('lice');
+		lic.style.display="none";
+	}
 	if (parseInt(mes)>=4) {
 		console.log(mes);
 		divC = document.getElementById("especial");
@@ -47,6 +51,7 @@ function cursoespecial() {
  				divC.style.display="none";
  				divM = document.getElementById("medico");
  				divM.style.display="block";
+
 			}else{
 				divC = document.getElementById("especial");
  				divC.style.display="block";

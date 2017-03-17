@@ -4,10 +4,10 @@
 	$link=Conectarse();
 	$tra=$_GET['tra'];
 	$sis=$_GET['sis'];
-		$sql="SELECT t.tipotramite,t.idcategoria,t.fecha_inscripcion,p.*
+		$sql="SELECT t.tipotramite,t.idcategoria,t.fecha_inscripcion,p.*,t.usuario
 			FROM tramite t
 			INNER JOIN postulante p on p.idpostulante=t.idpostulante
-			WHERE t.idtramite='".$tra."'";
+			WHERE t.idtramite='".$tra."'";			
 	$rs=pg_query($link,$sql);
 	$datos=pg_fetch_array($rs);
 	$tt=$datos[0];
@@ -41,6 +41,7 @@
     $correo=$datos[18];
     $tel=$datos[19];
     $dis=$datos[20];
+    $us=$datos[22];
     if ($dis!="") {
     	$sql2="SELECT * FROM provincia p inner join distrito d on d.idprovincia=p.idprovincia where d.iddistrito='".$dis."'";
 	   	$ls=pg_query($link,$sql2);
@@ -308,7 +309,7 @@
 			<p class="flc2-s1-ti">D. RESPONSABLES DEL SERVICIO DE LICENCIAS DE CONDUCIR</p>
 			<div class="flc2-s1-co">
 				<div>
-					<span>PERALTA LOZADA</span>
+					<span><?php echo $us; ?></span>
 				</div>
 				<p>Sello o firma del responsable de aceptar el trámite y asignar el número de registro</p>
 			</div>
