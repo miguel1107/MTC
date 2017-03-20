@@ -413,8 +413,12 @@
                                   <tr>
                                     <td>
                                       <?php 
-                                        if (($aprobocon=='si' && $esperaman=='no')) {
-                                          echo "1";
+                                        if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <script>desabilitaCombo();</script>
+                                      <?php 
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
@@ -424,21 +428,28 @@
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
-                                        }else if ($aprobocon=='si' && $esperacon='no') {
+                                        }else if ($aprobocon=='si' && $esperacon=='no') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
-                                        }else if ($esperacon='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='') {
-                                      ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
-                                      <?php
-                                        }else if ($esperaman=='si' || $aproboman=='si' || $esperacon=='si' || $aprobocon=='no') {
+                                        }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
-                                        }else if ($esperaman=='si' && $aprobocon=='si') {
+                                        }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
+                                          $disabledman='si';
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion==3) {
+                                          $disabledman='si';
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='si' && $opcion<3) {
+                                          $disabledman='si';
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php 
