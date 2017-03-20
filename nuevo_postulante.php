@@ -1316,7 +1316,7 @@ require_once 'model/provincia.php';
     								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
     								<td class="objeto" width="1%">&nbsp;</td>
     								<td class="objeto" width="72%">
-    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo ereg_replace('-','/',normal($fechacer)) ?>"> (dd/mm/yyyy)
+    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo ereg_replace('-','-',normal($fechacer)) ?>"> (dd-mm-yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>

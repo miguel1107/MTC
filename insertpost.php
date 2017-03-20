@@ -256,10 +256,16 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 		if ($certificado=='si') {
 			$fecha=$_POST['fechacurso'];
-			$fecha2=date($fecha);
-			$newmax = date("d/m/Y",strtotime($fecha."+360 day"));
-
-			echo $fecha.'->'.$fecha2.'->'.$newmax;exit;
+			$fechas=strtotime($fecha);
+			$fecha1=date('Y-m-d',$fechas);
+			//****
+			$fechass = new DateTime($fecha1);
+			$fechass->add(new DateInterval('P360D'));
+			//echo $fechass->format('Y-m-d').'***';
+			//**
+			//echo $fecha.'->'.$fecha1.'->'.$newmax;exit;
+			$newmax=$fechass->format('d-m-Y');
+			
 			$mesexte=substr($fecha, 3,2);
 			if (substr($mesexte, 0, 1)=='0') {
 				$mes=(int)(substr($mesexte, 1, 1));
