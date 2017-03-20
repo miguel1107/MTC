@@ -170,7 +170,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
       </tr>
       <tr>
         <td valign="top">
-		<? if($_GET["frase"]!='' || $_GET["frase1"]!='' || $_GET["frase2"]!=''){?>
+		<?php if($_GET["frase"]!='' || $_GET["frase1"]!='' || $_GET["frase2"]!=''){ ?>
 		<table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="80%">
           
           <tbody>
@@ -258,7 +258,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
             </tr>
           </tbody>
         </table>
-		<? }?>		</td>
+		<?php }?>		</td>
       </tr>
     </table></td>
   </tr>

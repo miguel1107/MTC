@@ -160,8 +160,8 @@
                             $sql1="SELECT p.nombres,p.apepat,p.apemat,p.dni,p.ce,t.idcategoria,t.idtramite,t.fechafin,t.tipotramite FROM tramite t inner join postulante p on p.idpostulante=t.idpostulante where t.idtramite= '".$idtra."'" ;
                             $rs1=pg_query($link,$sql1);
                             $row=pg_fetch_array($rs1);
-                            $sss="select nombre from categoria where idcategoria='".$row[5]."'";
-                            $rs11=pg_query($link,$sss);
+                            $sss="SELECT nombre from categoria where idcategoria='".$row[5]."'";
+                            $rs11=pg_query($link,$sss) or die(false);
                             
                             if (pg_num_rows($rs11)==0) {
                               $catt=$row[5];
@@ -169,16 +169,21 @@
                               $row11=pg_fetch_array($rs11);
                               $catt=$row11[0];
                             }
-
-                            $sss2="select nombre from tipo_tramite where id_tipo='".$row[8]."'";
-                            $rs112=pg_query($link,$sss2);
-                            
-                            if (pg_num_rows($rs112)==0) {
-                              $tipt=$row[8];
+                            $long=strlen ($row[8]);
+                            if ($long==1) {
+                              $sss2="SELECT nombre from tipo_tramite where id_tipo='".$row[8]."'";
+                              $rs112=pg_query($link,$sss2);
+                              
+                              if (pg_num_rows($rs112)==0) {
+                                $tipt=$row[8];
+                              }else{
+                                $row112=pg_fetch_array($rs112);
+                                $tipt=$row112[0];
+                              }
                             }else{
-                              $row112=pg_fetch_array($rs112);
-                              $tipt=$row112[0];
+                              $tipt=$row[8];
                             }
+                            
                           }
                           
                         }
@@ -347,6 +352,7 @@
                           <?php
                             if ($row[7]>date('Y-m-d')) {
                               $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
+                              
                               $rs2=pg_query($link,$sql2);
                               $row=pg_num_rows($rs2);
                               $da2=pg_fetch_array($rs2);
@@ -360,6 +366,7 @@
                               if ($fechafincer=='') {
                                 $aux='0';
                               }
+                              echo $estado;exit;
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
@@ -402,6 +409,11 @@
                                       <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($aproboman=='no' && $esperaman=='no') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <script>desabilitaCombo();</script>
+                                      <?php 
+                                        }else if ($aprobocon=='si') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
