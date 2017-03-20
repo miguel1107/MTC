@@ -366,7 +366,7 @@
                               if ($fechafincer=='') {
                                 $aux='0';
                               }
-                              echo $estado;exit;
+                              
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
