@@ -5,7 +5,8 @@
 	$link=Conectarse();
 	$time = time();
 	//$horaactual = date("H:i:s", $time);
-	$horaactual= CURRENT_TIMESTAMP;
+	//$horaactual= CURRENT_TIMESTAMP;
+	$horaactual=  date("H:i:s");
 	#-
 	$con=$_POST['conocimiento'];
 	$man=$_POST['manejo'];
@@ -37,7 +38,7 @@
 	}else{
 		$hora=$_POST["hora"];
 	}
-	$sql2="insert into evaluacion (opcion,fecha,idtramite,idexamen,fechapro,usuario, situacion, ip_acceso,idhora) values('".$opcion."','".$fecha."',".$_POST["idtramite"].",".$idexamen.",'".date('d/m/Y')."','".$_SESSION["usu"]."','APERTURADO', '".$_SERVER['REMOTE_ADDR']."','".$hora."')";
+	$sql2="insert into evaluacion (opcion,fecha,idtramite,idexamen,fechapro,usuario, situacion, ip_acceso,idhora,hora) values('".$opcion."','".$fecha."',".$_POST["idtramite"].",".$idexamen.",'".date('d/m/Y')."','".$_SESSION["usu"]."','APERTURADO', '".$_SERVER['REMOTE_ADDR']."','".$hora."','".$horaactual."')";
 
 	$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
 

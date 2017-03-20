@@ -381,11 +381,11 @@
                                   <tr>
                                     <td>
                                       <?php 
-                                        if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
+                                        if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
-                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
+                                        }else if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php
