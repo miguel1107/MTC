@@ -6,7 +6,7 @@ function verSolicitud(act) {
 	if ($('#numsisgedo').val()=='') {
 		alert("INGRESE NUMERO DE SISGEDO");
 		$('#numsisgedo').focus();
-	}else if ($('#numsisgedo').val().length<9) {
+	}else if ($('#numsisgedo').val().length>10) {
 		alert("ERROR DE LONGITUD AL INGRESAR EL NÚMERO DE SISGEDO, INTENTE DENUEVO");
 		$('#numsisgedo').focus();
 	}else{
