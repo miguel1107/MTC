@@ -1278,7 +1278,7 @@ require_once 'model/provincia.php';
     	<!-- CURSO DE PROFESIONALIZACION -->
     	<tr>
     		<td colspan="5">
-    			<?php if($_GET["sw"]==3 && $idtiptra=='4' ) { ?>
+    			<?php if($_GET["sw"]==3 && ($idtiptra=='4' || $idtiptra=='3')) { ?>
     				<div id="especial" style="display: none;">              
     			<?php }elseif ($_GET["sw"]==3) {?>
     				<div id="especial"> 

@@ -283,6 +283,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				$bussql="SELECT * FROM certificado_curso WHERE idtramite='".$idtra."'";
 				$rrrr=pg_query($link,$bussql);
 				if (pg_num_rows($rrrr)==0) {
+					echo 'squi';
 					$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado,fechafin_certificado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."','".$newmax."');" ;
 				}else{
 					$sqlser="UPDATE certificado_curso SET licencia='".$_POST['licencia']."', fecha_certificado='".$_POST['fechacurso']."', numero_ficha='".$_POST['nrofichacurso']."', idcurso='".$_POST['idcentrocurso']."',idtramite='".$tramite."',estado='".$est."', fechafin_certificado='".$newmax."' WHERE idtramite='".$idtra."'" ;

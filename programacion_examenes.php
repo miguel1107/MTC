@@ -385,7 +385,11 @@
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
-                                        }else if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
+                                        }else if ($aprobocon=='no' && $opcion<=3) {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <?php
+                                        }elseif ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php
@@ -394,6 +398,10 @@
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php 
+                                        }else{
+                                          ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <?php
                                         }
                                       ?>
                                     </td>
