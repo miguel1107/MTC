@@ -424,7 +424,7 @@
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
-                                        }else if ($aprobocon=='si') {
+                                        }else if ($aprobocon=='si' && $esperacon='no') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
