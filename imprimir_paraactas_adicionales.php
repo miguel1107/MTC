@@ -44,8 +44,9 @@ function imprimir() {
 </head>
 <body>
 <!--onLoad="imprimir()"-->
-<?
-$_GET["chk"] = explode ("@", $_GET["chk"]);
+<?php
+//$_GET["chk"] = explode ("@", $_GET["chk"]);
+$array=explode ("@", $_GET["chk"]);
 ?>
 <table width="100%" border="0">
   <tr>
@@ -115,19 +116,16 @@ $_GET["chk"] = explode ("@", $_GET["chk"]);
                 <td width="180"><div align="center"><strong>RESULTADOS</strong></div></td>
               </tr>
               
-			   <? 
+<?php
 $cant=count($_GET["chk"]);
 $i=1; 
-if($cant > 0)
-	{
-	foreach($_GET["chk"] as $k =>$v)
-		{
-
-	$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."'";
-		$rs2=pg_query($link,$sql2);
+if($cant > 0){
+  foreach ($array as $k => $v){
+    $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."'";
+	 $rs2=pg_query($link,$sql2);
 		//}
-		?>
-			  <?  while($reg=pg_fetch_array($rs2)) { ?>
+?>
+			  <?php  while($reg=pg_fetch_array($rs2)) { ?>
               <tr style="height:50px;">
                 <td ><div align="center"><?=$i?></div></td>
                 <td ><?=$reg[1]?> <?=$reg[2]?> <?=$reg[0]?></td>
@@ -138,7 +136,7 @@ if($cant > 0)
                 <td >&nbsp;</td>
                 <td >&nbsp;</td>
               </tr>
-              <? $i++;  }
+              <?php $i++;  }
 			  }
 }
 			  ?>
@@ -150,7 +148,7 @@ if($cant > 0)
           <?php echo $_SESSION["usu"]. '  ' . date('d/m/Y H:i:s')?>
           </td>
         </tr>
-        <?
+        <?php
 					    $sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.idevaluacion='1'";
 						$rs2=pg_query($link,$sql2);
 						$fila2 =pg_fetch_object($rs2);

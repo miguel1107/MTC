@@ -151,37 +151,34 @@ a:visited {
                         <td width="77"><div align="center"><strong>OPCION</strong></div></td>
                         <td width="82"><div align="center"><strong>PUNTAJE</strong></div></td>
                             </tr>
-
-						 <?php
+<?php
 $cant=count($_POST["chk"]);
 $i=1; 
-if($cant > 0)
-	{
-	foreach($_POST["chk"] as $k =>$v)
-		{
-	$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."' ORDER BY p.apepat ASC";
+if($cant > 0){
+	foreach($_POST["chk"] as $k =>$v){
+    $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."' ORDER BY p.apepat ASC";
 		$rs2=pg_query($link,$sql2);
 		$codigos=$codigos.$v."@";
-		?>
-                     <?php  while($reg=pg_fetch_array($rs2)) { ?>
+    while($reg=pg_fetch_array($rs2)) { 
+?>
 					  <tr  bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#FFCC99';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
 					    <td height="24"><div align="center"><?=$i?></div></td>
-                        <td><?=$reg[1]?>
-                          <?=$reg[2]?>
-                          <?=$reg[0]?></td>
+                        <td><?php echo $reg[1]; ?>
+                          <?php echo $reg[2]; ?>
+                          <?php echo $reg[0]; ?></td>
                         <td><div align="center">
-                          <?=$reg[9]?>
+                          <?php echo $reg[9]; ?>
                         </div></td>
                         <td><div align="center">
-                          <?=$reg[3]?>
+                          <?php echo $reg[3]; ?>
                         </div></td>
-                        <td  ><div align="center"><?=$reg[4]?>
+                        <td  ><div align="center"><?php echo $reg[4]; ?>
                         </div></td>
-                        <td><div align="center">
-                          -<? $evaluador=$reg[6];?>
+                        <td><div align="center"> 
+                          -<?php $evaluador=$reg[7]; ?>
                         </div></td>
                       </tr>
-					  <?php }$i++;  
+					  <?php } $i++;  
 	  	}
 	}
 					  ?>
@@ -196,7 +193,7 @@ if($cant > 0)
                     <td colspan="3"><div align="center">___________________________________</div></td>
                     </tr>
 				      <?php
-$sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.idevaluador=".$evaluador."";
+$sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.idevaluador='".$evaluador."' ";  
 						$rs2=pg_query($link,$sql2);
 						$fila2 =pg_fetch_object($rs2);
 						$id= $fila2->idevaluador;

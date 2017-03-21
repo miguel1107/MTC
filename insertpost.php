@@ -52,6 +52,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				 // $estadotramite='3';
 			$estadotramite='1';
 			$realizar=1;
+			$certificado='si';
 			$sq345="Select max(numero) from numeros where tipo='TRAMITE' ";
 			$rs345=pg_query($link,$sq345); 
 			while($reg345=pg_fetch_array($rs345)) { 
@@ -285,20 +286,20 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				$rrrr=pg_query($link,$bussql);
 				if (pg_num_rows($rrrr)==0) {
 					$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado,fechafin_certificado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."','".$newmax."');";
-					if ($est=='0') {
-						$aprobado='APROBADO('.$_POST['nomcentrocurso'].')';
-						$sqleva="INSERT INTO evaluacion(opcion, resultado, fecha, puntaje, idtramite, idexamen,idevaluador, fechapro, usuario, situacion, historia, ip_acceso,idhora, hora)VALUES ('1','".$aprobado."', '".$fechaactual."', '', '".$idtra."','1','', '".$_POST['fechacurso']."','".$_SESSION["usuario"]."', 'APERTURADO','','".$_SERVER['REMOTE_ADDR']."','','".$horaaactual."');";
-					}
+					// if ($est=='0') {
+					// 	$aprobado='APROBADO('.$_POST['nomcentrocurso'].')';
+					// 	$sqleva="INSERT INTO evaluacion(opcion, resultado, fecha, puntaje, idtramite, idexamen,idevaluador, fechapro, usuario, situacion, historia, ip_acceso,idhora, hora)VALUES ('1','".$aprobado."', '".$fechaactual."', '', '".$idtra."','1','', '".$_POST['fechacurso']."','".$_SESSION["usuario"]."', 'APERTURADO','','".$_SERVER['REMOTE_ADDR']."','','".$horaaactual."');";
+					// }
 				}else{
 					$sqlser="UPDATE certificado_curso SET licencia='".$_POST['licencia']."', fecha_certificado='".$_POST['fechacurso']."', numero_ficha='".$_POST['nrofichacurso']."', idcurso='".$_POST['idcentrocurso']."',idtramite='".$tramite."',estado='".$est."', fechafin_certificado='".$newmax."' WHERE idtramite='".$idtra."'" ;
 				}
 				
 			}else{
 				$sqlser="INSERT INTO certificado_curso(licencia, fecha_certificado, numero_ficha, idcurso,idtramite,estado,fechafin_certificado) VALUES ('".$_POST['licencia']."', '".$_POST['fechacurso']."', '".$_POST['nrofichacurso']."', '".$_POST['idcentrocurso']."', '".$tramite."','".$est."','".$newmax."');" ;
-				if ($est=='0') {
-					$aprobado='APROBADO('.$_POST['nomcentrocurso'].')';
-					$sqleva="INSERT INTO evaluacion(opcion, resultado, fecha, puntaje, idtramite, idexamen,idevaluador, fechapro, usuario, situacion, historia, ip_acceso,idhora, hora)VALUES ('1','".$aprobado."', '".$fechaactual."', '', '".$idtra."','1','', '".$_POST['fechacurso']."','".$_SESSION["usuario"]."', 'APERTURADO','','".$_SERVER['REMOTE_ADDR']."','','".$horaaactual."');";
-				}
+				// if ($est=='0') {
+				// 	$aprobado='APROBADO('.$_POST['nomcentrocurso'].')';
+				// 	$sqleva="INSERT INTO evaluacion(opcion, resultado, fecha, puntaje, idtramite, idexamen,idevaluador, fechapro, usuario, situacion, historia, ip_acceso,idhora, hora)VALUES ('1','".$aprobado."', '".$fechaactual."', '', '".$idtra."','1','', '".$_POST['fechacurso']."','".$_SESSION["usuario"]."', 'APERTURADO','','".$_SERVER['REMOTE_ADDR']."','','".$horaaactual."');";
+				// }
 			}
 			
 			$ss=pg_query($link,$sqlser);

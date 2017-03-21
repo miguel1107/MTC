@@ -38,23 +38,7 @@ function deseleccionar_todo(){
       if(document.form2.elements[i].type == "checkbox")	
          document.form2.elements[i].checked=0 
 }
-</SCRIPT>
-<script language="JavaScript">
-<!--
-/*function validar(form1)
-{
-	 if (form1.evaluador.value=="")
-	 {
-	 alert("Debe Seleccionar el Evaluador");
-	 form1.evaluador.focus();
-	 return false;
-	 }
-	 return true;
-}*/
-
-
-//-->
-</script> 
+</SCRIPT> 
 <style type="text/css">
 <!--
 a:link {
@@ -193,49 +177,49 @@ a:visited {
                             <tr>
                               <td colspan="9">&nbsp;</td>
                             </tr>
-                            <?
- if($_GET["categoria"]=='1'){
-		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen<>3 and e.idexamen<>4   ORDER BY p.apepat ASC";
-		$rs2=pg_query($link,$sql2);
-		}else{
-		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."' ORDER BY p.apepat ASC";
-		$rs2=pg_query($link,$sql2);
-		}
-		
-		?>
+                            <?php                            
+                              if($_GET["categoria"]=='1'){
+                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen!=3 and e.idexamen!=4   ORDER BY p.apepat ASC";
+                              		$rs2=pg_query($link,$sql2);
+                              }else{
+                              		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."' ORDER BY p.apepat ASC";
+                              		$rs2=pg_query($link,$sql2);
+                              }
+                              
+                            ?>
                             <tr>
                               <td width="20">&nbsp;</td>
-                              <td width="33"><div align="center"><strong>N&ordm;</strong></div></td>
+                              <td width="33"><div align="center"><strong>N°</strong></div></td>
                               <td width="289"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
                               <td width="58"><div align="center"><strong>TIPO TRAMITE </strong></div></td>
                               <td width="58"><div align="center"><strong>CATEG.</strong></div></td>
                               <td width="77"><div align="center"><strong>OPCION</strong></div></td>
                               <td width="82"><div align="center"><strong>PUNTAJE</strong></div></td>
                             </tr>
-                            <?  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
+                            <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
                             <tr  bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
                               <td height="24"><input type="checkbox" value="<?=$reg[9]?>" name="chk[]" border="0" onClick="checkform(frmList,this)">                              </td>
                               <td><div align="center">
-                                  <?=$i?>
+                                  <?php echo $i; ?>
                               </div></td>
-                              <td><?=$reg[1]?>
-                                  <?=$reg[2]?>
-                                  <?=$reg[0]?></td>
+                              <td><?php echo $reg[1]; ?>
+                                  <?php echo $reg[2]; ?>
+                                  <?php echo $reg[0]; ?></td>
                               <td>
                                 <div align="left">
-                                  <?=$reg[10]?>
+                                  <?php echo $reg[10]; ?>
                                   </div></td>
                               <td><div align="center">
-                                  <?=$reg[3]?>
+                                  <?php echo $reg[3]; ?>
                               </div></td>
                               <td  ><div align="center"> <a onClick="tree('editar_opcion.php?id=<?=$id?>&fecha=<?=$_GET["xxxfecha"]?>&cate=<?=$_GET["categoria"]?>&idttra=<?=$reg[8]?>','nr_pome_menuiddepende', '', '', '', '', '', '', 'Jerarqu&iacute;a de Men&uacute;s','500', '165')" >
-                                  <?=$reg[4]?>
+                                  <?php echo $reg[4]; ?>
                               </a> </div></td>
                               <td><div align="center"> -
-                                    <? $evaluador=$reg[7];?>
+                                    <?php $evaluador=$reg[7]; ?>
                               </div></td>
                             </tr>
-                            <? $i++;  }?>
+                            <?php $i++;  } ?>
                           </table></td>
                         </tr>
                         <tr>
@@ -262,8 +246,9 @@ a:visited {
                <!--   <tr valign="middle">
                     <td colspan="3"><div align="center">___________________________________</div></td>
                     </tr>-->
-				      <?
-$sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$evaluador."'";
+				      <?php
+                $sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$evaluador."'";
+                
 						$rs2=pg_query($link,$sql2);
 						$fila2 =pg_fetch_object($rs2);
 						$id= $fila2->idevaluador;
