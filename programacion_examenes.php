@@ -264,7 +264,14 @@
                                   $rs=pg_query($link,$ssql) or die ("error : $ssql");
                                   $i=0;
                                ?>
-                                
+                                <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+                                  <tr>
+                                    <td width="59%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
+                                    <td width="17%"><div align="center"><strong>ESTADO DE EXAMEN</strong></div></td>
+                                    <td width="10%"><div align="center"><strong>OPCION</strong></div></td>
+                                    <td width="14%"><div align="center"><strong>RESULTADO</strong></div></td>
+                                  </tr>
+
                                   <?php 
                                     while ($reg=pg_fetch_array($rs)) {
                                       $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
@@ -272,14 +279,7 @@
                                       $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
                                   ?>
-                                  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
-                                  <tr>
-                                    <td width="59%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
-                                    <td width="17%"><div align="center"><strong>ESTADO DE EXAMEN</strong></div></td>
-                                    <td width="10%"><div align="center"><strong>OPCION</strong></div></td>
-                                    <td width="14%"><div align="center"><strong>RESULTADO</strong></div></td>
-                                  </tr>
-                                  <tr>
+                                                                    <tr>
                                     <td>&nbsp;&nbsp;
                                       <nobr>
                                         <?=$reg[1]?>
@@ -369,7 +369,12 @@
                               }
                               
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($tipt!='REVALIDACION') {
+                                if ($tipt=='REVALIDACION' && $estado=='0') {
+                                  $aureva='antiguo';
+                                }else if ($tipt=='REVALIDACION' && $estado=='1'){
+                                  $aureva='nuevo';
+                                } 
+                                if ($aureva=='nuevo' || $aureva=='') {
                                   
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
@@ -384,6 +389,7 @@
                                   <tr>
                                     <td>
                                       <?php if ($estado=='0' && $tipt=='RECATEGORIZACION') {
+                                        $disabledcon='';
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php
@@ -391,11 +397,12 @@
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
-                                        }else if ($aprobocon=='no' && $opcion<3) {
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='' && $opcion<3) {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php
-                                        }elseif ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
+                                        }else if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
+
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php
@@ -404,7 +411,8 @@
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php 
-                                        }else{
+                                        }else if($esperacon=='si' && $esperaman=='' && $aprobocon=='no' && $aproboman=='' && $opcion==''){
+                                          $disabledcon='si';
                                           ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php
@@ -416,9 +424,14 @@
                                     </td>
                                     <td>EXÁMEN DE CONOCIMIENTOS</td>
                                   </tr>
+                                  <?php
+                                    if ($aureva!='nuevo') {
+                                      
+                                    
+                                  ?>
                                   <tr>
                                     <td>
-                                      <?php 
+                                      <?php
                                         if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='') {
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
@@ -439,6 +452,11 @@
                                       <input type="checkbox" name="manejo" id="manejo" value="4" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='') {
+                                          $disabledman='si';
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
@@ -450,12 +468,15 @@
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='') {
+                                          $disabledman='si';
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
                                           $disabledman='si';
                                       ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion==3) {
                                           $disabledman='si';
                                       ?>
@@ -474,6 +495,7 @@
                                     </td>
                                     <td>EXÁMEN DE MANEJO</td>
                                   </tr>
+                                  <?php } ?>
                                 </table>
                               </td>
                             </tr>
