@@ -369,6 +369,7 @@
                               }
                               
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
+                                if ($tipt !='REVALIDACION') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -381,8 +382,12 @@
                                   <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
                                   <tr>
                                     <td>
-                                      <?php 
-                                        if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
+                                      <?php
+                                      if($estado=='0' && $tipt=='RECATEGORIZACION') {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <?php
+                                      }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
                                       <?php     
@@ -444,6 +449,13 @@
                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='') {
+                                      ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
+                                        }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
+                                          $disabledman='si';
+                                      ?>
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion==3) {
                                           $disabledman='si';
                                       ?>
@@ -468,6 +480,7 @@
                           </table>
                           <br>
                           <br>
+
                           <?php
                               }else{
                           ?>
@@ -477,7 +490,7 @@
                             </tr>
                             <tr>
                               <td><div align="center"><span class="Estilo4">
-                               USTED YA NO SE PUEDE PROGRAMARSE, SU CURSO YA EXPIRO</span></div></td>
+                               USTED NO SE PUEDE PROGRAMARSE</span></div></td>
                              </tr>
                           </table>
                           <?php
