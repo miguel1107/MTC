@@ -263,6 +263,7 @@
                                   //echo $ssql.'--';
                                   $rs=pg_query($link,$ssql) or die ("error : $ssql");
                                   $i=0;
+                                  
                                ?>
                                 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
                                   <tr>
@@ -324,6 +325,7 @@
                                         ?>
                                       </div>  
                                     </td>
+                                    
                                     <td>
                                       <div align="center">
                                         <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -360,7 +362,7 @@
                               $estado=$da2[6];
                               if ($estado=='0') {
                                 $aprobocon='si';
-                              }elseif ($estado=='1') {
+                              }elseif ($estado=='1' && $aprobocon=='no') {
                                 $aprobocon='no';
                               }
                               $fechafincer=$da2[7];
@@ -390,7 +392,7 @@
                                   <tr>
                                     <td>
                                       <?php if ($estado=='0' && $tipt=='RECATEGORIZACION') {
-                                        $disabledcon='';
+                                        $disabledcon='si';
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php
