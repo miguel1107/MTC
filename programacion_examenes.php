@@ -369,7 +369,8 @@
                               }
                               
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($tipt !='REVALIDACION') {
+                                if ($tipt!='REVALIDACION') {
+                                  
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -382,8 +383,7 @@
                                   <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
                                   <tr>
                                     <td>
-                                      <?php
-                                      if($estado=='0' && $tipt=='RECATEGORIZACION') {
+                                      <?php if ($estado=='0' && $tipt=='RECATEGORIZACION') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php
@@ -480,8 +480,20 @@
                           </table>
                           <br>
                           <br>
-
                           <?php
+                                }else{
+                                   ?>
+                                <table width="90%" border="0" align="center">
+                            <tr>
+                              <td><span class="Estilo4"></span></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><span class="Estilo4">
+                               USTED NO SE PUEDE PROGRAMARSE</span></div></td>
+                             </tr>
+                          </table>
+                          <?php
+                                }
                               }else{
                           ?>
                                 <table width="90%" border="0" align="center">
@@ -490,7 +502,7 @@
                             </tr>
                             <tr>
                               <td><div align="center"><span class="Estilo4">
-                               USTED NO SE PUEDE PROGRAMARSE</span></div></td>
+                               USTED YA NO SE PUEDE PROGRAMARSE, SU CURSO YA EXPIRO</span></div></td>
                              </tr>
                           </table>
                           <?php
