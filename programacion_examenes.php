@@ -373,6 +373,7 @@
                                   $aureva='antiguo';
                                 }else if ($tipt=='REVALIDACION' && $estado=='1'){
                                   $aureva='nuevo';
+                                  $disabledman='si';
                                 } 
                                 if ($aureva=='nuevo' || $aureva=='') {
                                   
@@ -470,6 +471,11 @@
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <?php
+                                        }else if ($esperacon=='si' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
+                                          $disabledman='si';
+                                       ?>
                                       <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
