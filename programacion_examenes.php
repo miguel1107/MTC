@@ -385,6 +385,7 @@ x                          </span>
                                   $revaespeacial='si';
                                   $aprobocon='no';
                                   $aureva='nuevo';
+                                  $disabledman='';
                                 }
                                 if ($aureva!='antiguo') {
                           ?>
