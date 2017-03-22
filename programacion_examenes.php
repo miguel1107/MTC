@@ -383,6 +383,7 @@ x                          </span>
                                 }
                                 if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
                                   $revaespeacial='si';
+                                  $aprobocon='no';
                                   $aureva='nuevo';
                                 }
                                 if ($aureva!='antiguo') {
