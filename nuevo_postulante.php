@@ -221,18 +221,35 @@ require_once 'model/provincia.php';
 		}
 		if (form1.tipotra.value!="4"){
 			if (form1.fechaexamen.value==""){
-				alert("Debe Ingresar Fecha de Exomen");
+				alert("Debe Ingresar Fecha de Exámen");
 				form1.fechaexamen.focus();
 				return false;
 			}
 			if (form1.nroficha.value==""){
-				alert("Debe Ingresar No de Exomen");
+				alert("Debe Ingresar No de Exámen");
 				form1.nroficha.focus();
 				return false;
 			}
 			if (form1.idcentro.value==""){
 				alert("Debe Seleccionar Centro Modico");
 				form1.idcentro.focus();
+				return false;
+			}
+		}
+		if (form1.tipotra.value=="2"){
+			if (form1.fechacurso.value==""){
+				alert("Debe Ingresar Fecha de Curso");
+				form1.fechacurso.focus();
+				return false;
+			}
+			if (form1.nrofichacurso.value==""){
+				alert("Debe Ingresar No de ficha de curso");
+				form1.nrofichacurso.focus();
+				return false;
+			}
+			if (form1.nomcentrocurso.value==""){
+				alert("Debe Ingresar Escuela");
+				form1.nomcentrocurso.focus();
 				return false;
 			}
 		}
