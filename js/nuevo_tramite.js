@@ -46,17 +46,17 @@ function cursoespecial() {
  			divM.style.display="block";	
 		}
 		else if(tra=='3'){
-			if (cat=='1') {
+			//if (cat=='1') {
 				divC = document.getElementById("especial");
  				divC.style.display="block";
  				divM = document.getElementById("medico");
  				divM.style.display="block";
-			}else{
-				divC = document.getElementById("especial");
- 				divC.style.display="none";
- 				divM = document.getElementById("medico");
- 				divM.style.display="block";	
-			}
+			//}else{
+				// divC = document.getElementById("especial");
+ 			// 	divC.style.display="block";
+ 			// 	divM = document.getElementById("medico");
+ 			// 	divM.style.display="block";	
+			//}
 		}else if( tra='4'){
 			divC = document.getElementById("especial");
  			divC.style.display="none";
