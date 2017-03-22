@@ -378,8 +378,10 @@
                                 }else if ($tipt=='REVALIDACION' && $estado=='1'){
                                   $aureva='nuevo';
                                   $disabledman='si';
+                                }else{
+                                  $aureva='otro';
                                 }
-                                if ($aureva=='nuevo' || $aureva=='') {
+                                if ($aureva=='otro') {
                                   
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
@@ -430,8 +432,7 @@
                                     <td>EXÁMEN DE CONOCIMIENTOS</td>
                                   </tr>
                                   <?php
-                                  echo $aureva.'**';exit;
-                                    if ($aureva!='nuevo') {
+                                    if ($aureva=='otro') {
                                   ?>
                                   <tr>
                                     <td>
