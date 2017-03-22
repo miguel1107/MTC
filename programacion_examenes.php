@@ -380,7 +380,12 @@ x                          </span>
                                   $disabledman='si';
                                 }else if($tipt=='REVALIDACION' && $estado=='') {
                                   $aureva='otro';
-                                }                                  
+                                }
+                                if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
+                                  $revaespeacial='si';
+                                  $aureva='nuevo';
+                                }
+                                if ($aureva!='antiguo') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -398,6 +403,10 @@ x                          </span>
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
                                       <?php
+                                      }else if ($revaespeacial=='si') {
+                                      ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <?php   
                                       }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
                                       ?>
                                       <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
