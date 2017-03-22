@@ -44,7 +44,8 @@ function cursoespecial() {
  			divC.style.display="block";
  			divM = document.getElementById("medico");
  			divM.style.display="block";	
-		}else if(tra=='3'){
+		}
+		else if(tra=='3'){
 			if (cat=='1') {
 				divC = document.getElementById("especial");
  				divC.style.display="block";
@@ -54,7 +55,7 @@ function cursoespecial() {
 				divC = document.getElementById("especial");
  				divC.style.display="none";
  				divM = document.getElementById("medico");
- 				divM.style.display="none";	
+ 				divM.style.display="block";	
 			}
 		}else if( tra='4'){
 			divC = document.getElementById("especial");
