@@ -380,9 +380,7 @@ x                          </span>
                                   $disabledman='si';
                                 }else if($tipt=='REVALIDACION' && $estado=='') {
                                   $aureva='otro';
-                                }
-                                if ($aureva=='otro') {
-                                  
+                                }                                  
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -512,18 +510,7 @@ x                          </span>
                           </table>
                           <br>
                           <br>
-                          <?php
-                                }else{
-                                   ?>
-                                <table width="90%" border="0" align="center">
-                            <tr>
-                              <td><span class="Estilo4"></span></td>
-                            </tr>
-                            <tr>
-                              <td><div align="center"><span class="Estilo4">
-                               USTED NO SE PUEDE PROGRAMARSE</span></div></td>
-                             </tr>
-                          </table>
+                         
                           <?php
                                 }
                               }else{
