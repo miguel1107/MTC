@@ -77,7 +77,7 @@
                                 </a>
                               </b>
                             </nobr>
-x                          </span>
+                         </span>
                         </td>	
                         <td><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>	 
                         <td width="119" align="center" background="imag/div1.gif">
