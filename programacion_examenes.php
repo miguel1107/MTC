@@ -371,12 +371,14 @@
                               }
                               
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($tipt=='REVALIDACION' && $estado=='0') {
+                                if ($tipt=='REVALIDACION' && ($estado=='0' || $estado=='')) {
                                   $aureva='antiguo';
+                                  $disabledman='si';
+                                  $disabledcon='si';
                                 }else if ($tipt=='REVALIDACION' && $estado=='1'){
                                   $aureva='nuevo';
                                   $disabledman='si';
-                                } 
+                                }
                                 if ($aureva=='nuevo' || $aureva=='') {
                                   
                           ?>
@@ -428,9 +430,8 @@
                                     <td>EXÁMEN DE CONOCIMIENTOS</td>
                                   </tr>
                                   <?php
+                                  echo $aureva.'**';exit;
                                     if ($aureva!='nuevo') {
-                                      
-                                    
                                   ?>
                                   <tr>
                                     <td>
