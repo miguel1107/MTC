@@ -360,18 +360,11 @@ x                          </span>
                               $row=pg_num_rows($rs2);
                               $da2=pg_fetch_array($rs2);
                               $estado=$da2[6];
-                              if ($estado=='0') {
-                                $aprobocon='si';
-                              }elseif ($estado=='1' && $aprobocon=='no') {
-                                $aprobocon='no';
-                              }
                               $fechafincer=$da2[7];
                               if ($fechafincer=='') {
                                 $aux='0';
                               }
-                              
-                              if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($tipt=='REVALIDACION' && $estado=='0') {
+                              if ($tipt=='REVALIDACION' && $estado=='0') {
                                   $aureva='antiguo';
                                   $disabledman='si';
                                   $disabledcon='si';
@@ -382,11 +375,25 @@ x                          </span>
                                   $aureva='otro';
                                 }
                                 if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
-                                  $revaespeacial='si';
-                                  $aprobocon='no';
-                                  $aureva='nuevo';
-                                  $disabledman='';
+                                  if ($aprobocon=='si') {
+                                    
+                                  }else{
+                                    $revaespeacial='si';
+                                    $aprobocon='no';
+                                    $aureva='nuevo';
+                                    $disabledman='';
+                                  }
                                 }
+                                if ($estado=='0') {
+                                  if ($revaespeacial=='si') {
+                                    $aprobocon='no';
+                                  }else{
+                                    $aprobocon='si';
+                                  }
+                              }elseif ($estado=='1' && $aprobocon=='no') {
+                                $aprobocon='no';
+                              }
+                              if ($fechafincer>date('Y-m-d') || $aux=='0') {
                                 if ($aureva!='antiguo') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
