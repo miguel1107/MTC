@@ -31,8 +31,11 @@ function cursoespecial() {
 	var hoy =new Date();
 	var mes=(hoy.getMonth()+1);
 	if (tra=='1' && cat=='1') {
-		lic=document.getElementById('lice');
-		lic.style.display="none";
+		//lic=document.getElementById('licencia');
+		$('#licencia').attr('disabled', 'disabled');
+	}else{
+		//lic=document.getElementById('licencia');
+		$('#licencia').removeAttr('disabled');
 	}
 	if (parseInt(mes)>=4) {
 		console.log(mes);
