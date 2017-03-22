@@ -77,7 +77,7 @@
                                 </a>
                               </b>
                             </nobr>
-                          </span>
+x                          </span>
                         </td>	
                         <td><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>	 
                         <td width="119" align="center" background="imag/div1.gif">
@@ -371,14 +371,14 @@
                               }
                               
                               if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($tipt=='REVALIDACION' && ($estado=='0' || $estado=='')) {
+                                if ($tipt=='REVALIDACION' && $estado=='0') {
                                   $aureva='antiguo';
                                   $disabledman='si';
                                   $disabledcon='si';
                                 }else if ($tipt=='REVALIDACION' && $estado=='1'){
                                   $aureva='nuevo';
                                   $disabledman='si';
-                                }else{
+                                }else if($tipt=='REVALIDACION' && $estado=='') {
                                   $aureva='otro';
                                 }
                                 if ($aureva=='otro') {
@@ -432,7 +432,7 @@
                                     <td>EXÁMEN DE CONOCIMIENTOS</td>
                                   </tr>
                                   <?php
-                                    if ($aureva=='otro') {
+                                    if ($tipt!='REVALIDACION') {
                                   ?>
                                   <tr>
                                     <td>
