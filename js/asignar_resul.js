@@ -43,7 +43,8 @@ function desactiva(i,name) {
 		$('#nota'+i).prop( "disabled", true );
 		$('#estado'+i).text('NO SE PRESENTO');
 		$('#estado2'+i).val('NO SE PRESENTO');
-		$('#nota'+i).val('0');
+		$('.color'+i).prop('color', '#000000');
+		$('#nota'+i).val('');
 		console.log('no se presento');
 	}else if (estad==false){
 		$('#nota'+i).prop( "disabled", false );
@@ -56,9 +57,9 @@ function desactiva(i,name) {
 
 function solonumeros(e,i) {
 	var key = window.Event ? e.which : e.keyCode
-	if (key==13) {
-		asignaresul(i);
-	}
+	// if (key==13) {
+	// 	asignaresul(i);
+	// }
 	return (key >= 48 && key <= 57);
 }
 
@@ -68,9 +69,11 @@ function asignaresul(i) {
 		if (nota<=10) {
 			$('#estado'+i).text('DESAPROBADO');
 			$('#estado2'+i).val('DESAPROBADO');
+			$('.color'+i).prop('color', '#FF6347');
 		}else if (nota>10) {
 			$('#estado'+i).text('APROBADO');
 			$('#estado2'+i).val('APROBADO');
+			$('.color'+i).prop('color', '#0000FF');
 		}
 	}else{
 		alert('NOTA INVÁLIDA');

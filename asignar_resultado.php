@@ -243,7 +243,7 @@
                                         </td>
                                         <td>
                                           <div align="center">
-                                            <input type="text" onkeypress="return solonumeros(event,<?php echo($i) ?>)" name="nota<?php echo $i; ?>" id="nota<?php echo $i; ?>" size="2" value="<?php echo $reg[13]; ?>">
+                                            <input type="text" onkeypress="return solonumeros(event,<?php echo($i) ?>)" name="nota<?php echo $i; ?>" id="nota<?php echo $i; ?>" size="2" value="<?php echo $reg[13]; ?>" onKeyUp="javascript:asignaresul(<?php echo $i; ?>);">
                                           </div>
                                         </td>
                                         <td>
@@ -254,7 +254,7 @@
                                             ?>
                                               <nobr>
                                               <a href="#">
-                                                <font color="#0000FF" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>"></font>
+                                                <font class="color<?php echo $i; ?>" color="#0000FF" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>"></font>
                                               </a>
                                             </nobr>
                                             <?php
@@ -262,7 +262,18 @@
                                             ?>
                                               <nobr>
                                               <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$fec?>&idevaluacion=<?=$reg[10]?>" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>" target="_blank">
+                                                <?php 
+                                                  if ($reg[8]=='APROBADO') {
+                                                ?>
                                                 <font color="#0000FF" id="estado<?php echo $i; ?>"><?php echo $reg[8]; ?></font>
+                                                <?php  
+                                                  }else if($reg[8]=='DESAPROBADO'){
+                                                ?>
+                                                <font color="#FF6347" id="estado<?php echo $i; ?>"><?php echo $reg[8]; ?></font>
+                                                <?php
+                                                  } 
+                                                ?>
+                                                
                                               </a>
                                             </nobr>
                                             <?php
