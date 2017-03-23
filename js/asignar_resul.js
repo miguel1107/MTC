@@ -43,7 +43,7 @@ function desactiva(i,name) {
 		$('#nota'+i).prop( "disabled", true );
 		$('#estado'+i).text('NO SE PRESENTO');
 		$('#estado2'+i).val('NO SE PRESENTO');
-		$('.color'+i).prop('color', '#000000');
+		$('.color'+i).prop('color','#000000');
 		$('#nota'+i).val('');
 		console.log('no se presento');
 	}else if (estad==false){
@@ -51,6 +51,7 @@ function desactiva(i,name) {
 		$('#estado'+i).text('');
 		$('#estado2'+i).val('');
 		$('#nota'+i).val('');
+		$('.color'+i).prop('color','#000000');
 		console.log('se presento');
 	}
 }

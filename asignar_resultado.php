@@ -253,7 +253,7 @@
                                               if($reg[8]=='') { 
                                             ?>
                                               <nobr>
-                                              <a href="#">
+                                              <a>
                                                 <font class="color<?php echo $i; ?>" color="#0000FF" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>"></font>
                                               </a>
                                             </nobr>
@@ -261,7 +261,7 @@
                                               }else{
                                             ?>
                                               <nobr>
-                                              <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$fec?>&idevaluacion=<?=$reg[10]?>" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>" target="_blank">
+                                              <a id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>" target="_blank">
                                                 <?php 
                                                   if ($reg[8]=='APROBADO') {
                                                 ?>
@@ -271,9 +271,12 @@
                                                 ?>
                                                 <font color="#FF6347" id="estado<?php echo $i; ?>"><?php echo $reg[8]; ?></font>
                                                 <?php
-                                                  } 
+                                                  }else if ($reg[8]=='NO SE PRESENTO') {
                                                 ?>
-                                                
+                                                <font color="#000000" id="estado<?php echo $i; ?>"><?php echo $reg[8]; ?></font>
+                                                <?php
+                                                  }
+                                                ?>
                                               </a>
                                             </nobr>
                                             <?php
@@ -282,18 +285,9 @@
                                           </div>
                                           <?php }else{?>
                                           <div align="center">
-                                            <nobr> <?php echo $reg[8]; ?></nobr>
+                                            <!-- <nobr> <?php echo $reg[8]; ?></nobr> -->
                                           </div>
                                           <?php }?>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                          <?php if($reg[8]!='NO SE PRESENTO' && $reg[8]!=''){ ?>
-                                            <a href="imprimir_examen.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$fec?>&idevaluacion=<?=$reg[10]?>"  target="_blank">
-                                              <font color="#0000FF">Examen</font>
-                                            </a>
-                                          <?php }?>
-                                          </div>
                                         </td>
                                       </tr>
                                       <?php $i++;  } ?>
