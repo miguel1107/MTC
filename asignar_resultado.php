@@ -6,6 +6,14 @@
   include("comun/function.php");
   include ("conectar.php");
   $link=Conectarse();
+  $examen=$_GET['categoria'];
+  if ($examen=='1') {
+    $hor=$_GET['hora'];
+  }else if ($examen=='4') {
+    $hor='0';
+  }
+  $fec=$_GET['xxxfecha'];
+  //echo($examen.'-'.$fec.'-'.$hor);exit;
 ?>
 <html>
   <head>
@@ -18,6 +26,10 @@
     <script type="text/javascript" src="estilos/libjsgen.js"> </script>
     <script type="text/javascript" src="estilos/popcalendar.js"> </script>
     <script type="text/javascript" src="estilos/script.js"></script>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
+    <script src="js/jquery-ui.js"> </script>
+    <script src="js/asignar_resul.js"></script>
     <script language="JavaScript">
       function imprimir(idt,idc,fecha,ideva) {
         ventana=window.open("imprimir_examen.php?idtramite="+ idt + "&idcategoria="+ idc +"&fecha="+ fecha + "&idevaluacion="+ ideva + "","","resizable=NO,scrollbars=yes,HEIGHT=400,WIDTH=600,LEFT=100,TOP=200");
@@ -82,6 +94,7 @@
                       <tr>
                         <td height="443" valign="top">
                           <form name="form1" method="post" action="insert_resultado.php">
+                            <input type="hidden" id="idhora" name="idhora" value="<?php echo $hor; ?>">
                             <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
                               <tbody>
                                 <tr>
@@ -116,7 +129,7 @@
                                       <tr>
                                         <td>&nbsp;</td>
                                       </tr> 
-                                      <?php if($_GET["categoria"]=='3'){ ?>
+                                      <?php if($examen=='3'){ ?>
                                       <tr>
                                         <td>
                                           <div align="center">
@@ -124,7 +137,7 @@
                                           </div>
                                         </td>
                                       </tr>
-                                      <?php }elseif($_GET["categoria"]=='4'){?>
+                                      <?php }elseif($examen=='4'){?>
                                       <tr>
                                         <td>
                                           <div align="center">
@@ -132,7 +145,7 @@
                                           </div>
                                         </td>
                                       </tr>
-                                      <?php }else{?>
+                                      <?php }else if($examen=='1'){?>
                                       <tr>
                                         <td>
                                           <div align="center">
@@ -148,14 +161,14 @@
                                   </td>
                                 </tr>
                                 <tr valign="middle">
-                                  <td height="9" colspan="3"><?php if($_GET["categoria"]<>3 && $_GET["categoria"]<>4){?>
+                                  <td height="9" colspan="3">
                                     <table width="95%" border="1" align="center" cellpadding="1" cellspacing="1">
                                       <tr>
                                         <td colspan="8">
                                           <strong>
-                                            <?php echo $_GET["xxxfecha"]?>
-                                            <input type="hidden" name="fechaexamen" value="<?=$_GET["xxxfecha"]?>" >
-                                            <input type="hidden" name="categoria" value="<?=$_GET["categoria"]?>" >
+                                            <?php echo $fec?>
+                                            <input type="hidden" name="fechaexamen" value="<?=$fec?>" >
+                                            <input type="hidden" name="categoria" value="<?=$examen?>" >
                                           </strong>
                                         </td>
                                       </tr>
@@ -163,25 +176,25 @@
                                         <td colspan="8">&nbsp;</td>
                                       </tr>
                                       <?php
-                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen<>3 and e.idexamen<>4 and e.fecha='".$_GET["xxxfecha"]."' order by p.apepat ASC"; 
+                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' and e.idhora='".$hor."' order by p.apepat ASC";
                                         $rs2=pg_query($link,$sql2);
                                       ?>
                                       <tr>
-                                        <td width="3%"><div align="center"><strong>N&ordm;</strong></div></td>
+                                        <td width="3%"><div align="center"><strong>N°</strong></div></td>
                                         <td width="34%"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
                                         <td width="9%"><div align="center"><strong>TIP.TRAMITE</strong></div></td>
                                         <td width="7%"><div align="center"><strong>CATEG.</strong></div></td>
                                         <td width="7%"><div align="center"><strong>OPCION</strong></div></td>
+                                        <td width="10%"><div align="center"><strong>SELECCIONAR</strong></div></td>
                                         <td width="9%"><div align="center"><strong>NOTA</strong></div></td>
                                         <td width="9%"><div align="center"><strong>RESULTADO</strong></div></td>
-                                        <td width="21%"><div align="center"><strong>SELECCIONAR</strong></div></td>
                                       </tr>
                                       <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
                                       <tr bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#D6DEEC';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
                                         <td>
                                           <div align="center">
                                             <?php echo $i ?>
-                                            <input name="post<?php echo $i; ?>" type="hidden" value="<?php $reg[7]; ?>">
+                                            <input name="post<?php echo $i; ?>" type="hidden" value="<?php echo $reg[7]; ?>">
                                           </div>
                                         </td>
                                         <td><nobr><?php echo $reg[1]; ?> <?php echo $reg[2]; ?> <?php echo $reg[0]; ?></nobr></td>
@@ -215,41 +228,57 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <?php if($_SESSION["cargo"]=='1'){ ?>
                                           <div align="center">
-                                            <nobr>
-                                              <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$_GET["xxxfecha"]?>&idevaluacion=<?=$reg[10]?>"  target="_blank">
-                                                <font color="#0000FF"><?php echo $reg[8]; ?></font>
-                                              </a>
-                                            </nobr>
-                                          </div>
-                                          <?php }else{?>
-                                          <div align="center">
-                                            <nobr> <?php $reg[8]; ?></nobr>
-                                          </div>
-                                          <?php }?>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                            <input type="number" name="nota" id="nota" value="">
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">  
-                                            <select name="resultado<?php echo $i; ?>" >
+                                            <input type="checkbox" onchange="cambiaestado(<?php echo $i ?>)" name="resultado<?php echo $i; ?>" id="resultado<?php echo $i; ?>" ><span>No se presento</span>
+                                            <input type="hidden" id="estado2<?php echo $i; ?>" name="estado2<?php echo $i; ?>" >
+                                            <!-- <select name="resultado<?php echo $i; ?>" >
                                               <option value=""></option>
                                               <option value="NO SE PRESENTO">NO SE PRESENTO</option>
                                               <?php if($reg[12]=='REVALIDACION' || $reg[12]=='CANJE REVALIDACION'){?>
                                               <option value="APROBADO">APROBADO</option>
                                               <option value="DESAPROBADO">DESAPROBADO</option>
                                               <?php }?>
-                                            </select>
+                                            </select> -->
                                           </div>
                                         </td>
                                         <td>
                                           <div align="center">
+                                            <input type="text" onkeypress="return solonumeros(event,<?php echo($i) ?>)" name="nota<?php echo $i; ?>" id="nota<?php echo $i; ?>" size="2" value="<?php echo $reg[13]; ?>">
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <?php if($_SESSION["cargo"]=='1'){ ?>
+                                          <div align="center">
+                                            <?php 
+                                              if($reg[8]=='') { 
+                                            ?>
+                                              <nobr>
+                                              <a href="#">
+                                                <font color="#0000FF" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>"></font>
+                                              </a>
+                                            </nobr>
+                                            <?php
+                                              }else{
+                                            ?>
+                                              <nobr>
+                                              <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$fec?>&idevaluacion=<?=$reg[10]?>" id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>" target="_blank">
+                                                <font color="#0000FF" id="estado<?php echo $i; ?>"><?php echo $reg[8]; ?></font>
+                                              </a>
+                                            </nobr>
+                                            <?php
+                                              }
+                                              ?>
+                                          </div>
+                                          <?php }else{?>
+                                          <div align="center">
+                                            <nobr> <?php echo $reg[8]; ?></nobr>
+                                          </div>
+                                          <?php }?>
+                                        </td>
+                                        <td>
+                                          <div align="center">
                                           <?php if($reg[8]!='NO SE PRESENTO' && $reg[8]!=''){ ?>
-                                            <a href="imprimir_examen.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$_GET["xxxfecha"]?>&idevaluacion=<?=$reg[10]?>"  target="_blank">
+                                            <a href="imprimir_examen.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$fec?>&idevaluacion=<?=$reg[10]?>"  target="_blank">
                                               <font color="#0000FF">Examen</font>
                                             </a>
                                           <?php }?>
@@ -258,87 +287,6 @@
                                       </tr>
                                       <?php $i++;  } ?>
                                     </table>
-                                    <?php }else{ ?>
-                                    <table width="94%" border="1" align="center" cellpadding="1" cellspacing="1">
-                                      <tr>
-                                        <td colspan="7">
-                                          <strong>
-                                            <?php echo $_GET["xxxfecha"]; ?>
-                                            <input type="hidden" name="fechaexamen" value="<?=$_GET["xxxfecha"]?>" >
-                                            <input type="hidden" name="categoria" value="<?=$_GET["categoria"]?>" >
-                                          </strong>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="7">&nbsp;</td>
-                                      </tr>
-                                      <?php
-                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$_GET["categoria"]."' and e.fecha='".$_GET["xxxfecha"]."' order by p.apepat ASC ";
-                                        $rs2=pg_query($link,$sql2);
-
-                                      ?>
-                                      <tr>
-                                        <td width="7%"><div align="center"><strong>N&ordm;</strong></div></td>
-                                        <td width="36%"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
-                                        <td width="10%"><div align="center"><strong>TIP.TRAMITE</strong></div></td>
-                                        <td width="6%"><div align="center"><strong>CATEG.</strong></div></td>
-                                        <td width="6%"><div align="center"><strong>OPCION</strong></div></td>
-                                        <td width="16%"><div align="center"><strong>NOTA</strong></div></td>
-                                        <td width="16%"><div align="center"><strong>RESULTADO</strong></div></td>
-                                        <td width="19%"><div align="center"><strong>SELECCIONAR</strong></div></td>
-                                      </tr>
-                                      <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
-                                      <tr bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#FFCC99';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
-                                        <td>
-                                          <div align="center">
-                                            <?php echo $i; ?>
-                                            <input name="post<?=$i?>" type="hidden" value="<?php echo $reg[7]; ?>">
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <?php $reg[1]; ?>
-                                          <?php $reg[2]; ?>
-                                          <?php $reg[0]; ?>                                              
-                                        </td>
-                                        <td>
-                                          <div align="left">
-                                            <?php echo $reg[9]; ?>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                            <?php echo $reg[3]?>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                            <?php echo $reg[4]; ?>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                            <input type="TEXT" name="nota" id="nota" value="">
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                          <?php echo $reg[8]; ?>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div align="center">
-                                            <select name="resultado<?=$i?>" >
-                                              <option value=""></option>
-                                              <option value="APROBADO">APROBADO</option>
-                                              <option value="DESAPROBADO">DESAPROBADO</option>
-                                              <option value="NO SE PRESENTO">NO SE PRESENTO</option>
-                                            </select>
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <?php $i++; } ?>
-                                    </table>
-                                    <?php } ?>
                                   </td>
                                 </tr>
                                 <tr valign="middle">
@@ -355,7 +303,7 @@
                                   <td><div align="center">_____________________________________</div></td>
                                 </tr>
                                 <?php 
-                                  $sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."'";
+                                  $sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.fecha='".$fec."' and e.idexamen='".$examen."'";
                                   $rs2=pg_query($link,$sql2);
                                   $fila2 =pg_fetch_object($rs2);
                                   $id= $fila2->idevaluador;

@@ -23,7 +23,7 @@
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
     <script src="js/jquery-ui.js"> </script>
-    <script src="js/asignar_resul.js"></script>
+    <script src="js/asignar_eva.js"></script>
     <script language="JavaScript">
       function validar(form1){
         if (form1.categoria.value=="0"){

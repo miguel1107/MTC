@@ -3,17 +3,22 @@ session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 include ("conectar.php");
 $link=Conectarse();
-
 $num=1;
+//echo $_POST['estado21'];exit;
 while($_POST["total"] >= $num){
-	if($_POST["resultado".$num.""]!="" ) {
-		if($_POST["categoria"]!='1'){
-			$sql2="update evaluacion set resultado='".$_POST["resultado".$num.""]."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."'";
+	if($_POST["estado2".$num.""]!="" ) {
+		if ($_POST["estado2".$num.""]=='NO SE PRESENTO') {
+			$nota='0';
 		}else{
-			$sql2="update evaluacion set resultado='".$_POST["resultado".$num.""]."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["tipocate".$num.""]."' and idtramite= '".$_POST["post".$num.""]."'";
+			$nota=$_POST["nota".$num.""];
+		}
+		if($_POST["categoria"]!='1'){
+			$sql2="update evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."'";
+		}else{
+			$sql2="update evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["tipocate".$num.""]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."' ";
 		}
 		$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
-
+		
 		if($_POST["categoria"]=='3'){
 			$sq7="select opcion,resultado,idevaluacion from evaluacion where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."'";
 			$rs7=pg_query($link,$sq7); // or die ("Error :$sq");
@@ -62,6 +67,7 @@ while($_POST["total"] >= $num){
 	}
 	$num++;
 }
-header("location:asignar_resultado.php?xxxfecha=".$_POST["fechaexamen"]."&categoria=".$_POST["categoria"]."");
+
+header("location:asignar_resultado.php?xxxfecha=".$_POST["fechaexamen"]."&categoria=".$_POST["categoria"]."&hora=".$_POST['idhora']);
 
 ?>

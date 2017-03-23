@@ -128,8 +128,8 @@
                     </tr>
                     <tr>
                       <td width="20"><div align="center"><strong>N°</strong></div></td>
-                      <td width="250"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
-                      <td width="250"><div align="center"><strong>DNI/CE </strong></div></td>
+                      <td width="350"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
+                      <td width="100"><div align="center"><strong>DNI/CE </strong></div></td>
                       <td width="55"><div align="center"><strong>CATEG.</strong></div></td>
 			                <td width="55"><div align="center"><strong>OPCION</strong></div></td>
                       <?php if($exa=='1'){ ?>
