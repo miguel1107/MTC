@@ -18,6 +18,11 @@ $link=Conectarse();
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
+
+<script src="js/jquery-2.0.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
+  <script src="js/jquery-ui.js"> </script>
+  <script src="js/asignar_resul.js"></script>
 <script language="JavaScript">
 <!--
 function validar(form1)
@@ -82,6 +87,7 @@ function prueba(){
 }
 
 </script>
+
 </head>
 <body class="os2hop">
 
@@ -157,11 +163,12 @@ function prueba(){
                 <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="22%">TIPO DE EXAMEN &nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%"><select name="categoria" class="cajatexto" id="categoria" onkeypress="return formato(event,form,this)">
-                  <option value="">------- Seleccione Opci&oacute;n -------</option>
-                   <option value="1">REGLAS</option>
-                  <option value="4">MANEJO</option>
-                                </select></td>
+                <td class="objeto" width="78%">
+                  <select name="categoria" class="cajatexto" id="categoria" onclick="llenaHora()" onkeypress="return formato(event,form,this)">
+                    <option value="">------- Seleccione Opción -------</option>
+                    <option value="1">REGLAS</option>
+                    <option value="4">MANEJO</option>
+                  </select></td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               <tr valign="middle">

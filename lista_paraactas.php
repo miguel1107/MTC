@@ -145,11 +145,11 @@ a:visited {
                       </tr>
 					<? }elseif($_GET["categoria"]=='3'){ ?>
                       <tr>
-                        <td><div align="center"><strong>ACTAS DE MECANICA </strong></div></td>
+                        <td><div align="center"><strong>ACTAS DE MECANICA</strong></div></td>
                       </tr>
-					<? }else{?>
+					<? }else {?>
                       <tr>
-                        <td><div align="center"><strong>ACTA DE MANEJO </strong></div></td>
+                        <td><div align="center"><strong>ACTA DE MANEJO</strong></div></td>
                       </tr>
                      
 					  <? }?>
@@ -179,7 +179,7 @@ a:visited {
                             </tr>
                             <?php                            
                               if($_GET["categoria"]=='1'){
-                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen!=3 and e.idexamen!=4   ORDER BY p.apepat ASC";
+                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen!=3 and e.idexamen!=4 ORDER BY p.apepat ASC";
                               		$rs2=pg_query($link,$sql2);
                               }else{
                               		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."' ORDER BY p.apepat ASC";

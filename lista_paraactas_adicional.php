@@ -144,7 +144,7 @@ a:visited {
                         <td colspan="8">&nbsp;</td>
                         </tr>
                       <tr>
-                        <td width="33"><div align="center"><strong>N&ordm;</strong></div></td>
+                        <td width="33"><div align="center"><strong>N°</strong></div></td>
                         <td width="289"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
                         <td width="58"><div align="center"><strong>TIPO TRAMITE </strong></div></td>
                         <td width="58"><div align="center"><strong>CATEG.</strong></div></td>
