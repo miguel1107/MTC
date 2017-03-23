@@ -24,7 +24,7 @@ function verSolicitud(act) {
 			})
 			.done(function(data) {
 				if (data=='false') {
-					alert("EL NÚMERO DE SISGEDO YA EXITE!! :c");
+					alert("EL NÚMERO DE SISGEDO YA EXITE!!");
 					$('#numsisgedo').focus();
 					return false;
 				}else{

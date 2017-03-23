@@ -78,7 +78,7 @@
 		</div>
 		<div class="flc1-subtit">
 			<p>"Año Internacional del Turismo Sostenible para el Desarrollo"</p>
-			<p>"Año del buen servicio al ciudadano"</p>
+			<p>"Año del Buen Servicio al Ciudadano"</p>
 		</div>
 		<div class="flc1-datos">
 			<div class="flc1-datos-iz">

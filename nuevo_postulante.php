@@ -279,7 +279,7 @@ require_once 'model/provincia.php';
 		var clave1 = form1.categoria.value;  
 		
 		if (clave=='2' && clave1==1) { 
-			alert("El tipo de Tromite no conciden, Verifique");
+			alert("El tipo de Tramite no conciden, Verifique");
 			form1.categoria.focus(); 
 			return false;
 		}	
@@ -1262,7 +1262,7 @@ require_once 'model/provincia.php';
     							<td class="objeto" width="1%">&nbsp;</td>
     							<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
     								<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
-    								<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
+    								<!-- <option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option> -->
     							</select></td>
     							<td class="objeto" width="6%">&nbsp;</td>
     						</tr>
