@@ -121,50 +121,51 @@ $pdf->MultiCell(170,5,'De  no estar  privado  por  resolución  judicial  firme  
 $pdf->SetXY(20,115); 
 $pdf->MultiCell(170,5,'conducir  vehiculos  del  transporte  terrestre ,  ni contar  con  mandatos  de  reexaminación  médica y  psicológica,     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC , que  aprueba  el   Reglamento  Nacional de  Emisión      de Licencias de Conducir.',0,1,'L',1);   
 
-$pdf->SetXY(40,131); 
-$pdf->MultiCell(170,5,'En señal de conformidad, firmo la presente en la ciudad de Chiclayo, a los ',0,1,'L',1);  
+$pdf->SetXY(20,132); 
+$pdf->MultiCell(170,5,'En señal de conformidad y de acuerdo a lo normado en la Ley N° 27444, Ley del Procedimiento Administrativo General y Modificatoria, firmo la presente en la ciudad de Chiclayo, a los ',0,1,'R',1);  
  				
 $datosdias=date('d');
-$pdf->SetXY(147,131); 
+$pdf->SetXY(111,137); 
 $pdf->Cell(10,5,$datosdias,0,1,'L',1); 	
-$pdf->SetXY(154,131); 
-$pdf->Cell(10,5,' dias  del  mes  de ',0,1,'L',1); 		   
+$pdf->SetXY(116,137); 
+$pdf->Cell(10,5,' dias del mes de ',0,1,'L',1); 		   
 
 
             $mess=date('m'); 
 			switch($mess){
-					case '1': $pdf->SetXY(20,136); 
+					case '1': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Enero',0,1,'L',1);  break;
-					case '2': $pdf->SetXY(20,136); 
+					case '2': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Febrero',0,1,'L',1);  break;
-					case '3': $pdf->SetXY(20,136); 
+					case '3': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Marzo',0,1,'L',1);   break;
-					case '4': $pdf->SetXY(20,136); 
+					case '4': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Abril',0,1,'L',1);   break;
-					case '5': $pdf->SetXY(20,136); 
+					case '5': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Mayo',0,1,'L',1);   break;
-					case '6': $pdf->SetXY(20,136); 
+					case '6': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Junio',0,1,'L',1);   break;
-					case '7': $pdf->SetXY(20,136); 
+					case '7': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Julio',0,1,'L',1);  break;
-					case '8': $pdf->SetXY(69,161); 
+					case '8': $pdf->SetXY(140,137); 
 							 $pdf->Cell(15,5,'Agosto',0,1,'L',1);   break;
-					case '9': $pdf->SetXY(20,136); 
+					case '9': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Setiembre',0,1,'L',1);   break;
-					case '10': $pdf->SetXY(20,136); 
+					case '10': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Octubre',0,1,'L',1);   break;
-					case '11': $pdf->SetXY(20,136); 
+					case '11': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Noviembre',0,1,'L',1);  break;
-					case '12': $pdf->SetXY(20,136); 
+					case '12': $pdf->SetXY(140,137); 
 							 $pdf->Cell(50,5,'Diciembre',0,1,'L',1);  break;
 			
 			} 
 			
 
-$pdf->SetXY(40,136); 
+$pdf->SetXY(150,137); 
 $pdf->Cell(5,5,'del año ',0,1,'L',1);
-$datoano=date('Y');
-$pdf->SetXY(60,136); 
+$datoano=date('Y.');
+$pdf->SetXY(162,137); 
+ 
 $pdf->Cell(5,5,$datoano,0,1,'L',1);
  $pdf->SetXY(60,180); 
 $pdf->Cell(5,5,'___________________________________',0,1,'L',1);
