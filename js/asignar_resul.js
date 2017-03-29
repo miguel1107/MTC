@@ -58,27 +58,43 @@ function desactiva(i,name) {
 
 function solonumeros(e,i) {
 	var key = window.Event ? e.which : e.keyCode
-	// if (key==13) {
-	// 	asignaresul(i);
-	// }
 	return (key >= 48 && key <= 57);
 }
 
 function asignaresul(i) {
 	var nota=($('#nota'+i).val());
-	if (nota>=0 && nota<=20){
-		if (nota<=10) {
-			$('#estado'+i).text('DESAPROBADO');
-			$('#estado2'+i).val('DESAPROBADO');
-			$('.color'+i).prop('color', '#FF6347');
-		}else if (nota>10) {
-			$('#estado'+i).text('APROBADO');
-			$('#estado2'+i).val('APROBADO');
-			$('.color'+i).prop('color', '#0000FF');
+	var exa=$('#idexamen').val();
+	if (exa==4) {
+		if (nota>=0 && nota<=20){
+			if (nota<=10) {
+				$('#estado'+i).text('DESAPROBADO');
+				$('#estado2'+i).val('DESAPROBADO');
+				$('.color'+i).prop('color', '#FF6347');
+			}else if (nota>10) {
+				$('#estado'+i).text('APROBADO');
+				$('#estado2'+i).val('APROBADO');
+				$('.color'+i).prop('color', '#0000FF');
+			}
+		}else{
+			alert('NOTA INVÁLIDA');
+			$('#nota'+i).val('');
+			$('#nota'+i).focus();
 		}
-	}else{
-		alert('NOTA INVÁLIDA');
-		$('#nota'+i).val('');
-		$('#nota'+i).focus();
+	}else if (exa==1) {
+		if (nota>=0 && nota<=40){
+			if (nota<=34) {
+				$('#estado'+i).text('DESAPROBADO');
+				$('#estado2'+i).val('DESAPROBADO');
+				$('.color'+i).prop('color', '#FF6347');
+			}else if (nota>34) {
+				$('#estado'+i).text('APROBADO');
+				$('#estado2'+i).val('APROBADO');
+				$('.color'+i).prop('color', '#0000FF');
+			}
+		}else{
+			alert('NOTA INVÁLIDA');
+			$('#nota'+i).val('');
+			$('#nota'+i).focus();
+		}
 	}
 }

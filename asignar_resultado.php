@@ -129,6 +129,7 @@
                                       <tr>
                                         <td>&nbsp;</td>
                                       </tr> 
+                                      <input type="hidden" id="idexamen" name="idexamen" value="<?php echo $examen; ?>" >
                                       <?php if($examen=='3'){ ?>
                                       <tr>
                                         <td>

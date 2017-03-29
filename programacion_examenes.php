@@ -2,6 +2,7 @@
   session_start();
   if(!isset($_SESSION["usuario"])) header("location:index.php");
   include ("conectar.php");
+  include ("traducefecha.php");
   $link=Conectarse();
   $tienecursopro='No';
 ?>
@@ -151,7 +152,8 @@
                         $cant=count($_POST["chk"]);
                         if($cant > 0){
                           foreach($_POST["chk"] as $k =>$v){
-  		                      $sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55 and t.tipotramite !='DUPLICADO' and t.idtramite<'9966737'";
+  		                      //$sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55 and t.tipotramite !='DUPLICADO' and t.idtramite<'9966737'";
+                            $sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55";
                             $rs=pg_query($link,$sql) or die ("Error :$sql");
                             while($reg1=pg_fetch_array($rs)) { 
                               $id=$reg1[0];
@@ -267,20 +269,21 @@
                                ?>
                                 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
                                   <tr>
-                                    <td width="59%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
+                                    <td width="40%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                     <td width="17%"><div align="center"><strong>ESTADO DE EXAMEN</strong></div></td>
                                     <td width="10%"><div align="center"><strong>OPCION</strong></div></td>
                                     <td width="14%"><div align="center"><strong>RESULTADO</strong></div></td>
+                                    <td width="50%"><div align="center"><strong>FECHA EXÁMEN  </strong></div></td>
                                   </tr>
 
                                   <?php 
                                     while ($reg=pg_fetch_array($rs)) {
-                                      $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
+                                      $ssql8="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,e.fecha FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  WHERE t.idtramite='".$row[6]."' and e.idexamen='".$reg[2]."'  order by e.opcion ASC";
                                       //echo $ssql8.'--';
                                       $rs8=pg_query($link,$ssql8) or die ("error : $ssql8");
                                       while ($reg8=pg_fetch_array($rs8)) {
                                   ?>
-                                                                    <tr>
+                                  <tr>
                                     <td>&nbsp;&nbsp;
                                       <nobr>
                                         <?=$reg[1]?>
@@ -340,6 +343,13 @@
                                         <? if(substr($reg8[9],9,1)=='(') $tienecursopro='Si'; ?>
                                       </font>
                                     </td>
+                                    <td>
+                                      <div align="center">
+                                        <font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+                                          <?=ereg_replace('-','/',normal($reg8[11]))?>
+                                        </font>
+                                      </div>
+                                    </td>
                                   </tr>
                                   <?php      
                                       }
@@ -353,48 +363,51 @@
                           <br>
                           <br>
                           <?php
-                            if ($row[7]>date('Y-m-d')) {
-                              $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
-                              
-                              $rs2=pg_query($link,$sql2);
-                              $row=pg_num_rows($rs2);
-                              $da2=pg_fetch_array($rs2);
-                              $estado=$da2[6];
-                              $fechafincer=$da2[7];
-                              if ($fechafincer=='') {
-                                $aux='0';
-                              }
-                              if ($tipt=='REVALIDACION' && $estado=='0') {
-                                  $aureva='antiguo';
-                                  $disabledman='si';
-                                  $disabledcon='si';
-                                }else if ($tipt=='REVALIDACION' && $estado=='1'){
-                                  $aureva='nuevo';
-                                  $disabledman='si';
-                                }else if($tipt=='REVALIDACION' && $estado=='') {
-                                  $aureva='otro';
-                                }
-                                if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
-                                  if ($aprobocon=='si') {
-                                    
-                                  }else{
-                                    $revaespeacial='si';
-                                    $aprobocon='no';
-                                    $aureva='nuevo';
-                                    $disabledman='';
+                            //echo $tipt.'-'.$catt;exit;
+                            if ($tipt!='DUPLICADO'){
+                              if ($catt!='AIV-especial') {                     
+                                if ($row[7]>date('Y-m-d')) {
+                                  $sql2="SELECT * FROM certificado_curso cc inner join curso_especial ce on cc.idcurso=ce.id_curso_especial WHERE cc.idtramite='".$idtra."'";
+                                  
+                                  $rs2=pg_query($link,$sql2);
+                                  $row=pg_num_rows($rs2);
+                                  $da2=pg_fetch_array($rs2);
+                                  $estado=$da2[6];
+                                  $fechafincer=$da2[7];
+                                  if ($fechafincer=='') {
+                                    $aux='0';
                                   }
-                                }
-                                if ($estado=='0') {
-                                  if ($revaespeacial=='si') {
+                                  if ($tipt=='REVALIDACION' && $estado=='0') {
+                                      $aureva='antiguo';
+                                      $disabledman='si';
+                                      $disabledcon='si';
+                                    }else if ($tipt=='REVALIDACION' && $estado=='1'){
+                                      $aureva='nuevo';
+                                      $disabledman='si';
+                                    }else if($tipt=='REVALIDACION' && $estado=='') {
+                                      $aureva='otro';
+                                    }
+                                    if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
+                                      if ($aprobocon=='si') {
+                                        
+                                      }else{
+                                        $revaespeacial='si';
+                                        $aprobocon='no';
+                                        $aureva='nuevo';
+                                        $disabledman='';
+                                      }
+                                    }
+                                    if ($estado=='0') {
+                                      if ($revaespeacial=='si') {
+                                        $aprobocon='no';
+                                      }else{
+                                        $aprobocon='si';
+                                      }
+                                  }elseif ($estado=='1' && $aprobocon=='no') {
                                     $aprobocon='no';
-                                  }else{
-                                    $aprobocon='si';
                                   }
-                              }elseif ($estado=='1' && $aprobocon=='no') {
-                                $aprobocon='no';
-                              }
-                              if ($fechafincer>date('Y-m-d') || $aux=='0') {
-                                if ($aureva!='antiguo') {
+                                  if ($fechafincer>date('Y-m-d') || $aux=='0') {
+                                    if ($aureva!='antiguo') {
                           ?>
                           <table width="50%" height="100%" border="0" align="center" cellpadding="0" cellspacing="4" bgcolor="#FFFFFF">
                             <tr>
@@ -404,40 +417,45 @@
                                     <td width="5%"><div align="center"></div></td>
                                     <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                   </tr>                                  
-                                  <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>
+                                  <!--<?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>-->
                                   <tr>
                                     <td>
                                       <?php if ($estado=='0' && $tipt=='RECATEGORIZACION') {
                                         $disabledcon='si';
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  disabled>
                                       <?php
                                       }else if ($revaespeacial=='si') {
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  checked>
                                       <?php   
                                       }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  checked>
                                       <?php     
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='' && $opcion<3) {
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  checked>
                                       <?php
                                         }else if ($aprobocon=='no' && $opcion<=3 && $esperacon=='no') {
 
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  checked>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  checked>
                                       <?php
                                         }else if ($aprobocon=='si' || $esperacon=='si') {
                                           $disabledcon='si';
                                       ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  disabled>
                                       <?php 
                                         }else if($esperacon=='si' && $esperaman=='' && $aprobocon=='no' && $aproboman=='' && $opcion==''){
                                           $disabledcon='si';
                                           ?>
-                                      <input type="checkbox" name="conocimiento" id="conocimiento" value="1"  disabled>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  disabled>
+                                      <?php
+                                        }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='' && $opcion==3) {
+                                          $disabledcon='si';
+                                        ?>
+                                      <input type="checkbox" name="conocimiento" id="conocimiento" onchange="marcadocon()" onclick="marcadocon()" value="1"  disabled>
                                       <?php
                                         }
                                         if ($opcion==3) {
@@ -455,63 +473,63 @@
                                       <?php
                                         if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='') {
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($aproboman=='no' && $esperaman=='no') {
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($aprobocon=='si' && $esperacon=='no') {
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" checked >
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" checked >
                                       <script>desabilitaCombo();</script>
                                       <?php 
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='no' && $aproboman=='') {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='si' && $esperaman=='' && $aprobocon=='' && $aproboman=='' && $opcion=='') {
                                           $disabledman='si';
                                        ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='si' && $aprobocon=='si' && $aproboman=='no' && $opcion<3) {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='no' && $opcion==3) {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php
                                         }else if ($esperacon=='' && $esperaman=='' && $aprobocon=='si' && $aproboman=='si' && $opcion<3) {
                                           $disabledman='si';
                                       ?>
-                                      <input type="checkbox" name="manejo" id="manejo" value="4" disabled>
+                                      <input type="checkbox" name="manejo" id="manejo" value="4"  onchange="marcadoman()" onclick="marcadoman()" disabled>
                                       <?php 
                                         }
                                         if ($opcion==3) {
@@ -521,17 +539,41 @@
                                     </td>
                                     <td>EXÁMEN DE MANEJO</td>
                                   </tr>
-                                  <?php } ?>
+                                  <?php 
+                                    }
+                                    if ($opcion==3 && $aprobocon=='no') {
+                                  ?>
+                                  <table width="90%" border="0" align="center">
+                                    <tr>
+                                      <td><span class="Estilo4"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><div align="center"><span class="Estilo4">USTED AGOTO SUS OPCIONES EN EL EXÁMEN DE CONOCIMIENTOS, DEBE GENERAR UN NUEVO EXPEDIENTE </span></div></td>
+                                    </tr>
+                                  </table>
+                                  <?php
+                                     }else if($opcion==3 && $aproboman=='no'){
+                                  ?>
+                                  <table width="90%" border="0" align="center">
+                                    <tr>
+                                      <td><span class="Estilo4"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><div align="center"><span class="Estilo4">USTED AGOTO SUS OPCIONES EN EL EXÁMEN DE MANEJO, DEBE GENERAR UN NUEVO EXPEDIENTE </span></div></td>
+                                    </tr>
+                                  </table>
+                                  <?php
+                                     }
+                                  ?>
                                 </table>
                               </td>
                             </tr>
                           </table>
-                          <br>
-                          <br>
-                         
                           <?php
-                                }
-                              }else{
+                                    }
+                                  }else{
+                                    $disabledcon='si';
+                                    $disabledman='si';
                           ?>
                                 <table width="90%" border="0" align="center">
                             <tr>
@@ -543,8 +585,10 @@
                              </tr>
                           </table>
                           <?php
-                              }
-                            }else{
+                                  }
+                                }else{
+                                  $disabledcon='si';
+                                  $disabledman='si';
                           ?>
                           <table width="90%" border="0" align="center">
                             <tr>
@@ -553,6 +597,40 @@
                             <tr>
                               <td><div align="center"><span class="Estilo4">
                                USTED YA NO SE PUEDE PROGRAMARSE, SU EXAMEN MÉDICO YA EXPIRO</span></div></td>
+                             </tr>
+                          </table>
+                          <br>
+                          <br>
+                          <?php
+                                }
+                              }else{
+                                $disabledcon='si';
+                                $disabledman='si';
+                          ?>
+                          <table width="90%" border="0" align="center">
+                            <tr>
+                              <td><span class="Estilo4"></span></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><span class="Estilo4">
+                               USTED NO PUEDE PROGRAMARSE</span></div></td>
+                             </tr>
+                          </table>
+                          <br>
+                          <br>
+                          <?php
+                              }
+                            }else{
+                              $disabledcon='si';
+                              $disabledman='si';
+                          ?>
+                          <table width="90%" border="0" align="center">
+                            <tr>
+                              <td><span class="Estilo4"></span></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><span class="Estilo4">
+                               USTED NO PUEDE PROGRAMARSE</span></div></td>
                              </tr>
                           </table>
                           <br>
