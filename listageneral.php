@@ -68,7 +68,7 @@ body {
 
 <?php
 $link=conectarse();
-$sql3="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni like '".$_GET["frase2"]."%'or p.ce like '".$_GET["frase2"]."%')";
+$sql3="SELECT distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni like '".$_GET["frase2"]."%'or p.ce like '".$_GET["frase2"]."%')";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 
 $numeroRegistros=pg_num_rows($rs3);
@@ -118,7 +118,7 @@ $numeroRegistros=pg_num_rows($rs3);
 ?>
 			        <?php
 				//$link=conectarse();
-				$ssql="select distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion,p.ce  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where t.estado='1'  and p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni like '".$_GET["frase2"]."%' or p.ce like '".$_GET["frase2"]."%') LIMIT ".$tamPag." OFFSET ".$limitInf;
+				$ssql="SELECT distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion,p.ce  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where  p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni = '".$_GET["frase2"]."' or p.ce = '".$_GET["frase2"]."') LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				 ?>
         <tr>

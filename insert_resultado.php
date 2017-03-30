@@ -17,7 +17,7 @@ while($_POST["total"] >= $num){
 		}else{
 			$sql2="update evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["tipocate".$num.""]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."' ";
 		}
-		echo $sql2;
+		
 		$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
 		
 		if($_POST["categoria"]=='3'){
@@ -68,7 +68,6 @@ while($_POST["total"] >= $num){
 	}
 	$num++;
 }
-//exit;
 header("location:asignar_resultado.php?xxxfecha=".$_POST["fechaexamen"]."&categoria=".$_POST["categoria"]."&hora=".$_POST['idhora']);
 
 ?>

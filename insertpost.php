@@ -151,7 +151,6 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 	}
 	if(isset($realizar)){
-		$accioncertificado='inserta';
 		if($_POST["sw"]!=3){
 			$sqk="Select max(numero) from numeros where tipo='SOLICITUDES' ";
 			$rsk=pg_query($link,$sqk); 
@@ -258,16 +257,14 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 		if ($certificado=='si') {
 			$fecha=$_POST['fechacurso'];
-			$fechas=strtotime($fecha);
-			$fecha1=date('Y-m-d',$fechas);
+			//$fechas=strtotime($fecha);
+			//$fecha1=date('Y-m-d',$fechas);
 			//****
-			$fechass = new DateTime($fecha1);
-			$fechass->add(new DateInterval('P360D'));
-			//echo $fechass->format('Y-m-d').'***';
-			//**
-			//echo $fecha.'->'.$fecha1.'->'.$newmax;exit;
-			$newmax=$fechass->format('d-m-Y');
-			
+			//$fechass = new DateTime($fecha1);
+			//$fechass->add(new DateInterval('P360D'));
+			//$newmax=$fechass->format('d-m-Y');
+			$newmax=suma_fechas($fecha,360);
+			//echo $newmax.'-'.$fechanew;exit;
 			$mesexte=substr($fecha, 3,2);
 			if (substr($mesexte, 0, 1)=='0') {
 				$mes=(int)(substr($mesexte, 1, 1));

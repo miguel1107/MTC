@@ -184,19 +184,19 @@
                         </tr>
                         <tr valign="middle">
                           <td class="marco" width="1%">&nbsp;</td>
-                          <td class="etiqueta" align="right" width="22%"><p id="span">HORA DE EXAMEN &nbsp;&nbsp;</p></td>
-                          <td class="objeto" width="1%">&nbsp;</td>
-                          <td class="objeto" width="78%">
-                            <select class="objeto" name="hora" id="hora" style="display: block"></select>
-                          </td>
-                          <td class="objeto" width="1%">&nbsp;</td>
-                        </tr>
-                        <tr valign="middle">
-                          <td class="marco" width="1%">&nbsp;</td>
                           <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp;</td>
                           <td class="objeto" width="1%">&nbsp;</td>
                           <td class="objeto" width="78%"><input name="xxxfecha" class="cajatexto" id="xxxfecha" onKeyPress="return formato(event,form,this,10)"  size="15" maxlength="10" type="text">
                                &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15"> </td>
+                          <td class="objeto" width="1%">&nbsp;</td>
+                        </tr>
+                        <tr valign="middle" >
+                          <td class="marco" width="1%">&nbsp;</td>
+                          <td class="etiqueta" align="right" width="22%"><p id="span">HORA DE EXAMEN &nbsp;&nbsp;</p></td>
+                          <td class="objeto" width="1%">&nbsp;</td>
+                          <td class="objeto" width="78%">
+                            <select class="cajatexto" name="hora" id="hora" style="display: block"></select>
+                          </td>
                           <td class="objeto" width="1%">&nbsp;</td>
                         </tr>
                         <tr>

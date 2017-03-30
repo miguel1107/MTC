@@ -213,29 +213,38 @@ require_once 'model/provincia.php';
 		}else{
 			var co=form1.correo.value;
 			if (co.includes('@')) {
+				if (co.includes('.')) {
+				}else{
+					alert('Le falta el . al correo');
+					form1.correo.focus;
+					return false;	
+				}
 			}else{
 				alert('Le falta el @ al correo');
 				form1.correo.focus;
 				return false;
 			}
 		}
-		if (form1.tipotra.value!="4"){
-			if (form1.fechaexamen.value==""){
-				alert("Debe Ingresar Fecha de Exámen");
-				form1.fechaexamen.focus();
-				return false;
-			}
-			if (form1.nroficha.value==""){
-				alert("Debe Ingresar No de Exámen");
-				form1.nroficha.focus();
-				return false;
-			}
-			if (form1.idcentro.value==""){
-				alert("Debe Seleccionar Centro Modico");
-				form1.idcentro.focus();
-				return false;
-			}
-		}
+		// if (form1.tipotra.value!="4"){
+		// 	if (form1.categoria.value!=7) {
+		// 		if (form1.fechaexamen.value==""){
+		// 		alert("Debe Ingresar Fecha de Exámen");
+		// 		form1.fechaexamen.focus();
+		// 		return false;
+		// 	}
+		// 	if (form1.nroficha.value==""){
+		// 		alert("Debe Ingresar No de Exámen");
+		// 		form1.nroficha.focus();
+		// 		return false;
+		// 	}
+		// 	if (form1.idcentro.value==""){
+		// 		alert("Debe Seleccionar Centro Médico");
+		// 		form1.idcentro.focus();
+		// 		return false;
+		// 	}
+		// 	}
+			
+		// }
 		if (form1.tipotra.value=="2"){
 			if (form1.fechacurso.value==""){
 				alert("Debe Ingresar Fecha de Curso");
@@ -253,25 +262,62 @@ require_once 'model/provincia.php';
 				return false;
 			}
 		}
-		if (form1.categoria.value=="7" && form1.tipotra.value!="4"){
-			if (form1.licencia.value==""){
-				alert("Debe Ingresar Nro de Licencia");
+		// if (form1.categoria.value=="7" && form1.tipotra.value!="4"){
+		// 	if (form1.licencia.value==""){
+		// 		alert("Debe Ingresar Nro de Licencia");
+		// 		form1.licencia.focus();
+		// 		return false;
+		// 	}
+		// 	if (form1.nrofichacurso.value==""){
+		// 		alert("Debe Ingresar Nro de Ficha de Curso");
+		// 		form1.nrofichacurso.focus();
+		// 		return false;
+		// 	}
+		// 	if (form1.fechacurso.value==""){
+		// 		alert("Debe Ingresar Fecha del Curso");
+		// 		form1.fechacurso.focus();
+		// 		return false;
+		// 	}
+		// 	if (form1.idcentrocurso.value==""){
+		// 		alert("Debe Seleccionar Centro de Capacitacion");
+		// 		form1.idcentrocurso.focus();
+		// 		return false;
+		// 	}
+		// }
+		if(form1.categoria.value=="7" && form1.tipotramite.value!="4"){
+			if(form1.fechaexamen.value==""){
+				alert("Debe ingresar fecha de exámen");
+				form1.fechaexamen.focus();
+				return false;
+			}
+			if(form1.nroficha.value==""){
+				alert("Debe ingresar Nro de Ficha");
+				form1.nroficha.focus();
+				return false;
+			}
+			if(form1.nomcentro.value==""){
+				alert("Debe ingresar Centro médico");
+				form1.nomcentro.focus();
+				return false;
+			}
+			if(form1.licencia.value==""){
+				alert("Debe ingresar número de licencia");
 				form1.licencia.focus();
 				return false;
 			}
-			if (form1.nrofichacurso.value==""){
-				alert("Debe Ingresar Nro de Ficha de Curso");
-				form1.nrofichacurso.focus();
-				return false;
-			}
-			if (form1.fechacurso.value==""){
-				alert("Debe Ingresar Fecha del Curso");
+			if(form1.fechacurso.value==""){
+				alert("Debe ingresar fecha de curso");
 				form1.fechacurso.focus();
 				return false;
 			}
-			if (form1.idcentrocurso.value==""){
-				alert("Debe Seleccionar Centro de Capacitacion");
-				form1.idcentrocurso.focus();
+			if(form1.nrofichacurso.value==""){
+				alert("Debe ingresar número de ficha");
+				form1.nrofichacurso.focus();
+				return false;
+			}
+			if(form1.idcentrocurso.value==""){
+				alert("Debe ingresar Escuela de manejo");
+				form1.nomcentrocurso.focus();
 				return false;
 			}
 		}
@@ -848,7 +894,7 @@ require_once 'model/provincia.php';
 								<td width="159" height="20" align="right" ><div align="left">
 									<input name="dni2" type="text" class="cajatexto" id="dni2" style="text-align: right;" onKeyPress="return buscarpostulante(event,this,9)"   value="<?=$dni?>" size="9" <?php if($_GET["sw"]==3) {echo 'readonly';} ?>>
 								</div></td>
-								<td width="216" align="right" ><span class="Estilo1">&nbsp;N&ordm; REGISTRO: </span></td>
+								<td width="216" align="right" ><span class="Estilo1">&nbsp;N° REGISTRO: </span></td>
 								<td width="19" align="right" >&nbsp;</td>
 								<td width="79" align="right" ><strong><?=$id?>
 									<input name="idtramite" type="hidden" value="<?=$id?>"><input name="sw" type="hidden" value="<?=$sw?>"><input name="idpostulante" type="hidden" value="<?=$idpostulante?>"></strong>&nbsp;</td>
@@ -967,7 +1013,7 @@ require_once 'model/provincia.php';
 							<td class="etiqueta" align="right" width="20%">NÚMERO DE SISGEDO &nbsp;&nbsp;</td>
 							<td class="objeto" width="1%">&nbsp;</td>
 							<td width="72%" class="objeto">
-								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="9" type="text" size="10" onKeyPress="return buscarpostulante(event,this,10)" value="<?php echo $sisgedo; ?>">
+								<input name="sisgedo" class="cajatexto" id="sisgedo" maxlength="10" type="text" size="10" onKeyPress="return buscarpostulante(event,this,10)" value="<?php echo $sisgedo; ?>">
 								&nbsp;
 							</td>
 							<td class="objeto" width="6%">&nbsp;</td>
@@ -1260,9 +1306,10 @@ require_once 'model/provincia.php';
     							<td class="marco" width="1%">&nbsp;</td>
     							<td class="etiqueta" align="right" width="20%">Resultado&nbsp;&nbsp;</td>
     							<td class="objeto" width="1%">&nbsp;</td>
-    							<td class="objeto" width="72%"><select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
-    								<option value="APTO" <? if($resu=='APTO') echo"selected"; ?>APTO</option>
-    								<option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option>
+    							<td class="objeto" width="72%">
+    								<select name="resultado" class="cajatexto" id="resultado"  onkeypress="return formato(event,form,this)">
+    								<option value="APTO">APTO</option>
+    								<!-- <option value="NO APTO" <? if($resu=='NO APTO') echo"selected"; ?>NO APTO</option> -->
     							</select></td>
     							<td class="objeto" width="6%">&nbsp;</td>
     						</tr>
@@ -1271,8 +1318,8 @@ require_once 'model/provincia.php';
     							<td class="etiqueta" align="right" width="20%">Restricciones&nbsp;&nbsp;</td>
     							<td class="objeto" width="1%">&nbsp;</td>
     							<td class="objeto" width="72%"><select name="restricciones" class="cajatexto" id="restricciones"  onkeypress="return formato(event,form,this)">
-    								<option value="SIN RESTRICCIONES" <? if($rest=='SIN RESTRICCIONES') echo"selected"; ?>SIN RESTRICCIONES</option>
-    								<option value="CON RESTRICCIONES" <? if($rest=='CON RESTRICCIONES') echo"selected"; ?>CON RESTRICCOINES</option>
+    								<option value="SIN RESTRICCIONES" <?php if($rest=='SIN RESTRICCIONES') echo"selected"; ?>>SIN RESTRICCIONES</option>
+    								<option value="CON RESTRICCIONES" <?php if($rest=='CON RESTRICCIONES') echo"selected"; ?>>CON RESTRICCOINES</option>
     							</select></td>
     							<td class="objeto" width="6%">&nbsp;</td>
     						</tr>
@@ -1333,7 +1380,7 @@ require_once 'model/provincia.php';
     								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
     								<td class="objeto" width="1%">&nbsp;</td>
     								<td class="objeto" width="72%">
-    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php echo ereg_replace('-','-',normal($fechacer)) ?>"> (dd-mm-yyyy)
+    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>"> (dd/mm//yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>

@@ -78,3 +78,11 @@ function desabilitaCombo() {
 	console.log('disabled');
 	$('#hora').attr('disabled', 'disabled')
 }
+
+function marcadoman(){
+	$("#manejo").prop("checked", "checked");
+}
+
+function marcadocon(){
+	$("#conocimiento").prop("checked", "checked");
+}

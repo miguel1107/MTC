@@ -193,7 +193,7 @@
                           <td class="etiqueta" align="right" width="22%"><p id="span">HORA DE EXAMEN &nbsp;&nbsp;</p></td>
                           <td class="objeto" width="1%">&nbsp;</td>
                           <td class="objeto" width="78%">
-                            <select class="objeto" name="hora" id="hora" style="display: block"></select>
+                            <select class="cajatexto" name="hora" id="hora" style="display: block"></select>
                           </td>
                           <td class="objeto" width="1%">&nbsp;</td>
                         </tr>

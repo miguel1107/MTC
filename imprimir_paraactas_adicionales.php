@@ -67,17 +67,17 @@
                                 <div align="center"><img src="imag/LOGO.jpg" width="60" height="70"></div>
                               </td>
                               <td width="473">
-                                <div align="center">GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES - LAMBAYEQUE</div>
+                                <div align="center"><strong>GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES - LAMBAYEQUE</strong></div>
                               </td>
                               <td width="120" rowspan="3"><img src="imag/GRTC.png" width="64" height="70"></td>
                             </tr>
                             <tr>
                               <td>
-                                <div align="center">DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE </div>
+                                <div align="center"><strong>DIRECCIÓN EJECUTIVA DE CIRCULACIÓN TERRESTRE</strong></div>
                               </td>
                             </tr>
                             <tr>
-                              <td><div align="center">DEPARTAMENTO DE LICENCIAS DE CONDUCIR </div></td>
+                              <td><div align="center"><strong>DEPARTAMENTO DE LICENCIAS DE CONDUCIR</strong></div></td>
                             </tr>
                           </table>
                         </td>
@@ -100,7 +100,7 @@
                           <tr>
                             <td>
                               <div align="center">
-                                <strong>RELACION DE POSTULANTES A EXAMEN DE REGLAS, SERVICIO PUBLICO: PASAJEROS Y CARGA </strong>
+                                <strong>RELACION DE POSTULANTES PARA EXAMEN DE REGLAS</strong>
                               </div>
                             </td>
                           </tr>
@@ -108,7 +108,7 @@
                           <?php }else if($exa=='4'){ ?>
                           <tr>
                             <td>
-                              <div align="center"><strong>ACTA DE MANEJO </strong></div>
+                              <div align="center"><strong>ACTA DE  EVALUACIÓN DE MANEJO </strong></div>
                             </td>
                           </tr>
                           <?php } ?>
@@ -135,8 +135,8 @@
                       <?php if($exa=='1'){ ?>
                       <td width="60"><div align="center"><strong>PUNTAJE</strong></div></td>
                       <?php } ?>
-                      <td width="180"><div align="center"><strong>FIRMA</strong></div></td>
-                      <td width="180"><div align="center"><strong>RESULTADOS</strong></div></td>
+                      <td width="280"><div align="center"><strong>RESULTADO</strong></div></td>
+                      <td width="280"><div align="center"><strong>FIRMA</strong></div></td>
                     </tr>
                     <?php
                       $i=1; 
