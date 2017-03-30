@@ -87,7 +87,8 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                   <tr>
                                     <td width="8" height="20" style="width: 8px;"><img src="imag/spacer.gif" height="1" width="8"></td>
                                     <!-- SE ELIMINO REALIZAR TRAMITE DOS LINEAS!-->
-                                    
+                                    <td width="122" nowrap="nowrap" class="P" onClick="Subm('select',0,1,'editar_postulante.php?sw=2')" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><nobr><img src="imag/derivar.gif" alt="Realizatr Trďż˝mite" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar Postulante</nobr></td>
+                                      <td width="10"   class="LL">|</td>
                                     <td width="10"   class="LL">|</td>
                                     <td width="78"  nowrap="nowrap" class="P" onClick="location='buscar_postulante.php'" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
                                     <td width="10" class="LL">|</td>
