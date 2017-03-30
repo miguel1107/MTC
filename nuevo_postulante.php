@@ -22,8 +22,11 @@ require_once 'model/provincia.php';
 <link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
 <link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
 <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
+<link href="estilos/networkbar.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" media="all" href="estilos/jquery-ui.css">
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
+<script language="JavaScript" src="estilos/networkbar.js"></script>
 <style type="text/css">
 	<!--
 	.Estilo1 {
@@ -972,39 +975,6 @@ require_once 'model/provincia.php';
 										<?php 
 											}
 										?>
-			  <!-- <?php if($_GET["sw"]==3){?>
-			  <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" onChange="mostrarcurso()">
-            <option value=''>---- Seleccione Opcion ----</option>
-					<?php if($idcategoria==1 || $idcategoria==2 || $idcategoria==3 || $idcategoria==7 || $idcategoria==8 || $idcategoria==9 || $idcategoria==10 || $idcategoria==11 || $idcategoria==17 ){?>
-                        <option value="1" <?php if($idcategoria=='1') echo"selected"; ?>>AI</option>
-                        <option  value="7" <?php if($idcategoria=='7') echo"selected"; ?>>AII-a</option>
-                        <option  value="8" <?php if($idcategoria=='8') echo"selected"; ?>>AII-b</option>
-                        <option  value="9" <?php if($idcategoria=='9') echo"selected"; ?>>AIII-a</option>
-                        <option  value="10" <?php if($idcategoria=='10') echo"selected"; ?>>AIII-b</option>
-                        <option  value="11" <?php if($idcategoria=='11') echo"selected"; ?>>AIII-c</option>
-                        <option  value="17" <?php if($idcategoria=='17') echo"selected"; ?>>AIV-especial</option>
-                    <?php }else{?>
-                        <option  value="4" <?php if($idcategoria=='4') echo"selected"; ?>>AI.</option>
-                        <option  value="12" <?php if($idcategoria=='12') echo"selected"; ?>>AII.-a</option>
-                        <option value="13" <?php if($idcategoria=='13') echo"selected"; ?>>AII.-b</option>
-                        <option value="14" <?php if($idcategoria=='14') echo"selected"; ?>>AIII.-a</option>
-                        <option value="15" <?php if($idcategoria=='15') echo"selected"; ?>>AIII.-b</option>
-                        <option value="16" <?php if($idcategoria=='16') echo"selected"; ?>>AIII.-c</option>
-                        <option value="17" <?php if($idcategoria=='17') echo"selected"; ?>>AIV.-especial</option>
-                   <?php }?>
-                </select>
-			 <?php }else{ //  OPCION TIPO?>
-                <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" onChange="mostrarcurso()">
-                      <option value=''>---- Seleccione Opcion ----</option>
-                      <option value="1" <?php if($tiptra=='AI') echo"selected"; ?>>AI</option>
-                      <option value="7" <?php if($tiptra=='AII-a') echo"selected"; ?>>AII-a</option>
-                      <option value="8" <?php if($tiptra=='AII-b') echo"selected"; ?>>AII-b</option>
-                      <option value="9" <?php if($tiptra=='AIII-a') echo"selected"; ?>>AIII-a</option>
-                      <option value="10" <?php if($tiptra=='AIII-b') echo"selected"; ?>>AIII-b</option>
-                      <option value="11" <?php if($tiptra=='AIII-c') echo"selected"; ?>>AIII-c</option>
-                      <option value="17" <?php if($tiptra=='AIV') echo"selected"; ?>>AIV-especial</option>
-                          </select>
-                          <?php }?> -->			  
                       </td>
                       <td class="objeto" width="6%">&nbsp;</td>
                   </tr>
@@ -1278,8 +1248,8 @@ require_once 'model/provincia.php';
     							<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
     							<td class="objeto" width="1%">&nbsp;</td>
     							<td class="objeto" width="72%">
-    								<input name="fechaexamen" type="text" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
-    								<? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?>
+    								<input name="fechaexamen" type="datepicker" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') echo ereg_replace('-','/',normal($fechai));?>" size="15" maxlength="10"  <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> >			  
+    								<!-- <? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?> -->
     							</td>
     							<td class="objeto" width="6%">&nbsp;</td>
     						</tr>
@@ -1380,7 +1350,7 @@ require_once 'model/provincia.php';
     								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
     								<td class="objeto" width="1%">&nbsp;</td>
     								<td class="objeto" width="72%">
-    									<input type="text" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>"> (dd/mm//yyyy)
+    									<input type="datepicker" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>" readonly> (dd/mm//yyyy)
 									<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 									&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 								</td>
@@ -1453,4 +1423,50 @@ require_once 'model/provincia.php';
 </table></td>
 </tr>
 </tbody></table>
+<script>
+	$(document).ready(function(){
+      <?php
+        $fecha = date('d/m/Y');
+        //$nuevafecha = date('d/m/Y', strtotime('-1 day')) ; // Suma 1 días
+       ?>
+		$( "#fechacurso" ).datepicker({
+        	dateFormat: 'dd/mm/yy',
+	        changeMonth: true,
+	        changeYear: true,
+	        constrainInput: true,
+	        //beforeShowDay: fechas,
+	        //beforeShowDay: $.datepicker.noWeekends, 
+	        // <?php if ($exa == '1') { ?> beforeShowDay: noExcursion , 
+	        // <?php } else {?>    beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
+	        //beforeShowDay: noWeekendsOrHolidays,  
+	        minDate: "<?php echo '12/12/1990' ;?>",
+	        maxDate: '<?php echo $fecha;?>',
+	        onSelect: function () {
+	          //consultaCupo();
+	        },
+	        onClose: function(date){
+	          console.log(date);
+	        } 
+      	});
+      	$( "#fechaexamen" ).datepicker({
+        	dateFormat: 'dd/mm/yy',
+	        changeMonth: true,
+	        changeYear: true,
+	        constrainInput: true,
+	        //beforeShowDay: fechas,
+	        //beforeShowDay: $.datepicker.noWeekends, 
+	        // <?php if ($exa == '1') { ?> beforeShowDay: noExcursion , 
+	        // <?php } else {?>    beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
+	        //beforeShowDay: noWeekendsOrHolidays,  
+	        minDate: "<?php echo '12/12/1990' ;?>",
+	        maxDate: '<?php echo $fecha;?>',
+	        onSelect: function () {
+	          //consultaCupo();
+	        },
+	        onClose: function(date){
+	          console.log(date);
+	        } 
+      	});
+    })
+</script>
 </body></html>
