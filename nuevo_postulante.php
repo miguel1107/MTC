@@ -23,7 +23,7 @@ require_once 'model/provincia.php';
 <link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
 <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
 <link href="estilos/networkbar.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" media="all" href="estilos/jquery-ui.css">
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="estilos/jquery-ui.css"> -->
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script language="JavaScript" src="estilos/networkbar.js"></script>

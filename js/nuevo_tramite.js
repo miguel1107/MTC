@@ -206,6 +206,25 @@ $(document).ready(function() {
 		}
 	});
 
+	$('#estatura').blur(function() {
+		var est=$('#estatura').val();
+		if (est!='') {
+			if (est.includes(',')) {
+				alert('ERROR AL INGRESAR ESTATURA, EJEMPLO: 1.5');
+				$('#estatura').val("");
+				$('#estatura').focus();
+			}else{
+				var ne=parseFloat(est);
+				if (ne>=1.0 && ne<=2.5) {
+				}else{
+					alert('ERROR AL INGRESAR ESTATURA');
+					$('#estatura').val("");
+					$('#estatura').focus();
+				}
+			}	
+		}
+		
+	});
 });
 
 
