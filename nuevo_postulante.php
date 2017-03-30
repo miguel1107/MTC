@@ -248,7 +248,44 @@ require_once 'model/provincia.php';
 		// 	}
 			
 		// }
+		if (form1.tipotra.value=="3"){
+			if(form1.fechaexamen.value==""){
+				alert("Debe ingresar fecha de exámen");
+				form1.fechaexamen.focus();
+				return false;
+			}
+			if(form1.nroficha.value==""){
+				alert("Debe ingresar Nro de Ficha");
+				form1.nroficha.focus();
+				return false;
+			}
+			if(form1.nomcentro.value==""){
+				alert("Debe ingresar Centro médico");
+				form1.nomcentro.focus();
+				return false;
+			}
+		}
 		if (form1.tipotra.value=="2"){
+			if(form1.fechaexamen.value==""){
+				alert("Debe ingresar fecha de exámen");
+				form1.fechaexamen.focus();
+				return false;
+			}
+			if(form1.nroficha.value==""){
+				alert("Debe ingresar Nro de Ficha");
+				form1.nroficha.focus();
+				return false;
+			}
+			if(form1.nomcentro.value==""){
+				alert("Debe ingresar Centro médico");
+				form1.nomcentro.focus();
+				return false;
+			}
+			if (form1.licencia.value==""){
+				alert("Debe Ingresar Licencia de conducir");
+				form1.licencia.focus();
+				return false;
+			}
 			if (form1.fechacurso.value==""){
 				alert("Debe Ingresar Fecha de Curso");
 				form1.fechacurso.focus();
@@ -265,28 +302,7 @@ require_once 'model/provincia.php';
 				return false;
 			}
 		}
-		// if (form1.categoria.value=="7" && form1.tipotra.value!="4"){
-		// 	if (form1.licencia.value==""){
-		// 		alert("Debe Ingresar Nro de Licencia");
-		// 		form1.licencia.focus();
-		// 		return false;
-		// 	}
-		// 	if (form1.nrofichacurso.value==""){
-		// 		alert("Debe Ingresar Nro de Ficha de Curso");
-		// 		form1.nrofichacurso.focus();
-		// 		return false;
-		// 	}
-		// 	if (form1.fechacurso.value==""){
-		// 		alert("Debe Ingresar Fecha del Curso");
-		// 		form1.fechacurso.focus();
-		// 		return false;
-		// 	}
-		// 	if (form1.idcentrocurso.value==""){
-		// 		alert("Debe Seleccionar Centro de Capacitacion");
-		// 		form1.idcentrocurso.focus();
-		// 		return false;
-		// 	}
-		// }
+		
 		if(form1.categoria.value=="7" && form1.tipotramite.value!="4"){
 			if(form1.fechaexamen.value==""){
 				alert("Debe ingresar fecha de exámen");
