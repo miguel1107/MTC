@@ -68,7 +68,7 @@ while($_POST["total"] >= $num){
 	}
 	$num++;
 }
-exit;
+//exit;
 header("location:asignar_resultado.php?xxxfecha=".$_POST["fechaexamen"]."&categoria=".$_POST["categoria"]."&hora=".$_POST['idhora']);
 
 ?>
