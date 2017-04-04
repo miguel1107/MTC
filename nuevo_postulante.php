@@ -801,7 +801,7 @@ function MM_goToURL() { //v3.0
 								<td class="etiqueta" align="right">TIPO DE TRAMITE &nbsp;</td>
 								<td class="objeto">&nbsp;</td>
 								<td class="objeto">
-									<select name="tipotra" id="tipotramite" onchange="mostrarcurso()">
+									<select name="tipotra" id="tipotramite" class="cajatexto" onchange="mostrarcurso()">
 										<option value="0">---Seleccione Tipo---</option>
 										<?php 
 										while ($n=pg_fetch_array($rs)) {
@@ -944,7 +944,7 @@ function MM_goToURL() { //v3.0
 	<td align="right" class="etiqueta">Estado Civil &nbsp;&nbsp;</td>
 	<td class="objeto">&nbsp;</td>
 	<td class="objeto">
-		<select name="estadocivil" id="cestadocivil">
+		<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 			<option value="'0">--Seleccion un estado--</option>
 			<option value="SOLTERO">SOLTERO</option>
 			<option value="CASADO">CASADO</option>

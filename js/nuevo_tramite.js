@@ -21,24 +21,28 @@ function mostrarcurso(){
 }
 
 function cursoespecial() {
+	var tramite=$('#tipotramite').val();
 	var cat=$('#categoria').val();
-	alert(cat);
+	var hoy =new Date();
+	var mes=(hoy.getMonth()+1);
+	if (parseInt(mes)>=4) {
+		console.log(mes);
+		divC = document.getElementById("especial");
+ 		divC.style.display="block";
+	}else if (parseInt(mes)<4) {
+		divC = document.getElementById("especial");
+ 		divC.style.display="none";
+	}
 }
 
 $(document).ready(function() {
 	$("#nomcentro").autocomplete({
 		source:'controller/ctrCentromedico.php',
-		// select(function(event) {
-		// 	console.log('select');
-		// });
 		select : function(event,ui) {
 			console.log(ui);
-			//event.preventDefault();
+			event.preventDefault();
 			$('#nomcentro').val(ui.item.label);
 			$('#idcentro').val(ui.item.id);
 		},
 	});
 });
-	
-
-	
