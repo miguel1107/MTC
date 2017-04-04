@@ -20,7 +20,7 @@ while($_POST["total"] >= $num){
 		
 		$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
 		
-		if($_POST["categoria"]=='3'){
+		if($_POST["categoria"]=='1'){
 			$sq7="select opcion,resultado,idevaluacion from evaluacion where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."'";
 			$rs7=pg_query($link,$sq7); // or die ("Error :$sq");
 			while($reg7=pg_fetch_array($rs7)) { 

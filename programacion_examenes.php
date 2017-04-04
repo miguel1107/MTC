@@ -539,6 +539,20 @@
                                     </td>
                                     <td>EXÁMEN DE MANEJO</td>
                                   </tr>
+                                  <?php  
+                                    if ($aproboman=='si') {
+                                      ?>
+                                  <table width="90%" border="0" align="center">
+                                    <tr>
+                                      <td><span class="Estilo4"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><div align="center"><span class="Estilo4">UD A APROBADO SATISFACTORIAMENTE SUS EXÁMENES</span></div></td>
+                                    </tr>
+                                  </table>
+                                  <?php
+                                    }
+                                  ?>
                                   <?php 
                                     }
                                     if ($opcion==3 && $aprobocon=='no') {
@@ -716,7 +730,7 @@
       <?php
         $fecha = date('d/m/Y');
         $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-        $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
+        $newmax = date('d/m/Y', strtotime('+30 day')) ; // Suma 1 días
        ?>
       $( "#fecha_prog1" ).datepicker({
         dateFormat: 'dd/mm/yy',

@@ -62,7 +62,7 @@ $_GET["chk"] = explode ("@", $_POST["chk"]);
                 <tr>
                   <td width="721"><table width="100%" border="0" align="center">
                       <tr>
-                        <td width="120" rowspan="3"><div align="center"><img src="imag/LOGO.JPG" width="104" height="70"></div></td>
+                        <td width="120" rowspan="3"><div align="center"><img src="imag/LOGO.jpg" width="104" height="70"></div></td>
                         <td width="473"><div align="center">DIRECCION REGIONAL DE TRANSPORTES Y COMUNICACIONES </div></td>
                         <td width="120" rowspan="3"><img src="imag/GRTC.png" width="64" height="70"></td>
                       </tr>

@@ -95,7 +95,7 @@ include("paginator.inc.php");
           <tr bgcolor="#FFF794" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFF794')">
 		   <?php }else{?>
 		    <tr bgcolor="#FFFFFF"  onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')" >
-		   <?php }?>
+		   <? }?>
             <td align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <input type="checkbox" border="0" value="<?=$reg[0]?>" name="chk[]" onClick="uncheck(frmList,this)">
             </font></td>
@@ -104,7 +104,7 @@ include("paginator.inc.php");
 
               <div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
 
-            <nobr>    <?=$reg[0]?></nobr>
+            <nobr>    <?php echo $reg[0]?></nobr>
 
             </font></div></td>
 
@@ -112,15 +112,15 @@ include("paginator.inc.php");
 
               <div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
   
-                <?=$reg[1]?>
+                <?php echo $reg[1]?>
   
             </font></nobr></div></td>
 
             <td><div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?=$reg[2]?>  <?=$reg[3]?>
+                <?php echo $reg[2]?>  <?php echo $reg[3]?>
             </font></nobr></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=normal($reg[4])?></nobr>
+            <nobr>  <?php echo normal($reg[4])?></nobr>
             </font></div></td>
             <td>
 
@@ -140,10 +140,12 @@ include("paginator.inc.php");
                 }
                 
               ?>
+              
                </nobr>
               </font></div></td>
+
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            <nobr>  <?=$reg[5]?></nobr>
+            <nobr>  <?php echo $reg[5]?></nobr>
             </font></div></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
             <nobr>  <?php 
@@ -156,29 +158,30 @@ include("paginator.inc.php");
             </font></div></td>
 
             <td><div align="center"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=normal($reg[7])?>
+              <?php echo normal($reg[7])?>
    -
-              <?=normal($reg[8])?>
+              <?php echo normal($reg[8])?>
             </font></nobr></div></td>
             <td><nobr>
               <div align="left"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-                <?=$reg[9]?>
+                <?php echo $reg[9]?>
               </font></div>
             </nobr></td>
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[13]?>&nbsp;
+              <?php echo $reg[13]?>&nbsp;
             </font></div></td>
            
             <td><div align="center"><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?=$reg[14];?>&nbsp;
+              <?php echo $reg[14]?>&nbsp;
             </font></div></td>
           </tr>
 
           <?php }?>
+          
         </table>
 
         <table width="100%"  border="0"   align="center" cellpadding="0" cellspacing="0">
-          <TR bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">
             <td width="189" height="20" bgcolor="#EBF3FB">   
               <div align="left" class="ord">
                 <font face='verdana' size='-2'>&nbsp;&nbsp; <?php echo $_pagi_navegacion;?></font>
@@ -192,7 +195,7 @@ include("paginator.inc.php");
                 </font>
               </strong>
             </td>
-          </TR>
+          </td>
         </table>
 
     </form>    </td>

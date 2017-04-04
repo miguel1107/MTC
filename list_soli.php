@@ -113,7 +113,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                       <!-- fin menu mx !-->                    </td>
                   </tr>
                   <tr>
-                    <td ><iframe id="igrid" name="igrid"  style="border-bottom-style:" src="lis_soli_tramite.php?frase=<?=$_POST["frase"]?>&frase12=<?=$_POST["frase12"]?>&frase122=<?=$_POST["frase122"]?>&frase2=<?=$_POST["frase2"]?>&frase3=<?=$_POST["frase3"]?>" frameborder="0" height="100%" scrolling="yes" width="100%"></iframe></td>
+                    <td ><iframe id="igrid" name="igrid"  style="border-bottom-style:" src="lis_soli_tramite.php?Z" frameborder="0" height="100%" scrolling="yes" width="100%"></iframe></td>
                   </tr>
                   <tr >
                     <td height="24"><!-- menu mx !-->

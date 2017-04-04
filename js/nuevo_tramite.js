@@ -223,8 +223,24 @@ $(document).ready(function() {
 				}
 			}	
 		}
-		
 	});
+
+	$('#apepat').blur(function() {
+		var est=$('#apepat').val();
+		var ne=est.toUpperCase();
+		$('#apepat').val(ne);
+	});
+	$('#apemat').blur(function() {
+		var est=$('#apemat').val();
+		var ne=est.toUpperCase();
+		$('#apemat').val(ne);
+	});
+	$('#txtnom').blur(function() {
+		var est=$('#txtnom').val();
+		var ne=est.toUpperCase();
+		$('#txtnom').val(ne);
+	});
+	
 });
 
 

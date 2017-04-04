@@ -31,7 +31,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
 		$fila275 =pg_fetch_array($rs275);
 ///////////////////////////////			
 
-$pdf->Image('imag/LOGO.JPG',20,15,20);
+$pdf->Image('imag/LOGO.jpg',20,15,20);
 $pdf->Image('imag/banner_top1.jpg',165,15,20);
 
      
