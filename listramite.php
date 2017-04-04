@@ -95,7 +95,7 @@ include("paginator.inc.php");
           <tr bgcolor="#FFF794" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFF794')">
 		   <?php }else{?>
 		    <tr bgcolor="#FFFFFF"  onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')" >
-		   <? }?>
+		   <?php }?>
             <td align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <input type="checkbox" border="0" value="<?=$reg[0]?>" name="chk[]" onClick="uncheck(frmList,this)">
             </font></td>
@@ -159,7 +159,7 @@ include("paginator.inc.php");
 
             <td><div align="center"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php echo normal($reg[7])?>
-   -
+   
               <?php echo normal($reg[8])?>
             </font></nobr></div></td>
             <td><nobr>
