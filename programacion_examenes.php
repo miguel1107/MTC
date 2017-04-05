@@ -103,7 +103,7 @@
       </tr>
     </tbody>
   </table>
-
+    
   <table width="101%" height="94%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
     <tbody>
       <tr>
@@ -730,7 +730,7 @@
       <?php
         $fecha = date('d/m/Y');
         $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-        $newmax = date('d/m/Y', strtotime('+30 day')) ; // Suma 1 días
+        $newmax = date('d/m/Y', strtotime('+16 day')) ; // Suma 1 días
        ?>
       $( "#fecha_prog1" ).datepicker({
         dateFormat: 'dd/mm/yy',

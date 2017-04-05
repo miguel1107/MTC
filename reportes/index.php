@@ -300,7 +300,7 @@
 				</div>
 			</div>
 		</div>
-		<div><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-Nrt :'.$tra?></div>
+		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-Nrt :'.$tra?></div>
 	</section>
 
 	<section class="flc2 page">
@@ -347,7 +347,7 @@
 			</div>
 		</div>
 		<div></div>
-		<div><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- Nrt :'.$tra ?></div>
+		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- Nrt :'.$tra ?></div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
 
@@ -371,7 +371,7 @@
 					<tr>
 						<td rowspan="2" style="width: 70%" class="flc2-s4-dat">
 							<p>Apellidos y Nombres del Solicitante</p>
-							<div><?php echo $nom.' '.$app.' '.$apm; ?>-<?php if ($dni=="") {
+							<div><?php echo $nom.' '.$app.' '.$apm; ?>  -  <?php if ($dni=="") {
 								 	echo $ce;
 								}else if ($ce==""){ 
 									echo $dni;
@@ -388,7 +388,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td align="center"><strong>HUELLA</strong>
 							<br>
 							<br>
 							<br>

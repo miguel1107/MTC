@@ -307,6 +307,7 @@
   font-size: 0;
   border: 1pt solid #444;
   padding: 6pt 4pt;
+  margin-bottom: 4pt;
 }
 .flc2-s2-ti {
   font-weight: bold;
@@ -317,7 +318,7 @@
   display: inline-block;
   width: 50%;
   text-align: center;
-  padding: 0 4pt;
+  padding: 0 8pt;
   box-sizing: border-box;
 }
 .flc2-s2-co div {
@@ -326,10 +327,16 @@
 }
 .flc2-s2-co div span {
   display: block;
+  height: 16pt;
   font-size: 6pt;
-  margin-bottom: 0.8cm;
+  margin-top: 1.6cm;
   font-weight: bold;
-  text-align: left;
+  line-height: 23pt;
+  text-align: center;
+  border-top: 1pt solid #444;
+}
+.fl2-s2-no{
+  font-size: 9pt;
 }
 .flc2-sep {
   margin: 6pt 0;
