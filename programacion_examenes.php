@@ -730,7 +730,12 @@
       <?php
         $fecha = date('d/m/Y');
         $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-        $newmax = date('d/m/Y', strtotime('+30 day')) ; // Suma 1 días
+        $sqq="SELECT progexam FROM plazo";
+        $rsss=pg_query($link,$sqq);
+        $dass=pg_fetch_array($rsss);
+        $plazo=$dass[0];
+        $str="+".$plazo." day";
+        $newmax = date('d/m/Y', strtotime('+'.$plazo.' day')) ;
        ?>
       $( "#fecha_prog1" ).datepicker({
         dateFormat: 'dd/mm/yy',

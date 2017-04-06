@@ -45,7 +45,8 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
 	<table border="0" cellpadding="0" cellspacing="0" width="22%">
 			<tbody><tr><td class="tabs">
 				<table border="0" cellpadding="0" cellspacing="0" width="20%">
-				<tbody><tr>
+				<tbody>
+          <tr>
 						<td class="tabsline" width="20"><img src="imag/tabinion.gif" border="0" height="36" width="29"></td>	
 						<td width="119" align="center" background="imag/div1.gif" >
                         <nobr><b><a href="buscar_reg_examen.php"><b><span class="Estilo1">Programar Postulante</span></b></a></b></nobr></td>	
@@ -54,6 +55,8 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                         <span ><nobr><b><a href="listado_reg_examen.php"><b><span class="G">Lista de  Postulante</span></b></a></b></nobr></span></td>
                         <td class="tabson" width="52"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></td>
                         <td class="tabsline" width="175"></td>
+                        <td width="119" align="center" background="imag/div3.gif" >
+                        <span ><nobr><b><a href="cambia_plazo.php"><b><span class="G">Cambia Plazo</span></b></a></b></nobr></span></td>
 				</tr>	
         		</tbody></table>
 			</td></tr>
