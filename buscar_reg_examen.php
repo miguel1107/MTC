@@ -117,9 +117,16 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
               </tr>
               <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">Apellido Materno &nbsp;&nbsp;</td>
+                <td class="objeto" width="1%">&nbsp;</td>
+                <td class="objeto" width="78%"><input name="frase2" size="40" class="cajatexto" id="frase2" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                <td class="objeto" width="1%">&nbsp;</td>
+              </tr>
+              <tr valign="middle">
+                <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="22%">DNI/C.E&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%"><input name="frase2" size="15" class="cajatexto" id="frase2" maxlength="9" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                <td class="objeto" width="78%"><input name="frase3" size="15" class="cajatexto" id="frase3" maxlength="9" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               
@@ -173,7 +180,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
       </tr>
       <tr>
         <td valign="top">
-		<?php if($_GET["frase"]!='' || $_GET["frase1"]!='' || $_GET["frase2"]!=''){ ?>
+		<?php if($_GET["frase"]!='' || $_GET["frase1"]!='' || $_GET["frase2"]!='' || $_GET["frase3"]!=''){ ?>
 		<table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="80%">
           
           <tbody>
@@ -221,7 +228,7 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
               </td>
             </tr>
             <tr>
-              <td valign="top"><iframe id="igrid" name="igrid" src="listageneral.php?frase=<?=$_GET["frase"]?>&frase1=<?=$_GET["frase1"]?>&frase2=<?=$_GET["frase2"]?>" frameborder="0" height="110" scrolling="no" width="100%"></iframe></td>
+              <td valign="top"><iframe id="igrid" name="igrid" src="listageneral.php?frase=<?=$_GET["frase"]?>&frase1=<?=$_GET["frase1"]?>&frase2=<?=$_GET["frase2"]?>&frase3=<?=$_GET["frase3"]?>" frameborder="0" height="110" scrolling="no" width="100%"></iframe></td>
             </tr>
             <tr height="21" valign="bottom">
               <td><!-- menu mx !-->

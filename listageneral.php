@@ -118,7 +118,7 @@ $numeroRegistros=pg_num_rows($rs3);
 ?>
 			        <?php
 				//$link=conectarse();
-				$ssql="SELECT distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion,p.ce  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where  p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and (p.dni = '".$_GET["frase2"]."' or p.ce = '".$_GET["frase2"]."') LIMIT ".$tamPag." OFFSET ".$limitInf;
+				$ssql="SELECT distinct (p.idpostulante),p.nombres,p.apepat,p.apemat,p.dni,p.profesion,p.ce  from tramite t INNER JOIN postulante p ON t.idpostulante=p.idpostulante  where  p.nombres like '".$_GET["frase"]."%' and p.apepat like '".$_GET["frase1"]."%' and p.apemat like '".$_GET["frase2"]."%' and (p.dni = '".$_GET["frase3"]."' or p.ce = '".$_GET["frase3"]."') LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				 ?>
         <tr>

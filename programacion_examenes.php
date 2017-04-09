@@ -381,6 +381,15 @@
                                       $aureva='antiguo';
                                       $disabledman='si';
                                       $disabledcon='si';
+                                      echo ('<table width="90%" border="0" align="center">
+                                            <tr>
+                                              <td><span class="Estilo4"></span></td>
+                                            </tr>
+                                            <tr>
+                                              <td><div align="center"><span class="Estilo4">
+                                              USTED NO PUEDE PROGRAMARSE</span></div></td>
+                                            </tr>
+                                          </table>');
                                     }else if ($tipt=='REVALIDACION' && $estado=='1'){
                                       $aureva='nuevo';
                                       $disabledman='si';
