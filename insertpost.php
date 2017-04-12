@@ -278,13 +278,13 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			$mesexte=substr($fecha, 3,2);
 			if (substr($mesexte, 0, 1)=='0') {
 				$mes=(int)(substr($mesexte, 1, 1));
+
 			}else{
 				$mes=(int)($mesexte);			
 			}
-			$año=(int)(substr($fecha,6));
-			if ($mes<8) {
+			if ($mes<4) {
 				$est='0';
-			}else if($mes>=8 && $año>2017){
+			}else if($mes>=4){
 				$est='1';
 			}
 			if ($_POST["sw"]==3) {

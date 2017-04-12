@@ -41,7 +41,7 @@ if($_GET["xxxfecha"]!=''){
 	if($_GET["categoria"]=='1'){			
 		$_pagi_sql="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce,e.hora from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and (CAST(e.idexamen AS varchar(3))='1' or CAST(e.idexamen AS varchar(3))='2') order by e.fechapro DESC,e.hora DESC ";	
 	}else{
-		$_pagi_sql="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce,e.hora,h.hora from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  INNER JOIN hora h ON h.idhora=e.idhora where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro DESC ,e.hora DESC ";		
+		$_pagi_sql="SELECT t.idtramite,p.nombres,p.apepat,p.apemat,e.fecha,t.idcategoria,e.idevaluacion,p.dni,e.opcion,e.resultado ,e.idexamen,t.tipotramite,e.fechapro,e.usuario, e.situacion,p.ce,e.hora from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite  where p.nombres like '".$_GET["xxxnombres"]."%' and p.apepat like '".$_GET["xxxapepat"]."%' and (p.dni like '".$_GET["xxxdni"]."%' or p.ce like '".$_GET["xxxdni"]."%') and CAST(e.idexamen AS varchar(3)) like '%".$_GET["categoria"]."%' order by e.fechapro DESC ,e.hora DESC ";		
 		
 		}
 }
@@ -198,7 +198,17 @@ $cat=$codigo;
               
               <!-- ESTO ME MUESTRA EL USUARIO-->
         <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <?php echo $reg[17]?>&nbsp;
+              <?php
+              $hora=$reg[17]; 
+                $sqll="SELECT hora from hora where hora='".$hora."'";
+                $rs=pg_query($con,$sqll);
+                if($hora==0){
+                  echo("-");
+                }else{
+                echo ($reg[17]);
+              }
+
+              ?>
             </font></div></td>
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php echo $reg[13]?>&nbsp;

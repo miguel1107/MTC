@@ -132,9 +132,9 @@ $numeroRegistros=pg_num_rows($rs3);
 
             <th width="116" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRES</font></div></th>
 
-            <th width="138" bgcolor="#ebf3fb"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font></th>
-            <th width="127" height="23" bgcolor="#ebf3fb"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></th>
-            <th width="278"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">PROFESION</font></th>
+            <th width="138" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">APELLIDOS</font></div></th>
+            <th width="127" height="23" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">DNI/C.E</font></div></th>
+            <th width="278"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">PROFESION</font></div></th>
           </tr>
 
           <?php  while($reg=pg_fetch_array($rs)) { ?>

@@ -720,7 +720,7 @@
       var day = date.getDay();
       return [(day != 0 && day != 6), ''];
     };
-    var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016"];
+    var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016","4-13-2017","4-14-2017","5-1-2017","6-29-2017","7-28-2017","7-29-2017","8-30-2017","11-1-2017","12-8-2017","12-25-2017"];
 
     function noWeekendsOrHolidays(date) {
       var m = date.getMonth();
@@ -766,6 +766,44 @@
         } 
       });
     })
+
+// var disabledDays =  ["13-4-2017","14-4-2017","1-5-2017","29-6-2017","28-7-2017","29-7-2017","30-8-2017","1-11-2017","8-12-2017","25-12-2017"];
+
+
+// function  nationalDays ( fecha )  { 
+//   var m = fecha .getMonth();
+//   var d = fecha .getDate();
+//   var y = fecha .getFullYear();
+//   //console.log('Checking (en bruto): '+ m + '-' + d + '-' + y); 
+//   for  ( i =  0 ; i < disabledDays.length ; i ++ )  { 
+//     if ( $ . InArray ( ( m + 1 )  +  '-'  + d +  '-'  + y , disabledDays )  =!  - 1  ||  new  fecha ( )  > fecha )  { 
+//       //console.log('bad: '+ (m + 1) + '-' + d + '-' + y +' / '+ disabledDays [i]); 
+//       return  [ false ] ; 
+//     } 
+//   } 
+//   //console.log('good: '+ (m + 1) + '-' + d + '-' + y); 
+//       return  [ true ] ; 
+// } 
+// function  noWeekendsOrHolidays ( fecha )  { 
+//   var noWeekend = $.datepicker. noWeekends ( fecha ) ; 
+//   return noWeekend [ 0 ]  ?  nationalDays ( fecha )  : noWeekend ; 
+// }
+
+// $( document ) . ready ( function ( )  { 
+//   $ ( "#fecha_prog1" ) . datepicker ( { 
+//         dateFormat: 'dd/mm/yy',
+//         changeMonth: true,
+//         changeYear: true,
+//         constrainInput: true,
+//         beforeShowDay: fechas,
+//         beforeShowDay: $.datepicker.noWeekends, 
+        
+//         beforeShowDay: noWeekendsOrHolidays,  
+//         minDate: new fecha (2017,0,1),
+//         maxDate: new fecha (2017,5,31)
+        
+//    } ) ; 
+// } ) ;
   </script>
 </body>
 </html>
