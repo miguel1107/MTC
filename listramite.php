@@ -32,7 +32,7 @@ body {
 <?php
 //echo $_SESSION["usuario"];
 $_pagi_sql = "select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,t.tipotramite,t.tipotramite,t.estado,t.nrosolicitud,t.usuario,p.ce from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro where t.estado<>'55' and p.nombres like '%".$_GET["frase"]."%' and p.apepat like '%".$_GET["frase1"]."%' and p.apemat like '%".$_GET["frase2"]."%' and (p.dni = '".$_GET["frase3"]."' or p.ce = '".$_GET["frase3"]."' ) and CAST (t.idtramite  AS varchar(11)) like '".$_GET["frase4"]."%' and t.tipotramite <> 'DUPLICADO' and t.tipotramite <> 'CANJE POR MODIFICACION' order by t.fecha_inscripcion DESC,t.idtramite  DESC";
-echo $_pagi_sql;exit;
+
 //echo $_pagi_sql;
 //cantidad de resultados por p�gina (opcional, por defecto 20)
 $_pagi_cuantos = 50;
