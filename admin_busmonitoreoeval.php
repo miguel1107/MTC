@@ -46,7 +46,11 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
                <td width="175" background="imag/admin_div3.gif"><a href="admin_busmonitoreo.php"><span class="G"><strong>Monitoreo</strong></span></a> </td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
                 <td width="175" background="imag/admin_div1.gif" ><nobr><b><b><span class="G Estilo1">Evaluacion Monitoreo </span></b></b></nobr> </td>
-                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div44.gif" alt="" border="0" height="36" width="29"></span></td>
+                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div3.gif" alt="" border="0" height="36" width="29"></span></td>
+                <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Cambia Plazo</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Cambia Cupo</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
                <td class="tabsline" width="175"></td>
              </tr>
            </tbody>

@@ -34,16 +34,29 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
 				          <table border="0" cellpadding="0" cellspacing="0" width="20%">
 				            <tbody> 
                       <tr>
-						            <td class="tabsline" width="20"><img src="imag/tabinion.gif" height="36" width="29"></td>	
-                        <td width="119" align="center" background="imag/div3.gif" >
-                        <span ><nobr><b><a href="buscar_reg_examen.php"><b><span class="G">Programar Postulante</span></b></a></b></nobr></span></td>
-						            <td class="tabsline" width="20"><img src="imag/div2.gif" width="29" height="36"></td>
-                        <td width="119" align="center" background="imag/div3.gif" >
-                        <span ><nobr><b><a href="listado_reg_examen.php"><b><span class="G">Lista de  Postulante</span></b></a></b></nobr></span></td>
-                        <td class="tabson" width="52"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></td>
-                        <td class="tabsline" width="175"></td>
-                        <td width="119" align="center" background="imag/div1.gif" >
-                        <nobr><b><a href="cambia_plazo.php"><b><span class="Estilo1">Cambiar plazo</span></b></a></b></nobr></td>
+                        <td class="tabsline" width="20"><img src="imag/admin_tabinion2.gif" border="0" height="36" width="29"></td>
+                         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><b><a href="admin_bususuario.php"><b><span class="G">Usuarios</span></b></a><a href="admin_usuario.php"></a></b></b></nobr></td>
+                         <td class="tabson" ><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></td>
+                         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busexamen.php"><span class="G"><strong>Examenes</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_busevaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
+                           <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
+                           <td  background="imag/admin_div3.gif" ><nobr><b><b><a href="admin_buscargo.php"><b><span class="G">Cargos</span></b></a><span class="G"><a href="admin_cargo.php"></a> </span></b></b></nobr> </td>
+                           <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros  </strong></span></a></td>
+                           <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           
+                          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="curso_especial/admin_buscursoespecial.php"><span class="G"><strong>Curso    A IV </strong></span></a></td>
+                           <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
+                           <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
+                           <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
+                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="cambia_plazo.php"><span class="G Estilo2"><strong>Cambia Plazo</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Cambia Cupo</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+                         <td class="tabsline" width="175"></td>
 				              </tr>	
         		        </tbody>
                   </table>
