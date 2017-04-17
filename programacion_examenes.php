@@ -739,7 +739,7 @@
       <?php
         $fecha = date('d/m/Y');
         $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
-        $sqq="SELECT progexam FROM plazo";
+        $sqq="SELECT progexam FROM plazo where id='1' ";
         $rsss=pg_query($link,$sqq);
         $dass=pg_fetch_array($rsss);
         $plazo=$dass[0];

@@ -16,6 +16,7 @@ require_once __DIR__.'/../conectar.php';
 				$sql="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."'  group by fecha";
 			}else{
 				$sql="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."' and idhora='".$hora."'group by fecha";
+
 			}
 			
 			$rs=pg_query($link,$sql);
