@@ -32,17 +32,19 @@ body {
 <body>
 <form name="form2" method="post" action="" onSubmit="">
 
- <?PHP
+ <?
+
    	if ($_SESSION["cargo"]=='1' ) {
 
 //	$fechaactual=date('Y-m-d');
 	$fechaactual='2016-04-22';
 
 	$sql="SELECT count(e.fecha),e.fecha, e.idexamen 
-		  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
+		  FROM postulante p 
+      INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
 		  INNER JOIN evaluacion e ON t.idtramite=e.idtramite 
 		  INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
-		  where e.fecha>='".$fechaactual."' and e.fecha <= '2016-03-31' and e.idexamen='4' 
+		  where e.fecha >= '".$fechaactual."' and e.fecha <= '2016-03-31' and e.idexamen=4 
 		  group by e.fecha, e.idexamen
 		  having COUNT(e.fecha)< 100
 		  order by e.fecha desc";
@@ -71,7 +73,7 @@ body {
       <td width="60%" align="center" style="background-color:#000;"><font color="#FFFFFF">Fecha de Evaluacion de Examen</font></td>
       <td width="20%" align="center" style="background-color:#000;"><font color="#FFFFFF">Numero de Programaciones DISPONIBLES</font></td>
     </tr>
-   <?php
+   <?
     while($reg11=pg_fetch_array($rs)) { 
 	?>
          
@@ -79,16 +81,17 @@ body {
     <td align="center"> <?php echo $reg11[0];?></td>
    	<td align="center"> <?php echo $reg11[1];?></td>
    	<td align="center"> <?php echo $var - $reg11[0];?></td>
+	</tr>
+	<?  } ?>
+
 	
-	<?php  } ?></tr>
-	
-   <?php } ?>
+   <? } ?>
    
    </table>
-    <?php }?>
+    <? }?>
    
    
-    <?PHP
+    <?
 	
 	$fechaactual=date('Y-m-d');
 //	$fechaactual='2016-04-22';
@@ -128,7 +131,7 @@ body {
       <td width="20%" align="center" style="background-color:#000;"><font color="#FFFFFF">Numero de Programaciones DISPONIBLES</font></td>
     </tr>
    
-   <?php  while($reg11=pg_fetch_array($rs)) { 
+   <?  while($reg11=pg_fetch_array($rs)) { 
 	?>
         
     <tr>
@@ -137,11 +140,11 @@ body {
    	<td align="center"> <?php echo $var - $reg11[0];?></td>
 	</tr>
 		
-	<?php	}	?>
+	<?	}	?>
    
    </table>
    
-   <?php } ?>
+   <? } ?>
    
    <table  width="100%" border="0" cellspacing="0">
       <tr>

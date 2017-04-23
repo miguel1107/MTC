@@ -1378,7 +1378,7 @@ require_once 'model/provincia.php';
 				    								<td class="marco" width="1%">&nbsp;</td>
 				    								<td class="etiqueta" align="right" width="20%">NUMERO DE LICENCIA</td>
 				    								<td class="objeto" width="1%">&nbsp;</td>
-				    								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="9" maxlength="9" disabled="disabled"></td>
+				    								<td class="objeto" width="72%"><input name="licencia"  type="text" class="cajatexto" id="licencia" onKeyPress="return formato(event,form,this,80)" value="<?=$licencia?>" size="9" maxlength="9"></td>
 				    								<td class="objeto" width="6%">&nbsp;</td>
 				    							</tr>
 				    							<tr valign="middle">

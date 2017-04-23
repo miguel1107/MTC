@@ -282,9 +282,9 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}else{
 				$mes=(int)($mesexte);			
 			}
-			if ($mes<4) {
+			if ($mes<8) {
 				$est='0';
-			}else if($mes>=4){
+			}else if($mes>=8){
 				$est='1';
 			}
 			if ($_POST["sw"]==3) {

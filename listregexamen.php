@@ -92,9 +92,9 @@ include("paginator.inc.php");
           <th width="236">
             <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">TIPO DE EXAMEN</font>
           </th>
-          <th width="236">
+<!--           <th width="236">
             <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif"><nobr>HORA DE EXAMEN</nobr></font>
-          </th>
+          </th> -->
           <th width="236">
             <font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif"><nobr>USUARIO PROGR.</nobr></font>
           </th>
@@ -197,19 +197,19 @@ $cat=$codigo;
               </font></td>
               
               <!-- ESTO ME MUESTRA EL USUARIO-->
-        <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
+<!--         <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php
               $hora=$reg[17]; 
                 $sqll="SELECT hora from hora where hora='".$hora."'";
                 $rs=pg_query($con,$sqll);
-                if($hora==0){
-                  echo("-");
+                $nue=pg_fetch_array($rs);
+                if($nue!=0){
+                  echo $reg[17];
                 }else{
-                echo ($reg[17]);
-              }
-
+                 echo "-";
+                }
               ?>
-            </font></div></td>
+            </font></div></td> -->
 		    <td><div align="center"><font  size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php echo $reg[13]?>&nbsp;
             </font></div></td>

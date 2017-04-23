@@ -315,12 +315,18 @@
                                                 $aprobocon='no';
                                                 $opcion=$reg8[8];
                                               }
+                                              if($resul=='NO SE PRESENTO'){
+                                                $opcion--;
+                                              }
                                             }else if ($reg8[10]=='4') {
                                                if (substr($resul,0,8)=='APROBADO') {
                                                 $aproboman='si';
                                               }else {
                                                 $aproboman='no';
                                                 $opcion=$reg8[8];
+                                              }
+                                              if($resul=='NO SE PRESENTO'){
+                                                $opcion--;
                                               }
                                             }
                                             echo 'Procesado';
@@ -426,7 +432,7 @@
                                     <td width="5%"><div align="center"></div></td>
                                     <td width="45%"><div align="center" class="Estilo2">TIPO DE EXAMEN</div></td>
                                   </tr>                                  
-                                  <!--<?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?>-->
+                             <!--      <?php echo $esperacon.'-'.$esperaman.'-'.$aprobocon.'-'.$aproboman.'-'.$opcion ?> -->
                                   <tr>
                                     <td>
                                       <?php if ($estado=='0' && $tipt=='RECATEGORIZACION') {
