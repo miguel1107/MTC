@@ -37,6 +37,10 @@ function prueba(){
 function lista_pro(){
 window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no' ); return false
 }
+
+function lista_pro_conoc(){
+  window.open('lista_pro_conoc.php','LISTADO DE PROGRAMACIONES','width=300, height=400, toolbar=no, location=no,status=no, menubar=no , directories=no, titlebar=no, resizable=no'); return false
+}
 </script>
 
 
@@ -132,9 +136,8 @@ window.open('lista_pro.php','LISTADO DE PROGRAMACIONES','width=300, height=400, 
                 <td class="etiqueta" align="right">Dias disponibles para programacion: &nbsp;<img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15"></td>
                 <td class="objeto">&nbsp;</td>
                 <td width="23%" class="objeto">
-                <input type="button" name="lista_prog" id="lista_prog" value="VER LISTA" onClick="lista_pro()">
-                        
-                
+                <input type="button" name="lista_prog" id="lista_prog" value="VER LISTA MANEJO" onClick="lista_pro()">
+                <input type="button" name="lista_prog" id="lista_prog" value="VER LISTA CONOCIMIENTO" onClick="lista_pro_conoc()">
                 </td>
                 <td valign="middle" class="objeto">
                 

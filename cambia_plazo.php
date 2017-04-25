@@ -51,11 +51,11 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                            <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
                            <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
-                           <td width="175" align="center" background="imag/admin_div1.gif" ><nobr><b><b><span class="G Estilo2"> Cambia plazo</span></b></b></nobr></td>
+                           <td width="175" align="center" background="imag/admin_div1.gif" ><nobr><b><b><span class="G Estilo2">Plazo a Programar</span></b></b></nobr></td>
                            <!-- <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="cambia_plazo.php"><span class="G Estilo2"><strong>Cambia Plazo</strong></span></a></td> -->
                            <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cambia Cupo</strong></span></a></td>
-                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                          <td class="tabsline" width="175"></td>
 				              </tr>	
         		        </tbody>

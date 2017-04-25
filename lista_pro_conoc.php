@@ -43,7 +43,7 @@ $fechaactual=date('Y-m-d');
   FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
   INNER JOIN evaluacion e ON t.idtramite=e.idtramite  
   INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
-  where e.fecha >= '".$fechaactual."' and e.fecha <= '2017-12-31' and e.idexamen=4 
+  where e.fecha >= '".$fechaactual."' and e.fecha <= '2017-12-31' and e.idexamen='1'
   group by e.fecha, e.idexamen 
   having COUNT(e.fecha)< 100 
   order by e.fecha asc";
@@ -100,7 +100,7 @@ $fechaactual=date('Y-m-d');
 		  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
 		  INNER JOIN evaluacion e ON t.idtramite=e.idtramite 
 		  INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
-		  where e.fecha>='".$fechaactual."' and e.fecha <= '2017-02-28' and e.idexamen='4' 
+		  where e.fecha>='".$fechaactual."' and e.fecha <= '2017-02-28' and e.idexamen='1' 
 		  group by e.fecha, e.idexamen
 		  having COUNT(e.fecha)<= 120
 		  order by e.fecha desc";
