@@ -15,6 +15,13 @@
 			return $rs;
 		}
 
+		public function paraCupoM(){
+			$link=Conectarse();
+			$sql1="SELECT progexam FROM plazo WHERE id='3'";
+			$rs1=pg_query($link,$sql1);
+			return $rs1;
+		}
+
 		public function editPlazo($dias){
 			$link=Conectarse();
 			$sql="UPDATE plazo SET progexam='".$dias."' where id='1'";
@@ -38,5 +45,17 @@
 				return('0');
 			}
 		}
+		public function editCupoM($dias){
+			$link=Conectarse();
+			$sql="UPDATE plazo SET progexam='".$dias."' where id='3'";
+			//echo($sql);exit;
+			$rs=pg_query($link,$sql)or die('false');
+			if ($rs!='false') {
+				return ('1');	
+			}else{
+				return('0');
+			}
+		}
+
 	}
 ?>

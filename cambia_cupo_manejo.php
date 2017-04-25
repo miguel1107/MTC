@@ -135,7 +135,7 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                                     <tbody>
                                       <tr>
                                         <td align="left" width="100%">
-                                          <input class="boton" name="btn_Buscar" value=".:: cambiar ::." type="submit" onclick="editacupomanejo()">
+                                          <input class="boton" name="btn_Buscar" value=".:: cambiar ::." type="submit" onclick="editacupoM()">
                                         </td>
                                         <td width="50%"></td>
                                         <td align="right" width="25%"></td>

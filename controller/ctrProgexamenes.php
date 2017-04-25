@@ -17,6 +17,7 @@
 				$examen=$con;
 			}
 			$eva=new evaluacion();
+			$pla=new plazo();
 			if ($examen=='4') {
 				$rs=$eva->cosultaCupos($fecha,$examen,$idho);
 				$data=pg_fetch_array($rs);
@@ -26,7 +27,10 @@
 				}else{
 					$h=$dat;
 				}
-				$cupo=120-$h;
+				$rrr=$pla->paraCupoM();
+				$das=pg_fetch_array($rrr);
+				$cu=(int) $das[0];
+				$cupo=$cu-$h;
 				$r="<span class='Estilo2'>".$cupo."</span>";
 			}else if ($examen=='1') {
 				$r= "<option value='0'>---Seleccione Hora---</option>";

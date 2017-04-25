@@ -69,7 +69,7 @@ function editacupo() {
 	}
 }
 
-function editacupomanejo() {
+function editacupoM() {
 	var pl=$('#plazo').val();
 	if (pl=='') {
 		alert('Debe ingresar dias');
@@ -79,7 +79,7 @@ function editacupomanejo() {
 			type: 'POST',
 			data: {
 				pl: pl,
-				action: 'editCupo'
+				action: 'editCupoM'
 			},
 		})
 		.done(function(data) {

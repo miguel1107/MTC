@@ -25,7 +25,16 @@
 				echo('0');
 			}
 			break;
-		
+		case 'editCupoM':
+			$dias=$_POST['pl'];
+			$plazo=new plazo();
+			$rs=$plazo->editCupoM($dias);
+			if ($rs=='1') {
+				echo('1');
+			}else{
+				echo('0');
+			}
+			break;
 		default:
 			# code...
 			break;
