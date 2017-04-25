@@ -712,6 +712,7 @@
   <div class="nb_item" id="nb_item_3">
     <iframe name="curpro" id="curpro" src="curso_pro.php" width="500" height="145" frameborder="0" scrolling="no"></iframe>
   </div>
+  <input type="text" name="fechasblo" id="fechasblo">
   <!-- <div id="nbFlash" style="visibility: visible;">
     <? if(isset($_GET["idpos"])){ ?>
         <script>nbInit('<?php echo $_SERVER['REQUEST_URI']?>');</script>
@@ -726,9 +727,35 @@
       var day = date.getDay();
       return [(day != 0 && day != 6), ''];
     };
-    var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016","4-13-2017","4-14-2017","5-1-2017","6-29-2017","7-28-2017","7-29-2017","8-30-2017","11-1-2017","12-8-2017","12-25-2017"];
+
+    function retornaFechas() {
+      $.ajax({
+        url: 'controller/ctrFechasBloquedas.php',
+        type: 'POST',
+        data: {action: 'lista'},
+      })
+      .done(function(data) {
+        dias=data.split(",");
+        $('#fechasblo').val(dias);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+    }
+
+
+    //var disabledSpecificDays = [,"4-27-2017","4-28-2017"];
 
     function noWeekendsOrHolidays(date) {
+      var fe=$('#fechasblo').val().substring(1);
+      
+      var ar=fe.split(",");
+      console.log(ar);
+      var disabledSpecificDays = ar;
+      console.log(disabledSpecificDays);
       var m = date.getMonth();
       var d = date.getDate();
       var y = date.getFullYear();
@@ -737,11 +764,12 @@
           return [false];
         }
       }
-      var noWeekend = $.datepicker.noWeekends(date);
+      var noWeekend = $.datepicker.noWeekends(date); 
        return !noWeekend[0] ? noWeekend : [true];
     }
 
     $(document).ready(function(){
+      retornaFechas();
       <?php
         $fecha = date('d/m/Y');
         $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
@@ -761,7 +789,7 @@
         //beforeShowDay: $.datepicker.noWeekends, 
         <?php if ($exa == '1') { ?> beforeShowDay: noExcursion , 
         <?php } else {?>    beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
-        //beforeShowDay: noWeekendsOrHolidays,  
+        beforeShowDay: noWeekendsOrHolidays,  
         minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
         maxDate: '<?php echo $newmax;?>',
         onSelect: function () {
