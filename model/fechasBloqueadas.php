@@ -16,7 +16,6 @@ require_once __DIR__.'/../conectar.php';
 			$rs=pg_query($link,$sql);
 			return $rs;
 		}
-
 	}
 
 

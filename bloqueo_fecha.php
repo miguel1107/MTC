@@ -52,13 +52,13 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
                            <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
-                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
-                           <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="cambia_cupo.php"><span class="G Estilo2"><strong>Cambia Cupo</strong></span></a></td>
-                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cambia Cupo</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
-                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="bloqueo_fecha.php"><span class="G"><strong>Bloqueo fecha</strong></span></a></td>
-                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="bloqueo_fecha.php"><span class="G Estilo2"><strong>Bloqueo Fecha</strong></span></a></td>
+                           <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
 				              </tr>	
         		        </tbody>
                   </table>
@@ -90,7 +90,7 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                                     <tbody>
                                       <tr>
                                         <th align="left" bgcolor="#6600ff" width="20%"> </th>
-                                        <th height="26" width="50%"> <span class="G">CAMBIAR CUPO </span></th>
+                                        <th height="26" width="50%"> <span class="G">RESTRINGUIR FECHA</span></th>
                                         <th align="right" width="25%"> </th>
                                       </tr>
                                     </tbody>
@@ -116,9 +116,9 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                       </tr>
                       <tr valign="middle">
                         <td class="marco" width="1%">&nbsp;</td>
-                        <td class="etiqueta" align="right" width="22%">Cupos&nbsp;&nbsp;</td>
+                        <td class="etiqueta" align="right" width="22%">Ingrese Fecha&nbsp;&nbsp;</td>
                         <td class="objeto" width="1%">&nbsp;</td>
-                        <td class="objeto" width="78%"><input name="plazo" size="10" class="cajatexto" id="plazo" maxlength="10" onKeyPress="return solonumeros(event)" type="text"></td>
+                        <td class="objeto" width="78%"><input name="plazo" size="10" class="cajatexto" id="plazo" maxlength="10"  type="text"></td>
                         <td class="objeto" width="1%">&nbsp;</td>
                       </tr>
                       <tr>
@@ -136,7 +136,7 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                                     <tbody>
                                       <tr>
                                         <td align="left" width="100%">
-                                          <input class="boton" name="btn_Buscar" value=".:: cambiar ::." type="submit" onclick="editacupo()">
+                                          <input class="boton" name="btn_Buscar" value=".:: cambiar ::." type="submit" onclick="insert()">
                                         </td>
                                         <td width="50%"></td>
                                         <td align="right" width="25%"></td>
