@@ -712,7 +712,7 @@
   <div class="nb_item" id="nb_item_3">
     <iframe name="curpro" id="curpro" src="curso_pro.php" width="500" height="145" frameborder="0" scrolling="no"></iframe>
   </div>
-  <input type="text" name="fechasblo" id="fechasblo">
+  <input type="hidden" name="fechasblo" id="fechasblo">
   <!-- <div id="nbFlash" style="visibility: visible;">
     <? if(isset($_GET["idpos"])){ ?>
         <script>nbInit('<?php echo $_SERVER['REQUEST_URI']?>');</script>

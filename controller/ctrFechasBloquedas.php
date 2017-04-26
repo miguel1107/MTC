@@ -3,10 +3,9 @@
 
 
 	$accion=$_POST['action'];
-	
+	$plazo=new fechasbloqueadas();
 	switch ($accion) {
 		case 'lista':
-			$plazo=new fechasbloqueadas();
 			$s;
 			$rs=$plazo->lista();
 			while ($reg=pg_fetch_array($rs)) {
@@ -19,7 +18,17 @@
 			}
 			echo $s;
 			break;
-		
+		case 'nuevo':
+			$fecha=$_POST["fecha"];
+			$rs=$plazo->registrar($fecha);
+			echo($rs);
+			break;
+		case 'edit':
+			$id=$_POST["id"];
+			$fecha=$_POST["fecha"];
+			$rs=$plazo->modificar($id,$fecha);
+			echo $rs;
+			break;
 		default:
 			# code...
 			break;

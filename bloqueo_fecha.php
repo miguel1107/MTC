@@ -1,6 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
+
 if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado.php");
 ?>
 <html><head><title></title>
@@ -70,93 +71,126 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
       </tr>
     </tbody>
   </table>
-  <table width="101%" height="93%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
-    <tbody>
-      <tr>
-        <td height="165" valign="top">
-          <table width="100%" border="0" align="center">
-            <tr>
-              <td width="70%" height="172">
-                <!-- <form name="form1" method="get" action="edita_plazo.php" onSubmit="return true"> -->
-                  <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="80%">
+  <table width="100%" height="98%" border="0" cellpadding="0" cellspacing="10" bgcolor="#CFE5EE">
+  <tbody>
+    <tr>
+      <td height="100%" valign="top">
+        <table width="100%" height="100%" border="0" align="center">
+        <tr>
+          <td width="100%" valign="top">
+            <table width="100%" height="90%" border="0" cellpadding="0" cellspacing="8" bgcolor="#B1D6E5">
+              <tbody>
+              <tr>
+                <td valign="top">
+                  <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
                     <tbody>
-                      <tr>
-                        <td colspan="7">
-                          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr height="21">
+                        <td width="100%" height="23" bgcolor="#336699">
+                          <table width="100%" border="0" cellpadding="3" cellspacing="0">
+                            <tr>
+                              <td width="100%">
+                                <div align="center" class="G Estilo1"><strong>LISTADO DE UFECHAS BLOQUEADAS</strong>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr height="21" valign="top">
+                        <td height="24" valign="top"><!-- menu mx !-->
+                          <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" bgcolor="#B2CDFB" class="N" id="HMTB">
                             <tbody>
                               <tr>
-                                <td colspan="3" width="100%">
-                                  <table border="0" cellpadding="3" cellspacing="0" width="100%">
+                                <td colspan="2"><img src="main.php6_files/spacer.gif" height="1" width="100%"></td>
+                              </tr>
+                              <tr>
+                                <td bgcolor="#B1D6E5">
+                                  <table width="52%" border="0" cellpadding="0" cellspacing="0" bgcolor="#B1D6E5" class="O">
                                     <tbody>
                                       <tr>
-                                        <th align="left" bgcolor="#6600ff" width="20%"> </th>
-                                        <th height="26" width="50%"> <span class="G">RESTRINGUIR FECHA</span></th>
-                                        <th align="right" width="25%"> </th>
+                                        <td ></td>
+                                        <td class="LL">|</td>
+                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" nowrap="nowrap" onClick="location='admin_fechas.php'"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Nuevo </td>
+                                        <td class="LL">|</td>
+                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'admin_fechas.php?sw=2')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ver Detalle de Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar</td>
+                                        <td class="LL">|</td>
+                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="location='admin_bususuario.php'" nowrap="nowrap"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
+                                        <td class="LL">|</td>
+                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('delete',0,1,'admin_deletefechasblo.php')" nowrap="nowrap"><img src="imag/delete.gif" alt="Eliminar Derivaci&oacute;n" width="16" height="16" hspace="1" border="0" align="absmiddle"> Eliminar </td>
+                                        <td class="LL">|</td>
+                                        <td class="LL">&nbsp;</td>
+                                        <td width="100%">&nbsp;</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                                <td style="cursor: auto;">
+                                  <table class="O" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                      <tr>
+                                        <td width="100%" bgcolor="#B1D6E5">&nbsp;</td>
                                       </tr>
                                     </tbody>
                                   </table>
                                 </td>
                               </tr>
+                              <tr>
+                                <td colspan="2"><img src="main.php6_files/spacer.gif" height="1" width="100%"></td>
+                              </tr>
                             </tbody>
                           </table>
+                        <!-- fin menu mx !-->                    
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="5">
-                          <table border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                              <tr>
-                                <td background="main.php15_files/titulo1.jpg" height="10" width="10">&nbsp;</td>
-                                <td class="marco seccion" align="left" width="90%">&nbsp;MODIFICACIÓN </td>
-                                <td align="right" background="main.php15_files/titulo3.jpg" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
+                        <td ><iframe id="igrid" name="igrid"  style="border-bottom-style:"src="admin_listfechasblo.php?>" frameborder="0" height="100%" scrolling="yes" width="100%"></iframe></td>
                       </tr>
-                      <tr valign="middle">
-                        <td class="marco" width="1%">&nbsp;</td>
-                        <td class="etiqueta" align="right" width="22%">Ingrese Fecha&nbsp;&nbsp;</td>
-                        <td class="objeto" width="1%">&nbsp;</td>
-                        <td class="objeto" width="78%"><input name="plazo" size="10" class="cajatexto" id="plazo" maxlength="10"  type="text"></td>
-                        <td class="objeto" width="1%">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td colspan="7" height="30">
-                          <table border="0" cellpadding="3" cellspacing="1" width="100%">
-                            <tbody>
-                              <tr>
-                                <td class="spaceRow" colspan="7" height="1">
-                                  <img src="main.php15_files/spacer.htm" alt="" height="1" width="1">
-                                </td>
-                              </tr>
-                              <tr align="center">
-                                <td class="catBottom" colspan="7" height="28">
-                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tbody>
-                                      <tr>
-                                        <td align="left" width="100%">
-                                          <input class="boton" name="btn_Buscar" value=".:: cambiar ::." type="submit" onclick="insert()">
-                                        </td>
-                                        <td width="50%"></td>
-                                        <td align="right" width="25%"></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                <!-- </form> -->
-              </td>
+                  <tr >
+                    <td height="24"><!-- menu mx !-->
+                        <table width="100%" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#B8C9DD" class="N" id="HMTB">
+                          <tbody>
+                            <tr>
+                              <td colspan="2"><img src="main.php6_files/spacer.gif" height="1" width="100%"></td>
+                            </tr>
+                            <tr>
+                              <td bgcolor="#B1D6E5"><table width="82%" border="0" cellpadding="0" cellspacing="0" bgcolor="#B1D6E5" class="O">
+                                <tbody>
+                                  <tr>
+                                    <td ></td>
+                                    <td class="LL">|</td>
+                                    <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" nowrap="nowrap" onClick="location='admin_usu.php'"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Nuevo </td>
+                                    <td class="LL">|</td>
+                                    <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'admin_usu.php?sw=2')" nowrap="nowrap"><img src="imag/detalle.gif" alt="Ver Detalle de Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar</td>
+                                    <td class="LL">|</td>
+                                    <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="location='admin_bususuario.php'" nowrap="nowrap"><img src="imag/search.gif" alt="Nueva Busqueda" width="15" height="12" hspace="1" border="0" align="absmiddle"> Buscar</td>
+                                    <td class="LL">|</td>
+                                    <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('delete',0,1,'admin_deleteusu.php')" nowrap="nowrap"><img src="imag/delete.gif" alt="Eliminar Derivaci&oacute;n" width="16" height="16" hspace="1" border="0" align="absmiddle"> Eliminar </td>
+                                    <td class="LL">|</td>
+                                    <td class="LL">&nbsp;</td>
+                                    <td width="100%">&nbsp;</td>
+                                  </tr>
+                                </tbody>
+                              </table></td>
+                              <td valign="top" bgcolor="#B1D6E5" style="cursor: auto;"><table class="O" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                  <tbody>
+                                  </tbody>
+                              </table></td>
+                            </tr>
+                            <tr>
+                              <td height="2" colspan="2"><img src="main.php6_files/spacer.gif" height="1" width="100%"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      <!-- fin menu mx !-->                    </td>
+                  </tr>
+                </tbody>
+              </table></td>
             </tr>
-          </table>
-        </td>
+          </tbody>
+        </table></td>
       </tr>
-    </tbody>
-  </table>
+      
+    </table></td>
+  </tr>
+</tbody></table>
 </body></html>
