@@ -13,6 +13,13 @@
 				$newformat = date('m-d-Y',$time);
 				if (substr($newformat, 0,1)=='0') {
 					$newformat=substr($newformat, 1);
+					if (substr($newformat, 2,1)=='0') {
+						$newformat=substr($newformat,0,2).substr($newformat,3);
+					}
+				}else{
+					if (substr($newformat, 3,1)=='0') {
+						$newformat=substr($newformat,0,3).substr($newformat,4);
+					}
 				}
 				$s=$s.','.$newformat;
 			}
