@@ -1,5 +1,7 @@
 <?php 
 session_start();
+include("../conectar.php");
+$link = Conectarse();
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -241,7 +243,18 @@ document.oncontextmenu=new Function("return false")
       <tr>
         <td class="Estilo5">&nbsp;</td>
         <td><span class="Estilo5">
-          <?=$_SESSION["tipotramite"]?>&nbsp;&nbsp;&nbsp;&nbsp;
+          <?php
+            $ti=$_SESSION["tipotramite"];
+            if (strlen($ti)==1) {
+                $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$ti."'";
+                $rs=pg_query($link,$sq);
+                $r=pg_fetch_array($rs);
+                $tip=$r[0];
+            }else {
+              $tip=$ti;
+            }  
+          ?>
+          <?=$tip?>&nbsp;&nbsp;&nbsp;&nbsp;
           <?=$_SESSION["nombre"]?>
         </span></td>
         </tr>
