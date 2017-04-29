@@ -351,7 +351,7 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
- <?
+ <?php
  
 
 //exit();
