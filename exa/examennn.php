@@ -380,7 +380,7 @@ $numeroRegistros=pg_num_rows($rs3);
 		     </span></div></td>
           <td width="4%">&nbsp;</td>
           </tr>
-		 <? if($reg[6]!=''){?> 
+		 <?php if($reg[6]!=''){?> 
          <tr>
            <td></td>
            <td>&nbsp;</td>
@@ -388,10 +388,10 @@ $numeroRegistros=pg_num_rows($rs3);
            <td><img src="img/<?=$reg[6]?>"/></td>
            <td>&nbsp;</td>
           </tr>
-		 <? }?>
+		 <?php }?>
 		 
 
-		<? while($reg5=pg_fetch_array($rs5)){?>
+		<?php while($reg5=pg_fetch_array($rs5)){?>
          <tr>
           <td></td>
           <td width="3%" valign="top"><input name="<?=$reg5[1]?>" type="radio" value="<?=$reg5[0]?>"></td>
@@ -403,7 +403,7 @@ $numeroRegistros=pg_num_rows($rs3);
           <?php } ?>
           <td><input name="CSI" type="hidden" value="<?=$reg5[1]?>"></td>
           </tr>
-       <? }?>
+       <?php }?>
 
 
       </table></td>
