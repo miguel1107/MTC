@@ -49,10 +49,10 @@ if($_SESSION["tipotramite"]=='NUEVO' || $_SESSION["tipotramite"]=='1'|| $_SESSIO
 		 {
 		$_SESSION["preguntas"][]=$valor;
 		 }
-		 foreach($num1 as $valor1)
-		 {
-		$_SESSION["preguntas"][]=$valor1;
-		 }	
+		//  foreach($num1 as $valor1)
+		//  {
+		// $_SESSION["preguntas"][]=$valor1;
+		//  }	
 
 
 //echo count($_SESSION["preguntas"]);
