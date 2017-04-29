@@ -3,15 +3,15 @@ include("../conectar.php");
 $link = Conectarse();
 $fechactual=date("d/m/Y");
 //////////////////////////////////////////
-$record8=pg_query($link,"Select t.idtramite,e.idevaluacion,de.numeroexamen from tramite t INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN detalle_examen de ON e.idevaluacion=de.idevaluacion where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'");
+$record8=pg_query($link,"SELECT t.idtramite,e.idevaluacion,de.numeroexamen from tramite t INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN detalle_examen de ON e.idevaluacion=de.idevaluacion where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'");
 if(pg_num_rows($record8) > 0){
 header("location:ingreso.php?error=WX");
 }else{
 //////////////////////////////////////////
-$record = pg_query($link,"Select * from tramite where idtramite='".$_POST["tramite"]."'");
+$record = pg_query($link,"SELECT * from tramite where idtramite='".$_POST["tramite"]."'");
 if(pg_num_rows($record) > 0)
 	{
-	$sql33="select p.idpostulante,p.nombres,p.apepat,p.apemat,t.idtramite,t.idcategoria,c.nombre,e.idevaluacion,e.opcion,e.fecha,e.idexamen ,e.idevaluador,t.tipotramite from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria  where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'";
+	$sql33="SELECT p.idpostulante,p.nombres,p.apepat,p.apemat,t.idtramite,t.idcategoria,c.nombre,e.idevaluacion,e.opcion,e.fecha,e.idexamen ,e.idevaluador,t.tipotramite from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria  where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'";
 
 
 						$res33=pg_query($link,$sql33) or die ("Error : $sql33");
