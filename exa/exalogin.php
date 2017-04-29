@@ -6,13 +6,12 @@ $link=conectarse();
 //if($_SESSION["nombre"]=='AI'){ 
 
 
-if($_SESSION["tipotramite"]=='NUEVO' || $_SESSION["tipotramite"]=='REVALIDACION')
-{    
+if($_SESSION["tipotramite"]=='NUEVO' || $_SESSION["tipotramite"]=='1'|| $_SESSION["tipotramite"]=='REVALIDACION' || $_SESSION["tipotramite"]=='3'){    
       //PRIMERA OPCION PARA DAR EXAMEN NUEVOS
      /////////////////////////////////////////////////
 	$prega1=array();
 	reset($prega1);
-	$sqla1="select * from preguntas where tipo='GENERAL' order by idpregunta ASC ";
+	$sqla1="SELECT * from preguntas where tipo='GENERAL' order by idpregunta ASC ";
 
 	$rsa1=pg_query($link,$sqla1) or die ("error : $ssql");
 	while($rega1=pg_fetch_array($rsa1)) { 
@@ -272,8 +271,8 @@ if($_SESSION["tipotramite"]=='NUEVO' || $_SESSION["tipotramite"]=='REVALIDACION'
 /////////////////////////////////////////////		
 
 }   // FIN DE LAS OPCIONES PARA DAR EXAMEN  
-
-if($_SESSION["tipotramite"]=='REVALIDACION' || $_SESSION["tipotramite"]=='CANJE REVALIDACION'){
+echo $_SESSION["preguntas"];exit;
+if($_SESSION["tipotramite"]=='REVALIDACION' || $_SESSION["tipotramite"]=='3' || $_SESSION["tipotramite"]=='CANJE REVALIDACION'){
 header("Location:examennnreva.php?idevaluacion=".$_SESSION["idevaluacion"]."&fechago='".$_SESSION["fechago"]."'&idexamen=".$_SESSION["idexamen"]."&idtramite=".$_SESSION["idtramite"]."&codigopost=".$_SESSION["codigopost"]."&idcategoria=".$_SESSION["idcategoria"]."&tipotramite=".$_SESSION["tipotramite"]."&usukpost=".$_SESSION["usukpost"]."");
 }else{
 header("Location:examennn.php?idevaluacion=".$_SESSION["idevaluacion"]."&fechago='".$_SESSION["fechago"]."'&idexamen=".$_SESSION["idexamen"]."&idtramite=".$_SESSION["idtramite"]."&codigopost=".$_SESSION["codigopost"]."&idcategoria=".$_SESSION["idcategoria"]."&tipotramite=".$_SESSION["tipotramite"]."&usukpost=".$_SESSION["usukpost"]."");
