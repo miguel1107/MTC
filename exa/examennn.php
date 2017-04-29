@@ -356,18 +356,15 @@ $numeroRegistros=pg_num_rows($rs3);
 
 //exit();
 
- foreach($_SESSION["preguntas"] as $valor)
- {
+ foreach($_SESSION["preguntas"] as $valor){
 	$ssql="select * from preguntas where idpregunta='".$valor."'  order by idpregunta ASC";
 	$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
-	?>
-    <? $i++; while($reg=pg_fetch_array($rs)) { 
+  $i++; while($reg=pg_fetch_array($rs)) { 
 	//$preguntas[]=$reg[0];
   
     $ssql5="select * from alternativas where idpregunta=".$reg[0]." order by idalternativa ASC ";
-	$rs5=pg_query($link,$ssql5) or die ("error : $ssql"); 
+	 $rs5=pg_query($link,$ssql5) or die ("error : $ssql"); 
 
-  
    ?>
       
     <tr>
@@ -407,7 +404,7 @@ $numeroRegistros=pg_num_rows($rs3);
 
 
       </table></td>
-    </tr><? }}?>
+    </tr><?php }} ?>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
