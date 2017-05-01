@@ -271,7 +271,7 @@ if($_SESSION["tipotramite"]=='NUEVO' || $_SESSION["tipotramite"]=='1'|| $_SESSIO
 /////////////////////////////////////////////		
 
 }   // FIN DE LAS OPCIONES PARA DAR EXAMEN  
-echo $_SESSION["preguntas"];exit;
+echo $_SESSION["preguntas"];
 if($_SESSION["tipotramite"]=='REVALIDACION' || $_SESSION["tipotramite"]=='3' || $_SESSION["tipotramite"]=='CANJE REVALIDACION'){
 header("Location:examennnreva.php?idevaluacion=".$_SESSION["idevaluacion"]."&fechago='".$_SESSION["fechago"]."'&idexamen=".$_SESSION["idexamen"]."&idtramite=".$_SESSION["idtramite"]."&codigopost=".$_SESSION["codigopost"]."&idcategoria=".$_SESSION["idcategoria"]."&tipotramite=".$_SESSION["tipotramite"]."&usukpost=".$_SESSION["usukpost"]."");
 }else{

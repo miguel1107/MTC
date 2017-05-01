@@ -351,7 +351,7 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
- <?php
+ <?
  
 
 //exit();
@@ -361,7 +361,7 @@ $numeroRegistros=pg_num_rows($rs3);
 	$ssql="select * from preguntas where idpregunta='".$valor."'  order by idpregunta ASC";
 	$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 	?>
-    <?php $i++; while($reg=pg_fetch_array($rs)) { 
+    <? $i++; while($reg=pg_fetch_array($rs)) { 
 	//$preguntas[]=$reg[0];
   
     $ssql5="select * from alternativas where idpregunta=".$reg[0]." order by idalternativa ASC ";
