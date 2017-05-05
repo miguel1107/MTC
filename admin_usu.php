@@ -233,7 +233,7 @@ $row3=pg_fetch_array($res3);
                   </select></td>
                   <td class="objeto" width="1%">&nbsp;</td>
                 </tr>
-                <? 
+                <?php 
 			$sqx="select * from cargo ";
 			  $rsx=pg_query($link,$sqx) or die ("error : $sqx");
 			  ?>
@@ -250,11 +250,11 @@ $row3=pg_fetch_array($res3);
                   <td class="objeto">&nbsp;</td>
                   <td class="objeto"><select name="cargo" class="cajatexto" id="cargo" onChange="frmList.action='';frmList.submit();">
                       <option  value="">-----Seleccione Opci&oacute;n--------</option>
-                      <? while($rex=pg_fetch_array($rsx)) {?>
-                      <option  value="<?=$rex[0]?>" <? if($rex[0]==$cargo) echo "SELECTED"?>>
+                      <?php while($rex=pg_fetch_array($rsx)) {?>
+                      <option  value="<?=$rex[0]?>" <?php if($rex[0]==$cargo) echo "SELECTED"?>>
                       <?=$rex[1]?>
                         </option>
-                      <? }?>
+                      <?php }?>
                   </select></td>
                   <td class="objeto">&nbsp;</td>
                 </tr>

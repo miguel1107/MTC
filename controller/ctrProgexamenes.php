@@ -31,7 +31,20 @@
 				$das=pg_fetch_array($rrr);
 				$cu=(int) $das[0];
 				$cupo=$cu-$h;
+				if($cupo==1){
 				$r="<span class='Estilo2'>".$cupo."</span>";
+				}else{
+			
+				echo ('<table width="90%" border="0" align="center">
+                       <tr>
+                       <td><span class="Estilo4"></span></td>
+                       </tr>
+                       <tr>
+                      <td><div align="center"><span class="Estilo4">
+                      ALCANZO EL LIMITE DE CUPOS</span></div></td>
+                    </tr>
+                  </table>');
+				}
 			}else if ($examen=='1') {
 				$r= "<option value='0'>---Seleccione Hora---</option>";
 				$hora=new hora();

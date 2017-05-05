@@ -5,7 +5,8 @@ include ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
 $tra=$_GET['id'];
-$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
+$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud,t.sisgedo  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
+// echo $sql2;exit;
 $rs2=pg_query($link,$sql2);
 $fila2 =pg_fetch_array($rs2);
 
@@ -16,6 +17,7 @@ $filaexamen = pg_fetch_array($rs3);
 
 
 $sql27="SELECT * FROM centro_medico WHERE idcentro='".$fila2[6]."'";
+// echo $sql27;exit;
 $rs27=pg_query($link,$sql27);
 $fila27 =pg_fetch_array($rs27);
 $hora =  date("H:i:s");
@@ -23,6 +25,7 @@ $hora =  date("H:i:s");
 //--
 $link=Conectarse();
 	$sql22="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
+	// echo $sql22;exit;
 	$rs2=pg_query($link,$sql22);
 	$fila22 =pg_fetch_array($rs2);
 	//--
@@ -70,13 +73,13 @@ function Footer()
 	$this->Cell(10,5,$fila2[9],0,1,'L',1);
 	$this->SetY(-15);
 	$this->SetFont('Arial','B',9);
-	$this->Cell(15,5,'Fecha:',0,0,'R',0);
+	$this->Cell(30,5,'Fecha Impresion:',0,0,'R',0);
 	$fechadiaria=date('d/m/Y');
 	$this->Cell(20,5,$fechadiaria,0,0,'L',0);
-	$this->Cell(50,5,'',0,0,'L',0);
+	$this->Cell(40,5,'',0,0,'L',0);
 	$this->Cell(20,5,'_________________________',0,1,'L',0);
-	$this->Cell(100,5,'',0,0,'L',0);
-	$this->Cell(20,5,utf8_decode ($_SESSION["usu"]),0,1,'L',0);
+	$this->Cell(110,5,'',0,0,'L',0);
+	$this->Cell(10,5,utf8_decode ($_SESSION["usu"]),0,1,'L',0);
 	
 }
 }
@@ -94,14 +97,16 @@ $pdf->SetLineWidth(.3); //Grosor de Linea
 
 $pdf->Rect(8,4,138,201);
 $pdf->Rect(150,4,140,201);
-$pdf->SetY(3); 
+$pdf->SetY(6); 
 $pdf->SetX(11);
-$pdf->Cell(135,7,'GOBIERNO REGIONAL DE LAMBAYEQUE',0,0,'C',0);
-$pdf->Cell(140,7,'FECHA DE PROGRAMACION DE EXAMENES',0,1,'C',0);
+$pdf->Cell(135,5,'GOBIERNO REGIONAL DE LAMBAYEQUE',0,0,'C',0);
+$pdf->Cell(140,5,'FECHA DE PROGRAMACION DE EXAMENES',0,1,'C',0);
 $pdf->SetX(11);
-$pdf->Cell(135,7,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES',0,1,'C',0);
+$pdf->Cell(135,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES DE LAMBAYEQUE',0,1,'C',0);
 $pdf->SetX(11);
-$pdf->Cell(135,7,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'C',0);
+// $pdf->Cell(135,5,'DE LAMBAYEQUE',0,1,'C',0);
+// $pdf->SetX(11);
+$pdf->Cell(138,7,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'C',0);
 $pdf->SetX(11);
 $pdf->Cell(135,7,'  ',0,0,'C',0);
 $pdf->Cell(20,7,'',0,0,'L',0);
@@ -122,6 +127,12 @@ $pdf->SetX(40);
 $pdf->Cell(42,5,'NRO TRAMITE:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
 $pdf->MultiCell(64,5,utf8_decode ($fila2[07]),0,'L',0);
+
+$pdf->SetFont('Arial','',9);
+$pdf->SetX(40);
+$pdf->Cell(42,5,'SISGEDO:',0,0,'L',1);
+$pdf->SetFont('Arial','B',9);
+$pdf->MultiCell(64,5,utf8_decode ($fila2[13]),0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);

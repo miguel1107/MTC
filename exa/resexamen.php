@@ -153,7 +153,7 @@ for($z=$num_filas;$z<=$num_total;$z++){
         </tr>
       <tr>
         <td colspan="2"><p>&nbsp;
-          <?
+          <?php
 		  $idtramite=$_GET["idtramite"];
 		  $idcategoria=$_GET["idcategoria"];
 		  $idevaluacion=$_GET["idevaluacion"];
@@ -168,7 +168,7 @@ for($z=$num_filas;$z<=$num_total;$z++){
       <tr>
         <td colspan="2">&nbsp;</td>
       </tr>
-	  <? $fechaexa=date('d/m/Y');?>
+	  <?php $fechaexa=date('d/m/Y');?>
       <tr>
         <td colspan="2"><div align="center"><a href="javascript:imprimir(<?=$idtramite?>,<?=$idcategoria?>,<?=$idevaluacion?>,'<?=$fechaexa?>')">Imprimir Resultado de Ex&aacute;men </a></div></td>
       </tr>
@@ -179,7 +179,7 @@ for($z=$num_filas;$z<=$num_total;$z++){
     </table></td>
   </tr>
 </table>
-<?
+<?php
 /////////////////////////////////////////////////////////////
 $horasalida=date("h:i:s");
 $sqlexa="update monitoreo set horafin='".$horasalida."', registro='INGRESO A LA SALA DE EXAMEN', tipo='POSTULANTE' where idmoni=".$_GET["usukpost"]."";

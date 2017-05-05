@@ -35,7 +35,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
            <td width="119" align="center" background="imag/div3.gif" ><span ><nobr><b><a href="nuevo_postulante.php"><b>&nbsp;<span class="G">Nuevo  Tramite</span></b></a></b></nobr></span></td>
            <td class="tabson" width="52"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>
            
-           <td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="#"><b>Lista   Postulante</b></a></b></nobr></td>
+           <td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="#"><b>Datos Postulante</b></a></b></nobr></td>
            <td class="tabson" width="52"><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></td>
            <td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite  </span></b></a></b></nobr> </td>
            <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>

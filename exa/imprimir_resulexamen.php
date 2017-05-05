@@ -1,4 +1,4 @@
-<?
+<?php
 include ("../conectar.php");
 $link=Conectarse();
 ?>
@@ -99,7 +99,7 @@ body {
                               <td width="22%"><?=$_GET["idtramite"]?></td>
                               <td width="16%"><strong>CATEGORIA</strong>:</td>
                               <td width="12%">
-							    <?  $sq="Select nombre from categoria where idcategoria=".$_GET["idcategoria"]." ";
+							    <?php  $sq="Select nombre from categoria where idcategoria=".$_GET["idcategoria"]." ";
 								$rs=pg_query($link,$sq) or die ("Error :$sq");
 								$reg=pg_fetch_array($rs);
 								$mostcat=$reg[0]; 
@@ -117,7 +117,7 @@ body {
                       <tr>
                         <td><table width="100%" border="0">
                             
-                            <?
+                            <?php
 		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,p.dni
 FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
 INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
@@ -153,7 +153,7 @@ INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
                         <td width="27%"><div align="center"><strong>RESPONDIO</strong></div></td>
                         <td width="32%"><div align="center"><strong>PUNTAJE</strong></div></td>
                       </tr>
-                      <? 
+                      <?php 
 		$sss="select t.tipotramite from detalle_examen de inner join evaluacion e ON de.idevaluacion=e.idevaluacion INNER JOIN tramite t on e.idtramite=t.idtramite where t.idtramite='".$_GET["idtramite"]."' ";
 		$ddd=pg_query($link,$sss);
 		$rrr=pg_fetch_array($ddd);
@@ -167,8 +167,9 @@ INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
 		$rs228=pg_query($link,$sql228);
 		}
 		
-					  ?>
-					  <?  $resultado=0; while($reg8=pg_fetch_array($rs228)) {$i++; ?>
+					  $resultado=0; 
+            while($reg8=pg_fetch_array($rs228)) {
+              $i++; ?>
                       <tr>
                         <td class="Estilo6"><div align="center" >
                             <?=$i?></div></td>
@@ -177,9 +178,9 @@ INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
                         <td class="Estilo6"><div align="center" >
                             <?=$reg8[3]?></div></td>
                         <td class="Estilo6"><div align="center" >
-                            <?=$reg8[4]?><? $resultado=$resultado+$reg8[4];?></div></td>
+                            <?=$reg8[4]?><?php $resultado=$resultado+$reg8[4];?></div></td>
                       </tr>
-                      <?    }?>
+                      <?php    }?>
                   </table></td>
                 </tr>
                 <tr valign="middle">
@@ -187,7 +188,7 @@ INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
                 </tr>
                 <tr valign="middle">
                   <td colspan="3"><table width="59%" height="20" border="1" align="center" cellpadding="0" cellspacing="0">
-                      <? 
+                      <?php 
 	
 		if($ttra=='REVALIDACION' || $ttra=='CANJE REVALIDACION'){
 				$sum=$resultado;

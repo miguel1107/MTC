@@ -27,7 +27,7 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
          <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="nuevo_postulante.php"><b><span class="G">Nuevo  Tramite</span></b></a></b></nobr></td>
          <td class="tabson" ><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
          
-         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Lista   Postulante</span></b></a></b></nobr></td>
+         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Datos Postulante</span></b></a></b></nobr></td>
          <td class="tabson" ><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
          <td  background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramites</span></b></a></b></nobr> </td>
          <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
