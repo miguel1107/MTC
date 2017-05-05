@@ -111,7 +111,7 @@ $sql275="SELECT * FROM usuario_licencia WHERE idpostulante='".$fila2[0]."'";
                          <tr>
                         <td width="54" rowspan="3"><img src="imag/LOGO.jpg" width="70" height="70"></td>
                         <td width="518"><div align="center" class="Estilo5">GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES - LAMBAYEQUE </div></td>
-                        <td width="82" rowspan="3"><div align="center"><img src="imag/logo_DRTC.jpg" width="64" height="70"></div></td>
+                        <td width="82" rowspan="3"><div align="center"><img src="imag/banner_top1.jpg" width="64" height="70"></div></td>
                       </tr>
                       <tr>
                         <td><div align="center" class="Estilo5">DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE </div></td>

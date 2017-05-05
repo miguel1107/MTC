@@ -18,6 +18,7 @@ $pdf->SetLineWidth(.3); //Grosor de Linea
 
 
 $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE t.idtramite='".$_GET["idtramite"]."'";
+		
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 		//$result=pg_query($sql)or die ("Error : $sql");
@@ -50,9 +51,12 @@ $pdf->Cell(50,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'',1);
 /* $pdf->SetXY(180,20); 
 $pdf->Cell(50,5, $xfila27[0],0,1,'L',1);  */
 $pdf->SetXY(55,25); 
-$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES',0,1,'L',1);     
+$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES - ',0,1,'L',1);
 
-$pdf->SetXY(62,30); 
+$pdf->SetXY(100,30); 
+$pdf->Cell(50,5,'LAMBAYEQUE',0,1,'L',1);     
+
+$pdf->SetXY(62,40); 
 $pdf->Cell(50,5,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'',1);
 
 /*$pdf->SetXY(20,50); 
@@ -177,13 +181,13 @@ $pdf->SetXY(155,150);
 $pdf->Cell(30,40,'',1,0,'C');
 
 $pdf->SetFont('Arial','B',12);
-$pdf->SetXY(150,220); 
-$pdf->Cell(14,4,'N° DE REGISTRO',0,1,'L',1);
+$pdf->SetXY(135,220); 
+$pdf->Cell(14,4,'N° DE REGISTRO:',0,1,'L',1);
 //$pdf->SetXY(185,8); 
 //$pdf->Cell(10,4,'REGISTRO ',0,1,'L',1);
 $pdf->SetFont('Arial','B',11);
-$pdf->SetXY(173,225); 
-$pdf->Cell(14,4,$fila2[28],0,1,'R',1);
+$pdf->SetXY(173,220); 
+$pdf->Cell(14,4,$fila2[19],0,1,'R',1);
 
 $actual = date('d/m/Y H:i:s');
 $pdf->SetFont('Arial','',8);

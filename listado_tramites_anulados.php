@@ -31,7 +31,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
          <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
          <td width="104" align="center" background="imag/div3.gif" ><span ><nobr><b><a href="nuevo_postulante.php"><b>&nbsp;<span class="G">Nuevo  Tramite</span></b></a></b></nobr></span></td>
          <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td width="108" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Lista Postulante</span></b></a></b></nobr></td>
+         <td width="108" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Datos Postulante</span></b></a></b></nobr></td>
          <td class="tabson" width="35"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
          <td width="119" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
 		 <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>

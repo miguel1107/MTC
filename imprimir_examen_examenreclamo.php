@@ -115,7 +115,7 @@ body {
                       <tr>
                         <td><table width="100%" border="0">
                           
-         <?
+         <?php
 		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON  t.idcategoria=c.idcategoria where t.idtramite='".$_GET["idtramite"]."' ";
 		$rs2=pg_query($link,$sql2);
 		$reg=pg_fetch_array($rs2)
@@ -149,7 +149,7 @@ body {
                         <td width="8%"><div align="center"><strong>PUNTAJE</strong></div></td>
                       </tr>
                       <?php
-		$sss="select t.tipotramite from detalle_examen de inner join evaluacion e ON de.idevaluacion=e.idevaluacion INNER JOIN tramite t on e.idtramite=t.idtramite INNER JOIN preguntas p 
+		$sss="SELECT t.tipotramite from detalle_examen de inner join evaluacion e ON de.idevaluacion=e.idevaluacion INNER JOIN tramite t on e.idtramite=t.idtramite INNER JOIN preguntas p 
 on de.idpregunta=p.idpregunta where t.idtramite='".$_GET["idtramite"]."' ";
 		$ddd=pg_query($link,$sss);
 		$rrr=pg_fetch_array($ddd);
@@ -165,26 +165,25 @@ on de.idpregunta=p.idpregunta where t.idtramite='".$_GET["idtramite"]."' ";
 
 		$resultado=0; 
 		
-		while($reg8=pg_fetch_array($rs228)) 
-		{$i++; ?>
+		while($reg8=pg_fetch_array($rs228)) {
+      $i++; 
+      ?>
         <tr><td colspan="4" style="height:10"></td></tr>
 		<tr>
 		  <td class="Estilo6"><div align="center" >  <?=$i?></div></td>
 		  <td class="Estilo6"><div align="center" >  <?=$reg8[2]?></div></td>
 		  <td class="Estilo6"><div align="center" >  <?=$reg8[3]?></div></td>
-		  <td class="Estilo6"><div align="center" >  <?=$reg8[4]?>   <? $resultado=$resultado+$reg8[4];?>  </div></td>
+		  <td class="Estilo6"><div align="center" >  <?=$reg8[4]?>   <?php $resultado=$resultado+$reg8[4];?>  </div></td>
 		</tr>
-	   
+	   <?php }?>
 	     <tr style="background-color:#CCC;">
             <td class="Estilo6" align="center"><?=$i?></td>
             <td class="Estilo6" colspan="3"><?=$reg8[38]?>
-			<? if($reg8[42]!=''){?> <img src="exa/img/<?=$reg8[42]?>"/> <? } else { ?> <?php } ?> </td>
-            
-         	 
-			
-         </tr>
+			<? if($reg8[42]!=''){?> <img src="exa/img/<?=$reg8[42]?>"/> <? } ?> </td>
+      </tr>
       
-        <? 
+      
+        <?
 		 $ssql5="select * from alternativas where idpregunta='".$reg8[36]."' order by idalternativa ASC ";
 		 $rs5=pg_query($link,$ssql5) or die ("error : $ssql"); 
 		
@@ -201,12 +200,12 @@ on de.idpregunta=p.idpregunta where t.idtramite='".$_GET["idtramite"]."' ";
            </tr>
 		 <? }?>
             
-        <? }?>
+        
          </table></td>
          </tr>
          <tr valign="middle"><td height="9" colspan="3">&nbsp;</td></tr>
          <tr valign="middle"><td colspan="3"><table width="63%" border="1" align="center" cellpadding="0" cellspacing="0">
-        <? 
+        <?php 
 	
 		if($ttra=='REVALIDACION' || $ttra=='CANJE REVALIDACION'){
 				$sum=$resultado;

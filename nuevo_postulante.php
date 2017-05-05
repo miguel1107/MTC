@@ -630,7 +630,7 @@ require_once 'model/provincia.php';
 							<td class="tabson" width="52"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>							
 							<td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="nuevo_postulante.php"><b>Nuevo  Tramite</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></td>
-							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">Lista   Postulante</span>&nbsp;&nbsp;</b></a></b></nobr></td>
+							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">Datos Postulante</span>&nbsp;&nbsp;</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
 							<td width="175" background="imag/div3.gif" >					    </td>
 							<td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
@@ -1106,10 +1106,10 @@ require_once 'model/provincia.php';
 							<td class="objeto">
 								<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 									<option value="0">--Seleccion un estado--</option>
-									<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
-									<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO</option>
-									<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO</option>
-									<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO</option>
+									<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO(A)</option>
+									<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO(A)</option>
+									<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO(A)</option>
+									<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO(A)</option>
 									<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>>CONVIVIENTE</option>
 								</select>
 								<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
@@ -1386,7 +1386,7 @@ require_once 'model/provincia.php';
 				    								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
 				    								<td class="objeto" width="1%">&nbsp;</td>
 				    								<td class="objeto" width="72%">
-				    									<input type="datepicker" name="fechacurso" id="fechacurso" class="cajatexto" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>" readonly> (dd/mm//yyyy)
+				    									<input name="fechacurso" type="datepicker"  class="cajatexto" id="fechacurso"  onKeyPress="return formato(event,form,this,80)" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>" size="15" maxlength="10" <?php if($_GET["sw"]!=3  || $_SESSION["cargo"] == 1){?> enabled <?php } else { ?> disabled <?php } ?> > (dd/mm//yyyy)
 													<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 													&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 												</td>

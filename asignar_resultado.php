@@ -189,6 +189,7 @@
                                         <td width="10%"><div align="center"><strong>SELECCIONAR</strong></div></td>
                                         <td width="9%"><div align="center"><strong>NOTA</strong></div></td>
                                         <td width="9%"><div align="center"><strong>RESULTADO</strong></div></td>
+                                        <td width="9%"><div align="center"><strong>CONSULTA RESULTADO</strong></div></td>
                                       </tr>
                                       <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
                                       <tr bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#D6DEEC';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
@@ -250,7 +251,7 @@
                                         <td>
                                           <?php if($_SESSION["cargo"]=='1'){ ?>
                                           <div align="center">
-                                            <?php 
+                                          <?php 
                                               if($reg[8]=='') { 
                                             ?>
                                               <nobr>
@@ -262,7 +263,7 @@
                                               }else{
                                             ?>
                                               <nobr>
-                                              <a id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>" target="_blank">
+                                              <a id="estado<?php echo $i; ?>" name="estado<?php echo $i; ?>"  target="_blank">
                                                 <?php 
                                                   if ($reg[8]=='APROBADO') {
                                                 ?>
@@ -289,6 +290,13 @@
                                             <!-- <nobr> <?php echo $reg[8]; ?></nobr> -->
                                           </div>
                                           <?php }?>
+                                        </td>
+                                        <td>
+                                          <?php if($reg[11]==1){?>
+                                            <nobr> <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$_GET["xxxfecha"]?>&idevaluacion=<?=$reg[10]?>"  target="_blank"><font color="#0000FF"><p>VER RESULTADO</p></font></a></nobr>
+                                          <?php } else { ?>
+                                            
+                                          <?php } ?>
                                         </td>
                                       </tr>
                                       <?php $i++;  } ?>
