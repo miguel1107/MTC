@@ -1462,6 +1462,8 @@ require_once 'model/provincia.php';
       <?php
         $fecha = date('d/m/Y');
         //$nuevafecha = date('d/m/Y', strtotime('-1 day')) ; // Suma 1 días
+        if ($_GET["sw"]==3) {
+        	echo('no edit');
        ?>
 		$( "#fechacurso" ).datepicker({
         	dateFormat: 'dd/mm/yy',
@@ -1501,6 +1503,7 @@ require_once 'model/provincia.php';
 	          console.log(date);
 	        } 
       	});
+      	<?php } ?>
     })
 </script>
 </body></html>
