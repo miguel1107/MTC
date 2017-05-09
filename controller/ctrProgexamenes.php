@@ -32,7 +32,7 @@
 				$cu=(int) $das[0];
 				$cupo=$cu-$h;
 				if($cupo=='0'){
-					echo '<script language="javascript">alert("Por favor Eliga otra Fecha, Cupos Completos");</script>'; 
+					echo  '<script language="javascript">alert("Por favor Eliga otra Fecha, Cupos Completos");</script>'; 
 				}
 				$r="<span class='Estilo2'>".$cupo."</span>";
 			}else if ($examen=='1') {

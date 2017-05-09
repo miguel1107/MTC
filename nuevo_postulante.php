@@ -1281,7 +1281,7 @@ require_once 'model/provincia.php';
 				    							<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
 				    							<td class="objeto" width="1%">&nbsp;</td>
 				    							<td class="objeto" width="72%">
-				    								<input name="fechaexamen" type="datepicker" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,9)" value="<?php if($_GET["sw"]==3 && $fechai!='') {echo ereg_replace('-','/',normal($fechai));}?>" size="15" maxlength="10"  <?php if($_SESSION["cargo"]==6){ echo readonly;}?> >			  			  
+				    								<input name="fechaexamen" type="datepicker" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,9)" value="<?php if($_GET["sw"]==3 && $fechai!='') {echo ereg_replace('-','/',normal($fechai));}?>" size="15" maxlength="10"  <?php if($_SESSION["cargo"]==6){ echo readonly;}?>  >			  			  
 				    								<!-- <? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?> -->
 				    							</td>
 				    							<td class="objeto" width="6%">&nbsp;</td>
