@@ -47,11 +47,14 @@ $fechaactual=date('Y-m-d');
   group by e.fecha, e.idexamen 
   having COUNT(e.fecha)< 100 
   order by e.fecha asc";
-  
+    $sqq="SELECT progexam FROM plazo where id='2' ";
+        $rsss=pg_query($link,$sqq);
+        $dass=pg_fetch_array($rsss);
+        $var=(int)$dass[0];
 	
 	
 	$cant =0;
-	$var = 120;
+	//$var = 120;
 	$rs=pg_query($link,$sql) or die ("Error :$sql");
 	$rows = pg_num_rows($rs);
 	if ( $rows > 0) {
