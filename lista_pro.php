@@ -62,7 +62,7 @@ $fechaactual=date('Y-m-d');
       }
       $rs=pg_query($link,$sqlc);
  
-      // return $rs;
+      return $rs;
   $eva=new evaluacion();
       $pla=new plazo();
 	$rs=$eva->cosultaCupos($fecha,$examen,$idho);
