@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
-if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='2') {header("location:denegado.php");}
+if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='7') {header("location:denegado.php");}
 
 include ("traducefecha.php");
 include("comun/function.php");

@@ -47,7 +47,7 @@
 }
 .flc1-slide {
   margin: 0.2cm auto 0.5cm auto;
-  width: 80%;
+  width: 75%;
 }
 .flc1-slide img {
   display: block;
@@ -252,7 +252,7 @@
   margin-right: 2cm;
 }
 .flc1-foot-fihu-fi span {
-  height: 2cm;
+  height: 0cm;
   width: 4cm;
   border-bottom: 1pt solid #444;
   margin-bottom: 2pt;
@@ -262,8 +262,8 @@
   display: inline-block;
 }
 .flc1-foot-fihu-hu span {
-  height: 2.6cm;
-  width: 2.6cm;
+  height: 2.5cm;
+  width: 2.5cm;
   border: 1pt solid #444;
   margin-bottom: 2pt;
   display: block;
@@ -340,7 +340,7 @@
 }
 .flc2-sep {
   margin: 6pt 0;
-  border-top: 1pt dashed #444;
+  border-top: 0pt dashed #444;
 }
 .flc2-s3 {
   font-family: 'Arial Black';

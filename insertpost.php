@@ -172,6 +172,12 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				$sql_especial ="update tramite_espe set nrofichacurso ='".$_POST["nrofichacurso"]."', id_curso_especial='".$_POST["idcentrocurso"]."', tipotramite = '".$_POST["tipotra"]."',fechacurso = '".$_POST["fechacurso"]."', usuario = '".$_SESSION["usu"]."', licencia = '".$_POST["licencia"]."' where idtramite='".$tramite."'";
 				$sr_especial=pg_query($link,$sql_especial); 
 			}
+
+			if($_POST["tipotra"]=='4'){
+				$sq4="UPDATE tramite set idcategoria=".$_POST["categoria"].",sisgedo='".$_POST["sisgedo"]."' where idtramite='".$tramite."'";
+				// echo $sq4;exit;
+				$sq41=pg_query($link,$sq4);
+			}
 			
 			
 			if($_POST["tipotra"]!='4'){				

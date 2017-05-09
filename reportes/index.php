@@ -74,7 +74,7 @@
 			<hr class="flc1-head-hr">
 		</div> -->
 		<div class="flc1-slide">
-			<img src="encabezado.JPG" alt="Portada del Miniterio">
+			<img src="final.jpg" alt="Portada del Miniterio">
 		</div>
 		<div class="flc1-subtit">
 			<p>"Año Internacional del Turismo Sostenible para el Desarrollo"</p>
@@ -88,7 +88,7 @@
 			<div class="flc1-datos-de">
 				<table>
 					<tr>
-						<td>N° SOLICITUD</td>
+						<td>N° SOLICITUD (sisgedo)</td>
 						<td><?php echo $sis; ?></td>
 					</tr>
 					<tr>
@@ -350,6 +350,7 @@
 		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- Nrt :'.$tra ?></div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
+	
 
 		<table class="flc2-s3">
 			<tr>
@@ -360,7 +361,7 @@
 				</td>
 				<td style="width: 0.5%" class="flc2-s3-se"></td>
 				<td style="width: 14.5%" class="flc2-s3-de">
-					N° DE<br>REGISTRO<br><?php echo $sis ?>
+					N° DE<br>REGISTRO (sisgedo):<br><?php echo $sis ?>
 				</td>
 			</tr>
 		</table>
@@ -388,7 +389,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="center"><strong>HUELLA</strong>
+						<td align="center"><strong>SELLO</strong>
 							<br>
 							<br>
 							<br>

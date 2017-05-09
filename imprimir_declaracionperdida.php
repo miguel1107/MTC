@@ -195,7 +195,7 @@ $pdf->Cell(14,4,'N° DE REGISTRO',0,1,'L',1);
 //$pdf->Cell(10,4,'REGISTRO ',0,1,'L',1);
 $pdf->SetFont('Arial','B',11);
 $pdf->SetXY(173,225); 
-$pdf->Cell(14,4,$fila2[28],0,1,'R',1);
+$pdf->Cell(14,4,$fila2[19],0,1,'R',1);
 
 $actual = date('d/m/Y H:i:s');
 $pdf->SetFont('Arial','',8);

@@ -102,7 +102,7 @@ $pdf->SetX(11);
 $pdf->Cell(135,5,'GOBIERNO REGIONAL DE LAMBAYEQUE',0,0,'C',0);
 $pdf->Cell(140,5,'FECHA DE PROGRAMACION DE EXAMENES',0,1,'C',0);
 $pdf->SetX(11);
-$pdf->Cell(135,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES DE LAMBAYEQUE',0,1,'C',0);
+$pdf->Cell(135,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES',0,1,'C',0);
 $pdf->SetX(11);
 // $pdf->Cell(135,5,'DE LAMBAYEQUE',0,1,'C',0);
 // $pdf->SetX(11);
@@ -120,7 +120,7 @@ $pdf->Cell(30,8,'HOLA',0,0,'L',1);*/
 
 $pdf->Cell(40,5,'',0,0,'L',0);
 $pdf->Cell(30,5,'_____________________',0,1,'L',1);
-$pdf->Image('imag/foto.jpg',10,20,27,35,'JPG');
+$pdf->Image('imag/foto.jpg',10,28,27,35,'JPG');
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
@@ -156,7 +156,7 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
 $pdf->Cell(42,5,'Nº Y FECHA EX. MEDICO:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,$fila2[5].' '.$fila27[1],0,'J',0);
+$pdf->MultiCell(64,5,$fila2[5].' '.utf8_decode ($fila27[1]),0,'J',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);

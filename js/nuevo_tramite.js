@@ -37,11 +37,11 @@ function cursoespecial() {
 		//lic=document.getElementById('licencia');
 		$('#licencia').removeAttr('disabled');
 	}
-	if (parseInt(mes)>=4) {
+	if (parseInt(mes)>=8) {
 		console.log(mes);
 		divC = document.getElementById("especial");
  		divC.style.display="block";
-	}else if (parseInt(mes)<4) {
+	}else if (parseInt(mes)<8) {
 		if (tra=='1' || tra=='2') {
 			divC = document.getElementById("especial");
  			divC.style.display="block";

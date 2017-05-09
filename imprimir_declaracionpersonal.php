@@ -21,6 +21,18 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
 		
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
+
+		$echotra;
+		$tra=$fila2[30];
+	  $long=strlen($tra);  
+	  if ($long==1) {
+	    $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";
+	    $f=pg_query($link,$sq);
+	    $filatra=pg_fetch_array($f);
+	    $echotra =$filatra[0];
+	  }else{
+	    $echotra=$tra;
+	  } 
 		//$result=pg_query($sql)or die ("Error : $sql");
 		///**************
 		$xsql27="select c.nombre from categoria c inner join tramite t  on c.idcategoria=t.idcategoria where t.idtramite='".$_GET["idtramite"]."'";
@@ -83,7 +95,7 @@ $pdf->Cell(50,5,utf8_decode($fila2[1])."   ".utf8_decode($fila2[2])."   ".utf8_d
 $pdf->SetFont('Arial','',9);	
        
 $pdf->SetXY(20,77); 
-$pdf->Cell(50,5,'Identificado (a) D.N.I. / C.E. N°:',0,1,'L',1);  		
+$pdf->Cell(50,5,'Identificado (a) con D.N.I. / C.E. N°:',0,1,'L',1);  		
 $pdf->SetFont('Arial','B',9);            
 $pdf->SetXY(70,77); 
 $pdf->Cell(20,5,$fila2[8],0,1,'L',1);  		        
@@ -97,7 +109,14 @@ $pdf->Cell(50,5,' en la calle ',0,1,'L',1);
 $pdf->SetFont('Arial','B',9);   
 $pdf->SetXY(50,84); 
 $pdf->MultiCell(110,5, utf8_decode($fila2[14]),0,1,'R',1);  		            
-$pdf->SetFont('Arial','B',12);
+$pdf->SetFont('Arial','',9);
+$pdf->SetXY(20,89);
+$pdf->Cell(50,5,'Realizando el Tramite de : ',0,1,'L',1);
+$pdf->SetFont('Arial','B',9);
+$pdf->SetXY(62,88);
+$pdf->Cell(20,7,$echotra." - ".$xfila27[0],0,1,'L',1);
+
+
 /*$pdf->SetXY(163,84); 
 $pdf->Cell(50,5,' ; ante usted',0,1,'L',1); */ 		            
 $pdf->SetXY(20,100); 

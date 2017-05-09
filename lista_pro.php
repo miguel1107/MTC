@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 
 include ("conectar.php");
+include("controller/ctrProgexamenes.php");
 $link=Conectarse();
 ?>
 <html>
@@ -51,14 +52,38 @@ $fechaactual=date('Y-m-d');
 	
 	
 	$cant =0;
-	$var = 120;
+  $fecha;
+  $examen;
+  $hora;
+  if ($examen=='4') {
+        $sqlc="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."'  group by fecha";
+      }else{
+        $sqlc="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."' and idhora='".$hora."'group by fecha";
+      }
+      $rs=pg_query($link,$sqlc);
+ 
+      // return $rs;
+  $eva=new evaluacion();
+      $pla=new plazo();
+	$rs=$eva->cosultaCupos($fecha,$examen,$idho);
+        $data=pg_fetch_array($rs);
+        $dat=$data[0];
+        if ($dat=="") {
+          $h=0;
+        }else{
+          $h=$dat;
+        }
+        $rrr=$pla->paraCupoM();
+        $das=pg_fetch_array($rrr);
+        $cu=(int) $das[0];
+        $cupo=$cu-$h;
 	$rs=pg_query($link,$sql) or die ("Error :$sql");
 	$rows = pg_num_rows($rs);
 	if ( $rows > 0) {
 	?>
    <table width="100%" border="0" cellspacing="0">
     <tr>  
-      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION ABRIL</strong></td>
+      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION MAYO</strong></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -81,7 +106,7 @@ $fechaactual=date('Y-m-d');
     <tr>
     <td align="center"> <?php echo $reg11[1];?></td>
    	<td align="center"> <?php echo $reg11[0];?></td>
-   	<td align="center"> <?php echo $var - $reg11[0];?></td>
+   	<td align="center"> <?php echo $cupo - $reg11[0];?></td>
 	</tr>
 	<?php  } ?>
 
