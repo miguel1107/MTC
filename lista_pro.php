@@ -3,7 +3,6 @@ session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 
 include ("conectar.php");
-include("controller/ctrProgexamenes.php");
 $link=Conectarse();
 ?>
 <html>
@@ -24,7 +23,7 @@ window.close()
 <style type="text/css">
 <!--
 body {
-	background-color: #CFE5EE;
+  background-color: #CFE5EE;
 }
 -->
 </style>
@@ -35,12 +34,12 @@ body {
 
  <?php
 
-   	if ($_SESSION["cargo"]=='1' ) {
+    if ($_SESSION["cargo"]=='1' ) {
 
 $fechaactual=date('Y-m-d');
-	//$fechaactual='2016-04-22';
+  //$fechaactual='2016-04-22';
 
-	$sql="SELECT count(e.fecha),e.fecha, e.idexamen  
+  $sql="SELECT count(e.fecha),e.fecha, e.idexamen  
   FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
   INNER JOIN evaluacion e ON t.idtramite=e.idtramite  
   INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
@@ -49,46 +48,17 @@ $fechaactual=date('Y-m-d');
   having COUNT(e.fecha)< 100 
   order by e.fecha asc";
   
-	
-	
-	$cant =0;
-  $fecha=$_POST['fecha'];
-      $con=$_POST['con'];
-      $man=$_POST['man'];
-      if ($con=='0') {
-        $examen=$man;
-      }else if ($man=='0') {
-        $examen=$con;
-      }
-  if ($examen=='4') {
-        $sqlc="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."'  group by fecha";
-      }else{
-        $sqlc="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."' and idhora='".$hora."'group by fecha";
-      }
-      $rs=pg_query($link,$sqlc);
- 
-      // return $rs;
-  $eva=new evaluacion();
-      $pla=new plazo();
-	$rs=$eva->cosultaCupos($fecha,$examen,$idho);
-        $data=pg_fetch_array($rs);
-        $dat=$data[0];
-        if ($dat=="") {
-          $h=0;
-        }else{
-          $h=$dat;
-        }
-        $rrr=$pla->paraCupoM();
-        $das=pg_fetch_array($rrr);
-        $cu=(int) $das[0];
-        $cupo=$cu-$h;
-	$rs=pg_query($link,$sql) or die ("Error :$sql");
-	$rows = pg_num_rows($rs);
-	if ( $rows > 0) {
-	?>
+  
+  
+  $cant =0;
+  $var = 120;
+  $rs=pg_query($link,$sql) or die ("Error :$sql");
+  $rows = pg_num_rows($rs);
+  if ( $rows > 0) {
+  ?>
    <table width="100%" border="0" cellspacing="0">
     <tr>  
-      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION MAYO</strong></td>
+      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION ABRIL</strong></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -106,16 +76,16 @@ $fechaactual=date('Y-m-d');
     </tr>
    <?php
     while($reg11=pg_fetch_array($rs)) { 
-	?>
+  ?>
          
     <tr>
     <td align="center"> <?php echo $reg11[1];?></td>
-   	<td align="center"> <?php echo $reg11[0];?></td>
-   	<td align="center"> <?php echo $cupo - $reg11[0];?></td>
-	</tr>
-	<?php  } ?>
+    <td align="center"> <?php echo $reg11[0];?></td>
+    <td align="center"> <?php echo $var - $reg11[0];?></td>
+  </tr>
+  <?php  } ?>
 
-	
+  
    <?php } ?>
    
    </table>
@@ -123,26 +93,26 @@ $fechaactual=date('Y-m-d');
    
    
     <?php
-	
-	$fechaactual=date('Y-m-d');
-//	$fechaactual='2016-04-22';
-   	$sql="SELECT count(e.fecha),e.fecha, e.idexamen 
-		  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
-		  INNER JOIN evaluacion e ON t.idtramite=e.idtramite 
-		  INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
-		  where e.fecha>='".$fechaactual."' and e.fecha <= '2017-02-28' and e.idexamen='4' 
-		  group by e.fecha, e.idexamen
-		  having COUNT(e.fecha)<= 120
-		  order by e.fecha desc";
-	
-	
-	$cant =0;
-	$var = 120;
-	$rs=pg_query($link,$sql) or die ("Error :$sql");
-	$rows = pg_num_rows($rs);
-	
-	if($rows >0){
-	?>
+  
+  $fechaactual=date('Y-m-d');
+//  $fechaactual='2016-04-22';
+    $sql="SELECT count(e.fecha),e.fecha, e.idexamen 
+      FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
+      INNER JOIN evaluacion e ON t.idtramite=e.idtramite 
+      INNER JOIN categoria c ON t.idcategoria=c.idcategoria 
+      where e.fecha>='".$fechaactual."' and e.fecha <= '2017-02-28' and e.idexamen='4' 
+      group by e.fecha, e.idexamen
+      having COUNT(e.fecha)<= 120
+      order by e.fecha desc";
+  
+  
+  $cant =0;
+  $var = 120;
+  $rs=pg_query($link,$sql) or die ("Error :$sql");
+  $rows = pg_num_rows($rs);
+  
+  if($rows >0){
+  ?>
     </br>
    <table width="100%" border="0" cellspacing="0">
     <tr>  
@@ -163,15 +133,15 @@ $fechaactual=date('Y-m-d');
     </tr>
    
    <?php  while($reg11=pg_fetch_array($rs)) { 
-	?>
+  ?>
         
     <tr>
     <td align="center"> <?php echo $reg11[0];?></td>
-   	<td align="center"> <?php echo $reg11[1];?></td>
-   	<td align="center"> <?php echo $var - $reg11[0];?></td>
-	</tr>
-		
-	<?php	}	?>
+    <td align="center"> <?php echo $reg11[1];?></td>
+    <td align="center"> <?php echo $var - $reg11[0];?></td>
+  </tr>
+    
+  <?php } ?>
    
    </table>
    

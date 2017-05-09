@@ -1,4 +1,4 @@
-<?php
+x<?php
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado.php");
