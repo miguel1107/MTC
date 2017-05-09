@@ -24,7 +24,7 @@ if($cant > 0)
 	}
 		
 //////////////////////////////////////////////////////////////////////////////
-if($_POST["tipotramite"]=='REVALIDACION' || $_POST["tipotramite"]=='CANJE REVALIDACION'){   //******************
+if($_POST["tipotramite"]=='REVALIDACION' || $_POST["tipotramite"]=='3' || $_POST["tipotramite"]=='CANJE REVALIDACION'){   //******************
 
 $sql59="select numeroexamen from detalle_examen where idevaluacion='".$_POST["idevaluacion"]."' limit 1 OFFSET 0";
 $res59=pg_query($link,$sql59);
