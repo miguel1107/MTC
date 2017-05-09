@@ -52,9 +52,14 @@ $fechaactual=date('Y-m-d');
 	
 	
 	$cant =0;
-  $fecha;
-  $examen;
-  $hora;
+  $fecha=$_POST['fecha'];
+      $con=$_POST['con'];
+      $man=$_POST['man'];
+      if ($con=='0') {
+        $examen=$man;
+      }else if ($man=='0') {
+        $examen=$con;
+      }
   if ($examen=='4') {
         $sqlc="SELECT count(*), fecha FROM evaluacion WHERE idexamen='".$examen."' and fecha='".$fecha."'  group by fecha";
       }else{
@@ -62,7 +67,7 @@ $fechaactual=date('Y-m-d');
       }
       $rs=pg_query($link,$sqlc);
  
-      return $rs;
+      // return $rs;
   $eva=new evaluacion();
       $pla=new plazo();
 	$rs=$eva->cosultaCupos($fecha,$examen,$idho);
