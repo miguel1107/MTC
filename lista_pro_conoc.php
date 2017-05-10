@@ -61,7 +61,7 @@ $fechaactual=date('Y-m-d');
 	?>
    <table width="100%" border="0" cellspacing="0">
     <tr>  
-      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION ABRIL</strong></td>
+      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION MAYO</strong></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -135,7 +135,8 @@ $fechaactual=date('Y-m-d');
       <td width="20%" align="center" style="background-color:#000;"><font color="#FFFFFF">Numero de Programaciones DISPONIBLES</font></td>
     </tr>
    
-   <?php  while($reg11=pg_fetch_array($rs)) { 
+   <?php  
+   while($reg11=pg_fetch_array($rs)) { 
 	?>
         
     <tr>

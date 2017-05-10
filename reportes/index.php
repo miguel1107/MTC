@@ -96,7 +96,7 @@
 						<td><?php echo $fecins ?></td>
 					</tr>
 					<tr>
-						<td>CÓDIGO ZONAL</td>
+						<td>CÓDIGOZONAL</td>
 						<td></td>
 					</tr>
 				</table>

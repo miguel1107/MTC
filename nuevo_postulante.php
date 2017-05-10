@@ -824,14 +824,17 @@ require_once 'model/provincia.php';
 			}else if($long==8){
 				$sql="SELECT * FROM postulante WHERE dni='".$filtro."'";	
 			}
+			// echo $sql;exit;
 			$rs=pg_query($link,$sql);
 			if (pg_num_rows($rs)==0) {
+				 $ss=0; //normal
 				?>
 				<script>
 					alert('EL DNI/CE NO EXISTE');
 				</script>
 				<?php
 			}else{
+				 $ss=1; 
 				$fila =pg_fetch_object($rs);
 				$idpostulante= $fila->idpostulante;
 				$nom= $fila->nombres;		
@@ -1055,21 +1058,21 @@ require_once 'model/provincia.php';
 		                  	<td class="etiqueta" align="right" width="20%">Apellidos Paterno &nbsp;&nbsp;</td>
 		                  	<td class="objeto" width="1%">&nbsp;</td>
 		                  	<td class="objeto">
-		                  		<input name="apepat"  type="text" class="cajatexto" id="apepat" onKeyPress="return formato(event,form,this,80)" value="<?=$apep?>" size="50" maxlength="60"></td>
+		                  		<input name="apepat"  type="text" class="cajatexto" id="apepat" onKeyPress="return formato(event,form,this,80)" value="<?=$apep?>" size="50" maxlength="60" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
                   			<td class="objeto" width="6%">&nbsp;</td>
                   		</tr>
 	                  	<tr valign="middle">
 	                  		<td class="marco">&nbsp;</td>
 	                  		<td class="etiqueta" align="right">Apellidos Materno &nbsp;&nbsp;</td>
 	                  		<td class="objeto">&nbsp;</td>
-	                  		<td class="objeto"><input name="apemat"  type="text" class="cajatexto" id="apemat" onKeyPress="return formato(event,form,this,80)" value="<?=$apem?>" size="50" maxlength="60"></td>
+	                  		<td class="objeto"><input name="apemat"  type="text" class="cajatexto" id="apemat" onKeyPress="return formato(event,form,this,80)" value="<?=$apem?>" size="50" maxlength="60" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 	                  		<td class="objeto">&nbsp;</td>
 	                  	</tr>
 	                  	<tr valign="middle">
 	                  		<td class="marco">&nbsp;</td>
 	                  		<td class="etiqueta" align="right">Nombres&nbsp;&nbsp;</td>
 	                  		<td class="objeto">&nbsp;</td>
-	                  		<td class="objeto"><input name="txtnom"  type="text" class="cajatexto" id="txtnom" onKeyPress="return formato(event,form,this,80)" value="<?=$nom?>" size="50" maxlength="60"></td>
+	                  		<td class="objeto"><input name="txtnom"  type="text" class="cajatexto" id="txtnom" onKeyPress="return formato(event,form,this,80)" value="<?=$nom?>" size="50" maxlength="60" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 	                  		<td class="objeto">&nbsp;</td>
 	                  	</tr>
                   		<tr valign="middle">
@@ -1079,7 +1082,7 @@ require_once 'model/provincia.php';
 	                  		<td class="objeto">
                   				<input name="fefe"  type="text" class="cajatexto" id="fefe" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 || $_GET["sw"]==2 || $_GET["sw"]==4 ) echo ereg_replace('-','/',normal($fecnac));?>" size="15" maxlength="10"  onKeyUp="javascript:calcular_edad();">
                   				&nbsp; 
-                  				<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fefe, "dd/mm/yyyy")'   border="0" height="15" width="15"> 
+                  				<img src="imag/calendaricon.gif" border="0" height="15" width="15"> (dd/mm//yyyy)
                   			</td>
                   			<td class="objeto">&nbsp;</td>
                   		</tr>
@@ -1096,7 +1099,7 @@ require_once 'model/provincia.php';
 							<td class="marco" width="1%">&nbsp;</td>
 							<td class="etiqueta" align="right" width="20%">Profesión o Ocup. &nbsp;&nbsp;</td>
 							<td class="objeto" width="1%">&nbsp;</td>
-							<td class="objeto" width="72%"><input name="profe"  type="text" class="cajatexto" id="profe" onKeyPress="return formato(event,form,this,80)" value="<?=$prof?>" size="64" maxlength="60"></td>
+							<td class="objeto" width="72%"><input name="profe"  type="text" class="cajatexto" id="profe" onKeyPress="return formato(event,form,this,80)" value="<?=$prof?>" size="64" maxlength="60" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 							<td class="objeto" width="6%">&nbsp;</td>
 						</tr>
 						<tr valign="middle">
@@ -1104,7 +1107,7 @@ require_once 'model/provincia.php';
 							<td align="right" class="etiqueta">Estado Civil &nbsp;&nbsp;</td>
 							<td class="objeto">&nbsp;</td>
 							<td class="objeto">
-								<select name="estadocivil"  class="cajatexto" id="cestadocivil">
+								<select name="estadocivil"  class="cajatexto" id="cestadocivil" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
 									<option value="0">--Seleccion un estado--</option>
 									<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO(A)</option>
 									<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO(A)</option>
@@ -1112,7 +1115,7 @@ require_once 'model/provincia.php';
 									<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO(A)</option>
 									<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>>CONVIVIENTE</option>
 								</select>
-								<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->
+								
 							</td>
 							<td class="objeto">&nbsp;</td>
 						</tr>
@@ -1125,7 +1128,7 @@ require_once 'model/provincia.php';
 									<tr>
 										<?php if ($sex=='F'){?> 
 										<td>
-											<input name="sexo" type="radio" value="M" >
+											<input name="sexo" type="radio" value="M" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
 											Masculino
 										</td>
 										<td>
@@ -1138,7 +1141,7 @@ require_once 'model/provincia.php';
 											Masculino
 										</td>
 										<td>
-											<input name="sexo" type="radio" value="F" >
+											<input name="sexo" type="radio" value="F" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
 											Femenino
 										</td>
 										<?php } ?>
@@ -1164,13 +1167,13 @@ require_once 'model/provincia.php';
 										<td width="36">DNI</td>
 										<td width="107">
 											<!-- <input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return formato(event,form,this,8)"value="<?=$dni?>" size="8" maxlength="8"> -->
-											<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($_GET["sw"]==4) {echo 'disabled';} ?> >
+											<input name="dni" type="text" class="cajatexto" id="dni" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?> >
 											<input name="dni22" type="hidden" class="cajatexto" id="dni22" style="text-align: right;"  onKeyPress="return solonumeros(event)" value="<?=$dni?>" size="8" maxlength="8" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 										</td>
 										<td width="32">C.E</td>
 										<td width="90">
 											<!-- <input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return formato(event,form,this,15,0)" value="<?=$ce?>" size="12" maxlength="20"> -->
-											<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($_GET["sw"]==4) {echo 'disabled';} ?> >
+											<input name="ce" type="text" class="cajatexto" id="ce" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?> >
 											<input name="ce22" type="hidden" class="cajatexto" id="ce22" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,8,0)" onKeyPress="return solonumeros(event)" value="<?=$ce?>" size="12" maxlength="9" <?php if ($_GET["sw"]==4 || $_GET["sw"]==3) {echo 'readonly';} ?> >
 										</td>
 										<td width="19">&nbsp;</td>
@@ -1191,7 +1194,7 @@ require_once 'model/provincia.php';
 					    	<td class="marco">&nbsp;</td>
 					    	<td class="etiqueta" align="right">Estatura &nbsp;&nbsp;</td>
 					    	<td class="objeto">&nbsp;</td>
-					    	<td class="objeto"><input name="estatura" type="text" class="cajatexto" id="estatura"  onKeyPress="return formato(event,form,this,80)" value="<?=$est?>" size="8" maxlength="4"></td>
+					    	<td class="objeto"><input name="estatura" type="text" class="cajatexto" id="estatura"  onKeyPress="return formato(event,form,this,80)" value="<?=$est?>" size="8" maxlength="4" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 					    	<td class="objeto">&nbsp;</td>
 					    </tr>
 					    <tr valign="middle">
@@ -1199,7 +1202,7 @@ require_once 'model/provincia.php';
 					    	<td class="etiqueta" align="right">Domicilio &nbsp;&nbsp;</td>
 					    	<td class="objeto">&nbsp;</td>
 					    	<td class="objeto">
-					    		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito(0,0)" style="width: 100px;">
+					    		<select name="provincia" id="provincia" class="cajatexto" onchange="cargadistrito(0,0)" style="width: 100px;" value="<?=$dis?>" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
 					    			<option value="0">---Provincia---</option>
 					    			<?php 
 					    			$pro= new provincia();
@@ -1211,8 +1214,8 @@ require_once 'model/provincia.php';
 					    				}
 					    			?>
 						    	</select>
-    							<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;"></select>
-    							<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64">
+    							<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?> ></select>
+    							<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
     						</td>
     						<td class="objeto">&nbsp;</td>
     					</tr>
@@ -1220,14 +1223,14 @@ require_once 'model/provincia.php';
 				    		<td class="marco">&nbsp;</td>
 				    		<td class="etiqueta" align="right">Teléfono &nbsp;&nbsp;</td>
 				    		<td class="objeto">&nbsp;</td>
-				    		<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono"  value="<?=$tel?>" size="9" maxlength="9" onKeyPress="return solonumeros(event)"></td>
+				    		<td class="objeto"><input name="telefono"  type="text" class="cajatexto" id="telefono"  value="<?=$tel?>" size="9" maxlength="9" onKeyPress="return solonumeros(event)" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 				    		<td class="objeto">&nbsp;</td>
 				    	</tr>
 				    	<tr valign="middle">
 				    		<td class="marco">&nbsp;</td>
 				    		<td class="etiqueta" align="right">Correo &nbsp;&nbsp;</td>
 				    		<td class="objeto">&nbsp;</td>
-				    		<td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$correo?>" size="64" maxlength="64"></td>
+				    		<td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$correo?>" size="64" maxlength="64" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>></td>
 				    		<td class="objeto">&nbsp;</td>
 				    	</tr>
 				    	<tr valign="middle">
@@ -1281,7 +1284,7 @@ require_once 'model/provincia.php';
 				    							<td class="etiqueta" align="right" width="20%">Fecha de Examen&nbsp;&nbsp;</td>
 				    							<td class="objeto" width="1%">&nbsp;</td>
 				    							<td class="objeto" width="72%">
-				    								<input name="fechaexamen" type="datepicker" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,9)" value="<?php if($_GET["sw"]==3 && $fechai!='') {echo ereg_replace('-','/',normal($fechai));}?>" size="15" maxlength="10"  <?php if($_SESSION["cargo"]==6){ echo readonly;}?>  >			  			  
+				    								<input name="fechaexamen" type="datepicker" class="cajatexto" id="fechaexamen" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechai!='') {echo ereg_replace('-','/',normal($fechai));}?>" size="15" maxlength="10"  <?php if($_SESSION["cargo"]==6 && $_GET["sw"]==3 ){ echo readonly;}?>> (dd/mm//yyyy)			  			  
 				    								<!-- <? if($_GET["sw"]!=3 || $_SESSION["cargo"] ==1){?>  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"><? }?> -->
 				    							</td>
 				    							<td class="objeto" width="6%">&nbsp;</td>
@@ -1291,7 +1294,7 @@ require_once 'model/provincia.php';
 				    							<td class="etiqueta" align="right" width="20%">N° de Ficha &nbsp;&nbsp;</td>
 				    							<td class="objeto" width="1%">&nbsp;</td>
 				    							<td class="objeto" width="72%">
-				    								<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="9">
+				    								<input name="nroficha" type="text" class="cajatexto" id="nroficha" onKeyPress="return formato(event,form,this,9)" value="<?=$nrof?>" size="10" maxlength="10">
 				    							</td>
 				    							<td class="objeto" width="6%">&nbsp;</td>
 				    						</tr>
@@ -1386,7 +1389,7 @@ require_once 'model/provincia.php';
 				    								<td class="etiqueta" align="right" width="20%">Fecha de Curso de Profesionalizacion&nbsp;&nbsp;</td>
 				    								<td class="objeto" width="1%">&nbsp;</td>
 				    								<td class="objeto" width="72%">
-				    									<input name="fechacurso" type="datepicker"  class="cajatexto" id="fechacurso"  onKeyPress="return formato(event,form,this,80)" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>" size="15" maxlength="10" <?php if($_SESSION["cargo"] == '6'){ echo readonly;} ?> > (dd/mm//yyyy)
+				    									<input name="fechacurso" type="datepicker"  class="cajatexto" id="fechacurso"  onKeyPress="return formato(event,form,this,80)" value="<?php if ($fechacer=='') {echo '';}else{echo ereg_replace('-','/',normal($fechacer));} ?>" size="15" maxlength="10" <?php if($_SESSION["cargo"] == '6' && $_GET["sw"]==3){ echo readonly;} ?> > (dd/mm//yyyy)
 													<!-- <input name="fechacurso" type="text" class="cajatexto" id="fechacurso" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 && $fechacurso!='') echo ereg_replace('-','/',normal($fechacurso)); ?>" size="15" maxlength="10">			  
 													&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fechaexamen, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
 												</td>
