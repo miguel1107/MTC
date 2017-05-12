@@ -449,10 +449,10 @@
 							<td class="objeto">
 								<select name="estadocivil"  class="cajatexto" id="cestadocivil">
 									<option value="0">--Seleccion un estado--</option>
-									<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO</option>
-									<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO</option>
-									<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO</option>
-									<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO</option>
+									<option value="SOLTERO" <?php if ($estado=='SOLTERO') {echo 'selected';} ?> >SOLTERO(A)</option>
+									<option value="CASADO" <?php if ($estado=='CASADO') {echo 'selected';} ?>>CASADO(A)</option>
+									<option value="VIUDO" <?php if ($estado=='VIUDO') {echo 'selected';} ?>>VIUDO(A)</option>
+									<option value="DIVORCIADO" <?php if ($estado=='DIVORCIADO') {echo 'selected';} ?>>DIVORCIADO(A)</option>
 									<option value="CONVIVIENTE" <?php if ($estado=='CONVIVIENTE') {echo 'selected';} ?>>CONVIVIENTE</option>
 								</select>
 								<!-- <input name="estadocivil"  type="text" class="cajatexto" id="xxxdepe4" onKeyPress="return formato(event,form,this,80)" value="<?=$estado?>" size="30" maxlength="40"> -->

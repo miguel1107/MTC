@@ -51,6 +51,7 @@ function Footer()
 	$link=Conectarse();
 	$tra=$_GET['id'];
 	$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.nrosolicitud FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
+	// echo $sql2;exit;
 	$rs2=pg_query($link,$sql2);
 	$fila2 =pg_fetch_array($rs2);
 	//--
@@ -125,20 +126,24 @@ $pdf->Image('imag/foto.jpg',10,28,27,35,'JPG');
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
 $pdf->Cell(42,5,'NRO TRAMITE:',0,0,'L',1);
+$pdf->Cell(34,5,'SISGEDO:',0,0,'R',0);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,utf8_decode ($fila2[07]),0,'L',0);
+$pdf->Cell(17,5,utf8_decode ($fila2[13]),0,'R',0);
+$pdf->SetFont('Arial','B',9);
+$pdf->SetX(67);
+$pdf->MultiCell(47,5,utf8_decode ($fila2[07]),0,'L',0);
 
-$pdf->SetFont('Arial','',9);
-$pdf->SetX(40);
-$pdf->Cell(42,5,'SISGEDO:',0,0,'L',1);
-$pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,utf8_decode ($fila2[13]),0,'L',0);
+// $pdf->SetFont('Arial','',9);
+// $pdf->SetX(40);
+// $pdf->Cell(42,5,'SISGEDO:',0,0,'L',1);
+// $pdf->SetFont('Arial','B',9);
+// $pdf->MultiCell(64,5,utf8_decode ($fila2[13]),0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
 $pdf->Cell(42,5,'APELLIDOS Y NOMBRES:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,utf8_decode ($fila2[1]).' '.utf8_decode ($fila2[2]).' '.utf8_decode ($fila2[0]),0,'L',0);
+$pdf->MultiCell(64,5,utf8_decode ($fila2[1]).' '.utf8_decode ($fila2[2]).' , '.utf8_decode ($fila2[0]),0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
@@ -156,7 +161,7 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
 $pdf->Cell(42,5,'Nº Y FECHA EX. MEDICO:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,$fila2[5].' '.utf8_decode ($fila27[1]),0,'J',0);
+$pdf->MultiCell(64,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);

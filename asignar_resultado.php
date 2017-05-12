@@ -249,7 +249,7 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <?php if($_SESSION["cargo"]=='1'){ ?>
+                                          <?php if($_SESSION["cargo"]=='1' || $_SESSION["cargo"]=='2'){ ?>
                                           <div align="center">
                                           <?php 
                                               if($reg[8]=='') { 

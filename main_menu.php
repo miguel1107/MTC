@@ -85,7 +85,7 @@ function AbreVentanamess(sURL, Handle){
 							  </tr>
 							<tr>
 							  <td nowrap="nowrap"><div align="center"></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">de Examenes</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">de Examenes de Normas/Manejo</a></div></td>
 							  <td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">Realizadas</a></div></td>
 							  </tr>
 							<tr>
@@ -109,7 +109,7 @@ function AbreVentanamess(sURL, Handle){
 							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">Reporte de Examenes</a></div></td>
 							  </tr>
 							<tr>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">Examenes</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">Examenes de Normas/Manejo</a></div></td>
 							  <td nowrap="nowrap"><div align="center"></div></td>
 							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">y Adicionales</a></div></td>
 							  </tr>

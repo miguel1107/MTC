@@ -22,20 +22,20 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
       <table border="0" cellpadding="0" cellspacing="0" width="52%">
         <tbody><tr>
          <td class="tabsline" width="20"><img src="imag/tabinion.gif" border="0" height="36" width="29"></td>	
-         <td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="buscar_postulante.php"><b>Buscar</b></a></b></nobr></td>	
+         <td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="buscar_postulante.php"><b>BUSCAR POSTULANTE</b></a></b></nobr></td>	
          <td class="tabson" ><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></td>							
-         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="nuevo_postulante.php"><b><span class="G">Nuevo  Tramite</span></b></a></b></nobr></td>
+         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="nuevo_postulante.php"><b><span class="G">NUEVO TRAMITE</span></b></a></b></nobr></td>
          <td class="tabson" ><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
          
-         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">Datos Postulante</span></b></a></b></nobr></td>
+         <td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="listado_postulante.php"><b><span class="G">DATOS DEL POSTULANTE</span></b></a></b></nobr></td>
          <td class="tabson" ><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td  background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramites</span></b></a></b></nobr> </td>
+         <td  background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">LISTADO DE TRAMITE</span></b></a></b></nobr> </td>
          <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">Lista Solicitudes  </span></b></a></b></nobr> </td>
+         <td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">LISTADO DE SOLICITUDES</span></b></a></b></nobr> </td>
          <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">Tramites Anulados</span></b></a></b></nobr> </td>
+         <td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">TRAMITES ANULADOS</span></b></a></b></nobr> </td>
          <td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">Tramites Restaurados</span></b></a></b></nobr> </td>
+         <td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">TRAMITES RESTAURADOS</span></b></a></b></nobr> </td>
          <td class="tabsline" ><span class="tabson"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></span></td>
          <td class="tabsline" width="175"></td>
        </tr>	

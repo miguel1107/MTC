@@ -69,14 +69,14 @@ body {
                   <td colspan="3"><table width="99%" border="0" align="center">
                       <tr>
                         <td width="54" rowspan="3"><img src="../imag/LOGO.JPG" width="60" height="70"></td>
-                        <td width="518"><div align="center" class="Estilo5">DIRECCION REGIONAL DE TRANSPORTES Y COMUNICACIONES - LAMBAYEQUE </div></td>
-                        <td width="82" rowspan="3"><div align="center"><img src="../imag/logo_DRTC.jpg" width="64" height="70"></div></td>
+                        <td width="518"><div align="center" class="Estilo5">GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES - LAMBAYEQUE </div></td>
+                        <td width="82" rowspan="3"><div align="center"><img src="../imag/banner_top1.jpg" width="64" height="70"></div></td>
                       </tr>
                       <tr>
-                        <td><div align="center" class="Estilo5">DIRECCION DE CIRCULACION TERRESTRE </div></td>
+                        <td><div align="center" class="Estilo5">DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE </div></td>
                       </tr>
                       <tr>
-                        <td><div align="center" class="Estilo5">DEPARTAMENTO DE LICENCIAS DE CONDUCIR </div></td>
+                        <td><div align="center" class="Estilo5">AREA DE LICENCIAS DE CONDUCIR </div></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -84,7 +84,7 @@ body {
                   <td colspan="3"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                      
                       <tr>
-                        <td width="82%" colspan="2"><div align="center" class="Estilo1">EXAMEN DE REGLAMENTO DE TRANSITO</div></td>
+                        <td width="82%" colspan="2"><div align="center" class="Estilo1">EXAMEN DE NORMAS DE TRANSITO</div></td>
                        
                       </tr>
                      
@@ -95,7 +95,7 @@ body {
                       <tr>
                         <td><table width="100%" border="0">
                             <tr>
-                              <td width="21%"><strong>N&ordm; DE EXPEDIENTE: </strong></td>
+                              <td width="21%"><strong>N&ordm; DE TRAMITE: </strong></td>
                               <td width="22%"><?=$_GET["idtramite"]?></td>
                               <td width="16%"><strong>CATEGORIA</strong>:</td>
                               <td width="12%">

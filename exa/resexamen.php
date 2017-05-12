@@ -34,6 +34,7 @@ function imprimir(idt,idc,ideva,fecha) {
     <td><table width="100%" height="100%" border="0" align="center">
       <?php
 	  $sq7="Select * from postulante where idpostulante=".$_GET["codigopost"]."";
+	  	// echo $sq7;exit;
 		$rs7=pg_query($link,$sq7); 
 		$reg7=pg_fetch_array($rs7);
 	  ?>
@@ -67,6 +68,15 @@ function imprimir(idt,idc,ideva,fecha) {
       <tr>
         <td colspan="2">&nbsp;</td>
       </tr>
+       <tr>
+       <td colspan="2">
+       		<div align="center">
+       			<span class="Estilo4">DNI:
+          			<?=$reg7[8];?>
+          		</span>
+          	</div>
+        </td>
+        </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
         </tr>

@@ -88,7 +88,7 @@
 			<div class="flc1-datos-de">
 				<table>
 					<tr>
-						<td>N° SOLICITUD (sisgedo)</td>
+						<td>N° SOLICITUD</td>
 						<td><?php echo $sis; ?></td>
 					</tr>
 					<tr>
@@ -197,14 +197,10 @@
 				<td colspan="7" class="flc1-tabla-dato">
 					<p>NOMBRES Y APELLIDOS</p>
 					<p class="flc1-tabla-dato-txt">
-						<span style="width: 40%"><?php echo $nom; ?></span>
-						<span style="width: 30%"><?php echo $app ?></span>
-						<span style="width: 30%"><?php echo $apm ?></span>
+						<span style="width: 100%"><?php echo $nom; ?>&nbsp;,<?php echo $app ?>&nbsp;<?php echo $apm ?></span>
 					</p>
 					<div>
-						<span style="width: 40%">Nombres</span>
-						<span style="width: 30%">Apellido Paterno</span>
-						<span>Apellido Materno</span>
+						<span style="width: 60%">Nombres / Apellido Paterno / Apellido Materno</span>
 					</div>
 				</td>
 				<td colspan="3" class="flc1-tabla-dato">
@@ -219,12 +215,10 @@
 				<td colspan="7" class="flc1-tabla-dato">
 					<p>Dirección</p>
 					<p class="flc1-tabla-dato-txt">
-						<span style="width: 40%"><?php echo $dir; ?></span>
+						<span style="width: 100%"><?php echo $dir; ?></span>
 					</p>
 					<div>
-						<span style="width: 40%">Departamento</span>
-						<span style="width: 30%">Avenida/Calle/Jr.</span>
-						<span>No.</span>
+						<span style="width: 100%">Departamento / Avenida/Calle/Jr.   /   No.</span>
 					</div>
 				</td>
 				<td colspan="3" class="flc1-tabla-dato">
@@ -300,7 +294,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-Nrt :'.$tra?></div>
+		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-N° Tra:'.$tra?></div>
 	</section>
 
 	<section class="flc2 page">
@@ -347,7 +341,7 @@
 			</div>
 		</div>
 		<div></div>
-		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- Nrt :'.$tra ?></div>
+		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- N°Tra :'.$tra ?></div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
 	
@@ -357,11 +351,11 @@
 				<td style="width: 85%" class="flc2-s3-ti">
 					SOLICITUD PARA ATENCION DE SERVICIOS<br>
 					<span>DE LICENCIA DE CONDUCIR</span>
-					<p><?php echo date('d/m/Y H:i:s')?></p>
+					<p><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').' - N°Tra :'.$tra?></p>
 				</td>
 				<td style="width: 0.5%" class="flc2-s3-se"></td>
 				<td style="width: 14.5%" class="flc2-s3-de">
-					N° DE<br>REGISTRO (sisgedo):<br><?php echo $sis ?>
+					N° DE<br>REGISTRO (SISGEDO):<br><?php echo $sis ?>
 				</td>
 			</tr>
 		</table>

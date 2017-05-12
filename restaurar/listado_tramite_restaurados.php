@@ -27,20 +27,20 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
      <tbody>
        <tr>
          <td class="tabsline" width="34"><img src="../imag/tabinion2.gif" border="0" height="36" width="29"></td>
-         <td width="121" align="center" background="../imag/div3.gif" ><nobr><b><a href="../buscar_postulante.php"><b><span class="G">Buscar</span></b></a></b></nobr></td>
+         <td width="121" align="center" background="../imag/div3.gif" ><nobr><b><a href="../buscar_postulante.php"><b><span class="G">BUSCAR POSTULANTE</span></b></a></b></nobr></td>
          <td class="tabson" width="35"><img src="../imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td width="104" align="center" background="../imag/div3.gif" ><span ><nobr><b><a href="../nuevo_postulante.php"><b>&nbsp;<span class="G">Nuevo  Tramite</span></b></a></b></nobr></span></td>
+         <td width="104" align="center" background="../imag/div3.gif" ><span ><nobr><b><a href="../nuevo_postulante.php"><b>&nbsp;<span class="G">NUEVO TRAMITE</span></b></a></b></nobr></span></td>
          <td class="tabson" width="35"><img src="../imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td width="108" align="center" background="../imag/div3.gif" ><nobr><b><a href="../listado_postulante.php"><b><span class="G">Datos Postulante</span></b></a></b></nobr></td>
+         <td width="108" align="center" background="../imag/div3.gif" ><nobr><b><a href="../listado_postulante.php"><b><span class="G">DATOS DEL POSTULANTE</span></b></a></b></nobr></td>
          <td class="tabson" width="35"><img src="../imag/div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td width="119" background="../imag/div3.gif" ><nobr><b><a href="../listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
+         <td width="119" background="../imag/div3.gif" ><nobr><b><a href="../listado_tramite.php"><b><span class="G">LISTADO DE TRAMITE</span></b></a></b></nobr></td>
 		 <td class="tabsline" ><span class="tabson"><img src="../imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-						      <td  background="../imag/div3.gif" ><nobr><b><a href="../list_soli.php"><b><span class="G">Lista Solicitudes  </span></b></a></b></nobr> </td>
+						      <td  background="../imag/div3.gif" ><nobr><b><a href="../list_soli.php"><b><span class="G">LISTADO DE SOLICITUDES</span></b></a></b></nobr> </td>
 				             <td class="tabsline" width="30"><span class="tabson"><img src="../imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td width="128"  background="../imag/div3.gif" ><nobr><b><a href="../listado_tramites_anulados.php"><b><span class="G">Tramites Anulados</span>&nbsp;</b></a></b></nobr> </td>
+         <td width="128"  background="../imag/div3.gif" ><nobr><b><a href="../listado_tramites_anulados.php"><b><span class="G">TRAMITES ANULADOS</span>&nbsp;</b></a></b></nobr> </td>
          <td class="tabsline" width="15"></td>
          <td class="tabsline" width="58"><span class="tabson"><img src="../imag/div22.gif" alt="" border="0" height="36" width="29"></span></td>
-          <td width="128"  background="../imag/div1.gif" ><nobr><b><a href="listado_tramite_restaurados.php"><b><span class="G Estilo2">Tramites Restaurados</span>&nbsp;</b></a></b></nobr> </td>
+          <td width="128"  background="../imag/div1.gif" ><nobr><b><a href="listado_tramite_restaurados.php"><b><span class="G Estilo2">TRAMITES RESTAURADOS</span>&nbsp;</b></a></b></nobr> </td>
           <td class="tabsline" width="58"><span class="tabson"><img src="../imag/div44.gif" alt="" border="0" height="36" width="29"></span></td> 
        </tr>
      </tbody>

@@ -44,6 +44,7 @@ require_once 'model/provincia.php';
 	<script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
 	<script src="js/jquery-ui.js"> </script>
 	<script src="js/nuevo_tramite.js"></script>
+	<script src="js/jquery.mask.js"></script>
 
 	<script type="text/javascript" language="javascript">
 		function AceptaNumero(evt) 
@@ -53,6 +54,13 @@ require_once 'model/provincia.php';
 			return (key <= 13 || key==46 ||  (key >= 38 && key <= 57)); 
 
 		}
+		
+		$(document).ready(function(){
+  			$('#fefe').mask('00/00/0000');
+  			$('#fechaexamen').mask('00/00/0000');
+  			$('#fechacurso').mask('00/00/0000');
+  		});
+
 	</script>
 
 	<script languaje="JavaScript">
@@ -564,6 +572,7 @@ require_once 'model/provincia.php';
 
 <SCRIPT LANGUAGE="JavaScript">
 	<!--
+	var aux = 0;
 	function buscarpostulante(evt,obj,lgd) {
 		var nav4 = window.Event ? true : false;
 		var key = nav4 ? evt.which : evt.keyCode;
@@ -577,13 +586,23 @@ require_once 'model/provincia.php';
 				return false;
 		}
 		return (key <= 13 || key==46 ||  (key >= 38 && key <= 57));
+		var fecha=document.getElementById("fefe").value;
+		aux= 1;
+		calcular_edad(fecha, aux);
+		// document.getElementsByClassName('cajatexto').contentEditable = false;
+		document.getElementsByClassName("cajatexto").disabled = true;
 	}
 
-	function calcular_edad(){
+	function calcular_edad(fechadate, aux){
 
 	    //calculo la fecha de hoy
-
-	    var fecha=document.getElementById("fefe").value;
+	    var fecha="";
+	    if(aux= 0){
+	    	fecha=document.getElementById("fefe").value;
+	    }else {
+	    	fecha = fechadate;
+	    }
+	    
 
 	    var fechaActual = new Date()
 	    var diaActual = fechaActual.getDate();
@@ -626,20 +645,21 @@ require_once 'model/provincia.php';
 					<tbody>
 						<tr>
 							<td class="tabsline" width="20"><img src="imag/tabinion2.gif" border="0" height="36" width="29"></td>	
-							<td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="buscar_postulante.php"><b>&nbsp;&nbsp;<span class="G">Buscar</span>&nbsp;</b></a></b></nobr></td>	
+							<td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="buscar_postulante.php"><b>&nbsp;&nbsp;<span class="G">BUSCAR POSTULANTE
+</span>&nbsp;</b></a></b></nobr></td>	
 							<td class="tabson" width="52"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>							
-							<td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="nuevo_postulante.php"><b>Nuevo  Tramite</b></a></b></nobr></td>
+							<td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="nuevo_postulante.php"><b>NUEVO TRAMITE</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></td>
-							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">Datos Postulante</span>&nbsp;&nbsp;</b></a></b></nobr></td>
+							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">DATOS DEL POSTULANTE</span>&nbsp;&nbsp;</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
 							<td width="175" background="imag/div3.gif" >					    </td>
-							<td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
+							<td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">LISTADO DE TRAMITE</span></b></a></b></nobr></td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">Lista Solicitudes  </span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">LISTADO DE SOLICITUDES</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">Tramites Anulados</span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">TRAMITES ANULADOS</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">Tramites Restaurados</span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">TRAMITES RESTAURADOS</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></span></td>
 						</tr>	
 					</tbody>
@@ -933,7 +953,7 @@ require_once 'model/provincia.php';
 										<tr>
 											<td  height="10" width="6">&nbsp;</td>
 											<td  align="left" width="221"><span class="Estilo1">&nbsp;DATOS DEL REGISTRO</span></td>
-											<td width="216" align="right" ><span class="Estilo1">&nbsp;N° REGISTRO: </span></td>
+											<td width="216" align="right" ><span class="Estilo1">&nbsp;N° TRAMITE: </span></td>
 											<td width="19" align="right" >&nbsp;</td>
 											<td width="79" align="right" ><strong><?=$id?>
 												<input name="idtramite" type="hidden" value="<?=$id?>">
@@ -1080,7 +1100,7 @@ require_once 'model/provincia.php';
 	                  		<td class="etiqueta" align="right">Fecha de Nacimiento &nbsp;</td>
 	                  		<td class="objeto">&nbsp;</td>
 	                  		<td class="objeto">
-                  				<input name="fefe"  type="text" class="cajatexto" id="fefe" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 || $_GET["sw"]==2 || $_GET["sw"]==4 ) echo ereg_replace('-','/',normal($fecnac));?>" size="15" maxlength="10"  onKeyUp="javascript:calcular_edad();">
+                  				<input name="fefe"  type="text" class="cajatexto" id="fefe" onKeyPress="return formato(event,form,this,80)" value="<?php if($_GET["sw"]==3 || $_GET["sw"]==2 || $_GET["sw"]==4 ) echo ereg_replace('-','/',normal($fecnac));?>" size="15" maxlength="10"  onKeyUp="javascript:calcular_edad(document.getElementById('fefe').value, 0);" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
                   				&nbsp; 
                   				<img src="imag/calendaricon.gif" border="0" height="15" width="15"> (dd/mm//yyyy)
                   			</td>
@@ -1091,7 +1111,7 @@ require_once 'model/provincia.php';
                   			<td class="etiqueta" align="right">Edad &nbsp;&nbsp;</td>
                   			<td class="objeto">&nbsp;</td>
 							<td class="objeto">
-								<input name="edad" type="text" class="cajatexto" id="edad" value="<?=$edad?>" size="5" maxlength="2" readonly>
+								<input name="edad" type="text" class="cajatexto" id="edad" value="<?=$edad?>" size="5" maxlength="2" readonly <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
 							</td>
 							<td class="objeto">&nbsp;</td>
 						</tr>
@@ -1215,7 +1235,7 @@ require_once 'model/provincia.php';
 					    			?>
 						    	</select>
     							<select name="distrito" id="distrito" class="cajatexto" style="width: 100px;" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?> ></select>
-    							<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="64" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
+    							<input name="direccion"  type="text" class="cajatexto" id="direccion" onKeyPress="return formato(event,form,this,80)" value="<?=$dom?>" size="65" <?php if ($_GET["sw"]==3) {echo 'disabled';} if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}?>>
     						</td>
     						<td class="objeto">&nbsp;</td>
     					</tr>

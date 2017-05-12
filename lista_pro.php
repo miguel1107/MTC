@@ -60,7 +60,7 @@ $fechaactual=date('Y-m-d');
   ?>
    <table width="100%" border="0" cellspacing="0">
     <tr>  
-      <td colspan="3" align="center"><strong>DIAS DISPONIBLES PARA PROGRAMACION ABRIL</strong></td>
+      <td colspan="3" align="center"><strong>FECHAS DISPONIBLES PARA PROGRAMACION DE MANEJO-MAYO</strong></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

@@ -76,7 +76,7 @@ function asignaresul(i) {
 				$('.color'+i).prop('color', '#0000FF');
 			}
 		}else{
-			alert('NOTA INVÁLIDA');
+			alert('NOTA INVÁLIDA (Solo se permite Ingresar Notas entre los Rangos de 0 a 20)');
 			$('#nota'+i).val('');
 			$('#nota'+i).focus();
 		}
@@ -92,7 +92,7 @@ function asignaresul(i) {
 				$('.color'+i).prop('color', '#0000FF');
 			}
 		}else{
-			alert('NOTA INVÁLIDA');
+			alert('NOTA INVÁLIDA (Solo se permite Ingresar Notas entre los Rangos de 0 a 40)');
 			$('#nota'+i).val('');
 			$('#nota'+i).focus();
 		}

@@ -11,7 +11,7 @@ header("location:ingreso.php?error=WX");
 $record = pg_query($link,"SELECT * from tramite where idtramite='".$_POST["tramite"]."'");
 if(pg_num_rows($record) > 0)
 	{
-	$sql33="SELECT p.idpostulante,p.nombres,p.apepat,p.apemat,t.idtramite,t.idcategoria,c.nombre,e.idevaluacion,e.opcion,e.fecha,e.idexamen ,e.idevaluador,t.tipotramite from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria  where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'";
+	$sql33="SELECT p.idpostulante,p.nombres,p.apepat,p.apemat,t.idtramite,t.idcategoria,c.nombre,e.idevaluacion,e.opcion,e.fecha,e.idexamen ,e.idevaluador,t.tipotramite,p.dni from postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria  where t.idtramite='".$_POST["tramite"]."' and e.fecha='".$fechactual."'";
 
 
 						$res33=pg_query($link,$sql33) or die ("Error : $sql33");
@@ -25,6 +25,7 @@ if(pg_num_rows($record) > 0)
 									//$_SESSION["apellidopat"] = pg_result($record,0,"apepat");
 									//$_SESSION["apellidomat"] = pg_result($record,0,"apemat");
 									$_SESSION["idtramite"] = pg_result($res33,0,"idtramite");
+									$_SESSION["dnice"] = pg_result($res33,0,"dni");
 									$_SESSION["tipotramite"] = pg_result($res33,0,"tipotramite");  // agrego 16/12-08
 									$_SESSION["idcategoria"] = pg_result($res33,0,"idcategoria");
 									$_SESSION["nombre"] = pg_result($res33,0,"nombre");

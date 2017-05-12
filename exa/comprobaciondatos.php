@@ -240,6 +240,12 @@ document.oncontextmenu=new Function("return false")
           <?=$_SESSION["postulante"]?>
         </span></td>
         </tr>
+          <tr>
+        <td class="Estilo5">&nbsp;</td>
+        <td><span class="Estilo5">DNI:
+          <?=$_SESSION["dnice"]?>
+        </span></td>
+        </tr>
       <tr>
         <td class="Estilo5">&nbsp;</td>
         <td><span class="Estilo5">

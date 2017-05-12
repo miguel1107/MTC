@@ -55,6 +55,7 @@ function Footer()
 {
 	$link=Conectarse();
 	$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante  INNER JOIN categoria c on c.idcategoria=t.idcategoria  WHERE t.idtramite='".$_GET["idtramite"]."'";
+	// echo $sql2;exit;
 	$rs2=pg_query($link,$sql2);
 	$fila2 =pg_fetch_array($rs2);
 
@@ -84,8 +85,8 @@ $link=Conectarse();
 	$this->Cell(85,5,$echotra,0,0,'R',1);
 	$this->Cell(10,5,$fila2[38],0,1,'L',1);
 	$this->SetFont('Arial','B',9);
-	$this->Cell(159,5,'',0,0,'R',0);
-	$this->Cell(15,5,'Fecha:',0,0,'R',0);
+	$this->Cell(19,5,'',0,0,'R',0);
+	$this->Cell(15,5,'Fecha de Impresion:',0,0,'R',0);
 	$fechadiaria=date('d/m/Y');
 	$this->Cell(20,5,$fechadiaria,0,1,'L',0);
 	
@@ -94,6 +95,10 @@ $link=Conectarse();
 		$rs_especial=pg_query($link,$sql_especial);
 		$fila_especial =pg_fetch_array($rs_especial);
 		}
+
+	$this->Cell(200,-8,'',0,1,'R',0);
+	$this->Cell(190,1,'Firma Jefe Dpto. Expedición',0,0,'R',0);
+	$this->Cell(1,-12,'________________________',0,0,'R',0);
 }
 }
 //$pdf=new FPDF();
@@ -191,8 +196,8 @@ $pdf->Cell(96,7,'',1,1,'C',1);
 $pdf->Rect(10,155,192,135);
 $pdf->SetFont('Arial','B',10);
 $pdf->SetXY(160,160); 
-$pdf->Cell(30,2,'Nº '.$fila2[19],0,1,'R',1);
-$pdf->Cell(170,5,'N° Sisgedo:  '.$fila2[35],0,1,'R',1);
+$pdf->Cell(30,2,'Nº TRAMITE:'.$fila2[19],0,1,'R',1);
+$pdf->Cell(170,5,'N° SISGEDO:  '.$fila2[35],0,1,'R',1);
 $pdf->Image('imag/foto.jpg',12,164,25,30,'JPG');
 $pdf->Image('imag/LOGO.jpg',39,164,13,15,'JPG');
 $pdf->Image('imag/banner_top1.jpg',125,164,13,15,'JPG');
@@ -231,13 +236,13 @@ $pdf->SetFont('Arial','B',9);
 $pdf->Cell(25,5,'Examen Médico',0,1,'C',1);
 $pdf->SetX(40);
 $pdf->Cell(100,5,'REGISTRO DEL CONDUCTOR ',0,0,'L',1);
-$pdf->Cell(25,5,'Nº Ficha ',1,0,'L',1);
-$pdf->Cell(35,5,'Fecha',1,1,'L',1);
+$pdf->Cell(25,5,'Nº Ficha ',1,0,'C',1);
+$pdf->Cell(35,5,$fila2[20],1,1,'C',1);
 $pdf->SetX(40);
-$pdf->Cell(100,5,'DATOS PERSONALES',0,0,'L',1);
-$pdf->Cell(25,5,$fila2[20],1,0,'C',1);
+$pdf->Cell(100,5,'',0,0,'L',1);
+$pdf->Cell(25,5,'fecha',1,0,'C',1);
 // $feeccha=normal($fila2[17]);
-$pdf->Cell(35,5,$fila2[21],1,1,'L',1);
+$pdf->Cell(35,5,$fila2[21],1,1,'C',1);
 // $pdf->Cell(35,5,$feeccha,1,1,'C',1);
 $pdf->SetX(12);
 $pdf->Cell(53,5,'______________',0,0,'L',0);
@@ -251,15 +256,15 @@ $pdf->MultiCell(59,5,utf8_decode(trim($fila2[2])).' '.utf8_decode(trim($fila2[3]
 //$pdf->MultiCell(59,5,$fila2[2].' '.$fila2[3].' '.$fila2[1],0);
 }
 $pdf->SetXY(140,193);
-$pdf->Cell(25,10,'Resultado',1,0,'L',1);
-$pdf->Cell(35,10,'Restricciones',1,1,'L',1);
+$pdf->Cell(25,10,'Resultado',1,0,'C',1);
+$pdf->Cell(35,10,$fila2[23],1,1,'C',1);
 $pdf->SetX(40);
 $pdf->Cell(41,5,'FECHA DE NACIMIENTO: ',0,0,'L',1);
 $fech=normal($fila2[4]);
 $pdf->Cell(20,5,$fech,0,0,'L',1);
 $pdf->Cell(10,5,'EDAD:',0,0,'R',1);
 $pdf->Cell(29,5,$fila2[5].' años',0,0,'L',1);
-$pdf->Cell(25,5,$fila2[23],1,0,'C',1);
+$pdf->Cell(25,5,'Restricciones',1,0,'C',1);
 $pdf->Cell(35,5,$fila2[24],1,1,'C',1);
 $pdf->SetX(40);
 $pdf->Cell(41,5,'ESTADO CIVIL:',0,0,'L',1);
@@ -290,7 +295,7 @@ $pdf->SetX(40);
 $pdf->Cell(41,5,'DOMICILIO:',0,0,'L',1);
 $pdf->MultiCell(100,5,utf8_decode($fila2[14]),0,1,'L',1);
 $pdf->Cell(136,5,'',0,0,'C',0);
-$pdf->Cell(50,5,'___________________',0,1,'C',1);
+$pdf->Cell(50,5,'',0,0,'L',0); // aca ba la linea
 //$pdf->Ln();
 $pdf->SetX(20);
 $pdf->Cell(25,7,'Nº de Licencia',1,0,'C',1);
@@ -299,7 +304,7 @@ $pdf->Cell(25,7,'Categ.',1,0,'C',1);
 $pdf->Cell(25,7,'Fecha Exp.',1,0,'C',1);
 $pdf->Cell(25,7,'Fecha Venc.',1,0,'C',1);
 $pdf->Cell(5,7,'',0,0,'C',0);
-$pdf->Cell(42,7,'Firma del Interesado',0,1,'C',1);
+$pdf->Cell(42,7,'',0,1,'C',1); //aca va el nombre de la firma
 $pdf->SetX(20);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
@@ -313,7 +318,9 @@ $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(5,7,'',0,0,'C',0);
-$pdf->Cell(30,7,'________________________',0,1,'L',0);
+$pdf->Cell(47,-2,'________________________',0,0,'R',0);
+$pdf->SetX(155);
+$pdf->Cell(38,7,'Firma del postulante',0,1,'R',0);
 $pdf->SetX(20);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
@@ -321,6 +328,8 @@ $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(25,7,'',1,0,'C',1);
 $pdf->Cell(5,7,'',0,0,'C',0);
-$pdf->Cell(30,7,'Firma Jefe Dpto. Expedición',0,1,'L',0);
+// $pdf->SetXY(166,266);
+// $pdf->Cell(30,3,'________________________',0,1,'R',0);
+// $pdf->Cell(185,7,'Firma Jefe Dpto. Expedición',0,0,'R',0);
 $pdf->Output('report_licencias.pdf','I');
 ?>

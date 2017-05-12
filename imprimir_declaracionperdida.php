@@ -50,9 +50,12 @@ $pdf->Cell(50,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'',1);
 /* $pdf->SetXY(180,20); 
 $pdf->Cell(50,5, $xfila27[0],0,1,'L',1);  */
 $pdf->SetXY(55,25); 
-$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES',0,1,'L',1);     
+$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES DE',0,1,'L',1); 
 
-$pdf->SetXY(62,30); 
+$pdf->SetXY(100,30); 
+$pdf->Cell(30,5,'LAMBAYEQUE',0,1,'L',1);   
+
+$pdf->SetXY(62,37); 
 $pdf->Cell(50,5,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'',1);
 
 /*$pdf->SetXY(20,50); 
@@ -89,7 +92,7 @@ $pdf->Cell(50,5,' en la calle ',0,1,'L',1);
 */
 $pdf->SetFont('Arial','B',9);   
 $pdf->SetXY(50,84); 
-$pdf->MultiCell(110,5,$fila2[14],0,1,'R',1);  		            
+$pdf->MultiCell(110,5,utf8_decode($fila2[14]),0,1,'R',1);  		            
 $pdf->SetFont('Arial','B',12);
 /*$pdf->SetXY(163,84); 
 $pdf->Cell(50,5,' ; ante usted',0,1,'L',1); */ 		            
@@ -113,33 +116,33 @@ $pdf->SetFont('Arial','',9);
 $pdf->SetXY(143,110); 
 $pdf->Cell(50,5,'de mi licencia de conducir,',0,1,'L',1);   */
 $pdf->SetXY(40,110); 
-$pdf->MultiCell(170,5,'Que,  he  sido  objeto  de  pérdida,  robo  o  deterioro  de  mi  Licencia  de  Conducir  de  la  clase A,  ',0,1,'',1);
+$pdf->MultiCell(170,5,'Que,  he  sido  objeto  de  pérdida,  robo  o  deterioro  de  mi  Licencia  de  Conducir  de  la  clase A,  ',0,1,'J',1);
 
 
 $pdf->SetXY(20,115); 
-$pdf->MultiCell(170,5,'categoría ',0,1,'L',1);   
+$pdf->MultiCell(170,5,'categoría ',0,1,'J',1);   
 
 $pdf->SetFont('Arial','B',10);	
 $pdf->SetXY(38,115); 
-$pdf->MultiCell(170,5,     $xfila27[0],0,1,'L',1);   
+$pdf->MultiCell(170,5,     $xfila27[0],0,1,'J',1);   
 
 
 $pdf->SetFont('Arial','',9);	
 $pdf->SetXY(50,115); 
-$pdf->MultiCell(170,5,',     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC ,  que  aprueba  el   Reglamento',0,1,'L',1);   
+$pdf->MultiCell(170,5,',     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC ,  que  aprueba  el   Reglamento',0,1,'J',1);   
 
 $pdf->SetFont('Arial','',9);	
 $pdf->SetXY(20,120); 
-$pdf->MultiCell(170,5,'Nacional de  Emisión  de Licencias de Conducir.',0,1,'L',1);   
+$pdf->MultiCell(170,5,'Nacional de  Emisión  de Licencias de Conducir.',0,1,'J',1);   
 
 $pdf->SetXY(20,128); 
-$pdf->MultiCell(170,5,'En señal de conformidad y de acuerdo a lo normado en la Ley N° 27444, Ley del Procedimiento Administrativo General y Modificatoria, firmo la presente en la ciudad de Chiclayo, a los ',0,1,'R',1);  
+$pdf->MultiCell(170,5,'En señal de conformidad y de acuerdo a lo normado en la Ley N° 27444, Ley del Procedimiento Administrativo General y Modificatoria, firmo la presente en la ciudad de Chiclayo, a los ',0,1,'J',1);  
  				
 $datosdias=date('d');
 $pdf->SetXY(111,133); 
 $pdf->Cell(10,5,$datosdias,0,1,'L',1); 	
 $pdf->SetXY(116,133); 
-$pdf->Cell(10,5,' dias del mes de ',0,1,'L',1); 		   
+$pdf->Cell(10,5,' dias del mes de ',0,1,'J',1); 		   
 
 
             $mess=date('m'); 
@@ -189,12 +192,12 @@ $pdf->SetXY(155,150);
 $pdf->Cell(30,40,'',1,0,'C');
 
 $pdf->SetFont('Arial','B',12);
-$pdf->SetXY(150,220); 
-$pdf->Cell(14,4,'N° DE REGISTRO',0,1,'L',1);
+$pdf->SetXY(133,226); 
+$pdf->Cell(38,4,'N° TRAMITE:',0,1,'R',1);
 //$pdf->SetXY(185,8); 
 //$pdf->Cell(10,4,'REGISTRO ',0,1,'L',1);
 $pdf->SetFont('Arial','B',11);
-$pdf->SetXY(173,225); 
+$pdf->SetXY(173,226); 
 $pdf->Cell(14,4,$fila2[19],0,1,'R',1);
 
 $actual = date('d/m/Y H:i:s');
