@@ -340,8 +340,8 @@
 				</div>
 			</div>
 		</div>
-		<div></div>
 		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- N°Tra :'.$tra ?></div>
+		<div style="width: 100px; height: 450px; ">  </div>
 		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
 		</div>
 	
