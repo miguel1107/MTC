@@ -35,8 +35,8 @@ $pdf->Image('imag/LOGO.jpg',20,15,20);
 $pdf->Image('imag/banner_top1.jpg',165,15,20);
 
      
-$pdf->SetXY(70,20); 
-$pdf->Cell(50,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'',1);
+$pdf->SetXY(76,20); 
+$pdf->Cell(54,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'J',1);
 
 
    
@@ -50,13 +50,13 @@ $pdf->Cell(50,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'',1);
 /* $pdf->SetXY(180,20); 
 $pdf->Cell(50,5, $xfila27[0],0,1,'L',1);  */
 $pdf->SetXY(55,25); 
-$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES DE',0,1,'L',1); 
+$pdf->Cell(50,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES DE',0,1,'J',1); 
 
-$pdf->SetXY(100,30); 
-$pdf->Cell(30,5,'LAMBAYEQUE',0,1,'L',1);   
+$pdf->SetXY(96,30); 
+$pdf->Cell(30,5,'LAMBAYEQUE',0,1,'J',1);   
 
-$pdf->SetXY(62,37); 
-$pdf->Cell(50,5,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'',1);
+$pdf->SetXY(62,40); 
+$pdf->Cell(50,5,'DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE',0,1,'J',1);
 
 /*$pdf->SetXY(20,50); 
 $pdf->Cell(50,5,'SEÑOR',0,1,'L',1);        
@@ -115,21 +115,21 @@ $pdf->Cell(50,5,$xfila27[0],0,1,'L',1);
 $pdf->SetFont('Arial','',9);
 $pdf->SetXY(143,110); 
 $pdf->Cell(50,5,'de mi licencia de conducir,',0,1,'L',1);   */
-$pdf->SetXY(40,110); 
-$pdf->MultiCell(170,5,'Que,  he  sido  objeto  de  pérdida,  robo  o  deterioro  de  mi  Licencia  de  Conducir  de  la  clase A,  ',0,1,'J',1);
+$pdf->SetXY(45,110); 
+$pdf->MultiCell(168,5,'Que,  he  sido  objeto  de  pérdida,  robo  o  deterioro  de  mi  Licencia  de  Conducir  de  la  clase A,  ',0,1,'J',1);
 
 
 $pdf->SetXY(20,115); 
-$pdf->MultiCell(170,5,'categoría ',0,1,'J',1);   
+$pdf->MultiCell(168,5,'categoría ',0,1,'J',1);   
 
 $pdf->SetFont('Arial','B',10);	
 $pdf->SetXY(38,115); 
-$pdf->MultiCell(170,5,     $xfila27[0],0,1,'J',1);   
+$pdf->MultiCell(168,5,     $xfila27[0],0,1,'J',1);   
 
 
 $pdf->SetFont('Arial','',9);	
 $pdf->SetXY(50,115); 
-$pdf->MultiCell(170,5,',     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC ,  que  aprueba  el   Reglamento',0,1,'J',1);   
+$pdf->MultiCell(168,5,',     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC ,  que  aprueba  el   Reglamento',0,1,'J',1);   
 
 $pdf->SetFont('Arial','',9);	
 $pdf->SetXY(20,120); 
@@ -198,7 +198,7 @@ $pdf->Cell(38,4,'N° TRAMITE:',0,1,'R',1);
 //$pdf->Cell(10,4,'REGISTRO ',0,1,'L',1);
 $pdf->SetFont('Arial','B',11);
 $pdf->SetXY(173,226); 
-$pdf->Cell(14,4,$fila2[19],0,1,'R',1);
+$pdf->Cell(14,4,$fila2[20],0,1,'R',1);
 
 $actual = date('d/m/Y H:i:s');
 $pdf->SetFont('Arial','',8);

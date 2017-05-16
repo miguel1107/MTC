@@ -79,6 +79,11 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                   <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('delete',0,1,'deleteexareglas.php')" nowrap="nowrap"><img src="imag/delete.gif" alt="Eliminar " width="16" height="16" hspace="1" border="0" align="absmiddle"> Eliminar </td>
                                     <td class="LL">|</td>
                                     <td class="LL">&nbsp;</td>
+
+                                  <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'editar_opcion2.php?sw=2')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Opcion" width="16" height="16" hspace="1" border="0" align="absmiddle">Editar Opcion</td>
+                                    <td class="LL">|</td>
+                                    <td class="LL">&nbsp;</td>
+
                                     
                                     <?php }?>
                                     <td width="100%">&nbsp;</td>

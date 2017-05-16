@@ -94,8 +94,8 @@
 }
 .flc1-datos-de table td {
   vertical-align: middle;
-  padding: 4pt 6pt;
-  width: 1.8cm;
+  padding: 3pt 5pt;
+  width: 6cm;
   border: 1px solid #444;
 }
 .flc1-tabla {
@@ -292,16 +292,16 @@
 }
 .flc2-s1-co div span {
   display: block;
-  border-top: 1pt solid #444;
-  height: 16pt;
-  line-height: 16pt;
-  font-size: 6pt;
-  margin-top: 1.6cm;
+  /*border-top: 1pt solid #444;*/
+  height: 50pt;
+  line-height: 73pt;
+  font-size: 8pt;
+  margin-top: 2cm;
   font-weight: bold;
 }
 .flc2-s1-co p {
-  font-size: 6pt;
-  margin-top: 3pt;
+  font-size: 8pt;
+  margin-top: 7pt;
 }
 .flc2-s2 {
   font-size: 0;
@@ -327,31 +327,36 @@
 }
 .flc2-s2-co div span {
   display: block;
-  height: 16pt;
-  font-size: 6pt;
-  margin-top: 1.6cm;
+  height: 50pt;
+  font-size: 8pt;
+  margin-top: 2cm;
   font-weight: bold;
-  line-height: 23pt;
+  line-height: 73pt;
   text-align: center;
-  border-top: 1pt solid #444;
+  /*border-top: 1pt solid #444;*/
 }
 .fl2-s2-no{
   font-size: 9pt;
 }
 .flc2-sep {
-  margin: 6pt 0;
-  border-top: 0pt dashed #444;
+  margin: -234pt 0;
+  position: absolute;
+  /*border-top: 0pt dashed #444;*/
 }
 .flc2-s3 {
+  margin: -200pt 0;
+  position: absolute;
   font-family: 'Arial Black';
   font-size: 7pt;
   text-align: center;
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
+  display: inline-block;
+  
 }
 .flc2-s3 td {
   vertical-align: middle;
-  padding: 0;
+  padding: 13;
   border: none;
   border: 1pt solid #444;
   padding: 4pt;
@@ -361,7 +366,8 @@
   padding: 0 0 !important;
 }
 .flc2-s3-de {
-  margin-left: 4pt;
+  margin-left: 1pt;
+
 }
 .flc2-s3-de p {
   font-size: 6pt;
@@ -376,6 +382,7 @@
 }
 .flc2-s4 {
   position: relative;
+  margin: -150pt 0;
   font-size: 7pt;
 }
 .flc2-s4-wrap {
@@ -402,13 +409,13 @@
 .flc2-s4-dat div {
   font-size: 10pt;
   font-weight: bold;
+
 }
 .flc2-s4-dat span {
-  display: block;
-  width: 80%;
-  margin: 1.5cm auto 10pt auto;
+  display: inline-block;
+  width: 90%;
+  margin: 2cm auto 10pt auto;
   border-top: 1px solid #444;
-  padding-top: 4pt;
 }
 .flc2-s4-fec {
   font-weight: bold;

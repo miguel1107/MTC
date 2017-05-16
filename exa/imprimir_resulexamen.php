@@ -218,6 +218,16 @@ INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON
                       </tr>
                   </table></td>
                 </tr>
+        <div class="flc1-foot-fihu">
+        <div class="flc1-foot-fihu-fi">
+          <span></span>
+          Firma del Postulante
+        </div>
+        <div class="flc1-foot-fihu-hu">
+          <span></span>
+          Huella Digital
+        </div>
+      </div>
                 <tr valign="middle">
                   <td width="11%">&nbsp;</td>
                   <td width="11%" align="right">&nbsp;</td>

@@ -102,13 +102,13 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                   <td class="objeto"><input name="frase122" size="40" class="cajatexto" id="frase122" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                   <td class="objeto">&nbsp;</td>
                 </tr>
-                <tr valign="middle">
+             <!--    <tr valign="middle">
                   <td class="marco" width="1%">&nbsp;</td>
                   <td class="etiqueta" align="right" width="29%"> CODIGO &nbsp;&nbsp;</td>
                   <td class="objeto" width="1%">&nbsp;</td>
                   <td class="objeto" width="63%"><input name="frase3" size="15" class="cajatexto" id="frase3" maxlength="8" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                   <td class="objeto" width="6%">&nbsp;</td>
-                </tr>
+                </tr> -->
                 <tr valign="middle">
                   <td class="marco" width="1%">&nbsp;</td>
                   <td class="etiqueta" align="right" width="22%">DNI/C.E&nbsp;&nbsp;</td>

@@ -22,7 +22,7 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
 		$fila2 =pg_fetch_array($rs2);
 
 		$echotra;
-		$tra=$fila2[30];
+		$tra=$fila2[31];
 		  $long=strlen($tra);  
 		  if ($long==1) {
 		    $sq="SELECT nombre FROM tipo_tramite WHERE id_tipo='".$tra."'";

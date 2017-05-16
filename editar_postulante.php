@@ -37,6 +37,7 @@
 				$correo=$fila->correo;
 				$tel=$fila->telefono;
 				$dis=$fila->iddistrito;
+				$dona=$fila->donacion;
 				if (!empty($dis)) {
 					$nomdis;
 					$sq2="SELECT p.nombre, p.idprovincia, d.nombre,d.iddistrito from distrito d inner join provincia p on p.idprovincia=d.idprovincia where d.iddistrito='".$dis."' ";
@@ -309,20 +310,20 @@
 					<tbody>
 						<tr>
 							<td class="tabsline" width="20"><img src="imag/tabinion2.gif" border="0" height="36" width="29"></td>	
-							<td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="buscar_postulante.php"><b>&nbsp;&nbsp;<span class="G">Buscar</span>&nbsp;</b></a></b></nobr></td>	
+							<td width="119" align="center" background="imag/div3.gif" ><nobr><b><a href="buscar_postulante.php"><b>&nbsp;&nbsp;<span class="G">BUSCAR POSTULANTE</span>&nbsp;</b></a></b></nobr></td>	
 							<td class="tabson" width="52"><img src="imag/div22.gif" alt="" border="0" height="36" width="29"></td>							
-							<td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="nuevo_postulante.php"><b>Nuevo  Tramite</b></a></b></nobr></td>
+							<td width="119" align="center" background="imag/div1.gif" ><nobr><b><a href="nuevo_postulante.php"><b>NUEVO TRAMITE</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div2.gif" alt="" border="0" height="36" width="29"></td>
-							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">Lista   Postulante</span>&nbsp;&nbsp;</b></a></b></nobr></td>
+							<td width="119" align="center" background="imag/div3.gif"><nobr><b><a href="listado_postulante.php"><b><span class="G">DATOS POSTULANTE</span>&nbsp;&nbsp;</b></a></b></nobr></td>
 							<td class="tabson" width="52"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></td>
 							<td width="175" background="imag/div3.gif" >					    </td>
-							<td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">Lista de Tramite</span></b></a></b></nobr></td>
+							<td width="175" background="imag/div3.gif" ><nobr><b><a href="listado_tramite.php"><b><span class="G">LISTADO TRAMITE</span></b></a></b></nobr></td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">Lista Solicitudes  </span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="list_soli.php"><b><span class="G">LISTADO DE SOLICITUDES</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">Tramites Anulados</span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="listado_tramites_anulados.php"><b><span class="G">TRAMITES ANULADOS</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div222.gif" alt="" border="0" height="36" width="29"></span></td>
-							<td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">Tramites Restaurados</span></b></a></b></nobr> </td>
+							<td  background="imag/div3.gif" ><nobr><b><a href="restaurar/listado_tramite_restaurados.php"><b><span class="G">TRAMITES RESTAURADOS</span></b></a></b></nobr> </td>
 							<td class="tabsline" ><span class="tabson"><img src="imag/div4.gif" alt="" border="0" height="36" width="29"></span></td>
 						</tr>	
 					</tbody>
@@ -573,6 +574,37 @@
 				    		<td class="objeto"><input name="correo"  type="text" class="cajatexto" id="correo" onKeyPress="return formato(event,form,this,80)" value="<?=$correo?>" size="64" maxlength="64"></td>
 				    		<td class="objeto">&nbsp;</td>
 				    	</tr>
+				    	<tr valign="middle">
+							<td height="18" class="marco">&nbsp;</td>
+							<td class="etiqueta" align="right">Donación de Órganos &nbsp;&nbsp;</td>
+							<td class="objeto">&nbsp;</td>
+							<td class="objeto">
+								<table width="200" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<?php if ($dona=='SI'){?> 
+										<td>
+											<input name="donacion" type="radio" value="NO" <?php if ($_GET["sw"]==3) {echo 'disabled';} else { if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}}?>>
+											NO
+										</td>
+										<td>
+											<input name="donacion" type="radio" value="SI" checked>
+											SI
+										</td>
+										<?php }else{?>
+										<td>
+											<input name="donacion" type="radio" value="NO" checked>
+											NO
+										</td>
+										<td>
+											<input name="donacion" type="radio" value="SI" <?php if ($_GET["sw"]==3) {echo 'disabled';} else { if ($ss==1) {echo 'disabled';} else { if($ss==0){echo 'enabled';}}}?>>
+											SI
+										</td>
+										<?php } ?>
+									</tr>
+								</table>
+							</td>
+							<td class="objeto">&nbsp;</td>
+						</tr>
 				    	<tr valign="middle">
 				    		<td class="marco">&nbsp;</td>
 				    		<td class="etiqueta" align="right">&nbsp;</td>

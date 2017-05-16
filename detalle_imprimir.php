@@ -204,9 +204,13 @@ $pdf->Cell(55,7,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,1,'L',1);
 
 //---
-$pdf->Cell(0,10,'  Firma postulante           Huella postulante',0,1,'L',0);
-$pdf->Cell(0,55,'_________________________',0,1,'L',0);
-$pdf->Image('imag/huella.png',45,133,30,40,'PNG');
+$pdf->Cell(22,12,'  Firma postulante ',0,0,'L',0);
+$pdf->Cell(67,12,'Huella postulante',0,0,'R',0);
+$pdf->SetX(12);
+
+$pdf->Cell(0,60,'_________________________',0,0,'L',0);
+
+$pdf->Image('imag/huella.png',70,140,30,35,'PNG');
 //$pdf->Cell(60,78,'HUELLA',0,0,'L',1);
 
 //$pdf->Cell(0,0,'Huella y Firma del postulante',0,1,'L',0);

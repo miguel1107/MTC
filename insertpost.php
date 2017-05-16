@@ -165,7 +165,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 		}
 		if($_POST["sw"]==3){
 			$tramite=$_POST["idtramite"];
-			$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni22"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce22"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."' where idpostulante='".$_POST["idpostulante"]."'";
+			$sql89="update postulante set nombres=E'".addslashes($_POST["txtnom"])."',apepat=E'".addslashes($_POST["apepat"])."',apemat=E'".addslashes($_POST["apemat"])."',fecnac='".$_POST["fefe"]."',edad='".$_POST["edad"]."',profesion='".$_POST["profe"]."',estadocivil='".$_POST["estadocivil"]."',dni='".$_POST["dni22"]."',lm='".$_POST["lm"]."',ce='".$_POST["ce22"]."',ci='".$_POST["ci"]."',sexo='".$_POST["sexo"]."',estatura='".$_POST["estatura"]."',domicilio='".$_POST["direccion"]."', correo='".$_POST['correo']."',telefono='".$_POST['telefono']."', iddistrito='".$_POST['distrito']."',donacion='".$_POST['donacion']."' where idpostulante='".$_POST["idpostulante"]."'";
 			$sr89=pg_query($link,$sql89); //or die ("Error : $sql");
 			
 			if ($_POST["categoria"]=='7'){
@@ -241,7 +241,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 				}							
 				$sr2=pg_query($link,$sql2); 
 			}else{
-				$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono,iddistrito,estado) values(E'".addslashes($_POST["txtnom"])."',E'".addslashes($_POST["apepat"])."',E'".addslashes($_POST["apemat"])."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."','".$_POST["distrito"]."','1')";
+				$sql="insert into postulante (nombres,apepat,apemat,fecnac,edad,profesion,estadocivil,dni,lm,ce,ci,sexo,estatura,domicilio,correo,telefono,iddistrito,estado,donacion) values(E'".addslashes($_POST["txtnom"])."',E'".addslashes($_POST["apepat"])."',E'".addslashes($_POST["apemat"])."','".$_POST["fefe"]."','".$_POST["edad"]."','".$_POST["profe"]."','".$_POST["estadocivil"]."','".$_POST["dni"]."','".$_POST["lm"]."','".$_POST["ce"]."','".$_POST["ci"]."','".$_POST["sexo"]."','".$_POST["estatura"]."','".$_POST["direccion"]."','".$_POST["correo"]."','".$_POST["telefono"]."','".$_POST["distrito"]."','1','".$_POST["donacion"]."')";
 
 				$sr=pg_query($link, $sql); 
 

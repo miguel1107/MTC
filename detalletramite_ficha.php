@@ -17,15 +17,11 @@ $link=Conectarse();
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/script.js"></script>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
 
-function imprimir(cod) {
-	ventana=window.open("detalletramite_imprimir.php?idtramite="+ cod + "","","resizable=NO,scrollbars=yes,HEIGHT=400,WIDTH=700,LEFT=100,TOP=200");
-}
+<script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
+<script src="js/jquery-ui.js"> </script>
 
-// -->
-</SCRIPT>
 <style type="text/css">
 <!--
 .Estilo2 {color: #336699}
@@ -389,7 +385,7 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
                             <td class="catBottom" colspan="7" height="33"><table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[19]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                    <td align="left"><div align="center"><a href="javascript:imprimir(<?=$fila2[20]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                 </tbody>
                             </table></td>
@@ -413,4 +409,15 @@ c.idcategoria=t.idcategoria  WHERE t.idtramite='".$v."'";
     </table></td>
   </tr>
 </tbody></table>
+<script type="text/javascript">
+function imprimir() {
+  var cod="<?php echo $fila2[20]; ?>";
+  ventana=window.open("detalletramite_imprimir.php?idtramite="+ cod + "","","resizable=NO,scrollbars=yes,HEIGHT=400,WIDTH=700,LEFT=100,TOP=200");
+}
+
+$(document).ready(function() {
+  imprimir();
+  location="listado_tramite.php";
+});
+</script>
 </body></html>

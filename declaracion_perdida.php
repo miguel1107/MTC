@@ -313,7 +313,7 @@ echo $xfila27[0];		?>
                                           <input type="hidden" name="idpost" value="<?=$fila2[0]?>">
                                           <input type="hidden" name="pagina" value="listado_tramite.php">
                                           <input type="hidden" name="id" value="<?=$fila2[19]?>">
-                                          <a href="javascript:imprimir(<?=$fila2[19]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
+                                          <a href="javascript:imprimir(<?=$fila2[20]?>)"><img src="imag/print.gif" width="97" height="27" border="0"></a></div></td>
                                     </tr>
                                   </tbody>
                               </table></td>
@@ -335,7 +335,7 @@ echo $xfila27[0];		?>
 </table>
 <script type="text/javascript">
 function imprimir() {
-  var cod="<?php echo $fila2[19]; ?>";
+  var cod="<?php echo $fila2[20]; ?>";
   ventana=window.open("imprimir_declaracionperdida.php?idtramite="+ cod + "","","resizable=NO,scrollbars=yes,HEIGHT=400,WIDTH=700,LEFT=100,TOP=200");
 }
 

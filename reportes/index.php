@@ -88,7 +88,7 @@
 			<div class="flc1-datos-de">
 				<table>
 					<tr>
-						<td>N° SOLICITUD</td>
+						<td>N° SOLICITUD (SISGEDO)</td>
 						<td><?php echo $sis; ?></td>
 					</tr>
 					<tr>
@@ -96,7 +96,7 @@
 						<td><?php echo $fecins ?></td>
 					</tr>
 					<tr>
-						<td>CÓDIGOZONAL</td>
+						<td>CÓDIGO ZONAL</td>
 						<td></td>
 					</tr>
 				</table>
@@ -340,21 +340,20 @@
 				</div>
 			</div>
 		</div>
-		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- N°Tra :'.$tra ?></div>
-		<div style="width: 100px; height: 450px; ">  </div>
-		<div class="flc2-sep">--------------------------------------------------------------------------------------------------------------------------------------
-		</div>
+		<div class="fl2-s2-no" width="100%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- N°Tra :'.$tra ?></div>
+		<div style="width: 100px; height: 480px; ">  </div>
+		<div class="flc2-sep">---------------------------------------------------------------------------------------------------------------------------------------</div>
 	
 
 		<table class="flc2-s3">
 			<tr>
-				<td style="width: 85%" class="flc2-s3-ti">
+				<td style="width: 81.6%" class="flc2-s3-ti">
 					SOLICITUD PARA ATENCION DE SERVICIOS<br>
 					<span>DE LICENCIA DE CONDUCIR</span>
 					<p><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').' - N°Tra :'.$tra?></p>
 				</td>
 				<td style="width: 0.5%" class="flc2-s3-se"></td>
-				<td style="width: 14.5%" class="flc2-s3-de">
+				<td style="width: 20.5%" class="flc2-s3-de">
 					N° DE<br>REGISTRO (SISGEDO):<br><?php echo $sis ?>
 				</td>
 			</tr>
@@ -365,7 +364,7 @@
 				<table>
 					<tr>
 						<td rowspan="2" style="width: 70%" class="flc2-s4-dat">
-							<p>Apellidos y Nombres del Solicitante</p>
+							<p>Nombres y Apellidos del Solicitante</p>
 							<div><?php echo $nom.' '.$app.' '.$apm; ?>  -  <?php if ($dni=="") {
 								 	echo $ce;
 								}else if ($ce==""){ 
