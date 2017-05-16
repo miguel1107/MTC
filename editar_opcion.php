@@ -102,9 +102,9 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
                     <?=$reg[35]?>
                   </div></td>
                   <td><div align="center">
-                    <input type="hidden" name="idexamen" value="<?=$reg[40]?>">
-                    <input type="hidden" name="idtramite" value="<?=$_GET["id"]?>">
-                    <input type="hidden" name="fechaexamen" value="<?=$_GET["fecha"]?>">
+                    <input type="text" id="idexamen" name="idexamen" value="<?=$reg[40]?>">
+                    <input type="text" id="idtramite" name="idtramite" value="<?=$_GET["id"]?>">
+                    <input type="text" id="fechaexamen" name="fechaexamen" value="<?=$_GET["fecha"]?>">
                     <input name="newopcion" type="text" id="newopcion" size="5" maxlength="5">
                   </div></td>
                 </tr>

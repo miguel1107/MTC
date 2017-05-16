@@ -4,7 +4,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
 include ("conectar.php");
 $link=Conectarse();
 
-$sql="update evaluacion set opcion='".$_POST["newopcion"]."' where idtramite=".$_POST["idttra"]." and fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["idexamen"]."'";
+$sql="UPDATE evaluacion set opcion='".$_POST["newopcion"]."' where idtramite='".$_POST["idtramite"]."' and fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["idexamen"]."'";
 echo $sql;exit;
 $sr=pg_query($sql) or die ("Error : $sql");
 

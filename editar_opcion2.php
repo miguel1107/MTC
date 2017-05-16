@@ -79,8 +79,9 @@ a:visited {
             <tr valign="middle">
               <td height="9" colspan="3"><table width="80%" border="1" align="center" cellpadding="1" cellspacing="1">
                 <?php
-$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria INNER JOIN evaluacion e ON e.idtramite=t.idtramite  order by p.idpostulante DESC "; 
-		// echo $sql2;exit;
+$sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria INNER JOIN evaluacion e ON e.idtramite=t.idtramite  order by p.idpostulante DESC ";
+
+//echo $sql2;exit;
     $rs2=pg_query($link,$sql2);
 		$reg=pg_fetch_array($rs2)
 		
@@ -103,9 +104,9 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
                     <?=$reg[35]?>
                   </div></td>
                   <td><div align="center">
-                    <input type="hidden" name="idexamen" value="<?=$reg[40]?>">
-                    <input type="hidden" name="idtramite" value="<?=$_GET["id"]?>">
-                    <input type="hidden" name="fechaexamen" value="<?=$_GET["fecha"]?>">
+                    <input type="text" id="idexamen" name="idexamen" value="<?=$reg[40]?>">
+                    <input type="text" id="idtramite" name="idtramite" value="<?=$reg[19]?>">
+                    <input type="text" id="fechaexamen" name="fechaexamen" value="<?=$reg[42]?>">
                     <input name="newopcion" type="text" id="newopcion" size="5" maxlength="5">
                   </div></td>
                 </tr>
