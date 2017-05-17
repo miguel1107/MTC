@@ -88,9 +88,9 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
 		?>
                 <tr>
                   <td width="57%"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
-                  <!-- <td width="12%"><div align="center"><strong>CATEG.</strong></div></td>
-                  <td width="15%"><div align="center"><strong>OPCION</strong></div></td> -->
-                  <td width="16%"><div align="center"><strong>OPCION</strong></div></td>
+                  <!-- <td width="12%"><div align="center"><strong>CATEG.</strong></div></td> -->
+                  <td width="15%"><div align="center"><strong>OPCION</strong></div></td>
+                  <td width="16%"><div align="center"><strong>NUEVA OPCION</strong></div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#FFCC99';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
                   <td><?=$reg[2]?>
@@ -99,14 +99,14 @@ $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpos
                           <input name="idttra"  type="hidden"  value="<?=$_GET["idttra"]?>"></td> -->
                   <!-- <td><div align="center">
                     <?=$reg[28]?>
-                  </div></td>
+                  </div></td>-->
                   <td><div align="center">
                     <?=$reg[41]?>
-                  </div></td> -->
+                  </div></td>
                   <td><div align="center">
-                    <input type="text" id="idexamen" name="idexamen" value="<?=$reg[46]?>">
-                    <input type="text" id="idtramite" name="idtramite" value="<?=$reg[45]?>">
-                    <input type="text" id="fechaexamen" name="fechaexamen" value="<?=$reg[30]?>">
+                    <input type="hidden" id="idexamen" name="idexamen" value="<?=$reg[46]?>">
+                    <input type="hidden" id="idtramite" name="idtramite" value="<?=$reg[45]?>">
+                    <input type="hidden" id="fechaexamen" name="fechaexamen" value="<?=$reg[30]?>">
                     <input name="newopcion" type="text" id="newopcion" size="5" maxlength="5">
                   </div></td>
                 </tr>
