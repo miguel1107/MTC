@@ -80,7 +80,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                     <td class="LL">|</td>
                                     <td class="LL">&nbsp;</td>
 
-                                  <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'editar_opcion2.php?sw=2')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Opcion" width="16" height="16" hspace="1" border="0" align="absmiddle">Editar Opcion</td>
+                                  <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'editar_opcion2.php?')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Opcion" width="16" height="16" hspace="1" border="0" align="absmiddle">Editar Opcion</td>
                                     <td class="LL">|</td>
                                     <td class="LL">&nbsp;</td>
 
