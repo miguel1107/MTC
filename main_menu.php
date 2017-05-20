@@ -79,14 +79,14 @@ function AbreVentanamess(sURL, Handle){
 							<td width="33%"><div align="center"><a href="pdf_reporte_prog.php" ><img src="imag/7_menu.gif" border="0" height="38" width="38"></a><a href="buscar_solicitud.php"></a></div></td>
 							</tr>
 							<tr>
-							  <td nowrap="nowrap"><div align="center"><a href="buscar_postulante.php">Tramites</a><a href="http://siga.regionlambayeque.gob.pe/sisgedo/app/main.php?_op=31&amp;_type=M"></a></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">Programacion  </a></div></td>
-							   <td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">Reporte Programaciones </a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="buscar_postulante.php">TRAMITES</a><a href="http://siga.regionlambayeque.gob.pe/sisgedo/app/main.php?_op=31&amp;_type=M"></a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">PROGRAMACION</a></div></td>
+							   <td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">REPORTE DE PROGRAMACIONES</a></div></td>
 							  </tr>
 							<tr>
 							  <td nowrap="nowrap"><div align="center"></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">de Examenes de Normas/Manejo</a></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">Realizadas</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="buscar_reg_examen.php">DE EXAMENES DE NORMAS/MANEJO</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">REALIZADAS</a></div></td>
 							  </tr>
 							<tr>
 							  <td nowrap="nowrap" valign="middle"><p>&nbsp;</p></td>
@@ -104,14 +104,14 @@ function AbreVentanamess(sURL, Handle){
 							  <td nowrap="nowrap"><div align="center"><a href="cuenta.php"></a><a href="asig_evaluador.php"><img src="imag/10_menu.gif" border="0" height="38" width="38"></a></div></td>
 							</tr>
 							<tr>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">Resultados  de </a></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_primigenia.php">Asignar N&ordm; Primigenia </a></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">Reporte de Examenes</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">RESULTADO DE</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_primigenia.php">ASIGNAR N&ordm; PRIMIGENIA </a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">REPORTE DE EXAMENES</a></div></td>
 							  </tr>
 							<tr>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">Examenes de Normas/Manejo</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_resultado.php">EXAMENES DE NORMAS/MANEJO</a></div></td>
 							  <td nowrap="nowrap"><div align="center"></div></td>
-							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">y Adicionales</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="asig_evaluador.php">Y ADICIONALES</a></div></td>
 							  </tr>
 							<tr>
 							  <td nowrap="nowrap">&nbsp;</td>
@@ -136,13 +136,13 @@ function AbreVentanamess(sURL, Handle){
 							</tr>
 							<tr>
                               <?php  if($_SESSION["cargo"]=='1'){ ?>
-							  <td nowrap="nowrap"><div align="center"><a href="restaurar/restaurar.php">Restaurar Tr&aacute;mite</a></div></td>
+							  <td nowrap="nowrap"><div align="center"><a href="restaurar/restaurar.php">RESTAURAR TR&Aacute;MITE</a></div></td>
                               <?php } ?>
-							 <td nowrap="nowrap"><div align="center"><a href="cuenta.php">Cambiar Contrase&ntilde;a</a></div></td>
+							 <td nowrap="nowrap"><div align="center"><a href="cuenta.php">CAMBIAR CONTRASE&Ntilde;A</a></div></td>
                             <!--  <td nowrap="nowrap"><div align="center"><a href="formulario_opcion.php"> Postulantes no </a></div></td>-->
 							  <!--<td nowrap="nowrap"><div align="center"><a href="pdf_reporte_prog.php">Reporte Programaciones </a></div></td>-->
                               
-                               <td nowrap="nowrap"><div align="center"><a href="cerrar_sesion.php" target="_parent">Finalizar Sesi&oacute;n </a></div></td>
+                               <td nowrap="nowrap"><div align="center"><a href="cerrar_sesion.php" target="_parent">FINALIZAR SESI&Oacute;N </a></div></td>
 							</tr>
 							<tr>
 							  <td nowrap="nowrap">&nbsp;</td>

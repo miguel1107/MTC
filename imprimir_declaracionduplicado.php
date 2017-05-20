@@ -18,6 +18,7 @@ $pdf->SetLineWidth(.3); //Grosor de Linea
 
 
 $sql2="SELECT * FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE t.idtramite='".$_GET["idtramite"]."'";
+		// echo $sql2;exit;
 		$rs2=pg_query($link,$sql2);
 		$fila2 =pg_fetch_array($rs2);
 
@@ -47,7 +48,7 @@ $pdf->Image('imag/LOGO.jpg',20,15,20);
 $pdf->Image('imag/banner_top1.jpg',165,15,20);
 
      
-$pdf->SetXY(70,20); 
+$pdf->SetXY(78,20); 
 $pdf->Cell(50,5,'GOBIENRO REGIONAL DE LAMBAYEQUE',0,1,'',1);
 
 
@@ -90,7 +91,7 @@ $pdf->SetXY(20,70);
 $pdf->Cell(20,5,'Yo:',0,1,'L',1);                   
 $pdf->SetFont('Arial','B',9);	
 $pdf->SetXY(30,70); 
-$pdf->Cell(50,5,$fila2[1]."   ".$fila2[2]."   ".$fila2[3],0,1,'L',1);                   
+$pdf->Cell(50,5,utf8_decode($fila2[1])."   ".utf8_decode($fila2[2])."   ".utf8_decode($fila2[3]),0,1,'L',1);                   
 $pdf->SetFont('Arial','',9);	
        
 $pdf->SetXY(20,77); 
@@ -136,11 +137,11 @@ $pdf->Cell(50,5,$xfila27[0],0,1,'L',1);
 $pdf->SetFont('Arial','',9);
 $pdf->SetXY(143,110); 
 $pdf->Cell(50,5,'de mi licencia de conducir,',0,1,'L',1);   */
-$pdf->SetXY(40,110); 
+$pdf->SetXY(47,110); 
 $pdf->MultiCell(170,5,'De  no estar  privado  por  resolución  judicial  firme  con calidad  de  cosas  juzgada  del derecho  a  ',0,1,'J',1);
 
 $pdf->SetXY(20,115); 
-$pdf->MultiCell(170,5,'conducir  vehiculos  del  transporte  terrestre ,  ni contar  con  mandatos  de  reexaminación  médica y  psicológica,     de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC , que  aprueba  el   Reglamento  Nacional de  Emisión      de Licencias de Conducir.',0,1,'J',1);   
+$pdf->MultiCell(172,5,'conducir  vehiculos  del  transporte  terrestre ,  ni contar  con  mandatos  de  reexaminación  médica y  psicológica,   de  acuerdo  a  lo  normado  en   el  D.S. Nº 007-2016-MTC ,    que  aprueba  el   Reglamento  Nacional de  Emisión      de Licencias de Conducir.',0,1,'J',1);   
 
 $pdf->SetXY(20,132); 
 $pdf->MultiCell(170,5,'En señal de conformidad y de acuerdo a lo normado en la Ley N° 27444, Ley del Procedimiento Administrativo General y Modificatoria, firmo la presente en la ciudad de Chiclayo, a los ',0,1,'J',1);  
@@ -205,7 +206,7 @@ $pdf->Cell(14,4,'N° TRAMITE :',0,1,'L',1);
 //$pdf->Cell(10,4,'REGISTRO ',0,1,'L',1);
 $pdf->SetFont('Arial','B',11);
 $pdf->SetXY(173,225); 
-$pdf->Cell(14,4,$fila2[19],0,1,'R',1);
+$pdf->Cell(14,4,$fila2[20],0,1,'R',1);
 
 $actual = date('d/m/Y H:i:s');
 $pdf->SetFont('Arial','',8);

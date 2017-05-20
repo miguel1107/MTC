@@ -5,11 +5,23 @@ include ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
 $tra=$_GET['id'];
-$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud,t.sisgedo  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria WHERE t.idtramite='".$tra."'";
+$sql2="SELECT p.nombres, p.apepat, p.apemat, t.fechaini, t.fechafin, t.nroficha, t.idcentro,t.idtramite,t.tipotramite, c.nombre , t.usuario, p.dni, t.nrosolicitud,t.sisgedo  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante inner join categoria c on t.idcategoria=c.idcategoria  WHERE t.idtramite='".$tra."'";
 // echo $sql2;exit;
 $rs2=pg_query($link,$sql2);
 $fila2 =pg_fetch_array($rs2);
 
+//- este es para el historial de notas ->>
+
+$link=Conectarse();
+$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.situacion,e.usuario  
+FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
+inner join categoria c on t.idcategoria=c.idcategoria 
+INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";
+// echo $sql9;exit;
+$rs29=pg_query($link,$sql9);
+$fila29=pg_fetch_array($rs29);
+
+//-->>>>>>>>>>>>>
 
 $sql33="select fecha,* from evaluacion where opcion =(select max (opcion) from evaluacion where idtramite ='".$tra."') and idtramite ='".$tra."' and idexamen =4";
 $rs3 = pg_query($link,$sql33);
@@ -153,15 +165,16 @@ $pdf->MultiCell(64,5,utf8_decode ($fila2[11]) ,0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
-$pdf->Cell(42,5,'FECHA DE VENCIMIENTO:',0,0,'L',1);
+$pdf->Cell(42,5,'Nº Y CENTRO MEDICO:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(65,5,normal($fila2[3]).'  -  '.normal($fila2[4]),0,1,'L',0);
+$pdf->MultiCell(64,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
+
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
-$pdf->Cell(42,5,'Nº Y FECHA EX. MEDICO:',0,0,'L',1);
+$pdf->Cell(42,5,'FECHA DE VENCIMIENTO:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
+$pdf->Cell(65,5,normal($fila2[3]).'  -  '.normal($fila2[4]),0,1,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
@@ -173,6 +186,7 @@ $pdf->Cell(30,7,'_____________________',0,0,'L',1);
 $pdf->Cell(40,5,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,1,'L',1);
 $pdf->SetX(12);
+$pdf->SetXY(12,68);
 $pdf->Cell(130,7,'REGLAS DE TRANSITO',1,1,'C',1);
 $pdf->SetX(12);
 $pdf->Cell(43,6,'',1,0,'L',1);
@@ -186,6 +200,7 @@ $pdf->SetX(12);
 $pdf->Cell(43,6,'',1,0,'L',1);
 $pdf->Cell(44,6,'',1,0,'L',1);
 $pdf->Cell(43,6,'',1,1,'L',1);
+$pdf->Cell(230,7,'_________________________',0,0,'R',0);
 $pdf->SetX(12);
 $pdf->Cell(130,7,'MANEJO',1,1,'C',1);
 $pdf->SetX(12);
@@ -201,9 +216,53 @@ $pdf->Cell(43,7,'',1,0,'L',1);
 $pdf->Cell(44,7,'',1,0,'L',1);
 $pdf->Cell(43,7,'',1,0,'L',1);
 $pdf->Cell(55,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'_____________________',0,1,'L',1);
+$pdf->Cell(30,7,'',0,1,'L',1); // ACA IBA la linea
 
 //---
+$pdf->SetXY(154,110);
+$pdf->Cell(45,9,'"HISTORIAL DE NOTAS":',0,0,'C',0);
+
+
+$pdf->SetXY(154,120);
+$pdf->Cell(28,7,'fechapro',1,0,'C',1);
+$pdf->Cell(45,7,'Situacion',1,0,'C',1);
+$pdf->Cell(45,7,'Usuario',1,1,'C',1);
+
+$pdf->SetXY(154,126);
+$pdf->Cell(28,5,$fila29[8],1,0,'L',1);
+$pdf->Cell(45,5,$fila29[9],1,0,'L',1);
+$pdf->Cell(45,5,$fila29[10],1,1,'L',1);
+
+$pdf->SetXY(154,131);
+$pdf->Cell(28,5,$fila29[8],1,0,'L',1);
+$pdf->Cell(45,5,$fila29[9],1,0,'L',1);
+$pdf->Cell(45,5,$fila29[10],1,1,'L',1);
+
+$pdf->SetXY(154,136);
+$pdf->Cell(28,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,1,'L',1);
+
+$pdf->SetXY(154,141);
+$pdf->Cell(28,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,1,'L',1);
+
+$pdf->SetXY(154,146);
+$pdf->Cell(28,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,1,'L',1);
+
+$pdf->SetXY(154,151);
+$pdf->Cell(28,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,0,'L',1);
+$pdf->Cell(45,5,'',1,1,'L',1);
+
+
+
+
+
+$pdf->SetXY(13,120);
 $pdf->Cell(22,12,'  Firma postulante ',0,0,'L',0);
 $pdf->Cell(67,12,'Huella postulante',0,0,'R',0);
 $pdf->SetX(12);

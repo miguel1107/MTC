@@ -41,7 +41,7 @@
     $correo=$datos[18];
     $tel=$datos[19];
     $dis=$datos[20];
-    $us=$datos[22];
+    $us=$datos[23];
     if ($dis!="") {
     	$sql2="SELECT * FROM provincia p inner join distrito d on d.idprovincia=p.idprovincia where d.iddistrito='".$dis."'";
 	   	$ls=pg_query($link,$sql2);
@@ -184,6 +184,7 @@
 					<div class="flc1-tabla-check2"><i><?php if($cat=='4'){echo "X";}?></i><span>III A</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat=='5'){echo "X";}?></i><span>III B</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat=='6'){echo "X";}?></i><span>III C</span></div>
+					<div class="flc1-tabla-check2"><i><?php if($cat=='7'){echo "X";}?></i><span>IV</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>I</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II A</span></div>
 					<div class="flc1-tabla-check2"><i><?php if($cat==''){echo "X";}?></i><span>II B</span></div>

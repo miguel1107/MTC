@@ -140,7 +140,13 @@
                     </tr>
                     <?php
                       $i=1; 
-                          $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."' and idhora='".$hor."'";
+                          if($exa=='4'){
+                          $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."'";
+                          } else {
+                            if($exa=='1'){
+                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."'"; // and idhora='".$hor."'
+                            }
+                          }
                           $rs2=pg_query($link,$sql2);
                           while($reg=pg_fetch_array($rs2)) { 
                     ?>

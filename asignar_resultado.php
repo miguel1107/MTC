@@ -177,7 +177,13 @@
                                         <td colspan="8">&nbsp;</td>
                                       </tr>
                                       <?php
-                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' and e.idhora='".$hor."' order by p.apepat ASC";
+                                      if($examen=='4'){
+                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC";
+                                        } else {
+                                          if($examen=='1'){
+                                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC"; //and e.idhora='".$hor."' oculte este codigo
+                                          }
+                                        }
                                         $rs2=pg_query($link,$sql2);
                                       ?>
                                       <tr>

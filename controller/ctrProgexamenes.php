@@ -55,6 +55,9 @@
 					$das=pg_fetch_array($rrr);
 					$cu=(int) $das[0];
 					$cupo=$cu-$h;
+					if($cupo=='0'){
+					echo  '<script language="javascript">alert("Por favor Eliga otra Fecha, Cupos Completos");</script>'; 
+					}	
 					$r=$r."<option value='".$da[0]."'>". $da[1]."(".$cupo." disponibles)</option>";	
 				}	
 			}

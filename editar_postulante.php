@@ -223,30 +223,30 @@
 			form1.direccion.focus();
 			return false;
 		}
-		if (form1.telefono.value==""){
-			alert("Debe Ingresar telefono");
-			form1.telefono.focus();
-			return false;
-		}
-		if (form1.correo.value==""){
-			alert("Debe Ingresar Correo");
-			form1.cooreo.focus();
-			return false;
-		}else{
-			var co=form1.correo.value;
-			if (co.includes('@')) {
-				if (co.includes('.')) {
-				}else{
-					alert('Le falta el . al correo');
-					form1.correo.focus;
-					return false;	
-				}
-			}else{
-				alert('Le falta el @ al correo');
-				form1.correo.focus;
-				return false;
-			}
-		}
+		// if (form1.telefono.value==""){
+		// 	alert("Debe Ingresar telefono");
+		// 	form1.telefono.focus();
+		// 	return false;
+		// }
+		// if (form1.correo.value==""){
+		// 	alert("Debe Ingresar Correo");
+		// 	form1.cooreo.focus();
+		// 	return false;
+		// }else{
+		// 	var co=form1.correo.value;
+		// 	if (co.includes('@')) {
+		// 		if (co.includes('.')) {
+		// 		}else{
+		// 			alert('Le falta el . al correo');
+		// 			form1.correo.focus;
+		// 			return false;	
+		// 		}
+		// 	}else{
+		// 		alert('Le falta el @ al correo');
+		// 		form1.correo.focus;
+		// 		return false;
+		// 	}
+		// }
 	}
 
 	function comprobarSiBisisesto(anio){

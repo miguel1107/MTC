@@ -19,7 +19,6 @@
 <script type="text/javascript" src="main.php15_files/libjsgen_extend.js"> </script>
 <script type="text/javascript" src="main.php15_files/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
-<script type="text/javascript" src="js/postulante.js"> </script>
 <script languaje="JavaScript">
   function MM_goToURL() { //v3.0
     var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
@@ -130,8 +129,7 @@
 		 	        if($cant > 0){
 				        foreach($_POST["chk"] as $k =>$v){
                   $sql="SELECT p.nombres,p.apepat, p.apemat,p.dni, c.nombre,t.idtramite,c.idcategoria,t.fechafin,ev.idevaluacion,ev.fecha,ev.idexamen, ev.resultado FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN categoria c ON t.idcategoria=c.idcategoria INNER JOIN evaluacion ev ON ev.idtramite=t.idtramite WHERE ev.idevaluacion='".$v."'";
-        					// echo $sql;exit;
-                  $result=pg_query($sql)or die ("Error : $sql");
+        					$result=pg_query($sql)or die ("Error : $sql");
         					$row=pg_fetch_array($result);
   				      }
               }

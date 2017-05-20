@@ -75,7 +75,7 @@ $pdf->SetXY(20,70);
 $pdf->Cell(20,5,'Yo:',0,1,'L',1);                   
 $pdf->SetFont('Arial','B',9);	
 $pdf->SetXY(30,70); 
-$pdf->Cell(50,5,$fila2[1]."   ".$fila2[2]."   ".$fila2[3],0,1,'L',1);                   
+$pdf->Cell(50,5,utf8_decode($fila2[1])."   ".utf8_decode($fila2[2])."   ".utf8_decode($fila2[3]),0,1,'L',1);                   
 $pdf->SetFont('Arial','',9);	
        
 $pdf->SetXY(20,77); 

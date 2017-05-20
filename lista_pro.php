@@ -34,7 +34,7 @@ body {
 
  <?php
 
-    if ($_SESSION["cargo"]=='1' ) {
+    if ($_SESSION["cargo"]=='1' || $_SESSION["cargo"]=='6' ) {
 
 $fechaactual=date('Y-m-d');
   //$fechaactual='2016-04-22';
