@@ -19,7 +19,7 @@ inner join categoria c on t.idcategoria=c.idcategoria
 INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";
 // echo $sql9;exit;
 $rs29=pg_query($link,$sql9);
-$fila29=pg_fetch_array($rs29);
+
 
 //-->>>>>>>>>>>>>
 
@@ -222,41 +222,44 @@ $pdf->Cell(30,7,'',0,1,'L',1); // ACA IBA la linea
 $pdf->SetXY(154,110);
 $pdf->Cell(45,9,'"HISTORIAL DE NOTAS":',0,0,'C',0);
 
-
 $pdf->SetXY(154,120);
 $pdf->Cell(28,7,'fechapro',1,0,'C',1);
 $pdf->Cell(45,7,'Situacion',1,0,'C',1);
 $pdf->Cell(45,7,'Usuario',1,1,'C',1);
 
+while ($fila29=pg_fetch_array($rs29)) {
+	
 $pdf->SetXY(154,126);
 $pdf->Cell(28,5,$fila29[8],1,0,'L',1);
 $pdf->Cell(45,5,$fila29[9],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[10],1,1,'L',1);
+$pdf->Cell(45,5,$fila29[10],1,1,'L',1);	
+}
 
-$pdf->SetXY(154,131);
-$pdf->Cell(28,5,$fila29[8],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[9],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[10],1,1,'L',1);
 
-$pdf->SetXY(154,136);
-$pdf->Cell(28,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,1,'L',1);
+// $pdf->SetXY(154,131);
+// $pdf->Cell(28,5,$fila29[8],1,0,'L',1);
+// $pdf->Cell(45,5,$fila29[9],1,0,'L',1);
+// $pdf->Cell(45,5,$fila29[10],1,1,'L',1);
 
-$pdf->SetXY(154,141);
-$pdf->Cell(28,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,1,'L',1);
+// $pdf->SetXY(154,136);
+// $pdf->Cell(28,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,1,'L',1);
 
-$pdf->SetXY(154,146);
-$pdf->Cell(28,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,1,'L',1);
+// $pdf->SetXY(154,141);
+// $pdf->Cell(28,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,1,'L',1);
 
-$pdf->SetXY(154,151);
-$pdf->Cell(28,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,0,'L',1);
-$pdf->Cell(45,5,'',1,1,'L',1);
+// $pdf->SetXY(154,146);
+// $pdf->Cell(28,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,1,'L',1);
+
+// $pdf->SetXY(154,151);
+// $pdf->Cell(28,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,0,'L',1);
+// $pdf->Cell(45,5,'',1,1,'L',1);
 
 
 
