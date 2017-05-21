@@ -19,6 +19,10 @@
 <script type="text/javascript" src="main.php15_files/libjsgen_extend.js"> </script>
 <script type="text/javascript" src="main.php15_files/popcalendar.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
+<script src="js/jquery-2.0.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
+  <script src="js/jquery-ui.js"> </script>
+  <script src="js/prog_examenes.js"></script>
 <script languaje="JavaScript">
   function MM_goToURL() { //v3.0
     var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
@@ -229,11 +233,12 @@
       			         <?php if(date('Y-m-d') < $row[9] && empty($row[11])){ ?>
                     <tr valign="middle">
                       <td class="marco" width="1%">&nbsp;</td>
-                      <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp; <img src="imag/calendaricon.gif" onClick='' border="0" height="15" width="15">
+                      <td class="etiqueta" align="right" width="22%">Fecha &nbsp;&nbsp; <!-- <img src="imag/calendaricon.gif" onClick='' border="0" height="15" width="15"> -->
                       </td>
                       <td class="objeto" width="1%">&nbsp;</td>
                       <td class="objeto" width="78%">
-                        <input name="xxxfecha" class="cajatexto" id="xxxfecha" onChange="consulta(form1.xxxfecha,<?=$row['idexamen']?>,'Desactivar')"  size="15" maxlength="10" type="text" readonly>
+                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
+                        
                           Click sobre la caja de texto
                           &nbsp; <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
                       </td>
@@ -259,11 +264,12 @@
                         <td class="objeto" width="78%">
                         <!--  onKeyPress="return formato(event,form,this,10)" -->
                         <input type="hidden" name="xxxidtra"  id="xxxidtra"  size="15" maxlength="10" value=""<?=$row[5]?>"" >
-                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="text" readonly onChange="consulta(form1.xxxfecha,<?=$row['idexamen']?>,'Desactivar')"> 
+                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
+                        <!-- <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="text" readonly onChange="consulta(form1.xxxfecha,<?=$row['idexamen']?>,'Desactivar')">  -->
                           Click sobre la caja de texto
                           &nbsp; <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15">--> 
-                        <img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15">
-                        <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fecha_prog, "dd/mm/yyyy");consulta(form1.fecha_prog,1,"Desactivar");' border="0" height="15" width="15">                       </td>-->
+<!--                         <img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15">
+ -->                        <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fecha_prog, "dd/mm/yyyy");consulta(form1.fecha_prog,1,"Desactivar");' border="0" height="15" width="15">                       </td>-->
                           <td valign="middle" class="objeto">
                             <input type="hidden" id="variablePadre">
                             <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
@@ -333,6 +339,7 @@
       </td>
     </tr>
   </table>
+  <input type="hidden" name="fechasblo" id="fechasblo">
 </td>
 </tr>
 </tbody>
@@ -349,67 +356,116 @@
     };
 
 
-    var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016"];
-
-    function noWeekendsOrHolidays(date) {
-    	var m = date.getMonth();
-    	var d = date.getDate();
-    	var y = date.getFullYear();
-     
-    	for (var i = 0; i < disabledSpecificDays.length; i++) {
-    		if ($.inArray((m + 1) + '-' + d + '-' + y, disabledSpecificDays) != -1 || new Date() > date) {
-    			return [false];
-    		}
-    	}
-     
-    	var noWeekend = $.datepicker.noWeekends(date);
-    	return !noWeekend[0] ? noWeekend : [true];
+     function retornaFechas() {
+      $.ajax({
+        url: 'controller/ctrFechasBloquedas.php',
+        type: 'POST',
+        data: {action: 'lista'},
+      })
+      .done(function(data) {
+        dias=data.split(",");
+        $('#fechasblo').val(dias);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
     }
 
+    //var disabledSpecificDays = ["7-4-2016","7-5-2016","7-6-2016","7-7-2016","7-8-2016","7-28-2016","7-29-2016","8-30-2016","10-5-2016","10-6-2016","10-7-2016","11-1-2016","12-8-2016"];
+
+     function noWeekendsOrHolidays(date) {
+      var fe=$('#fechasblo').val().substring(1);
+      
+      var ar=fe.split(",");
+      console.log(ar);
+      var disabledSpecificDays = ar;
+      console.log(disabledSpecificDays);
+      var m = date.getMonth();
+      var d = date.getDate();
+      var y = date.getFullYear();
+      for (var i = 0; i < disabledSpecificDays.length; i++) {
+        if ($.inArray((m + 1) + '-' + d + '-' + y, disabledSpecificDays) != -1 || new Date() > date) {
+          return [false];
+        }
+      }
+      var noWeekend = $.datepicker.noWeekends(date); 
+       return !noWeekend[0] ? noWeekend : [true];
+    }
 
     $(document).ready(function(){
-    	<?php
-    	$fecha = date('d/m/Y');
-    //	$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
-    //	$nuevafecha = date ( 'd/m/Y' , $nuevafecha );
-    //	$nuevafecha = date('d/m/Y', strtotime('+2 day')) ; 
-    	$nuevafecha = date('d/m/Y', strtotime('+1  day')) ; 
-      $newmax = date('d/m/Y', strtotime('+8 day')) ; // Suma 1 días
-
-    	?>	
-    	$( "#xxxfecha" ).datepicker({
-    		dateFormat: 'dd/mm/yy',
-    		changeMonth: true,
-        	changeYear: true,
-    		constrainInput: true,
-    		//beforeShowDay: fechas, 
-    		<?php if ( $row[10] =='1' ) { ?>	beforeShowDay: noExcursion , 
-    		<?php } else {?> 		beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
-    		//beforeShowDay: noWeekendsOrHolidays,  
-    		<?php /*?>minDate: '<?php echo date('d/m/Y')?>',<?php */?>
-    		minDate: '<?php if ($_SESSION["cargo"]=='1' || $row[10] =='1' ) { echo 0;} else echo $nuevafecha;?>',
-    		maxDate: '<?php echo date('28/02/2017')?>',
+      retornaFechas();
+      <?php
+        $fecha = date('d/m/Y');
+        $nuevafecha = date('d/m/Y', strtotime('+1 day')) ; // Suma 1 días
+        $sqq="SELECT progexam FROM plazo where id='1' ";
+        $rsss=pg_query($link,$sqq);
+        $dass=pg_fetch_array($rsss);
+        $plazo=$dass[0];
+        $str="+".$plazo." day";
+        $newmax = date('d/m/Y', strtotime('+'.$plazo.' day')) ;
+       ?>
+      $( "#xxxfecha" ).datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        constrainInput: true,
+        //beforeShowDay: fechas,
+        //beforeShowDay: $.datepicker.noWeekends, 
+        <?php if ($exa == '1') { ?> beforeShowDay: noExcursion , 
+        <?php } else {?>    beforeShowDay: noWeekendsOrHolidays,  <?php } ?> 
+        beforeShowDay: noWeekendsOrHolidays,  
+        minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
         maxDate: '<?php echo $newmax;?>',
-    		onClose: function(date){			
-    			$.ajax({
-    				url: 'CalcularPostulante_edicion.php',
-    				type: 'GET',
-    				data: { fechann: date , tiponn: $('#txtidexamen1').val(), xajax : true },
-    				success: function(datos){
-    					datos = parseInt(datos);
-    					if(datos < 100){
-    						$('#txtsubmit').show();
-    					} else {
-    						alert('Supero el limite de programaciones diarias de postulantes')
-    						$('#txtsubmit').hide();
-    					}
-    				}
-    			})
-    		}	
-    	});
+        onSelect: function () {
+          consultaCupo();
+        },
+        onClose: function(date){
+          console.log(date);
+        } 
+      });
     })
 
-</script>
+// var disabledDays =  ["13-4-2017","14-4-2017","1-5-2017","29-6-2017","28-7-2017","29-7-2017","30-8-2017","1-11-2017","8-12-2017","25-12-2017"];
+
+
+// function  nationalDays ( fecha )  { 
+//   var m = fecha .getMonth();
+//   var d = fecha .getDate();
+//   var y = fecha .getFullYear();
+//   //console.log('Checking (en bruto): '+ m + '-' + d + '-' + y); 
+//   for  ( i =  0 ; i < disabledDays.length ; i ++ )  { 
+//     if ( $ . InArray ( ( m + 1 )  +  '-'  + d +  '-'  + y , disabledDays )  =!  - 1  ||  new  fecha ( )  > fecha )  { 
+//       //console.log('bad: '+ (m + 1) + '-' + d + '-' + y +' / '+ disabledDays [i]); 
+//       return  [ false ] ; 
+//     } 
+//   } 
+//   //console.log('good: '+ (m + 1) + '-' + d + '-' + y); 
+//       return  [ true ] ; 
+// } 
+// function  noWeekendsOrHolidays ( fecha )  { 
+//   var noWeekend = $.datepicker. noWeekends ( fecha ) ; 
+//   return noWeekend [ 0 ]  ?  nationalDays ( fecha )  : noWeekend ; 
+// }
+
+// $( document ) . ready ( function ( )  { 
+//   $ ( "#fecha_prog1" ) . datepicker ( { 
+//         dateFormat: 'dd/mm/yy',
+//         changeMonth: true,
+//         changeYear: true,
+//         constrainInput: true,
+//         beforeShowDay: fechas,
+//         beforeShowDay: $.datepicker.noWeekends, 
+        
+//         beforeShowDay: noWeekendsOrHolidays,  
+//         minDate: new fecha (2017,0,1),
+//         maxDate: new fecha (2017,5,31)
+        
+//    } ) ; 
+// } ) ;
+  </script>
 
 
 </body></html>
