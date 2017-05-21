@@ -13,7 +13,7 @@ $fila2 =pg_fetch_array($rs2);
 //- este es para el historial de notas ->>
 
 $link=Conectarse();
-$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.situacion,e.usuario  
+$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.resultado,e.usuario  
 FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
 inner join categoria c on t.idcategoria=c.idcategoria 
 INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";

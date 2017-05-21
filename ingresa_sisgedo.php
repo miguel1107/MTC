@@ -145,7 +145,7 @@
                   <td class="marco" width="1%">&nbsp;</td>
                   <td class="etiqueta" align="right" width="22%">Número de SISGEDO &nbsp;&nbsp;</td>
                   <td class="objeto" width="1%">&nbsp;</td>
-                  <td class="objeto" width="78%"><input name="numsisgedo" size="9" class="cajatexto" id="numsisgedo" maxlength="9" onKeyPress="return formato(event,form,this,80)" type="text" value="<?php echo $sisg; ?>"  <?php if ($sisg!='') {echo 'disabled';} ?>></td>
+                  <td class="objeto" width="78%"><input name="numsisgedo" size="10" class="cajatexto" id="numsisgedo" maxlength="10" onKeyPress="return buscarpostulante(event,this,10)" type="text" value="<?php echo $sisg; ?>"  <?php if ($sisg!='') {echo 'disabled';}?>></td>
                   <td class="objeto" width="1%">&nbsp;</td>
                 </tr>                
                 <tr>

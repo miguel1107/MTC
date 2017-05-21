@@ -208,16 +208,16 @@
 			form1.estatura.focus();
 			return false;
 		} 
-		if (form1.provincia.value=="0"){
-			alert("Debe escoger una provincia");
-			form1.provincia.focus();
-			return false;
-		}
-		if (form1.distrito.value=="0"){
-			alert("Debe escoger un distrito");
-			form1.distrito.focus();
-			return false;
-		}
+		// if (form1.provincia.value=="0"){
+		// 	alert("Debe escoger una provincia");
+		// 	form1.provincia.focus();
+		// 	return false;
+		// }
+		// if (form1.distrito.value=="0"){
+		// 	alert("Debe escoger un distrito");
+		// 	form1.distrito.focus();
+		// 	return false;
+		// }
 		if (form1.direccion.value==""){
 			alert("Debe Ingresar Direccion");
 			form1.direccion.focus();
