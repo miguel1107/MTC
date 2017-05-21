@@ -30,6 +30,42 @@ function consultaCupo() {
 	});
 }
 
+
+
+function consultaCupoedit() {
+	var fe=$("#xxxfecha").val();
+	var ex=$("#idexamen").val();
+	if(ex=='1'){
+		var con=ex;
+	}else{
+		con='0';
+	}
+	if(ex=='4'){
+		var man=ex;
+	}else{
+		man='0';
+	}
+	console.log(ex+'-'+con+'.'+man);
+	var options={
+		type: 'post',
+ 		url: 'controller/ctrProgexamenes.php',
+ 		data: {
+ 			fecha:fe,
+ 			con:con,
+ 			man: man,
+ 			action: 'consulta'
+ 		},
+	};
+	$.ajax(options)
+	.done(function(data) {
+		if (man=='4') {
+			$('#cupoe').html(data);
+		}else{
+			$('#horae').html(data);
+		}
+	});
+}
+
 function validar(fomr1) {
 	if ($('#fecha_prog1').val()==''){
     	alert("Debe ingresar la fecha de Programación");

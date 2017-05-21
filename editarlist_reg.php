@@ -237,16 +237,36 @@
                       </td>
                       <td class="objeto" width="1%">&nbsp;</td>
                       <td class="objeto" width="78%">
-                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
-                        
+                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupoedit()" readonly>
                           Click sobre la caja de texto
                           &nbsp; <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15"> -->
                       </td>
-                        <td valign="middle" class="objeto"><input type="hidden" id="variablePadre">
-                          <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
+                      <td valign="middle" class="objeto">
+                          <body>
+                            <table width="565" height="18" border="1" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td width="34" height="16" valign="top" id="cupoe">
+                                </td>
+                                <td width="399" valign="top">
+                                   <span class="Estilo2">Cupos disponibles</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </body>
+                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>-->                        
                         </td>
                         <td class="objeto" width="1%">&nbsp;</td>
                     </tr>
+                    <tr valign="middle">
+                        <td class="marco">&nbsp;</td>
+                        <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
+                        <td class="objeto">&nbsp;</td>
+                        <td class="objeto" width="23%">
+                          <select name="hora" id="hora" class="objeto"></select>
+                        </td>
+                        <td class="objeto" width="2%">&nbsp;</td>
+                        <td class="objeto" width="2%">&nbsp;</td>
+                      </tr>
                     <tr valign="middle">
                       <td class="marco">&nbsp;</td>
                       <td class="etiqueta" align="right">Dias disponibles para programacion: &nbsp;<img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15"></td>
@@ -264,17 +284,37 @@
                         <td class="objeto" width="78%">
                         <!--  onKeyPress="return formato(event,form,this,10)" -->
                         <input type="hidden" name="xxxidtra"  id="xxxidtra"  size="15" maxlength="10" value=""<?=$row[5]?>"" >
-                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupo()" readonly>
+                        <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="datepicker" onchange="consultaCupoedit()" readonly>
                         <!-- <input name="xxxfecha" class="cajatexto" id="xxxfecha"  size="15" maxlength="10" type="text" readonly onChange="consulta(form1.xxxfecha,<?=$row['idexamen']?>,'Desactivar')">  -->
                           Click sobre la caja de texto
                           &nbsp; <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15">--> 
 <!--                         <img src="imag/calendaricon.gif" onclick='' border="0" height="15" width="15">
  -->                        <!--<img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.fecha_prog, "dd/mm/yyyy");consulta(form1.fecha_prog,1,"Desactivar");' border="0" height="15" width="15">                       </td>-->
                           <td valign="middle" class="objeto">
-                            <input type="hidden" id="variablePadre">
-                            <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>
-                          </td>
+                          <body>
+                            <table width="565" height="18" border="1" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td width="34" height="16" valign="top" id="cupoe">
+                                </td>
+                                <td width="399" valign="top">
+                                   <span class="Estilo2">Cupos disponibles</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </body>
+                          <!-- <iframe name="CFE" src="CalcularPostulanteV.php" width="570" height="25" scrolling="no" frameborder="0"></iframe>-->                        
+                        </td>
                           <td class="objeto" width="1%">&nbsp;</td>
+                      </tr>
+                       <tr valign="middle">
+                        <td class="marco">&nbsp;</td>
+                        <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
+                        <td class="objeto">&nbsp;</td>
+                        <td class="objeto" width="23%">
+                          <select name="hora" id="hora" class="objeto"></select>
+                        </td>
+                        <td class="objeto" width="2%">&nbsp;</td>
+                        <td class="objeto" width="2%">&nbsp;</td>
                       </tr>
             			    <tr>
                         <td height="5"></td>
@@ -328,6 +368,7 @@
                             </tbody>
                           </table>
                         </td>
+                        <input type="text" id="idexamen" name="idexamen" value="<?php echo $row[10]; ?>">
                       </tr>
                     </tbody>
                   </table>
@@ -380,9 +421,9 @@
       var fe=$('#fechasblo').val().substring(1);
       
       var ar=fe.split(",");
-      console.log(ar);
+      //console.log(ar);
       var disabledSpecificDays = ar;
-      console.log(disabledSpecificDays);
+      //console.log(disabledSpecificDays);
       var m = date.getMonth();
       var d = date.getDate();
       var y = date.getFullYear();
@@ -420,7 +461,7 @@
         minDate: '<?php if ($_SESSION["cargo"]=='1' || $exa == '1') { echo 0;} else echo $nuevafecha;?>',
         maxDate: '<?php echo $newmax;?>',
         onSelect: function () {
-          consultaCupo();
+          consultaCupoedit();
         },
         onClose: function(date){
           console.log(date);
