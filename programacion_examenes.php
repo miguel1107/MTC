@@ -165,6 +165,7 @@
                             $sss="SELECT nombre from categoria where idcategoria='".$row[5]."'";
                             $rs11=pg_query($link,$sss) or die(false);
                             
+                            
                             if (pg_num_rows($rs11)==0) {
                               $catt=$row[5];
                             }else{
