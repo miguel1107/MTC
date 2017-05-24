@@ -12,15 +12,15 @@ $fila2 =pg_fetch_array($rs2);
 
 //- este es para el historial de notas ->>
 
-$link=Conectarse();
-$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.resultado,e.usuario  
-FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante 
-inner join categoria c on t.idcategoria=c.idcategoria 
-INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";
-// echo $sql9;exit;
+$sql9="SELECT * from evaluacion where idtramite='".$tra."'";
+//$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.resultado,e.usuario  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante  inner join categoria c on t.idcategoria=c.idcategoria  INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";
+//echo $sql9;
 $rs29=pg_query($link,$sql9);
 
+//$fila29=pg_fetch_array($rs29);
 
+//echo $fila29."----";
+//echo pg_num_rows($rs29);exit;
 //-->>>>>>>>>>>>>
 
 $sql33="select fecha,* from evaluacion where opcion =(select max (opcion) from evaluacion where idtramite ='".$tra."') and idtramite ='".$tra."' and idexamen =4";
@@ -165,7 +165,7 @@ $pdf->MultiCell(64,5,utf8_decode ($fila2[11]) ,0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
-$pdf->Cell(42,5,'Nº Y CENTRO MEDICO:',0,0,'L',1);
+$pdf->Cell(42,5,'NÂº Y CENTRO MEDICO:',0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
 $pdf->MultiCell(64,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
 
@@ -227,12 +227,14 @@ $pdf->Cell(28,7,'fechapro',1,0,'C',1);
 $pdf->Cell(45,7,'Situacion',1,0,'C',1);
 $pdf->Cell(45,7,'Usuario',1,1,'C',1);
 
-while ($fila29=pg_fetch_array($rs29)) {
-	
+
+
+while ($fila29=pg_fetch_array($rs29)){
+//echo "123";
 $pdf->SetXY(154,126);
 $pdf->Cell(28,5,$fila29[8],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[9],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[10],1,1,'L',1);	
+$pdf->Cell(45,5,$fila29[2],1,0,'L',1);
+$pdf->Cell(45,5,$fila29[9],1,1,'L',1);	
 }
 
 
