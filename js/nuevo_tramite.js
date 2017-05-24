@@ -23,6 +23,7 @@ function mostrarcurso(cat,tip){
  	.always(function() {
  		console.log("complete");
  	});
+ 	mostrarAutocomplete(cat);
 }
 
 function cursoespecial() {
@@ -60,12 +61,33 @@ function cursoespecial() {
  			// 	divM = document.getElementById("medico");
  			// 	divM.style.display="block";	
 			//}
-		}else if( tra='4'){
+		}else if( tra=='4'){
 			divC = document.getElementById("especial");
  			divC.style.display="none";
  			divM = document.getElementById("medico");
  			divM.style.display="none";	
 		}
+	}
+	mostrarAutocomplete(cat);
+}
+
+function mostrarAutocomplete (cat) {
+	console.log('ee');
+	console.log(cat);
+	if (cat=='7') {
+		divC = document.getElementById("nomcentrocursoespecial");
+ 		divC.type="text";
+ 		divD = document.getElementById("nomcentrocurso");
+ 		divD.type="hidden";
+		// $('#nomcentrocursoespecial').attr('type', 'text');
+		// $('#nomcentrocurso').attr('type', 'hidden');
+	}else{
+		divC = document.getElementById("nomcentrocursoespecial");
+ 		divC.type="hidden";
+ 		divD = document.getElementById("nomcentrocurso");
+ 	 	divD.type="text";
+		// $('#nomcentrocursoespecial').attr('type', 'hidden');
+		// $('#nomcentrocurso').attr('type', 'text');
 	}
 }
 
@@ -118,6 +140,17 @@ $(document).ready(function() {
 			console.log(ui);
 			event.preventDefault();
 			$('#nomcentrocurso').val(ui.item.label);
+			$('#idcentrocurso').val(ui.item.id);
+		},
+	});
+
+
+	$("#nomcentrocursoespecial").autocomplete({
+		source:'autocompletes/cursoespecial.php',
+		select : function(event,ui) {
+			console.log(ui);
+			event.preventDefault();
+			$('#nomcentrocursoespecial').val(ui.item.label);
 			$('#idcentrocurso').val(ui.item.id);
 		},
 	});

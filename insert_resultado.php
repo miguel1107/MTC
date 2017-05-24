@@ -13,13 +13,17 @@ while($_POST["total"] >= $num){
 			$nota=$_POST["nota".$num.""];
 		}
 		if($_POST["categoria"]!='1'){
-			$sql2="update evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."'";
+			//echo('MANEJO');exit;
+			//$sql2="UPDATE evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje=".$nota." where fecha='".$_POST["fechaexamen"]."' and idexamen=".$_POST["categoria"]." and idtramite= ".$_POST["post".$num.""]." ";
+			$sql2="UPDATE evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje=".$nota." where idevaluacion='".$_POST["post".$num.""]."'";
+			// //echo $sql2; exit;
 		}else{
-			$sql2="update evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["tipocate".$num.""]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."' ";
+			//echo('conocimiento');exit;
+			$sql2="UPDATE evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje=".$nota." where idevaluacion='".$_POST["post".$num.""]."'";
+			//$sql2="UPDATE evaluacion set resultado='".$_POST["estado2".$num.""]."' ,puntaje='".$nota."' where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["tipocate".$num.""]."' and idtramite= '".$_POST["post".$num.""]."' and idhora='".$_POST['idhora']."' ";
 		}
-		
+		//echo $sql2;exit;
 		$sr2=pg_query($link,$sql2); // or die ("Error : $sql");
-		
 		if($_POST["categoria"]=='1'){
 			$sq7="select opcion,resultado,idevaluacion from evaluacion where fecha='".$_POST["fechaexamen"]."' and idexamen='".$_POST["categoria"]."' and idtramite= '".$_POST["post".$num.""]."'";
 			$rs7=pg_query($link,$sq7); // or die ("Error :$sq");
@@ -64,7 +68,6 @@ while($_POST["total"] >= $num){
 				$sr289=pg_query($link,$sql289); // or die ("Error : $sql");
 			}
 		}
-
 	}
 	$num++;
 }

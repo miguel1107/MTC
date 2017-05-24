@@ -71,7 +71,7 @@
                               </td>
                               <td width="120" rowspan="3"><img src="imag/GRTC.png" width="64" height="70"></td>
                             </tr>
-                            <tr>
+                           <tr>
                               <td>
                                 <div align="center"><strong>DIRECCIÓN EJECUTIVA DE CIRCULACIÓN TERRESTRE</strong></div>
                               </td>
@@ -91,9 +91,9 @@
                   <table width="100%" id="datos" border="1" align="center" cellpadding="1" cellspacing="1">
                     <tr>
                     <?php if ($exa=='1') { ?>                      
-                      <td colspan="8">
+                      <td colspan="9">
                     <?php }else{ ?>
-                      <td colspan="7">
+                      <td colspan="8">
                     <?php } ?>  
                         <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
                           <?php if($exa=='1'){ ?>
@@ -104,7 +104,7 @@
                               </div>
                             </td>
                           </tr>
-                          <?php }elseif($exa=='3'){ ?>
+                         
                           <?php }else if($exa=='4'){ ?>
                           <tr>
                             <td>
@@ -117,9 +117,9 @@
                     </tr>
                     <tr>
                       <?php if ($exa=='1') { ?>                      
-                      <td colspan="8">
+                      <td colspan="9">
                       <?php }else{ ?>
-                      <td colspan="7">
+                      <td colspan="8">
                       <?php } ?>
                         <strong>
                           <?php echo $fec; ?>
@@ -135,22 +135,23 @@
                       <?php if($exa=='1'){ ?>
                       <td width="60"><div align="center"><strong>PUNTAJE</strong></div></td>
                       <?php } ?>
-                      <td width="280"><div align="center"><strong>RESULTADO</strong></div></td>
+                      <td width="180"><div align="center"><strong>NOTA</strong></div></td>
+                      <td width="310"><div align="center"><strong>RESULTADO</strong></div></td>
                       <td width="280"><div align="center"><strong>FIRMA</strong></div></td>
                     </tr>
                     <?php
                       $i=1; 
                           if($exa=='4'){
-                          $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."'";
+                          $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."' order by p.apepat";
                           } else {
                             if($exa=='1'){
-                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."'"; // and idhora='".$hor."'
+                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,p.ce,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$fec."' and e.idexamen='".$exa."' order by p.apepat"; // and idhora='".$hor."'
                             }
                           }
                           $rs2=pg_query($link,$sql2);
                           while($reg=pg_fetch_array($rs2)) { 
                     ?>
-                    <tr style="height:50px;">
+                    <tr style="height:53px;">
                       <td><div align="center"><?php echo $i?></div></td>
                       <td><?php echo $reg[1]?> <?php echo $reg[2]?> <?php echo $reg[0]?></td>
                       <td>
@@ -169,6 +170,7 @@
                       <?php if($exa=='1'){ ?>
                       <td>&nbsp;</td>   <?php }?>
                       <td>&nbsp;</td>
+		              <td>&nbsp;</td>
                       <td>&nbsp;</td>
                     </tr>
                     <?php 
@@ -191,15 +193,16 @@
     						$nom= $fila2->nombres;		
     						$ape= $fila2->apellidos;
               ?>
-              <tr valign="middle">
+            <!--  <tr valign="middle">
                 <td>&nbsp;</td>
                 <td align="right">&nbsp;</td>
               </tr>
               <tr valign="middle">
                 <td>&nbsp;</td>
                 <td align="right">&nbsp;</td>
-                <!-- <td><div align="center">EVALUADOR</div></td> -->
+                <td><div align="center">EVALUADOR</div></td>
               </tr>
+              -->
             </tbody>
           </table>
         </td>

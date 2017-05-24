@@ -332,7 +332,7 @@
 			<p class="flc2-s2-ti">E. RESPONSABLES DEL SERVICIO DE LICENCIAS DE CONDUCIR</p>
 			<div class="flc2-s2-co">
 				<div>
-					<span>Firma del Jefe de Licencias de Conductor</span>
+					<span>Firma del Coordinador de Licencias de Conductor</span>
 				</div>
 			</div>
 			<div class="flc2-s2-co">
@@ -365,15 +365,15 @@
 				<table>
 					<tr>
 						<td rowspan="2" style="width: 70%" class="flc2-s4-dat">
-							<p>Nombres y Apellidos del Solicitante</p>
+							<p>Nombres y Apellidos y DNI del Solicitante</p>
 							<div><?php echo $nom.' '.$app.' '.$apm; ?>  -  <?php if ($dni=="") {
 								 	echo $ce;
 								}else if ($ce==""){ 
 									echo $dni;
 								} ?></div>
 							<span>
-								Firma de conformidad de usuario A Recibir<br>
-								el Documento de Respuesta
+								Firma de conformidad del usuario por el<br>
+								servicio atendido
 							</span>
 							<div><?php echo $echotra.' - '.$categoria; ?></div>
 						</td>

@@ -18,11 +18,13 @@
 	$fecha=$_POST['fecha_prog1'];
 	#-
 	$sq7="SELECT max(opcion) FROM evaluacion WHERE idtramite='".$_POST["idtramite"]."' AND idexamen='".$idexamen."'";
+	// echo $sq7;exit;
 	$rs7=pg_query($link,$sq7); // or die ("Error :$sq");
 	while($reg7=pg_fetch_array($rs7)) { 
 		$opc=$reg7[0];
 	}
 	$sq3="SELECT resultado FROM evaluacion WHERE idtramite='".$_POST["idtramite"]."' and idexamen='".$idexamen."' ";
+	// echo $sq3;exit;
 	$rs3=pg_query($link,$sq3); // or die ("Error :$sq");
 	while($reg3=pg_fetch_array($rs3)) { 
 		$codigo=$reg3[0];

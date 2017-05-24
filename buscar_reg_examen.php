@@ -149,7 +149,7 @@ function lista_pro_conoc(){
                 <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="22%">&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%">Programacion desde mes de Abril.</td>
+                <td class="objeto" width="78%">Programacion desde mes de Mayo.</td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
                

@@ -36,7 +36,7 @@
 				}
 				$r="<span class='Estilo2'>".$cupo."</span>";
 			}else if ($examen=='1') {
-				$r= "<option value='0'>---Seleccione Hora---</option>";
+				// $r= "<option value='0'>---Seleccione Hora---</option>";
 				$hora=new hora();
 				$pla=new plazo();
 				$rr=$hora->returnHora();

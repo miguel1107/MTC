@@ -163,11 +163,11 @@ require_once 'model/provincia.php';
 			form1.profe.focus();
 			return false;
 		} 
-		if (form1.estadocivil.value=="0"){
-			alert("Debe Ingresar su Estado Civil");
-			form1.estadocivil.focus();
-			return false;
-		}
+		// if (form1.estadocivil.value=="0"){
+		// 	alert("Debe Ingresar su Estado Civil");
+		// 	form1.estadocivil.focus();
+		// 	return false;
+		// }
 		if (form1.dni.value!=""){
 			var campo = form1.dni.value;
 			if (campo.length!=8) {
@@ -762,32 +762,39 @@ require_once 'model/provincia.php';
 								$filatra=pg_fetch_array($f);
 								$nomcento= $filatra[0];
 							}
-
-							$sqlcerti="SELECT * FROM certificado_curso WHERE idtramite='".$v."'";
-							$fc=pg_query($link,$sqlcerti);
-							if (pg_num_rows($fc)!=0) {
-								$filcer=pg_fetch_array($fc);
-								$licencia=$filcer[1];
-								$fechacer=$filcer[2];
-								$nrofichacurso=$filcer[3];
-								$idcursocer=$filcer[4];
-								$sqles="SELECT nombre_curso_especial FROM 	curso_especial WHERE id_curso_especial='".$idcursocer."'";
-								$rrr=pg_query($link,$sqles);
-								$fi=pg_fetch_array($rrr);
-								$nomcursocer=$fi[0];
-
-							}
+							
+								$sqlcerti="SELECT * FROM certificado_curso WHERE idtramite='".$v."'";
+								//echo $sqlcerti.'----';
+								$fc=pg_query($link,$sqlcerti);
+								if (pg_num_rows($fc)!=0) {
+									$filcer=pg_fetch_array($fc);
+									$licencia=$filcer[1];
+									$fechacer=$filcer[2];
+									$nrofichacurso=$filcer[3];
+									$idcursocer=$filcer[4];
+									if ($idcategoria=='7') {
+										//jala curso espeacial
+										$sqles="SELECT nombre_curso_especial FROM curso_especial WHERE id_curso_especial='".$idcursocer."'";	
+									}else{
+										//jala escuela profe
+										$sqles="SELECT nombre  FROM escuela_profesional WHERE idescuela='".$idcursocer."'";
+									}
+									//56778-ñecho $sqles;exit;
+									$rrr=pg_query($link,$sqles);
+									$fi=pg_fetch_array($rrr);
+									$nomcursocer=$fi[0];
+								}
+                    		
                     //--
-
-							if ($idcategoria =="7"){
-								$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
-								$rs_especial=pg_query($link,$sql_especial);
-								$fila_especial =pg_fetch_object($rs_especial);
-								$nrofichacurso = $fila_especial->nrofichacurso;
-								$id_curso= $fila_especial->id_curso_especial;
-								$fechacurso = $fila_especial->fechacurso;
-								$licencia = $fila_especial->licencia;
-							}
+							// if ($idcategoria =="7"){
+							// 	$sql_especial="select * from tramite_espe WHERE idtramite='".$v."'";
+							// 	$rs_especial=pg_query($link,$sql_especial);
+							// 	$fila_especial =pg_fetch_object($rs_especial);
+							// 	$nrofichacurso = $fila_especial->nrofichacurso;
+							// 	$id_curso= $fila_especial->id_curso_especial;
+							// 	$fechacurso = $fila_especial->fechacurso;
+							// 	$licencia = $fila_especial->licencia;
+							// }
 						}
 					}
 
@@ -1461,7 +1468,8 @@ require_once 'model/provincia.php';
 												<td class="objeto" width="1%">&nbsp;</td>
 												<td class="objeto" width="72%">
 													<input name="idcentrocurso" type="hidden" class="cajatexto" id="idcentrocurso" value="<?php echo "$idcursocer"; ?>" style="width: 350px;" >
-													<input name="nomcentrocurso" type="text" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 350px;">
+													<input name="nomcentrocurso" type="hidden" class="cajatexto" id="nomcentrocurso" value="<?php echo "$nomcursocer"; ?>" style="width: 350px;">
+													<input name="nomcentrocursoespecial" type="hidden" class="cajatexto" id="nomcentrocursoespecial" value="<?php echo "$nomcursocer"; ?>" style="width: 350px;">
 													<!-- <?php
 														$sqx="select * from curso_especial where estado='1' ";
 				                  						$rsx=pg_query($link,$sqx);// or die ("error : $sqx");
@@ -1519,8 +1527,12 @@ require_once 'model/provincia.php';
         $fecha = date('d/m/Y');
         //$nuevafecha = date('d/m/Y', strtotime('-1 day')) ; // Suma 1 días
         if ($_GET["sw"]==3) {
-        	echo('no edit');
+        	
        ?>
+						var di="<?php echo $idcategoria; ?>";
+						var pr="<?php echo $idtiptra; ?>";
+						//alert(di);
+						mostrarcurso(di,pr);
 		$( "#fechacurso" ).datepicker({
         	dateFormat: 'dd/mm/yy',
 	        changeMonth: true,

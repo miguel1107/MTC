@@ -262,7 +262,7 @@
                         <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
                         <td class="objeto" width="23%">
-                          <select name="hora" id="hora" class="objeto"></select>
+                          <select name="hora" id="horae" class="objeto"></select>
                         </td>
                         <td class="objeto" width="2%">&nbsp;</td>
                         <td class="objeto" width="2%">&nbsp;</td>
@@ -311,7 +311,7 @@
                         <td class="etiqueta" align="right">Hora de Examen  &nbsp;</td>
                         <td class="objeto">&nbsp;</td>
                         <td class="objeto" width="23%">
-                          <select name="hora" id="hora" class="objeto"></select>
+                          <select name="hora" id="horae" class="objeto"></select>
                         </td>
                         <td class="objeto" width="2%">&nbsp;</td>
                         <td class="objeto" width="2%">&nbsp;</td>
@@ -351,7 +351,7 @@
                               <tr>
                                 <td align="left" width="78%">
 								                <?php if(date('Y-m-d') < $row[9] && empty($row[11])){?>
-                                  <div id='layer-reg' style="display:none" >    
+                                  <div id='layer-reg' >    
 								                    <input class="boton" name="btn_Buscar" id="txtsubmit" value=".:: Actualizar ::." type="submit">
                                   </div>           
 								                  <?php }elseif($_SESSION["cargo"]=='1'){ ?>

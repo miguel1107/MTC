@@ -150,7 +150,7 @@
                                       <tr>
                                         <td>
                                           <div align="center">
-                                            <strong> ASIGNACION RESULTADOS DE EXAMEN DE REGLAS </strong>
+                                            <strong> ASIGNACION RESULTADOS DE EXAMEN DE NORMAS DE TRANSITO </strong>
                                           </div>
                                         </td>
                                       </tr>
@@ -202,7 +202,7 @@
                                         <td>
                                           <div align="center">
                                             <?php echo $i ?>
-                                            <input name="post<?php echo $i; ?>" type="hidden" value="<?php echo $reg[7]; ?>">
+                                            <input name="post<?php echo $i; ?>" type="hidden" value="<?php echo $reg[10]; ?>">
                                           </div>
                                         </td>
                                         <td><nobr><?php echo $reg[1]; ?> <?php echo $reg[2]; ?> <?php echo $reg[0]; ?></nobr></td>

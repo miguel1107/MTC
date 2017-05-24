@@ -51,7 +51,7 @@ function editacupo() {
 		})
 		.done(function(data) {
 			if (data==1) {
-				alert('Se cambio el plazo correctamente');
+				alert('Se cambio el cupo correctamente');
 				location.reload(true);
 			}else{
 				alert('Error al editar');
@@ -84,7 +84,7 @@ function editacupoM() {
 		})
 		.done(function(data) {
 			if (data==1) {
-				alert('Se cambio el plazo correctamente');
+				alert('Se cambio el cupo correctamente');
 				location.reload(true);
 			}else{
 				alert('Error al editar');

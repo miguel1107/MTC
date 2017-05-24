@@ -106,10 +106,10 @@ function ocultarObj(idObj,timeOutSecs){
 	  //
 	$link=conectarse();
 	if($_GET["fechaini"]!='' && $_GET["fechafin"]!='' ){
-	$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro where  t.tipotramite like '".$_GET["tipotra"]."%'  and p.apepat like '".$_GET["txtapepat"]."%' and p.apemat like '".$_GET["txtapemat"]."%' and p.nombres like '".$_GET["txtnom"]."%' and t.fecha_inscripcion BETWEEN '".$_GET["fechaini"]."' and '".$_GET["fechafin"]."' and t.nrosolicitud<>0 and t.estado<>'55'  order by t.tipotramite ASC";
+	$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,tt.nombre,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro INNER JOIN tipo_tramite tt on tt.id_tipo = CAST(t.tipotramite AS INT) where  tt.nombre like '".$_GET["tipotra"]."%'  and p.apepat like '".$_GET["txtapepat"]."%' and p.apemat like '".$_GET["txtapemat"]."%' and p.nombres like '".$_GET["txtnom"]."%' and t.fecha_inscripcion BETWEEN '".$_GET["fechaini"]."' and '".$_GET["fechafin"]."' and t.nrosolicitud<>0 and t.estado<>'55'  order by t.tipotramite ASC";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 }else{
-$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro where  t.tipotramite like '".$_GET["tipotra"]."%' and p.apepat like '".$_GET["txtapepat"]."%' and p.apemat like '".$_GET["txtapemat"]."%' and p.nombres like '".$_GET["txtnom"]."%' and t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
+$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,cm.nombre,tt.nombre,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria INNER JOIN centro_medico cm ON t.idcentro=cm.idcentro INNER JOIN tipo_tramite tt on tt.id_tipo = t.tipotramite where  tt.nombre like '".$_GET["tipotra"]."%' and p.apepat like '".$_GET["txtapepat"]."%' and p.apemat like '".$_GET["txtapemat"]."%' and p.nombres like '".$_GET["txtnom"]."%' and t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 }
 $i=0;
@@ -124,7 +124,7 @@ $i=0;
           <?=normal($reg[4])?>
         </font></td>
         <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-          <?=$reg[11]?>
+          <?=$reg[10]?>
         </font></td>
         <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
           <?=$reg[5]?>
@@ -133,7 +133,7 @@ $i=0;
           <?=$reg[9]?>
         </font></td>
         <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-          <?=$reg[12]?>
+          <?=$reg[11]?>
         </font></td>
 	  </tr>
 	  <? }?>
@@ -174,10 +174,10 @@ $i=0;
 	  //
 	$link=conectarse();
 	if($_GET["fechaini"]!='' && $_GET["fechafin"]!='' ){
-	$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.nrosolicitud,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  where  t.tipotramite like '".$_GET["tipotra"]."%'  and t.fecha_inscripcion BETWEEN '".$_GET["fechaini"]."' and '".$_GET["fechafin"]."' and t.nrosolicitud<>0 and t.estado<>'55' ";
+	$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,tt.nombre,t.tipotramite,t.nrosolicitud,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  inner join tipo_tramite tt on tt.id_tipo = t.tipotramite where  t.tipotramite = 4  and t.fecha_inscripcion BETWEEN '".$_GET["fechaini"]."' and '".$_GET["fechafin"]."' and t.nrosolicitud<>0 and t.estado<>'55' ";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 }else{
-$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.nrosolicitud,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria   where  t.tipotramite like '".$_GET["tipotra"]."%' and t.nrosolicitud<>0 and t.estado<>'55'";
+$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,tt.nombre,t.tipotramite,t.nrosolicitud,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria inner join tipo_tramite tt on tt.id_tipo = t.tipotramite  where  t.tipotramite = 4 and t.nrosolicitud<>0 and t.estado<>'55'";
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 }
 $i=0;

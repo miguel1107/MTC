@@ -8,7 +8,7 @@
 		case 'cargacombo':
 			$hora=new hora();
 			$rs=$hora->returnHora();
-			$rr= "<option value='0'>---Seleccione Hora---</option>";
+			// $rr= "<option value='0'>---Seleccione Hora---</option>";
 			while ($n=pg_fetch_array($rs)) {
 				$rr=$rr."<option value='".$n[0]."'>". $n[1]."</option>";
 			}
