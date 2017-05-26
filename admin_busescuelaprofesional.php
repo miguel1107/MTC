@@ -1,7 +1,6 @@
 <?php
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
-if($_SESSION["cargo"]!='1') header("location:denegado.php");
 ?>
 <html><head><title></title>
 
@@ -12,20 +11,27 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
 <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/popcalendar.js"> </script>
+<script type="text/javascript" src="estilos/script.js"></script>
+<style type="text/css">
+<!--
+.Estilo1 {font-size: 12px}
+.Estilo2 {color: #336699}
+-->
+</style>
 </head><body class="os2hop">
 
 <div id="selectMonth" style="z-index: 999; position: absolute; visibility: hidden;"></div><div id="selectYear" style="z-index: 999; position: absolute; visibility: hidden;"></div>
 
-	<table align="center" bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="101%" height="2">
- <tbody><tr><td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0" width="60%">
+	<table align="center" bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tbody><tr><td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0" width="20%">
    <tbody>
      <tr>
-       <td bgcolor="#FFFFFF" class="tabs"><table border="0" cellpadding="0" cellspacing="0" width="65%">
+       <td bgcolor="#FFFFFF" class="tabs"><table border="0" cellpadding="0" cellspacing="0" width="33%">
            <tbody>
              <tr>
-               <td class="tabsline" width="20"><img src="imag/admin_tabinion.gif" border="0" height="36" width="29"></td>
-               <td width="119" align="center" background="imag/admin_div1.gif" ><nobr>Usuarios</nobr></td>
-               <td class="tabson" ><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></td>
+              <td class="tabsline" width="20"><img src="imag/admin_tabinion2.gif" border="0" height="36" width="29"></td>
+               <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_bususuario.php"><b><span class="G">Usuarios</span></b></a></b></nobr></td>
+               <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
                <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><b><span class="G"> <a href="admin_examen.php"></a></span></b></b></nobr><b><a href="admin_busexamen.php"><b><span class="G">Examenes</span></b></a></b></td>
                <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
                <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_busevaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
@@ -42,12 +48,14 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G Estilo2"><strong>Cupos Conocimientos</strong></span></a></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cupos Conocimientos</strong></span></a></td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G Estilo2"><strong>Cupos Manejo</strong></span></a></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G Estilo2"><strong>Bloqueo Fecha</strong></span></a></td>
-               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G "><strong>Bloqueo Fecha</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
+                <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="admin_escuelaprofesional.php"><span class="G Estilo2"><strong>Escuela Profesional</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
                <td class="tabsline" width="175"></td>
              </tr>
            </tbody>
@@ -63,8 +71,8 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
   <tr>
     <td height="165" valign="top"><table width="100%" border="0" align="center">
       <tr>
-        <td width="727" height="245" valign="top"><form name="form1" method="post" action="admin_usuario.php">
-          <BR><BR><table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="80%">
+        <td width="727" height="245"><form name="form1" method="post" action="admin_escuelaprofesional.php">
+          <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="80%">
             <tbody>
               <tr>
                 <td colspan="7"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -74,7 +82,7 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
                             <tbody>
                               <tr>
                                 <th align="left" bgcolor="#6600ff" width="20%"> </th>
-                                <th height="26" width="50%"> <span class="G">USUARIO :: [B&uacute;squeda de Datos] </span></th>
+                                <th height="26" width="50%"> <span class="G">CURSO PROFESIONAL:: [B&uacute;squeda de Datos] </span></th>
                                 <th align="right" width="25%"> </th>
                               </tr>
                             </tbody>
@@ -87,53 +95,28 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
                 <td colspan="5"><table border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                       <tr>
-                        <td background="main.php15_files/titulo1.jpg" height="10" width="10">&nbsp;</td>
-                        <td class="marco seccion" align="left" width="90%">&nbsp;DATOS DEL USUARIO </td>
-                        <td align="right" background="main.php15_files/titulo3.jpg" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td background="../main.php15_files/titulo1.jpg" height="10" width="10">&nbsp;</td>
+                        <td class="marco seccion" align="left" width="100%">&nbsp;DATOS DE LA ESCUELA PROFESIONAL</td>
+                        <td align="right" background="../main.php15_files/titulo3.jpg" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                       </tr>
                     </tbody>
                 </table></td>
               </tr>
               <tr valign="middle">
-                <td class="marco">&nbsp;</td>
-                <td class="etiqueta" align="right">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-              </tr>
-              <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
-                <td class="etiqueta" align="right" width="22%">Nombres&nbsp;&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">Centro de Capacitaci&oacute;n&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
                 <td class="objeto" width="78%"><input name="frase" size="40" class="cajatexto" id="frase" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
-                <td class="etiqueta" align="right" width="22%">Apellido  &nbsp;&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%"><input name="frase12" size="40" class="cajatexto" id="frase12" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
-                <td class="objeto" width="1%">&nbsp;</td>
-              </tr>
-              <tr valign="middle">
-                <td class="marco" width="1%">&nbsp;</td>
-                <td class="etiqueta" align="right" width="22%">Estado  &nbsp;&nbsp;</td>
-                <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%">
-                <select name="estado"> 
-					<option value="1">TODOS</option> 
-                    <option value="2" selected>HABILITADO</option> 
-					<option value="3">INHABILITADO</option> 
-				</select> </td>
+                <td class="objeto" width="78%">&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
-              <tr valign="middle">
-                <td class="marco">&nbsp;</td>
-                <td class="etiqueta" align="right">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-                <td class="objeto">&nbsp;</td>
-              </tr>
+              
               
               
               <tr>
@@ -170,5 +153,4 @@ if($_SESSION["cargo"]!='1') header("location:denegado.php");
   </tr>
 </tbody></table>
 
-<span class="tabsline"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></span>
 </body></html>

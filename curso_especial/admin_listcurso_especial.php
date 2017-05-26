@@ -32,7 +32,7 @@ body {
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
 
 
-<?
+<?php
 $link=conectarse();
 $sql3="select * from curso_especial "; 
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
@@ -81,7 +81,7 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
-			        <?
+			        <?php
 				//$link=conectarse();
 				$ssql="select * from curso_especial where  nombre_curso_especial like '".$_GET["frase"]."%' order by id_curso_especial ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
@@ -100,7 +100,7 @@ $numeroRegistros=pg_num_rows($rs3);
             <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">ESTADO</font></th>
           </tr>
 
-          <?  while($reg=pg_fetch_array($rs)) { ?>
+          <?php  while($reg=pg_fetch_array($rs)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#ffffff')">
             <td height="22" align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -124,13 +124,13 @@ $numeroRegistros=pg_num_rows($rs3);
             </font></nobr></div></td>
           </tr>
 
-          <? }?>
+          <?php }?>
         </table>
         <table width="100%"  border="0" cellpadding="0" cellspacing="0">
 
           <TR bgcolor="#FFFFFF">
             <TH width="998" height="20" colspan="3" bgcolor="#EBF3FB"><div align="left">
-              <? 
+              <?php 
     if($pagina>1) 
     { 
        echo "<a class='p' href='".$_SERVER["PHP_SELF"]."?pagina=".($pagina-1)."&frase=".$_GET["frase"]."&orden=".$orden."&criterio=".$txt_criterio."'>"; 

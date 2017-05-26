@@ -2,14 +2,14 @@
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 
-include ("conectar.php");
+include ("../conectar.php");
 $link=Conectarse();
 ?>
 <html>
 <head>
-<script  language="javascript" src="estilos/script.js"></script>
-<script language="javascript" src="estilos/checkall.js"></script>
-<link href="../../estilos/button.css" rel="stylesheet" type="text/css">
+<script  language="javascript" src="../estilos/script.js"></script>
+<script language="javascript" src="../estilos/checkall.js"></script>
+<link href="file:///C|/wamp/www/estilos/button.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
 .Estilo4 {color: #006666}
@@ -17,8 +17,8 @@ $link=Conectarse();
 -->
 
 </style>
-<link href="estilos/barra.css" rel="stylesheet" type="text/css">
-<title>:: WEBMASTER - DRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
+<link href="../estilos/barra.css" rel="stylesheet" type="text/css">
+<title>:: WEBMASTER - GRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -32,15 +32,15 @@ body {
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
 
 
-<?
+<?php
 $link=conectarse();
-$sql3="select * from centro_medico "; 
+$sql3="select * from curso_especial "; 
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 $numeroRegistros=pg_num_rows($rs3);
 //////////elementos para el orden 
     if(!isset($orden)) 
     { 
-       $orden="idcentro"; 
+       $orden="id_curso_especial"; 
     } 
     //////////fin elementos de orden
     //////////calculo de elementos necesarios para paginacion 
@@ -81,9 +81,9 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
-			        <?
+			        <?php
 				//$link=conectarse();
-				$ssql="select * from centro_medico where  nombre like '%".$_GET["frase"]."%' order by idcentro ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
+				$ssql="select * from curso_especial where  nombre_curso_especial like '".$_GET["frase"]."%' order by id_curso_especial ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				
 				 ?>
@@ -94,13 +94,13 @@ $numeroRegistros=pg_num_rows($rs3);
             <th width="31" height="23"><!--<input  border="0" name="allbox" type="checkbox" onClick="CA()">--></th>
 
             <th width="44" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">CODIGO </font></div></th>
-            <th width="410" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">CENTRO MEDICO</font></div></th>
+            <th width="410" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">CENTRO DE CAPACITACION</font></div></th>
 
             <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">DIRECCION</font></th>
             <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">ESTADO</font></th>
           </tr>
 
-          <?  while($reg=pg_fetch_array($rs)) { ?>
+          <?php  while($reg=pg_fetch_array($rs)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#ffffff')">
             <td height="22" align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -124,13 +124,13 @@ $numeroRegistros=pg_num_rows($rs3);
             </font></nobr></div></td>
           </tr>
 
-          <? }?>
+          <?php }?>
         </table>
         <table width="100%"  border="0" cellpadding="0" cellspacing="0">
 
           <TR bgcolor="#FFFFFF">
             <TH width="998" height="20" colspan="3" bgcolor="#EBF3FB"><div align="left">
-              <? 
+              <?php 
     if($pagina>1) 
     { 
        echo "<a class='p' href='".$_SERVER["PHP_SELF"]."?pagina=".($pagina-1)."&frase=".$_GET["frase"]."&orden=".$orden."&criterio=".$txt_criterio."'>"; 

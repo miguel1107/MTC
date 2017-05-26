@@ -126,7 +126,7 @@ a:visited {
                   </div></td>
                   <td><div align="center">
                     <!-- <input type="text" id="idexamen" name="idexamen" value="<?=$reg[46]?>"> -->
-                    <!-- <input type="text" id="ideva" name="ideva" value="<?=$reg[40]?>"> -->
+                    <input type="text" id="ideva" name="ideva" value="<?=$reg[40]?>">
                     <!-- <input type="text" id="idtramite" name="idtramite" value="<?=$reg[45]?>"> -->
                     <!-- <input type="text" id="fechaexamen" name="fechaexamen" value="<?=$reg[30]?>"> -->
                     <input name="newopcion" type="text" id="newopcion" size="5" maxlength="5">

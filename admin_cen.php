@@ -107,32 +107,30 @@ function validar(form1)
                         </tbody>
                     </table></td>
                   </tr>
-                  <? //////////////
+
+<?php 
 	if($_GET["sw"]==1){ 
 	$pag='tipoevaluador';		// NUEVO
 	//$id=autogeneradobasico($pag,"idtipoevaluador",6); 
 	}
 	if($_GET["sw"]==2){ 	// EDITAR
 	///////////////////////////////////////////////
- $cant=count($_POST["chk"]);
- if($cant > 0)
-	{
-	foreach($_POST["chk"] as $k =>$v)
-		{
-		$sql="SELECT * FROM centro_medico WHERE idcentro='".$v."'";
-		$rs=pg_query($link,$sql);
-		$fila =pg_fetch_object($rs);
-		$id= $fila->idcentro;
-		$nom= $fila->nombre;		
-		$ape= $fila->direccion;
-		$estado= $fila->estado;		
-		
-		}
-	}
-
-	}
+     $cant=count($_POST["chk"]);
+     if($cant > 0){
+    	foreach($_POST["chk"] as $k =>$v) {
+    		$sql="SELECT * FROM centro_medico WHERE idcentro='".$v."'";
+    		$rs=pg_query($link,$sql);
+    		$fila =pg_fetch_object($rs);
+    		$id= $fila->idcentro;
+    		$nom= $fila->nombre;		
+    		$ape= $fila->direccion;
+    		$estado= $fila->estado;		
+    	}
+	  }
+  }
+?>
 			  /////////////////
-			  ?>
+
                   <tr valign="middle">
                     <td class="marco" width="1%">&nbsp;</td>
                     <td class="etiqueta" align="right" width="22%">C&oacute;digo &nbsp;&nbsp;</td>
@@ -173,7 +171,7 @@ function validar(form1)
                     <td class="objeto" width="78%"><input name="apellidos" value="<?=$ape?>" size="50" class="cajatexto" id="Apellidos" maxlength="60"  type="text">                    </td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
-                  <? 
+                  <?php 
 			$sqx="select * from tipoevaluador ";
 			  $rsx=pg_query($link,$sqx) or die ("error : $sqx");
 			  ?>

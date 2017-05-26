@@ -281,6 +281,9 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			//$newmax=$fechass->format('d-m-Y');
 			$newmax=suma_fechas($fecha,360);
 			//echo $newmax.'-'.$fechanew;exit;
+			$añolon=substr($fecha,6);
+			$año=(int)($añolon);
+			// echo $año;exit;
 			$mesexte=substr($fecha, 3,2);
 			if (substr($mesexte, 0, 1)=='0') {
 				$mes=(int)(substr($mesexte, 1, 1));
@@ -288,10 +291,16 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 			}else{
 				$mes=(int)($mesexte);			
 			}
-			if ($mes<8) {
+			if($año<2017){
 				$est='0';
-			}else if($mes>=8){
-				$est='1';
+				if($mes<8){
+					$est='0';
+				}
+			}else if($año>2016){
+				$est='0';
+				if($mes>8){
+					$est='1';
+				}
 			}
 			if ($_POST["sw"]==3) {
 				$idtra=$_POST["idtramite"];
@@ -305,6 +314,7 @@ if(!isset($_SESSION["usuario"])){ header("location:index.php");}else{
 					// }
 				}else{
 					$sqlser="UPDATE certificado_curso SET licencia='".$_POST['licencia']."', fecha_certificado='".$_POST['fechacurso']."', numero_ficha='".$_POST['nrofichacurso']."', idcurso='".$_POST['idcentrocurso']."',idtramite='".$tramite."',estado='".$est."', fechafin_certificado='".$newmax."' WHERE idtramite='".$idtra."'" ;
+					// echo $sqlser;exit;
 				}
 				
 			}else{

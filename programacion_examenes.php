@@ -153,7 +153,7 @@
                         if($cant > 0){
                           foreach($_POST["chk"] as $k =>$v){
   		                      //$sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55 and t.tipotramite !='DUPLICADO' and t.idtramite<'9966737'";
-                            $sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55";
+                            $sql="SELECT max(t.idtramite) FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante WHERE p.idpostulante='".$v."' and t.estado!=55 and t.idtramite<'9966737'";
                             $rs=pg_query($link,$sql) or die ("Error :$sql");
                             while($reg1=pg_fetch_array($rs)) { 
                               $id=$reg1[0];
@@ -164,7 +164,7 @@
                             $row=pg_fetch_array($rs1);
                             $sss="SELECT nombre from categoria where idcategoria='".$row[5]."'";
                             $rs11=pg_query($link,$sss) or die(false);
-                            
+
                             
                             if (pg_num_rows($rs11)==0) {
                               $catt=$row[5];
@@ -404,7 +404,7 @@
                                       $aureva='otro';
                                     }
                                     if ($catt=='AI'&& $tipt=='REVALIDACION'&& $estado=='0') {
-                                      if ($aprobocon=='si') {
+                                      if ($disabledcon=='si') { //aprobadocon=='si'
                                         
                                       }else{
                                         $revaespeacial='si';
