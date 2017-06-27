@@ -178,10 +178,10 @@
                                       </tr>
                                       <?php
                                       if($examen=='4'){
-                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC";
+                                        $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC";
                                         } else {
                                           if($examen=='1'){
-                                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC"; //and e.idhora='".$hor."' oculte este codigo
+                                            $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idtramite ,e.resultado,c.idcategoria,e.idevaluacion,e.idexamen,t.tipotramite,e.puntaje,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idexamen='".$examen."' and e.fecha='".$fec."' order by p.apepat ASC"; //and e.idhora='".$hor."' oculte este codigo
                                           }
                                         }
                                         $rs2=pg_query($link,$sql2);
@@ -189,13 +189,15 @@
                                       <tr>
                                         <td width="3%"><div align="center"><strong>N°</strong></div></td>
                                         <td width="34%"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
+                                        <td width="9%"><div align="center"><strong>DNI</strong></div></td>
                                         <td width="9%"><div align="center"><strong>TIP.TRAMITE</strong></div></td>
                                         <td width="7%"><div align="center"><strong>CATEG.</strong></div></td>
                                         <td width="7%"><div align="center"><strong>OPCION</strong></div></td>
                                         <td width="10%"><div align="center"><strong>SELECCIONAR</strong></div></td>
                                         <td width="9%"><div align="center"><strong>NOTA</strong></div></td>
                                         <td width="9%"><div align="center"><strong>RESULTADO</strong></div></td>
-                                        <td width="9%"><div align="center"><strong>CONSULTA RESULTADO</strong></div></td>
+                                        
+
                                       </tr>
                                       <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
                                       <tr bgcolor="#FFFFFF" onMouseOver="javascript:this.style.backgroundColor='#D6DEEC';" onMouseOut="javascript:this.style.backgroundColor='#FFFFFF';">
@@ -206,6 +208,7 @@
                                           </div>
                                         </td>
                                         <td><nobr><?php echo $reg[1]; ?> <?php echo $reg[2]; ?> <?php echo $reg[0]; ?></nobr></td>
+                                        <td><nobr><?php echo $reg[14]?></nobr></td>
                                         <td>
                                           <div align="left">
                                             <?php 
@@ -249,6 +252,7 @@
                                             </select> -->
                                           </div>
                                         </td>
+                                        <!-- nota-->
                                         <td>
                                           <div align="center">
                                             <input type="text" onkeypress="return solonumeros(event,<?php echo($i) ?>)" name="nota<?php echo $i; ?>" id="nota<?php echo $i; ?>" size="2" value="<?php echo $reg[13]; ?>" onKeyUp="javascript:asignaresul(<?php echo $i; ?>);">
@@ -299,7 +303,7 @@
                                         </td>
                                         <td>
                                           <?php if($reg[11]==1){?>
-                                            <nobr> <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$_GET["xxxfecha"]?>&idevaluacion=<?=$reg[10]?>"  target="_blank"><font color="#0000FF"><p>VER RESULTADO</p></font></a></nobr>
+                                            <nobr> <a href="imprimir_examen_examenreclamo.php?idtramite=<?=$reg[7]?>&idcategoria=<?=$reg[3]?>&fecha=<?=$_GET["xxxfecha"]?>&idevaluacion=<?=$reg[10]?>"  target="_blank"><font color="#0000FF"><p>CONSULTAR RESULTADO</p></font></a></nobr>
                                           <?php } else { ?>
                                             
                                           <?php } ?>
@@ -317,11 +321,11 @@
                                   <td width="11%" align="right">&nbsp;</td>
                                   <td width="61%">&nbsp;</td>
                                 </tr>
-                                <tr valign="middle">
+                               <!--  <tr valign="middle">
                                   <td>&nbsp;</td>
                                   <td align="right">&nbsp;</td>
                                   <td><div align="center">_____________________________________</div></td>
-                                </tr>
+                                </tr> -->
                                 <?php 
                                   $sql2="SELECT * FROM evaluador ev INNER JOIN evaluacion e ON ev.idevaluador=e.idevaluador  WHERE e.fecha='".$fec."' and e.idexamen='".$examen."'";
                                   $rs2=pg_query($link,$sql2);
@@ -329,7 +333,27 @@
                                   $id= $fila2->idevaluador;
                                   $nom= $fila2->nombres;		
                                   $ape= $fila2->apellidos;
+                                
+
+                                $sqla="SELECT count(*) from evaluacion where fecha='".$fec."' and resultado='APROBADO' and idexamen='".$examen."' ";
+                                // echo $sqla;exit;
+                                $rsa=pg_query($link,$sqla);
+                                $filaa=pg_fetch_array($rsa);
+
+
+                                $sqld="SELECT count(*) from evaluacion where fecha='".$fec."' and resultado='DESAPROBADO' and idexamen='".$examen."' ";
+                                $rsd=pg_query($link,$sqld);
+                                $filad=pg_fetch_array($rsd);
+
+                                $sqln="SELECT count(*) from evaluacion where fecha='".$fec."' and resultado='NO SE PRESENTO' and idexamen='".$examen."' ";
+                                $rsn=pg_query($link,$sqln);
+                                $filan=pg_fetch_array($rsn); 
+
+                                $sqlt="SELECT count(*) from evaluacion where fecha='".$fec."'  and idexamen='".$examen."'";
+                                $rst=pg_query($link,$sqlt);
+                                $filat=pg_fetch_array($rst);
                                 ?>
+                                
                                 <tr valign="middle">
                                   <td>&nbsp;</td>
                                   <td align="right">&nbsp;</td>
@@ -340,10 +364,21 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr valign="middle">
+                               <!--  <tr valign="middle">
                                   <td>&nbsp;</td>
                                   <td align="right">&nbsp;</td>
                                   <td><div align="center">EVALUADOR</div></td>
+                                </tr> -->
+                                <tr valign="middle">
+                                  <td>&nbsp;</td>
+                                  <td align="right">&nbsp;</td>
+                                  <td>
+                                    <div align="left"><font size="4">APROBADOS =&nbsp;<?php echo $filaa[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      DESAPROBADOS =&nbsp;<?php echo $filad[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      NO SE PRESENTO =&nbsp;<?php echo $filan[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      TOTAL =&nbsp;<?php echo $filat[0];?></font>
+                                    </div>
+                                  </td>
                                 </tr>
                                 <tr valign="middle">
                                   <td>&nbsp;</td>

@@ -125,7 +125,7 @@
             <table width="100%" border="0" align="center">
               <tr>
                 <td height="189">
-                  <form name="form1" method="get" onSubmit="return validar(this)">
+                  <form name="form1" method="get" action="lista_paraactas.php" onSubmit="return validar(this)">
                     <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="80%">
                       <tbody>
                         <tr>

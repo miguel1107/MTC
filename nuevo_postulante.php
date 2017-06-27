@@ -272,6 +272,26 @@ require_once 'model/provincia.php';
 				form1.nomcentro.focus();
 				return false;
 			}
+			if (form1.licencia.value==""){
+				alert("Debe Ingresar Licencia de conducir");
+				form1.licencia.focus();
+				return false;
+			}
+			if (form1.fechacurso.value==""){
+				alert("Debe Ingresar Fecha de Curso");
+				form1.fechacurso.focus();
+				return false;
+			}
+			if (form1.nrofichacurso.value==""){
+				alert("Debe Ingresar No de ficha de curso");
+				form1.nrofichacurso.focus();
+				return false;
+			}
+			if (form1.nomcentrocurso.value==""){
+				alert("Debe Ingresar Escuela");
+				form1.nomcentrocurso.focus();
+				return false;
+			}
 		}
 		if (form1.tipotra.value=="2"){
 			if(form1.fechaexamen.value==""){
@@ -1009,7 +1029,7 @@ require_once 'model/provincia.php';
 										$tipo= new tipotramite();
 										$rs=$tipo->retornaLista();
 										while ($n=pg_fetch_array($rs)) {
-											if ($_GET['sw']==3 && $n[0]==$idtiptra) {
+											if ($_GET['sw']==3) { // elimine este codigo en el "&& if= && $n[0]==$idtiptra" para mostrar tods ls tramites
 									?>
 										<option value="<?php echo $n[0];  ?>" <?php if ($idtiptra==$n[0]) {echo 'selected';} ?> > <?php echo $n[1]; ?>
 											

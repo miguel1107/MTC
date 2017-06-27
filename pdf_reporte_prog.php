@@ -80,7 +80,7 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
 		//	}
 		//-->
 		              </script>
-&nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15"></td>
+                  &nbsp; <img src="imag/calendaricon.gif" onclick='popUpCalendar(this, form1.xxxfecha, "dd/mm/yyyy")'   border="0" height="15" width="15"></td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               
@@ -88,23 +88,52 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                 <td class="marco" width="1%">&nbsp;</td>
                 <td class="etiqueta" align="right" width="22%">Tipo de Tramite&nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%"><select name="tipotra" class="cajatexto" id="tipotra"  onkeypress="return formato(event,form,this)" required>
+                <td class="objeto" width="78%">
+                  <select name="tipotra" class="cajatexto" id="tipotra"  onkeypress="return formato(event,form,this)" required>
                           <option value=''>------ Seleccione Opcion ------</option>
-                          <option value="TODOS">TODOS</option>
-                          <option value="NUEVO">NUEVO</option>
-                          <option value="RECATEGORIZACION">RECATEGORIZACION</option>
-                          <option value="REVALIDACION">REVALIDACION</option>
-                          <option value="DUPLICADO">DUPLICADO</option>
-                          <option value="CANJE RECATEGORIZACION">CANJE RECATEGORIZACION</option>
-                          <option value="CANJE REVALIDACION">CANJE REVALIDACION</option>
-						   <option value="CANJE POR MODIFICACION">CANJE POR MODIFICACION</option>
-                        </select>
+                          <option value="0">TODOS</option>
+                          <option value="1">NUEVO</option>
+                          <option value="2">RECATEGORIZACION</option>
+                          <option value="3">REVALIDACION</option>
+                          <option value="4">DUPLICADO</option>
+                          <option value="5">CANJE RECATEGORIZACION</option>
+                          <option value="6">CANJE REVALIDACION</option>
+						              <option value="7">CANJE POR MODIFICACION</option>
+                  </select>
                 </td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               
+              <tr valign="middle">
+                <td class="marco" width="1%">&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">Categoria&nbsp;&nbsp;</td>
+                <td class="objeto" width="1%">&nbsp;</td>
+                <td class="objeto" width="78%">
+                  <select name="categoria" class="cajatexto" id="categoria"  onkeypress="return formato(event,form,this)" required>
+                          <option value=''>------ Seleccione Opcion ------</option>
+                          <option value="0">TODOS</option>
+                          <option value="1">AI</option>
+                          <option value="2">AII-a</option>
+                          <option value="3">AII-b</option>
+                          <option value="4">AIII-a</option>
+                          <option value="5">AIII-b</option>
+                          <option value="6">AIII-c</option>
+                          <option value="7">AIV-especial</option>
+                  </select>
+                </td>
+                <td class="objeto" width="1%">&nbsp;</td>
+              </tr>
              
-             
+              <tr valign="middle">
+                <td class="marco" width="1%">&nbsp;</td>
+                <td class="etiqueta" align="right" width="29%">Usuario Tramite &nbsp;&nbsp;</td>
+                <td class="objeto" width="1%">&nbsp;</td>
+                <td class="objeto" width="63%"><input name="usuario" size="40" class="cajatexto" id="usuario" maxlength="90" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                <td class="objeto" width="6%">&nbsp;</td>
+              </tr>
+
+                <td class="objeto" width="1%">&nbsp;</td>
+              </tr>
               
               <tr>
                 <td colspan="7" height="30"><table border="0" cellpadding="3" cellspacing="1" width="100%">

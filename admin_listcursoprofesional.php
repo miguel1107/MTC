@@ -2,13 +2,13 @@
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 
-include ("../conectar.php");
+include ("conectar.php");
 $link=Conectarse();
 ?>
 <html>
 <head>
-<script  language="javascript" src="../estilos/script.js"></script>
-<script language="javascript" src="../estilos/checkall.js"></script>
+<script  language="javascript" src="estilos/script.js"></script>
+<script language="javascript" src="estilos/checkall.js"></script>
 <link href="file:///C|/wamp/www/estilos/button.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
@@ -34,13 +34,13 @@ body {
 
 <?php
 $link=conectarse();
-$sql3="select * from curso_especial "; 
+$sql3="select * from escuela_profesional "; 
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 $numeroRegistros=pg_num_rows($rs3);
 //////////elementos para el orden 
     if(!isset($orden)) 
     { 
-       $orden="id_curso_especial"; 
+       $orden="idescuela"; 
     } 
     //////////fin elementos de orden
     //////////calculo de elementos necesarios para paginacion 
@@ -83,7 +83,7 @@ $numeroRegistros=pg_num_rows($rs3);
 ?>
 			        <?php
 				//$link=conectarse();
-				$ssql="select * from curso_especial where  nombre_curso_especial like '".$_GET["frase"]."%' order by id_curso_especial ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
+				$ssql="select * from escuela_profesional where  nombre like '".$_GET["frase"]."%' order by idescuela ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				
 				 ?>

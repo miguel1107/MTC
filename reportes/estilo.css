@@ -233,12 +233,31 @@
   font-weight: bold;
   padding: 12pt 0;
 }
+.titulo {
+  text-align: center;
+  font-size: 15pt;
+  font-weight: bold;
+  padding: 12pt 0;
+}
+.titulo span{
+   border-bottom: 1.5pt solid #444;
+}
 .flc1-foot-entr span {
   display: inline-block;
   margin-left: 10pt;
 }
 .flc1-foot-decl {
   font-size: 8pt;
+  font-weight: bold;
+  text-align: justify;
+}
+.contenido {
+  font-size: 11pt;
+ /* font-weight: bold;*/
+  text-align: justify;
+}
+.contenido span{
+  font-size: 11pt;
   font-weight: bold;
   text-align: justify;
 }
@@ -249,7 +268,7 @@
 }
 .flc1-foot-fihu-fi {
   display: inline-block;
-  margin-right: 2cm;
+  margin-right: 6cm;
 }
 .flc1-foot-fihu-fi span {
   height: 0cm;
@@ -293,8 +312,8 @@
 .flc2-s1-co div span {
   display: block;
   /*border-top: 1pt solid #444;*/
-  height: 50pt;
-  line-height: 73pt;
+  height: 10pt;
+  line-height: 13pt;
   font-size: 8pt;
   margin-top: 2cm;
   font-weight: bold;
@@ -306,7 +325,7 @@
 .flc2-s2 {
   font-size: 0;
   border: 1pt solid #444;
-  padding: 6pt 4pt;
+  padding: 5pt 3pt;
   margin-bottom: 4pt;
 }
 .flc2-s2-ti {
@@ -327,24 +346,24 @@
 }
 .flc2-s2-co div span {
   display: block;
-  height: 50pt;
+  height: 4pt;
   font-size: 8pt;
   margin-top: 2cm;
   font-weight: bold;
-  line-height: 73pt;
+  line-height: 3pt;
   text-align: center;
-  /*border-top: 1pt solid #444;*/
+ /* border-top: 1pt solid #444;*/
 }
 .fl2-s2-no{
   font-size: 9pt;
 }
 .flc2-sep {
-  margin: -234pt 0;
+  margin: -210pt 0;
   position: absolute;
   /*border-top: 0pt dashed #444;*/
 }
 .flc2-s3 {
-  margin: -200pt 0;
+  margin: -175pt 0;
   position: absolute;
   font-family: 'Arial Black';
   font-size: 7pt;
@@ -382,7 +401,7 @@
 }
 .flc2-s4 {
   position: relative;
-  margin: -150pt 0;
+  margin: -130pt 0;
   font-size: 7pt;
 }
 .flc2-s4-wrap {

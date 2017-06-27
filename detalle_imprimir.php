@@ -13,11 +13,23 @@ $fila2 =pg_fetch_array($rs2);
 //- este es para el historial de notas ->>
 
 $sql9="SELECT * from evaluacion where idtramite='".$tra."'";
+// echo $sql9;exit;
 //$sql9="SELECT p.nombres, p.apepat, p.apemat, t.nroficha,t.idtramite,t.tipotramite, p.dni, t.nrosolicitud,e.fechapro,e.resultado,e.usuario  FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante  inner join categoria c on t.idcategoria=c.idcategoria  INNER JOIN evaluacion e on t.idtramite=e.idtramite WHERE t.idtramite='".$tra."'";
 //echo $sql9;
 $rs29=pg_query($link,$sql9);
+$fila29=pg_fetch_array($rs29);
 
-//$fila29=pg_fetch_array($rs29);
+	$echoexa;
+	$exa=$fila29[6];
+	  $long=strlen($exa);  
+	  if ($long==1) {
+	    $sqe="SELECT nombre FROM tipo_examen WHERE idexamen='".$exa."'";
+	    $e=pg_query($link,$sqe);
+	    $filaexa=pg_fetch_array($e);
+	    $echoexa =$filaexa[0];
+	  }else{
+	    $echoexa=$exa;
+	  } 
 
 //echo $fila29."----";
 //echo pg_num_rows($rs29);exit;
@@ -80,10 +92,10 @@ function Footer()
 	  }                     
 	//--
     $this->SetY(-28);
-	$this->SetFont('Arial','B',20);
-	$this->SetX(15);
-	$this->Cell(75,5,$echotra,0,0,'R',1);
-	$this->Cell(10,5,$fila2[9],0,1,'L',1);
+	$this->SetFont('Arial','B',16);
+	$this->SetX(8);
+	$this->Cell(75,26,$echotra,0,0,'R',0);
+	$this->Cell(10,26,$fila2[9],0,0,'L',0);
 	$this->SetY(-15);
 	$this->SetFont('Arial','B',9);
 	$this->Cell(30,5,'Fecha Impresion:',0,0,'R',0);
@@ -92,6 +104,7 @@ function Footer()
 	$this->Cell(40,5,'',0,0,'L',0);
 	$this->Cell(20,5,'_________________________',0,1,'L',0);
 	$this->Cell(110,5,'',0,0,'L',0);
+	$this->SetXY(100,200);
 	$this->Cell(10,5,utf8_decode ($_SESSION["usu"]),0,1,'L',0);
 	
 }
@@ -113,7 +126,7 @@ $pdf->Rect(150,4,140,201);
 $pdf->SetY(6); 
 $pdf->SetX(11);
 $pdf->Cell(135,5,'GOBIERNO REGIONAL DE LAMBAYEQUE',0,0,'C',0);
-$pdf->Cell(140,5,'FECHA DE PROGRAMACION DE EXAMENES',0,1,'C',0);
+$pdf->Cell(140,5,'FECHAS DE PROGRAMACION DE EXAMENES DE NORMAS Y/O PRACTICO',0,1,'C',0);
 $pdf->SetX(11);
 $pdf->Cell(135,5,'GERENCIA REGIONAL DE TRANSPORTES Y COMUNICACIONES',0,1,'C',0);
 $pdf->SetX(11);
@@ -165,9 +178,9 @@ $pdf->MultiCell(64,5,utf8_decode ($fila2[11]) ,0,'L',0);
 
 $pdf->SetFont('Arial','',9);
 $pdf->SetX(40);
-$pdf->Cell(42,5,'Nº Y CENTRO MEDICO:',0,0,'L',1);
+$pdf->Cell(42,5,utf8_decode('N° Y CENTRO MEDICO:'),0,0,'L',1);
 $pdf->SetFont('Arial','B',9);
-$pdf->MultiCell(64,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
+$pdf->MultiCell(65,5,$fila2[5].' - '.utf8_decode ($fila27[1]),0,'J',0);
 
 
 $pdf->SetFont('Arial','',9);
@@ -187,55 +200,61 @@ $pdf->Cell(40,5,'',0,0,'L',0);
 $pdf->Cell(30,7,'_____________________',0,1,'L',1);
 $pdf->SetX(12);
 $pdf->SetXY(12,68);
-$pdf->Cell(130,7,'REGLAS DE TRANSITO',1,1,'C',1);
+$pdf->Cell(130,7,'EXAMEN DE NORMAS',1,1,'C',1);
+$pdf->SetXY(12,75);
+$pdf->Cell(43,5,'FECHA',1,0,'C',1);
+$pdf->Cell(44,5,'SITUACION',1,0,'C',1);
+$pdf->Cell(43,5,'FIRMA',1,1,'C',1);
 $pdf->SetX(12);
-$pdf->Cell(43,6,'',1,0,'L',1);
-$pdf->Cell(44,6,'',1,0,'L',1);
-$pdf->Cell(43,6,'',1,1,'L',1);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,1,'L',1);
 $pdf->SetX(12);
-$pdf->Cell(43,6,'',1,0,'L',1);
-$pdf->Cell(44,6,'',1,0,'L',1);
-$pdf->Cell(43,6,'',1,1,'L',1);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,1,'L',1);
 $pdf->SetX(12);
-$pdf->Cell(43,6,'',1,0,'L',1);
-$pdf->Cell(44,6,'',1,0,'L',1);
-$pdf->Cell(43,6,'',1,1,'L',1);
-$pdf->Cell(230,7,'_________________________',0,0,'R',0);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,1,'L',1);
+$pdf->Cell(230,-35,'_________________________',0,0,'R',0);
 $pdf->SetX(12);
-$pdf->Cell(130,7,'MANEJO',1,1,'C',1);
+$pdf->Cell(130,7,'EXAMEN PRACTICO',1,1,'C',1);
 $pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,1,'L',1);
 $pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,1,'L',1);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,1,'L',1);
 $pdf->SetX(12);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(44,7,'',1,0,'L',1);
-$pdf->Cell(43,7,'',1,0,'L',1);
-$pdf->Cell(55,7,'',0,0,'L',0);
-$pdf->Cell(30,7,'',0,1,'L',1); // ACA IBA la linea
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(44,11,'',1,0,'L',1);
+$pdf->Cell(43,11,'',1,0,'L',1);
+$pdf->Cell(55,11,'',0,0,'L',0);
+$pdf->Cell(30,11,'',0,1,'L',1); // ACA IBA la linea
 
 //---
 $pdf->SetXY(154,110);
-$pdf->Cell(45,9,'"HISTORIAL DE NOTAS":',0,0,'C',0);
+$pdf->Cell(45,9,'"HISTORIAL":',0,0,'C',0);
 
-$pdf->SetXY(154,120);
-$pdf->Cell(28,7,'fechapro',1,0,'C',1);
-$pdf->Cell(45,7,'Situacion',1,0,'C',1);
-$pdf->Cell(45,7,'Usuario',1,1,'C',1);
+$pdf->SetXY(167,120);
+$pdf->Cell(27,7,'FECHA EXAMEN',1,0,'L',1);
+$pdf->Cell(40,7,'TIPO DE EXAMEN',1,0,'C',1);
+$pdf->Cell(33,7,'SITUACION',1,0,'C',1);
+// $pdf->Cell(48,7,'Usuario',1,1,'C',1);
 
 
 
-while ($fila29=pg_fetch_array($rs29)){
+// while ($fila29=pg_fetch_array($rs29)){
 //echo "123";
-$pdf->SetXY(154,126);
-$pdf->Cell(28,5,$fila29[8],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[2],1,0,'L',1);
-$pdf->Cell(45,5,$fila29[9],1,1,'L',1);	
-}
+$pdf->SetXY(167,126);
+$pdf->Cell(27,5,$fila29[3],1,0,'L',1);
+$pdf->Cell(40,5,$echoexa,1,0,'C',1);
+$pdf->Cell(33,5,$fila29[2],1,0,'L',1);
+// $pdf->Cell(48,5,$fila29[9],1,1,'L',1);	
+// }
 
 
 // $pdf->SetXY(154,131);
@@ -264,17 +283,20 @@ $pdf->Cell(45,5,$fila29[9],1,1,'L',1);
 // $pdf->Cell(45,5,'',1,1,'L',1);
 
 
+$pdf->SetXY(60,177);
+$pdf->Cell(14,12,'Firma del postulante',0,0,'L',0);
+$pdf->SetXY(66,172);
+$pdf->Cell(20,12,'_________________________',0,0,'C',0);
 
 
-
-$pdf->SetXY(13,120);
-$pdf->Cell(22,12,'  Firma postulante ',0,0,'L',0);
-$pdf->Cell(67,12,'Huella postulante',0,0,'R',0);
-$pdf->SetX(12);
-
-$pdf->Cell(0,60,'_________________________',0,0,'L',0);
-
-$pdf->Image('imag/huella.png',70,140,30,35,'PNG');
+$pdf->SetXY(15,152);
+// $pdf->Cell(22,12,'  Firma postulante ',0,0,'L',0);
+$pdf->Cell(67,12,'Huella postulante',0,0,'L',0);
+// $pdf->SetX(12);
+// $pdf->SetXY(13,129);
+// $pdf->Cell(13,60,'_________________________',0,0,'L',0);
+$pdf->SetXY(13,129);
+$pdf->Image('imag/huella.png',10,161,39,36,'PNG');
 //$pdf->Cell(60,78,'HUELLA',0,0,'L',1);
 
 //$pdf->Cell(0,0,'Huella y Firma del postulante',0,1,'L',0);
@@ -295,6 +317,9 @@ if ($fila2[8]=='NUEVO' || $fila2[8]=='RECATEGORIZACION' || $fila2[8]==1 || $fila
 	$pdf->SetXY(160, 34);
 	$pdf->Cell(10,5,' Hora Impresion :'. $hora ,0,0,'L',0);
 }
+// ESTE ES PARA MOSTRAR EL TIPO DE EXAMEN
+$pdf->SetXY(160,42);
+$pdf->Cell(10,5,'Tipo Examnen :'.$echoexa,0,0,'L',1);
 /*$pdf->SetXY(160, 42);
 $pdf->Cell(10,5,' SITUACION :'. $hora ,0,0,'L',0);
 */

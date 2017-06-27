@@ -36,10 +36,12 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
                <td  background="imag/admin_div3.gif" ><a href="admin_buscargo.php"><nobr><b><b><span class="G">Cargos </span></b></b></nobr> </a></td>
               <td class="tabsline" ><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
-               <td width="175" background="imag/admin_div1.gif" ><a href="admin_buscentro.php"><span class="G Estilo1"><strong>Centros  </strong></span></a></td>
+               <td width="175" background="imag/admin_div1.gif" ><a href="admin_buscentro.php"><span class="G Estilo1"><strong>Centros Medicos  </strong></span></a></td>
                <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
                 <td width="250" background="imag/admin_div3.gif" align="center" ><a href="curso_especial/admin_buscursoespecial.php"><span class="G"><strong>Curso  A IV</strong></span></a></td>
-                <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
+                <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busescuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
 
                <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
                <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
@@ -53,7 +55,10 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G"><strong>Bloqueo Fecha</strong></span></a></td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-                <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busescuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
+
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_provincia.php"><span class="G"><strong>Añadir Provincia</strong></span></a></td>
+               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_distrito.php"><span class="G"><strong>Añadir Distrito</strong></span></a></td>
                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
                <td class="tabsline" width="175"></td>
              </tr>

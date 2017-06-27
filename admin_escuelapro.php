@@ -2,18 +2,18 @@
 session_start();
 if(!isset($_SESSION["usuario"])) header("location:index.php");
 
-include ("../conectar.php");
+include ("conectar.php");
 $link=Conectarse();
 ?>
 <html><head><title></title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" media="screen" href="../estilos/tabscreen.css">
-<link rel="stylesheet" type="text/css" media="all" href="../estilos/menumx.css">
-<link rel="stylesheet" type="text/css" media="print" href="../estilos/tabprint.css">
-<link rel="stylesheet" type="text/css" media="all" href="../estilos/estilos.css">
-<script type="text/javascript" src="../estilos/libjsgen.js"> </script>
-<script type="text/javascript" src="../estilos/popcalendar.js"> </script>
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/tabscreen.css">
+<link rel="stylesheet" type="text/css" media="all" href="estilos/menumx.css">
+<link rel="stylesheet" type="text/css" media="print" href="estilos/tabprint.css">
+<link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
+<script type="text/javascript" src="estilos/libjsgen.js"> </script>
+<script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script language="JavaScript">
 <!--
 function validar(form1)
@@ -60,40 +60,39 @@ function validar(form1)
  <tbody><tr><td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0" width="33%">
    <tbody>
      <tr>
-       <td class="tabsline" width="20"><img src="../imag/admin_tabinion2.gif" border="0" height="36" width="29"></td>
-       <td width="119" align="center" background="../imag/admin_div3.gif" ><nobr><b><a href="../admin_bususuario.php"><b><span class="G">Usuarios</span></b></a></b></nobr></td>
-       <td class="tabson" ><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td width="119" align="center" background="../imag/admin_div3.gif" ><nobr><b><b><span class="G"> <a href="../admin_examen.php"></a></span></b></b></nobr><b><a href="../admin_busexamen.php"><b><span class="G">Examenes</span></b></a></b></td>
-       <td class="tabson" ><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td width="119" align="center" background="../imag/admin_div3.gif" ><nobr><b><a href="../admin_busevaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
-       <td class="tabson" ><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
-       <td  background="../imag/admin_div3.gif" ><a href="../admin_buscargo.php"><nobr><b><b><span class="G">Cargos </span></b></b></nobr> </a></td>
-       <td class="tabsline" ><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td  background="../imag/admin_div3.gif" ><a href="../admin_buscentro.php"><nobr><b><b><span class="G">Centro </span></b></b></nobr> </a></td>
-       <td class="tabsline" ><span class="tabson"><img src="../imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="220" background="../imag/admin_div1.gif" align="center" ><a href="admin_buscursoespecial.php"><strong>Curso Especial  </strong></a></td>
-       <td width="175" background="../imag/admin_div3.gif" ><span class="tabson"><img src="../imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175" background="../imag/admin_div3.gif" ><a href="../admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../cambia_cupo.php"><span class="G"><strong>Cupos Conocimientos</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../Bloqueo_fecha.php"><span class="G "><strong>Bloqueo Fecha</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+        <td class="tabsline" width="20"><img src="imag/admin_tabinion2.gif" border="0" height="36" width="29"></td>
+         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_bususuario.php"><b><span class="G">Usuarios</span></b></a></b></nobr></td>
+         <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
+         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><b><span class="G"> <a href="admin_examen.php"></a></span></b></b></nobr><b><a href="admin_busexamen.php"><b><span class="G">Examenes</span></b></a></b></td>
+         <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
+         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_busevaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
+         <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
+         <td  background="imag/admin_div3.gif" ><nobr><b><b><a href="admin_buscargo.php"><b><span class="G">Cargos</span></b></a><span class="G"><a href="admin_cargo.php"></a> </span></b></b></nobr> </td>
+         <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros Medicos</strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="250" background="imag/admin_div3.gif" align="center" ><a href="curso_especial/admin_buscursoespecial.php"><span class="G"><strong>Curso  A IV</strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
 
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../admin_provincia.php"><span class="G"><strong>Añadir Provincia</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td width="175"  align="center" background="../imag/admin_div3.gif" > <a href="../admin_distrito.php"><span class="G"><strong>Añadir Distrito</strong></span></a></td>
-       <td class="tabsline" width="175"><span class="tabson"><img src="../imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
-       <td class="tabsline" width="175"></td>
+         <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="admin_escuelaprofesional.php"><span class="G Estilo2"><strong>Escuela Profesional</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cupos Conocimientos</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G "><strong>Bloqueo Fecha</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td class="tabsline" width="175"></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_provincia.php"><span class="G "><strong>Añadir Provincia</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_distrito.php"><span class="G "><strong>Añadir Distrito</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
      </tr>
    </tbody>
  </table></td>
@@ -107,7 +106,7 @@ function validar(form1)
       <tbody>
         <tr>
           <td valign="top"><br>
-            <form name="form1" method="post" action="admin_insert_cur_esp.php" onSubmit="return validar(this)">
+            <form name="form1" method="post" action="admin_insert_esc_prof.php" onSubmit="return validar(this)">
               <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="720">
                 <tbody>
                   <tr>
@@ -118,7 +117,7 @@ function validar(form1)
                                 <tbody>
                                   <tr>
                                     <th align="left"  width="20%"> </th>
-                                    <th height="26" width="75%"> <span class="G">DATOS DE CURSO DE CAPACITACION - CATEGORIA ESPECIAL </span></th>
+                                    <th height="26" width="75%"> <span class="G">DATOS DE CURSO DE CAPACITACION - ESCUELA PROFESIONAL </span></th>
                                     <th align="right" width="25%"><!--input type="button" class="boton" name="btn_volver" value=".:: Volver ::." onclick="history.back()"-->                                    </th>
                                   </tr>
                                 </tbody>
@@ -139,11 +138,11 @@ function validar(form1)
 	{
 	foreach($_POST["chk"] as $k =>$v)
 		{
-		$sql="SELECT * FROM curso_especial WHERE id_curso_especial='".$v."'";
+		$sql="SELECT * FROM escuela_profesional WHERE idescuela='".$v."'";
 		$rs=pg_query($link,$sql);
 		$fila =pg_fetch_object($rs);
-		$id= $fila->id_curso_especial;
-		$nom= $fila->nombre_curso_especial;		
+		$id= $fila->idescuela;
+		$nom= $fila->nombre;		
 		$ape= $fila->direccion;
 		$estado= $fila->estado;		
 		
@@ -157,7 +156,7 @@ function validar(form1)
                     <td class="marco" width="1%">&nbsp;</td>
                     <td class="etiqueta" align="right" width="22%">C&oacute;digo &nbsp;&nbsp;</td>
                     <td class="objeto" width="1%">&nbsp;</td>
-                    <td class="objeto" width="78%"><input name="codigo" class="cajatexto" id="C&oacute;digo de Usuario" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,5,0)" onKeyPress="return formato(event,form,this,5,0)" value="<?=$id?>" size="9" maxlength="5" readonly type="text">                    </td>
+                    <td class="objeto" width="78%"><input name="codigo" class="cajatexto" id="codigo" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,5,0)" onKeyPress="return formato(event,form,this,5,0)" value="<?=$id?>" size="9" maxlength="5" readonly type="text">                    </td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
                   <tr>
@@ -190,7 +189,7 @@ function validar(form1)
                     <td class="marco" width="1%">&nbsp;</td>
                     <td class="etiqueta" align="right" width="22%">Direcci&oacute;n &nbsp;&nbsp;</td>
                     <td class="objeto" width="1%">&nbsp;</td>
-                    <td class="objeto" width="78%"><input name="apellidos" value="<?=$ape?>" size="100" class="cajatexto" id="Apellidos" maxlength="60"  type="text">                    </td>
+                    <td class="objeto" width="78%"><input name="apellidos" value="<?=$ape?>" size="100" class="cajatexto" id="Apellidos" maxlength="60"  type="text"></td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
                   <?php 
@@ -224,7 +223,7 @@ function validar(form1)
                     <td colspan="7" height="30"><table border="0" cellpadding="3" cellspacing="1" width="100%">
                         <tbody>
                           <tr>
-                            <td class="spaceRow" colspan="7" height="1"><img src="../main.php8_files/spacer.htm" alt="" height="1" width="1"></td>
+                            <td class="spaceRow" colspan="7" height="1"><img src="main.php8_files/spacer.htm" alt="" height="1" width="1"></td>
                           </tr>
                           <tr align="center">
                             <td class="catBottom" colspan="7" height="28"><table border="0" cellpadding="0" cellspacing="0" width="100%">

@@ -35,12 +35,32 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
          <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
          <td  background="imag/admin_div3.gif" ><a href="admin_buscargo.php"><nobr><b><b><span class="G">Cargos </span></b></b></nobr> </a></td>
          <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros </strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros Medicos</strong></span></a></td>
          <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
+                  <td width="175" background="imag/admin_div3.gif" ><a href="../admin_buscursoespecial.php"><span class="G"><strong>Curso A IV</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                  <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
          <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><span class="G"><strong>Monitoreo </strong></span></a></td>
          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
-                <td width="175" background="imag/admin_div1.gif" ><a href="admin_busmonitoreoeval.php"><nobr><b><b><span class="G Estilo1">Evaluacion Monitoreo </span></b></b></nobr></a> </td>
-                <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div44.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175" background="imag/admin_div1.gif" ><a href="admin_busmonitoreoeval.php"><nobr><b><b><span class="G Estilo2">Evaluacion Monitoreo </span></b></b></nobr></a> </td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
+         
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cupos Conocimientos</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G "><strong>Bloqueo Fecha</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_provincia.php"><span class="G "><strong>Añadir Provincia</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_distrito.php"><span class="G "><strong>Añadir Distrito</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
          <td class="tabsline" width="175"></td>
        </tr>
      </tbody>

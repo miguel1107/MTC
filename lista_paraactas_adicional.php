@@ -146,7 +146,7 @@ a:visited {
                       <tr>
                         <td width="33"><div align="center"><strong>N°</strong></div></td>
                         <td width="289"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
-                        <td width="58"><div align="center"><strong>TIPO TRAMITE </strong></div></td>
+                        <td width="58"><div align="center"><strong>DNI</strong></div></td>
                         <td width="58"><div align="center"><strong>CATEG.</strong></div></td>
                         <td width="77"><div align="center"><strong>OPCION</strong></div></td>
                         <td width="82"><div align="center"><strong>PUNTAJE</strong></div></td>
@@ -156,8 +156,9 @@ $cant=count($_POST["chk"]);
 $i=1; 
 if($cant > 0){
 	foreach($_POST["chk"] as $k =>$v){
-    $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."' ORDER BY p.apepat ASC";
-		$rs2=pg_query($link,$sql2);
+    $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,t.tipotramite,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.idevaluacion='".$v."' ORDER BY p.apepat ASC";
+		// echo $sql2;exit;
+    $rs2=pg_query($link,$sql2);
 		$codigos=$codigos.$v."@";
     while($reg=pg_fetch_array($rs2)) { 
 ?>
@@ -165,18 +166,24 @@ if($cant > 0){
 					    <td height="24"><div align="center"><?=$i?></div></td>
                         <td><?php echo $reg[1]; ?>
                           <?php echo $reg[2]; ?>
-                          <?php echo $reg[0]; ?></td>
+                          <?php echo $reg[0]; ?>
+                        </td>
                         <td><div align="center">
-                          <?php echo $reg[9]; ?>
-                        </div></td>
+                          <?php echo $reg[10]; ?>
+                          </div>
+                        </td>
                         <td><div align="center">
                           <?php echo $reg[3]; ?>
-                        </div></td>
-                        <td  ><div align="center"><?php echo $reg[4]; ?>
-                        </div></td>
+                          </div>
+                        </td>
+                        <td>
+                          <div align="center"><?php echo $reg[4]; ?>
+                          </div>
+                        </td>
                         <td><div align="center"> 
                           -<?php $evaluador=$reg[7]; ?>
-                        </div></td>
+                          </div>
+                        </td>
                       </tr>
 					  <?php } $i++;  
 	  	}

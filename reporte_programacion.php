@@ -15,7 +15,7 @@ function AbreVentana(sURL){
 </script>";
 
 //$pag=$_POST["pagina"];
-$ppaa="pasar_reporte.php?fechaini=".$_POST["xxxfecha"]."&tipotra=".$_POST["tipotra"];
+$ppaa="pasar_reporte.php?fechaini=".$_POST["xxxfecha"]."&tipotra=".$_POST["tipotra"]."&categoria=".$_POST["categoria"]."&usuario=".$_POST["usuario"];
 
 echo "<script>AbreVentana('".$ppaa."')</script>
 

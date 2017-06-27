@@ -106,7 +106,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                       <!-- fin menu mx !-->                    </td>
                   </tr>
                   <tr>
-                    <td ><iframe id="igrid" name="igrid"  style="border-bottom-style:" src="listregexamen.php?xxxnombres=<?=$_POST["xxxnombres"]?>&xxxapepat=<?=$_POST["xxxapepat"]?>&xxxdni=<?=$_POST["xxxdni"]?>&xxxfecha=<?=$_POST["xxxfecha"]?>&categoria=<?=$_POST["categoria"]?>" frameborder="0" height="100%" scrolling="yes" width="100%"></iframe></td>
+                    <td ><iframe id="igrid" name="igrid"  style="border-bottom-style:" src="listregexamen.php?xxxnombres=<?=$_POST["xxxnombres"]?>&xxxapepat=<?=$_POST["xxxapepat"]?>&xxxapemat=<?=$_POST["xxxapemat"]?>&xxxdni=<?=$_POST["xxxdni"]?>&xxxfecha=<?=$_POST["xxxfecha"]?>&categoria=<?=$_POST["categoria"]?>" frameborder="0" height="100%" scrolling="yes" width="100%"></iframe></td>
                   </tr>
                   <tr >
                     <td height="24"><!-- menu mx !-->

@@ -109,9 +109,16 @@ function prueba(){
               </tr>
               <tr valign="middle">
                 <td class="marco" width="1%">&nbsp;</td>
-                <td class="etiqueta" align="right" width="22%">DNI&nbsp;&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">Apellido Materno &nbsp;&nbsp;</td>
                 <td class="objeto" width="1%">&nbsp;</td>
-                <td class="objeto" width="78%"><input name="xxxdni" size="15" class="cajatexto" id="xxxdni" maxlength="8" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                <td class="objeto" width="78%"><input name="xxxapemat" size="40" class="cajatexto" id="xxxapemat" maxlength="60" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
+                <td class="objeto" width="1%">&nbsp;</td>
+              </tr>
+              <tr valign="middle">
+                <td class="marco" width="1%">&nbsp;</td>
+                <td class="etiqueta" align="right" width="22%">DNI/C.E&nbsp;&nbsp;</td>
+                <td class="objeto" width="1%">&nbsp;</td>
+                <td class="objeto" width="78%"><input name="xxxdni" size="15" class="cajatexto" id="xxxdni" maxlength="9" onKeyPress="return formato(event,form,this,80)"  type="text"></td>
                 <td class="objeto" width="1%">&nbsp;</td>
               </tr>
               <tr valign="middle">

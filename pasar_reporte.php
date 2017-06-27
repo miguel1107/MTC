@@ -14,6 +14,7 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
 include ("traducefecha.php");
 include ("conectar.php");
 $link=Conectarse();
+
 ?>
 <html >
 <head>
@@ -64,7 +65,7 @@ function ocultarObj(idObj,timeOutSecs){
         <td width="78%"><div align="center"><strong>GOBIERNO REGIONAL DE LAMBAYEQUE </strong></div></td>
         <td width="10%" rowspan="3"><div align="center"><img src="imag/banner_top1.png" width="60" height="60"></div></td>
       </tr>
-      <tr><td><div align="center"><strong>GERENCIA  REGIONAL DE TRANSPORTES Y COMUNICACIONES </strong></div></td></tr>
+      <tr><td><div align="center"><strong>GERENCIA  REGIONAL DE TRANSPORTES Y COMUNICACIONES DE LAMBAYEQUE</strong></div></td></tr>
       <tr><td><div align="center"><strong>DIRECCION EJECUTIVA DE CIRCULACION TERRESTRE</strong></div></td></tr>
     </table></td>
   </tr>
@@ -73,7 +74,7 @@ function ocultarObj(idObj,timeOutSecs){
     <td colspan="4">
     <table width="95%" border="1" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td height="22" bgcolor="#336699"><div align="center"><span class="Estilo1"><strong>LISTA DE PROGRAMACIONES REALIZADAS</strong></span></div></td>
+        <td height="22" bgcolor="#336699"><div align="center"><span class="Estilo1"><strong>REPORTE DE PROGRAMACIONES REALIZADAS POR TRAMITE DOCUMENTARIO</strong></span></div></td>
         </tr>
     </table></td>
   </tr>
@@ -84,41 +85,44 @@ function ocultarObj(idObj,timeOutSecs){
         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">N&ordm; TRAMITE </span></strong></div></td>
         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">NOMBRES</span></strong></div></td>
         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">APELLIDOS</span></strong></div></td>
-        <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">FECHA INSCRIPCION</span></strong></div></td>
-        <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">USUARIO TRAMITE </span></strong></div></td>
+        <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">DNI</span></strong></div></td>
+        <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">FECHA REGISTRO</span></strong></div></td>
+        <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">TIPO TRAMITE</span></strong></div></td>
         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">CATEGORIA</span></strong></div></td>
-         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">TIPO DE TRAMITE</span></strong></div></td>
+         <td bgcolor="#336699"><div align="center"><strong><span class="Estilo1">USUARIO TRAMITE</span></strong></div></td>
      </tr>
       
 	  <?php
 	  //
 	$link=conectarse();
 	
+	
 	if ($_SESSION["apellidos"]='ADMIN'){
 		
 		if($_GET["fechaini"]!='' )
 		{
-			if ($_GET["tipotra"]!='TODOS')
+			if ($_GET["tipotra"]!=0)
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria WHERE  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.tipotramite= '".$_GET["tipotra"]."' and c.idcategoria= '".$_GET["categoria"]."' and t.usuario like '%".$_GET["usuario"]."%' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 			else
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria WHERE  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
+				// echo $sql3;exit;
 			}
 		
 		}
 		else{
-			if ($_GET["tipotra"]!='TODOS')
+			if ($_GET["tipotra"]!=0)
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.nrosolicitud<>0 and t.estado<>'55' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria WHERE  t.nrosolicitud<>0 and t.estado<>'55' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 			else
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria WHERE  t.nrosolicitud<>0 and t.estado<>'55' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 		}
@@ -129,27 +133,27 @@ function ocultarObj(idObj,timeOutSecs){
 		
 			if($_GET["fechaini"]!='' )
 		{
-			if ($_GET["tipotra"]!='TODOS')
+			if ($_GET["tipotra"]!=0)
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 			else
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."'  order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin, t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  where  t.fecha_inscripcion = '".$_GET["fechaini"]."' and t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."'  order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 		
 		}
 		else{
-			if ($_GET["tipotra"]!='TODOS')
+			if ($_GET["tipotra"]!=0)
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  where  t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' and t.tipotramite= '".$_GET["tipotra"]."' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 			else
 			{
-				$sql3="select t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria where  t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' order by t.tipotramite ASC";
+				$sql3="SELECT t.idtramite, p.nombres, p.apepat, p.apemat , t.fecha_inscripcion, c.nombre , p.dni,t.fechaini,t.fechafin ,t.tipotramite,t.tipotramite,t.usuario from postulante p INNER JOIN tramite t on p.idpostulante=t.idpostulante INNER JOIN categoria c on t.idcategoria=c.idcategoria  where  t.nrosolicitud<>0 and t.estado<>'55' and t.usuario = '". $_SESSION["apellidos"]."' order by t.tipotramite ASC";
 				$rs3=pg_query($link,$sql3) or die ("error : $sql");
 			}
 		}	
@@ -164,15 +168,11 @@ $i=0;
         <td><?=$reg[0]?></td>
         <td><?=$reg[1]?></td>
         <td><?=$reg[2]?> <?=$reg[3]?></td>
+        <td><?=$reg[6]?></td>
         <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
           <?=normal($reg[4])?>
         </font></td>
-        <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-          <?=$reg[11]?>
-        </font></td>
-        <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-          <?=$reg[5]?>
-        </font></div></td>
+
         <td height="22"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
           <?php
             $echotra;
@@ -188,6 +188,15 @@ $i=0;
             }
 
           ?>
+        	</font>
+    	</td>
+
+        <td><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+          <?=$reg[5]?>
+        </font></div></td>
+
+ 		<td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+          <?=$reg[11]?>
         </font></td>
 <!--         <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
           <?=$reg[12]?>
@@ -196,6 +205,72 @@ $i=0;
 	  <?php }?>
     </table></td>
   </tr>
+
+  <?php 
+  	  $link=Conectarse();
+  	  if ($_GET["tipotra"]!=0) {
+  	  	$sqln="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='1' and idcategoria= '".$_GET["categoria"]."' and usuario='".$_GET["usuario"]."' ";
+     
+  	  }else {
+  	  	if ($_GET["tipotra"]==0) {
+  	  		$sqln="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='1'";
+     
+  	  	}
+      }
+      // echo $sqla;exit;
+      $rsa=pg_query($link,$sqln);
+      $filan=pg_fetch_array($rsa);
+
+      if ($_GET["tipotra"]!=0) {
+        $sqlt="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='2' and idcategoria= '".$_GET["categoria"]."' and usuario='".$_GET["usuario"]."'";
+      }else {
+        if ($_GET["tipotra"]==0) {
+          $sqlt="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='2'";
+     
+        }
+      }
+      // echo $sqla;exit;
+      $rst=pg_query($link,$sqlt);
+      $filat=pg_fetch_array($rst);
+
+      if ($_GET["tipotra"]!=0) {
+        $sqlr="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='3' and idcategoria= '".$_GET["categoria"]."' and usuario='".$_GET["usuario"]."' ";
+     
+      }else {
+        if ($_GET["tipotra"]==0) {
+          $sqlr="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='3' ";
+     
+        }
+      }
+      // echo $sqla;exit;
+      $rsr=pg_query($link,$sqlr);
+      $filar=pg_fetch_array($rsr);
+
+      if ($_GET["tipotra"]!=0) {
+        $sqld="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='4' and idcategoria= '".$_GET["categoria"]."' and usuario='".$_GET["usuario"]."' ";
+      }else {
+        if ($_GET["tipotra"]==0) {
+          $sqld="SELECT count(*) from tramite where fecha_inscripcion='".$_GET["fechaini"]."' and tipotramite='4'";
+     
+        }
+      }
+      $rsd=pg_query($link,$sqld);
+      $filad=pg_fetch_array($rsd);
+   ?>
+
+ <tr valign="middle">
+  <td>&nbsp;</td>
+  <td align="right">&nbsp;</td>
+  <td>
+    <div align="center"><font size="4">NUEVO= &nbsp;<?php echo $filan[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     RECATEGORIZACION= &nbsp;<?php echo $filat[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     REVALIDACION= &nbsp;<?php echo $filar[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      DUPLICADOS= &nbsp;<?php echo $filad[0];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </font>
+    </div>
+   
+  </td>
+</tr>
   <tr>
     <td colspan="4"><table width="95%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
       <tr>

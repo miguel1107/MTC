@@ -150,7 +150,7 @@ body {
                       </tr>
                       <?php
 		$sss="SELECT t.tipotramite from detalle_examen de inner join evaluacion e ON de.idevaluacion=e.idevaluacion INNER JOIN tramite t on e.idtramite=t.idtramite INNER JOIN preguntas p 
-on de.idpregunta=p.idpregunta where t.idtramite='".$_GET["idtramite"]."' ";
+    on de.idpregunta=p.idpregunta where t.idtramite='".$_GET["idtramite"]."' ";
 		$ddd=pg_query($link,$sss);
 		$rrr=pg_fetch_array($ddd);
 		$ttra=$rrr[0];

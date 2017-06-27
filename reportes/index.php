@@ -4,10 +4,65 @@
 	$link=Conectarse();
 	$tra=$_GET['tra'];
 	$sis=$_GET['sis'];
+	$datosdias=date('d');
+
+	$mespru=date('m');
+
+	/* Lo siguiente son 12 if que comparan si $mespru es igual a dichos numeros y asi asignara a $varmes el Mes en texto */ 
+	if($mespru==1){ 
+	$varmes="Enero"; 
+	} 
+
+	if($mespru==2){ 
+	$varmes="Febrero"; 
+	} 
+
+	if($mespru==3){ 
+	$varmes="Marzo"; 
+	} 
+
+	if($mespru==4){ 
+	$varmes="Abril"; 
+	} 
+
+	if($mespru==5){ 
+	$varmes="Mayo"; 
+	} 
+
+	if($mespru==6){ 
+	$varmes="Junio"; 
+	} 
+
+	if($mespru==7){ 
+	$varmes="Julio"; 
+	} 
+
+	if($mespru==8){ 
+	$varmes="Agosto"; 
+	} 
+
+	if($mespru==9){ 
+	$varmes="Septiembre"; 
+	} 
+
+	if($mespru==10){ 
+	$varmes="Octubre"; 
+	} 
+
+	if($mespru==11){ 
+	$varmes="Noviembre"; 
+	} 
+
+	if($mespru==12){ 
+	$varmes="Diciembre"; 
+	} 
+
+	$datoano=date('Y.');
 		$sql="SELECT t.tipotramite,t.idcategoria,t.fecha_inscripcion,p.*,t.usuario
 			FROM tramite t
 			INNER JOIN postulante p on p.idpostulante=t.idpostulante
-			WHERE t.idtramite='".$tra."'";			
+			WHERE t.idtramite='".$tra."'";
+			// echo $sql;exit;			
 	$rs=pg_query($link,$sql);
 	$datos=pg_fetch_array($rs);
 	$tt=$datos[0];
@@ -297,9 +352,35 @@
 		</div>
 		<div class="fl2-s2-no" width="10%"><?php echo $_SESSION["usu"].'-'. date('d/m/Y H:i:s').'-N° Tra:'.$tra?></div>
 	</section>
-
 	<section class="flc2 page">
-
+		<!-- la parte de la declaracion jurada -->
+		<div class="flc1-foot">
+			<div class="titulo">
+				<span> DECLARACION JURADA</span>
+			</div>
+			<div class="contenido">
+				YO, <span><?php echo $nom; ?>&nbsp;,<?php echo $app ?>&nbsp;<?php echo $apm ?></span> , con DNI: <span><?php echo $dni; ?></span>, realizando el Tramite: <span><?php echo $echotra.'-'.$categoria ?></span> <br>
+				<br>
+				<span>DECLARO BAJO JURAMENTO:</span><br>
+				<br>
+				No estar privado por resolución judicial firme con calidad de cosa juzgada, del derecho a conducir vehículos del transporte terrestre, de acuerdo a lo normado en el
+				D.S.N 007-2016-MTC, firmo la presente en la ciudad de Chiclayo, a los <?php echo $datosdias ?> dias del Mes de <?php echo $varmes ?> del año <?php echo $datoano ?>
+			</div>
+			<br>
+			<div class="flc1-foot-fihu">
+				<div class="flc1-foot-fihu-fi">
+					<span></span>
+					Firma del Declarante
+				</div>
+				<div class="flc1-foot-fihu-hu">
+					<span></span>
+					Huella Digital
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<!-- termina la parte de la declaracion jurada -->
 		<div class="flc2-s1">
 			<p class="flc2-s1-ti">D. RESPONSABLES DEL SERVICIO DE LICENCIAS DE CONDUCIR</p>
 			<div class="flc2-s1-co">
@@ -342,10 +423,8 @@
 			</div>
 		</div>
 		<div class="fl2-s2-no" width="100%"><?php echo $_SESSION["usu"].' - '.date('d/m/Y H:i:s').'- N°Tra :'.$tra ?></div>
-		<div style="width: 100px; height: 480px; ">  </div>
-		<div class="flc2-sep">---------------------------------------------------------------------------------------------------------------------------------------</div>
-	
-
+		<div style="width: 100px; height:300px; "></div>
+		<div class="flc2-sep">------------------------------------------------------------------------------------------------------------------------------------------------</div>
 		<table class="flc2-s3">
 			<tr>
 				<td style="width: 81.6%" class="flc2-s3-ti">

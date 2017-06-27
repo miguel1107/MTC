@@ -12,12 +12,16 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
 <link rel="stylesheet" type="text/css" media="all" href="estilos/estilos.css">
 <script type="text/javascript" src="estilos/libjsgen.js"> </script>
 <script type="text/javascript" src="estilos/script.js"></script>
+<script type="text/javascript" src="estilos/popcalendar.js"> </script>
 <script src="js/jquery-2.0.3.min.js"></script>
   <script src="js/jquery-ui-1.10.3.custom.min.js"> </script>
   <script src="js/jquery-ui.js"> </script>
 <script src="js/edita_plazo.js"></script>
 <style type="text/css">
-  .Estilo2 {color: #336699}
+<!--
+.Estilo1 {font-size: 12px}
+.Estilo2 {color: #336699}
+-->
 </style>
 </head>
 <body class="os2hop">
@@ -42,11 +46,13 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                            <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
                            <td  background="imag/admin_div3.gif" ><nobr><b><b><a href="admin_buscargo.php"><b><span class="G">Cargos</span></b></a><span class="G"><a href="admin_cargo.php"></a> </span></b></b></nobr> </td>
                            <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-                           <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros  </strong></span></a></td>
+                           <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros Medicos</strong></span></a></td>
                            <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                            
                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="curso_especial/admin_buscursoespecial.php"><span class="G"><strong>Curso    A IV </strong></span></a></td>
-                           <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
+                           <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
+                          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
                            <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
                            <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
@@ -57,11 +63,16 @@ if($_SESSION["cargo"]!='1' && $_SESSION["cargo"]!='6') header("location:denegado
                            <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo.php"><span class="G"><strong>Cupos Conocimientos</strong></span></a></td>
                            <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
                           <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_cupo_manejo.php"><span class="G"><strong>Cupos Manejo</strong></span></a></td>
-               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-               <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G"><strong>Bloqueo Fecha</strong></span></a></td>
-               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-                <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
-               <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+                          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+                          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="bloqueo_fecha.php"><span class="G"><strong>Bloqueo Fecha</strong></span></a></td>
+                          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
+                          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_provincia.php"><span class="G"><strong>Añadir Provincia</strong></span></a></td>
+                          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
+                          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_distrito.php"><span class="G"><strong>Añadir Distrito</strong></span></a></td>
+                          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+                          
                          <td class="tabsline" width="175"></td>
 				              </tr>	
         		        </tbody>

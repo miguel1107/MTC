@@ -32,7 +32,7 @@ body {
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#99CCFF">
 
 
-<?
+<?php
 $link=conectarse();
 $sql3="select * from evaluador "; 
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
@@ -81,7 +81,7 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
-			        <?
+			        <?php
 				//$link=conectarse();
 				$ssql="select * from evaluador where  nombres like '".$_GET["frase"]."%' and apellidos like '".$_GET["frase12"]."%'order by apellidos DESC LIMIT ".$tamPag." OFFSET ".$limitInf;
 				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
@@ -134,7 +134,7 @@ $car=$codigo;
 
           <TR bgcolor="#FFFFFF">
             <TH width="998" height="20" colspan="3" bgcolor="#EBF3FB"><div align="left">
-              <? 
+              <?php 
     if($pagina>1) 
     { 
        echo "<a class='p' href='".$_SERVER["PHP_SELF"]."?pagina=".($pagina-1)."&frase=".$_GET["frase"]."&orden=".$orden."&criterio=".$txt_criterio."'>"; 

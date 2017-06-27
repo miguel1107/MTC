@@ -179,22 +179,26 @@ a:visited {
                             </tr>
                             <?php                            
                               if($_GET["categoria"]=='1'){
-                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen!=3 and e.idexamen!=4 ORDER BY p.apepat ASC";
+                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen!=3 and e.idexamen!=4 ORDER BY p.apepat ASC";
                               		$rs2=pg_query($link,$sql2);
                               }else{
-                              		$sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."' ORDER BY p.apepat ASC";
-                              		$rs2=pg_query($link,$sql2);
+                                if ($_GET["categoria"]=='4') {
+                                  $sql2="SELECT p.nombres,p.apepat,p.apemat,c.nombre,e.opcion,e.fecha ,e.idevaluador,e.idexamen,t.idtramite,e.idevaluacion,t.tipotramite,p.dni FROM postulante p INNER JOIN tramite t ON p.idpostulante=t.idpostulante INNER JOIN evaluacion e ON t.idtramite=e.idtramite INNER JOIN categoria c ON t.idcategoria=c.idcategoria where e.fecha='".$_GET["xxxfecha"]."' and e.idexamen='".$_GET["categoria"]."' ORDER BY p.apepat ASC";
+                                  // echo $sql2;exit;
+                                  $rs2=pg_query($link,$sql2);                                }                         
                               }
                               
                             ?>
                             <tr>
                               <td width="20">&nbsp;</td>
                               <td width="33"><div align="center"><strong>N°</strong></div></td>
-                              <td width="289"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
-                              <td width="58"><div align="center"><strong>TIPO TRAMITE </strong></div></td>
-                              <td width="58"><div align="center"><strong>CATEG.</strong></div></td>
-                              <td width="77"><div align="center"><strong>OPCION</strong></div></td>
-                              <td width="82"><div align="center"><strong>PUNTAJE</strong></div></td>
+                              <td width="300"><div align="center"><strong>APELLIDOS Y NOMBRES </strong></div></td>
+                              <td width="50"><div align="center"><strong>DNI</strong></div></td>
+                              <td width="20"><div align="center"><strong>CATEG.</strong></div></td>
+                              <td width="20"><div align="center"><strong>OPCION</strong></div></td>
+                              <td width="82"><div align="center"><strong>NOTA</strong></div></td>
+                              <td width="30"><div align="center"><strong>RESULTADO</strong></div></td>
+                              <td width="54"><div align="center"><strong>FIRMA</strong></div></td>
                             </tr>
                             <?php  $i=1; while($reg=pg_fetch_array($rs2)) { ?>
                             <tr  bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#FFffff')">
@@ -202,22 +206,31 @@ a:visited {
                               <td><div align="center">
                                   <?php echo $i; ?>
                               </div></td>
-                              <td><?php echo $reg[1]; ?>
-                                  <?php echo $reg[2]; ?>
-                                  <?php echo $reg[0]; ?></td>
                               <td>
+                                  <div>
+                                    <?php echo $reg[1]; ?>
+                                    <?php echo $reg[2]; ?>
+                                    <?php echo $reg[0]; ?>
+                                  </div>
+                              </td>
+                              <td>      
                                 <div align="left">
-                                  <?php echo $reg[10]; ?>
-                                  </div></td>
+                                  <?php echo $reg[11]; ?>
+                                </div>
+                              </td>
                               <td><div align="center">
                                   <?php echo $reg[3]; ?>
                               </div></td>
-                              <td  ><div align="center"> <a onClick="tree('editar_opcion.php?id=<?=$id?>&fecha=<?=$_GET["xxxfecha"]?>&cate=<?=$_GET["categoria"]?>&idttra=<?=$reg[8]?>','nr_pome_menuiddepende', '', '', '', '', '', '', 'Jerarqu&iacute;a de Men&uacute;s','500', '165')" >
-                                  <?php echo $reg[4]; ?>
-                              </a> </div></td>
-                              <td><div align="center"> -
-                                    <?php $evaluador=$reg[7]; ?>
+                                <td>
+                                  <div align="center"> <?php echo $reg[4]; ?>
+                                    </a>
+                                  </div>
+                                </td>
+                              <td><div align="center"> <!-- -
+                                    <?php $evaluador=$reg[7]; ?> -->
                               </div></td>
+                              <td></td>
+                              <td></td>
                             </tr>
                             <?php $i++;  } ?>
                           </table></td>

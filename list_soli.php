@@ -86,10 +86,10 @@ if(!isset($_SESSION["usuario"])) header("location:index.php");
                                       <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'nuevo_postulante.php?sw=3')" nowrap="nowrap"><img src="imag/editar.gif" alt="Editar Registro" width="15" height="12" hspace="1" border="0" align="absmiddle"> Editar </td>
                                       <td class="LL">|</td>
-									  <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'ingresa_sisgedo.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Solicitud" width="15" height="12" hspace="1" border="0" align="absmiddle">  Solicitud </td>
+									                     <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'ingresa_sisgedo.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Solicitud" width="15" height="12" hspace="1" border="0" align="absmiddle">  Solicitud </td>
                                       <td class="LL">|</td>
-                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'declaracion_personal_duplicado.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Declaracion Jurada" width="15" height="12" hspace="1" border="0" align="absmiddle"> Declaracion Jurada</td>
-                                        <td class="LL">|</td>
+                                       <!-- <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'declaracion_personal_duplicado.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Declaracion Jurada" width="15" height="12" hspace="1" border="0" align="absmiddle"> Declaracion Jurada</td>
+                                        <td class="LL">|</td> -->
                                        <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('select',0,1,'declaracion_perdida.php')" nowrap="nowrap"><img src="imag/nuevo.gif" alt="Generar Declaracion Jurada" width="15" height="12" hspace="1" border="0" align="absmiddle"> Declaracion Jurada Por Perdida</td>
                                       <td class="LL">|</td>
                                       <td class="P" onMouseOver="MO(event,'TD')" onMouseOut="MU(event,'TD')" onClick="Subm('anular',0,1,'delete_solicitudes_anulados.php?sw=4152')" nowrap="nowrap"><img src="imag/rechazar.gif" alt="Anular Tr�mite" width="22" height="18" hspace="1" border="0" align="absmiddle">  Anular Tramite</td>

@@ -9,7 +9,7 @@ $link=Conectarse();
 <head>
 <script  language="javascript" src="estilos/script.js"></script>
 <script language="javascript" src="estilos/checkall.js"></script>
-<link href="../../estilos/button.css" rel="stylesheet" type="text/css">
+<link href="file:///C|/wamp/www/estilos/button.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
 .Estilo4 {color: #006666}
@@ -17,8 +17,8 @@ $link=Conectarse();
 -->
 
 </style>
-<link href="estilos/barra.css" rel="stylesheet" type="text/css">
-<title>:: WEBMASTER - DRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
+<link href="../estilos/barra.css" rel="stylesheet" type="text/css">
+<title>:: WEBMASTER - GRTC ::</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -34,13 +34,13 @@ body {
 
 <?php
 $link=conectarse();
-$sql3="select * from centro_medico "; 
+$sql3="select * from provincia "; 
 $rs3=pg_query($link,$sql3) or die ("error : $sql");
 $numeroRegistros=pg_num_rows($rs3);
 //////////elementos para el orden 
     if(!isset($orden)) 
     { 
-       $orden="idcentro"; 
+       $orden="idprovincia"; 
     } 
     //////////fin elementos de orden
     //////////calculo de elementos necesarios para paginacion 
@@ -81,10 +81,11 @@ $numeroRegistros=pg_num_rows($rs3);
     } 
 //////////fin de dicho calculo 
 ?>
-			        <?
+			        <?php
 				//$link=conectarse();
-				$ssql="select * from centro_medico where  nombre like '%".$_GET["frase"]."%' order by idcentro ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
-				$rs=pg_query($link,$ssql) or die ("error : $ssql"); 
+				$ssql="select * from provincia where  nombre like '".$_GET["frase"]."%' order by idprovincia ASC LIMIT ".$tamPag." OFFSET ".$limitInf;
+				// echo $ssql;exit;
+        $rs=pg_query($link,$ssql) or die ("error : $ssql"); 
 				
 				 ?>
   <tr>
@@ -93,14 +94,12 @@ $numeroRegistros=pg_num_rows($rs3);
           <tr bgcolor="#ebf3fb">
             <th width="31" height="23"><!--<input  border="0" name="allbox" type="checkbox" onClick="CA()">--></th>
 
-            <th width="44" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">CODIGO </font></div></th>
-            <th width="410" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">CENTRO MEDICO</font></div></th>
-
-            <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">DIRECCION</font></th>
-            <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">ESTADO</font></th>
+            <th width="44" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">CODIGO_PROVINCIA </font></div></th>
+            <th width="410" bgcolor="#ebf3fb"><div align="center" class="Estilo4"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">PROVINCIA</font></div></th>
+            <th width="292" bgcolor="#ebf3fb"><font size="1" class="Estilo4", face="Verdana, Arial, Helvetica, sans-serif">TIPO</font></th>
           </tr>
 
-          <?  while($reg=pg_fetch_array($rs)) { ?>
+          <?php  while($reg=pg_fetch_array($rs)) { ?>
 
           <tr bgcolor="#FFFFFF" onMouseOver="pintar(this,'#D6DEEC')" onMouseOut="pintar(this,'#ffffff')">
             <td height="22" align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
@@ -113,18 +112,16 @@ $numeroRegistros=pg_num_rows($rs3);
             </font></div>              </td>
             <td>
 
-              <div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+              <div align="center"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                 <?=$reg[1]?>
             </font></nobr></div></td>
-            <td><div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+            <td><div align="center"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?=$reg[2]?>
             </font></nobr></div></td>
-            <td><div align="left"><nobr><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-              <? if($reg[3]=='1'){echo "HABILITADO";}else{echo "INHABILITADO";}?>
-            </font></nobr></div></td>
+          
           </tr>
 
-          <? }?>
+          <?php }?>
         </table>
         <table width="100%"  border="0" cellpadding="0" cellspacing="0">
 

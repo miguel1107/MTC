@@ -427,7 +427,7 @@
       var m = date.getMonth();
       var d = date.getDate();
       var y = date.getFullYear();
-      for (var i = 0; i < disabledSpecificDays.length; i++) {
+      for (var i = 1; i < disabledSpecificDays.length; i++) {
         if ($.inArray((m + 1) + '-' + d + '-' + y, disabledSpecificDays) != -1 || new Date() > date) {
           return [false];
         }

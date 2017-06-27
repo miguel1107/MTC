@@ -18,19 +18,33 @@ $link=Conectarse();
 <!--
 function validar(form1)
 {
-	if (form1.cargo.value=="")
+	if (form1.nombres.value=="")
 	 {
-	 alert("Debe ingresar Cargo");
-	 form1.cargo.focus();
+	 alert("Debe ingresar Distrito");
+	 form1.nombres.focus();
 	 return false;
 	 }
-	
+	 // if (form1.apellidos.value=="")
+	 // {
+	 // alert("Debe ingresar Direcci�n");
+	 // form1.apellidos.focus();
+	 // return false;
+	 // }
+
+	 if (form1.estado.value=="")
+	 {
+	 alert ("Debe Seleccionar Estado");
+	 form1.estado.focus();
+	 return false;
+	 }
+	 	
 	 return true;
 }
 //-->
 </script>
 <style type="text/css">
 <!--
+.Estilo1 {font-size: 12px}
 .Estilo2 {	color: #999999;
 	font-weight: bold;
 }
@@ -51,15 +65,19 @@ function validar(form1)
          <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
          <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><b><span class="G"> <a href="admin_examen.php"></a></span></b></b></nobr><b><a href="admin_busexamen.php"><b><span class="G">Examenes</span></b></a></b></td>
          <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
-         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_evaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
-         <td class="tabson" ><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></td>
-         <td  background="imag/admin_div1.gif" ><a href="admin_cargo.php"><nobr><b><b><span >Cargos </span></b></b></nobr> </a></td>
-         <td class="tabsline" ><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros Medicos</strong></span></a></td>
+         <td width="119" align="center" background="imag/admin_div3.gif" ><nobr><b><a href="admin_busevaluador.php"><b><span class="G"> Evaluadores</span></b></a></b></nobr></td>
+         <td class="tabson" ><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></td>
+         <td  background="imag/admin_div3.gif" ><nobr><b><b><a href="admin_buscargo.php"><b><span class="G">Cargos</span></b></a><span class="G"><a href="admin_cargo.php"></a> </span></b></b></nobr> </td>
+         <td class="tabsline" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td width="175" background="imag/admin_div3.gif" ><a href="admin_buscentro.php"><span class="G"><strong>Centros  </strong></span></a></td>
          <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
+         <td width="250" background="imag/admin_div3.gif" align="center" ><a href="curso_especial/admin_buscursoespecial.php"><span class="G"><strong>Curso  A IV</strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
+
+         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         
+         <td width="175" background="imag/admin_div3.gif" ><a href="admin_busmonitoreo.php"><b><span class="G"><strong>Monitoreo</strong></span></a></td>
+         <td width="175" background="imag/admin_div3.gif" ><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td> 
          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_busmonitoreoeval.php"><span class="G"><strong>Evaluacion Monitoreo</strong></span></a></td>
          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="cambia_plazo.php"><span class="G"><strong>Plazo a Programar</strong></span></a></td>
@@ -70,13 +88,12 @@ function validar(form1)
          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="Bloqueo_fecha.php"><span class="G "><strong>Bloqueo Fecha</strong></span></a></td>
          <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_escuelaprofesional.php"><span class="G"><strong>Escuela Profesional</strong></span></a></td>
-         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-
+         
          <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_provincia.php"><span class="G"><strong>Añadir Provincia</strong></span></a></td>
-         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div222.gif" alt="" border="0" height="36" width="29"></span></td>
-         <td width="175"  align="center" background="imag/admin_div3.gif" > <a href="admin_distrito.php"><span class="G"><strong>Añadir Distrito</strong></span></a></td>
-         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div4.gif" alt="" border="0" height="36" width="29"></span></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div22.gif" alt="" border="0" height="36" width="29"></span></td>
+         
+         <td width="175"  align="center" background="imag/admin_div1.gif" > <a href="admin_provincia.php"><span class="G Estilo2"><strong>Añadir Distrito</strong></span></a></td>
+         <td class="tabsline" width="175"><span class="tabson"><img src="imag/admin_div2.gif" alt="" border="0" height="36" width="29"></span></td><td class="tabsline" width="175"></td>
      </tr>
    </tbody>
  </table></td>
@@ -90,7 +107,7 @@ function validar(form1)
       <tbody>
         <tr>
           <td valign="top"><br>
-            <form name="form1" method="post" action="admin_insertcar.php" onSubmit="return validar(this)">
+            <form name="form1" method="post" action="admin_insertardistrito.php" onSubmit="return validar(this)">
               <table class="frmline" align="center" border="0" cellpadding="0" cellspacing="0" width="720">
                 <tbody>
                   <tr>
@@ -101,7 +118,7 @@ function validar(form1)
                                 <tbody>
                                   <tr>
                                     <th align="left"  width="20%"> </th>
-                                    <th height="26" width="50%"> <span class="G">DATOS DE CARGO </span></th>
+                                    <th height="26" width="75%"> <span class="G">DATOS DEL DISTRITO </span></th>
                                     <th align="right" width="25%"><!--input type="button" class="boton" name="btn_volver" value=".:: Volver ::." onclick="history.back()"-->                                    </th>
                                   </tr>
                                 </tbody>
@@ -112,7 +129,7 @@ function validar(form1)
                   </tr>
                   <?php //////////////
 	if($_GET["sw"]==1){ 
-	$pag='cargo';		// NUEVO
+	$pag='tipoevaluador';		// NUEVO
 	//$id=autogeneradobasico($pag,"idtipoevaluador",6); 
 	}
 	if($_GET["sw"]==2){ 	// EDITAR
@@ -122,22 +139,24 @@ function validar(form1)
 	{
 	foreach($_POST["chk"] as $k =>$v)
 		{
-		$sql="SELECT * FROM cargo WHERE idcargo='".$v."'";
+		$sql="SELECT * FROM distrito WHERE iddistrito='".$v."'";
 		$rs=pg_query($link,$sql);
 		$fila =pg_fetch_object($rs);
-		$id= $fila->idcargo;
-		$nom= $fila->nomcargo;		
-		
+		$id= $fila->iddistrito;
+		$nom= $fila->nombre;		
+		$estado= $fila->tipo;	
+		$provincia= $fila->idprovincia;
 		}
 	}
 
-}			  /////////////////
+	}
+			  /////////////////
 			  ?>
                   <tr valign="middle">
                     <td class="marco" width="1%">&nbsp;</td>
-                    <td class="etiqueta" align="right" width="22%">C&oacute;digo de Usuario&nbsp;&nbsp;</td>
+                    <td class="etiqueta" align="right" width="22%">C&oacute;digo_Provincia&nbsp;&nbsp;</td>
                     <td class="objeto" width="1%">&nbsp;</td>
-                    <td class="objeto" width="78%"><input name="codigo" class="cajatexto" id="C&oacute;digo de Usuario" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,5,0)" onKeyPress="return formato(event,form,this,5,0)" value="<?=$id?>" size="9" maxlength="5" readonly="readonly" type="text">                    </td>
+                    <td class="objeto" width="78%"><input name="provincia" class="cajatexto" id="provincia" style="text-align: right;" onFocus="replaceChars(this,',','')" onBlur="commaSplit(this,0,5,0)" onKeyPress="return formato(event,form,this,5,0)" value="<?=$provincia?>" size="9" maxlength="5" type="text"></td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
                   <tr>
@@ -145,7 +164,7 @@ function validar(form1)
                         <tbody>
                           <tr>
                             <td  height="10" width="10">&nbsp;</td>
-                            <td  align="left" width="90%"><span class="Estilo2">&nbsp;DATOS PERSONALES</span></td>
+                            <td  align="left" width="90%"><span class="Estilo2">&nbsp;DATOS </span></td>
                             <td align="right"  height="20"></td>
                           </tr>
                         </tbody>
@@ -155,16 +174,47 @@ function validar(form1)
                     <td class="marco">&nbsp;</td>
                     <td class="etiqueta" align="right">&nbsp;</td>
                     <td class="objeto">&nbsp;</td>
-                    <td class="objeto"><input name="opcion" type="hidden" value="<?=$_GET["sw"]?>"></td>
+                    <td class="objeto">&nbsp;</td>
                     <td class="objeto">&nbsp;</td>
                   </tr>
                   <tr valign="middle">
                     <td class="marco" width="1%">&nbsp;</td>
-                    <td class="etiqueta" align="right" width="22%">Nombres&nbsp;&nbsp;</td>
+                    <td class="etiqueta" align="right" width="22%">Distrito&nbsp;&nbsp;</td>
                     <td class="objeto" width="1%">&nbsp;</td>
-                    <td class="objeto" width="78%"><input name="cargo" value="<?=$nom?>" size="50" class="cajatexto" id="cargo" maxlength="60"   type="text"></td>
+                    <td class="objeto" width="78%"><input name="nombres" value="<?=$nom?>" size="100" class="cajatexto" id="Nombres" maxlength="60"   type="text">
+                      <input type="hidden" name="opcion" value="<?=$_GET["sw"]?>"></td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
+                  <tr valign="middle">
+                    <td class="marco" width="1%">&nbsp;</td>
+                    <td class="etiqueta" align="right" width="22%">Estado &nbsp;&nbsp;</td>
+                    <td class="objeto" width="1%">&nbsp;</td>
+                    <td class="objeto" width="78%"><input name="estado" value="<?=$estado?>" size="100" class="cajatexto" id="estado" maxlength="60"  type="text"></td>
+                    <td class="objeto" width="1%">&nbsp;</td>
+                  </tr>
+                    <tr valign="middle">
+                      <td class="marco" width="1%">&nbsp;</td>
+                      <td class="etiqueta" align="right" width="22%">Iddistrito &nbsp;&nbsp;</td>
+                      <td class="objeto" width="1%">&nbsp;</td>
+                      <td class="objeto" width="78%"><input name="id" value="<?=$id?>" size="100" class="cajatexto" id="id" maxlength="60" disabled type="text"></td>
+                      <td class="objeto" width="1%">&nbsp;</td>
+                    </tr>
+<!--                   <tr valign="middle">
+                    <td class="marco">&nbsp;</td>
+                    <td align="right" class="etiqueta">Estado&nbsp;&nbsp;</td>
+                    <td class="objeto">&nbsp;</td>
+                    <td class="objeto"><select name="estado" class="cajatexto" id="estado">
+                        <option value="" selected>-----Seleccione Opci&oacute;n--------</option>
+                        <? if($estado=='0'){?>
+                         <option value="1" >HABILITADO</option>
+                        <option value="0" selected="selected">INHABILITADO</option>
+						<? }else{?>
+                       <option value="1" selected="selected">HABILITADO</option>
+                        <option value="0">INHABILITADO</option>
+                        <? }?>
+                    </select></td>
+                    <td class="objeto">&nbsp;</td>
+                  </tr> -->
                   <tr valign="middle">
                     <td class="marco" width="1%">&nbsp;</td>
                     <td class="etiqueta" align="right" width="22%">&nbsp;</td>
@@ -172,10 +222,6 @@ function validar(form1)
                     <td class="objeto" width="78%">&nbsp;</td>
                     <td class="objeto" width="1%">&nbsp;</td>
                   </tr>
-                  <?php 
-			$sqx="select * from tipoevaluador ";
-			  $rsx=pg_query($link,$sqx) or die ("error : $sqx");
-			  ?>
                   <tr>
                     <td colspan="7" height="30"><table border="0" cellpadding="3" cellspacing="1" width="100%">
                         <tbody>
@@ -186,10 +232,10 @@ function validar(form1)
                             <td class="catBottom" colspan="7" height="28"><table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left" width="100%"><input class="boton" name="btn_Actualizar" value=".:: Actualizar ::." type="submit">                                    </td>
+                                    <td align="left" width="100%"><input class="boton" name="btn_Actualizar" value=".:: Actualizar ::." type="submit"></td>
                                     <td width="50%"></td>
                                     <td align="right" width="25%"><input class="boton" name="btn_volver2" value=".:: Volver ::." onClick="history.back()" type="button">
-                                        <!--input type="button" class="boton" name="btn_volver" value=".:: Volver ::." onclick="history.back()"-->                                    </td>
+                                        <!--input type="button" class="boton" name="btn_volver" value=".:: Volver ::." onclick="history.back()"--></td>
                                   </tr>
                                 </tbody>
                             </table></td>
