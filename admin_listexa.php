@@ -31,7 +31,7 @@ body {
 </style></head>
 <body>
 <?php
-$_pagi_sql = "select * from preguntas where categoria like '".$_GET["frase"]."%' and tipo like '".$_GET["frase1"]."%' and CAST(idpregunta AS varchar(3)) like '".$_GET["frase2"]."%' order by idpregunta DESC ";
+$_pagi_sql = "select * from preguntas where categoria like '".$_GET["frase"]."%' and tipo like '".$_GET["frase1"]."%' and CAST(idpregunta AS varchar(3)) like '".$_GET["frase2"]."%' order by idpregunta ASC ";
 //cantidad de resultados por página (opcional, por defecto 20)
 $_pagi_cuantos = 50;
 $_pagi_nav_num_enlaces = 5;

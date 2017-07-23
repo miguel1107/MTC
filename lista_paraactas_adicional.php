@@ -149,8 +149,10 @@ a:visited {
                         <td width="58"><div align="center"><strong>DNI</strong></div></td>
                         <td width="58"><div align="center"><strong>CATEG.</strong></div></td>
                         <td width="77"><div align="center"><strong>OPCION</strong></div></td>
-                        <td width="82"><div align="center"><strong>PUNTAJE</strong></div></td>
-                            </tr>
+                        <td width="82"><div align="center"><strong>NOTA</strong></div></td>
+                        <td width="82"><div align="center"><strong>RESULTADO</strong></div></td>
+                        <td width="82"><div align="center"><strong>FIRMA</strong></div></td>
+                      </tr>
 <?php
 $cant=count($_POST["chk"]);
 $i=1; 
@@ -181,9 +183,11 @@ if($cant > 0){
                           </div>
                         </td>
                         <td><div align="center"> 
-                          -<?php $evaluador=$reg[7]; ?>
+                          <!-- -<?php $evaluador=$reg[7]; ?> -->
                           </div>
                         </td>
+                        <td></td>
+                        <td></td>
                       </tr>
 					  <?php } $i++;  
 	  	}

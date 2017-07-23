@@ -35,6 +35,7 @@
         ventana=window.open("imprimir_examen.php?idtramite="+ idt + "&idcategoria="+ idc +"&fecha="+ fecha + "&idevaluacion="+ ideva + "","","resizable=NO,scrollbars=yes,HEIGHT=400,WIDTH=600,LEFT=100,TOP=200");
       }
     </script>
+
     <style type="text/css">
       a:link {
        color: #FFFFFF;
@@ -146,6 +147,9 @@
                                           </div>
                                         </td>
                                       </tr>
+                                      <div id="imprimir1">
+                                          <td width="200" align="right"><a target="_blank" href="imprimir_resultado_examen.php?>fecha=<?=$_GET["xxxfecha"]?>" ><img src="imag/print.png" width="20px" >&nbsp;<b>Imprimir Listado</b></a></td>
+                                        </div>
                                       <?php }else if($examen=='1'){?>
                                       <tr>
                                         <td>
@@ -154,6 +158,9 @@
                                           </div>
                                         </td>
                                       </tr>
+                                        <div id="imprimir1">
+                                          <td width="200" align="right"><a target="_blank" href="imprimir_resultado_examen.php?>fecha=<?=$_GET["xxxfecha"]?>"><img src="imag/print.png" width="20px" >&nbsp;<b>Imprimir Listado</b></a></td>
+                                        </div>
                                       <?php }?>
                                       <tr>
                                         <td>&nbsp;</td>
